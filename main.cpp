@@ -1,8 +1,19 @@
 
 #include "./include/vector/vector.hpp"
+#include "./include/iterator/random_access_iterator.hpp"
 #include <memory>
 #include <vector>
 #include <iostream>
+
+
+int     main()
+{
+    ft::iterator<std::vector<int> >   it;
+    std::vector<int>    v(10, 12);
+
+    it.operator=(v);
+    return (0);
+}
 
 // int main()
 // {
@@ -36,56 +47,6 @@
 
 //     return (0);
 // }
-
-int     main()
-{
-    std::cout << KYEL << "SYS: ******************************************************" << KNRM << std::endl;
-    {
-        std::vector<int>    vect0;
-        int     i = 0;
-
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-
-        std::cout << "<Vect0>: Size: " << vect0.size() << " Capacity: " << vect0.capacity() << std::endl;
-        std::cout << "~~~~~~~~~~~~~~~~" << std::endl;
-
-        std::vector<int>    vect1(vect0);
-        std::cout << "<Vect1>: Size: " << vect1.size() << " Capacity: " << vect1.capacity() << std::endl;
-        for ( std::vector<int>::iterator b = vect1.begin(); b < vect1.end(); b++)
-        {
-            std::cout << "SYS: " << *b << std::endl;
-        }
-    }
-    std::cout << KYEL << "USR: ******************************************************" << KNRM << std::endl;
-    {
-        std::vector<int>    vect0;
-        int     i = 0;
-
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-
-        std::cout << "<Vect0>: Size: " << vect0.size() << " Capacity: " << vect0.capacity() << std::endl;
-        std::cout << "~~~~~~~~~~~~~~~~" << std::endl;
-
-        ft::vector<int>     tmp_vect(vect0.begin(), vect0.end());
-
-        ft::vector<int>    vect1(tmp_vect);
-    }
-    return (0);
-}
-
-// int main()
-// {
-//     std::vector<int>    vect0;
 
 //     vect0.push_back(0);
 //     vect0.push_back(1);
