@@ -5,6 +5,7 @@
 #include <iostream>
 #include <memory>
 #include <exception>
+#include "../iterator/random_access_iterator.hpp"
 
 # define KNRM  "\x1B[0m"
 # define KRED  "\x1B[31m"
@@ -21,15 +22,23 @@ namespace ft
     class vector
     {
         public:
+
             /*
-            ** Member types: *********************************************************************************
+            ** Member types:
             */
                 typedef     T                                       value_type;
                 typedef     Alloc                                   allocator_type;
-                typedef    	typename allocator_type::reference      reference;
+                typedef     value_type&                             reference;
+                typedef     const value_type&                       const_reference;
+                typedef     value_type*                             pointer;
+                typedef     const value_type*                       const_pointer;
                 typedef     size_t                                  size_type;
+                typedef     ft::Iterator<value_type>                iterator;
+                typedef     const iterator                          const_iterator;
+                // typedef    	typename allocator_type::reference      reference;
+
             /*
-            ** Constructors: *********************************************************************************
+            ** Constructors:
             */
                 /*
                 ** Default Constructor:
@@ -46,7 +55,7 @@ namespace ft
                 /*
                 ** Fill Constructor:
                 */
-                explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type())
+                explicit vector (size_type n, const_reference val = value_type(), const allocator_type& alloc = allocator_type())
                 {
                     this->_vector_allocator = alloc;
 
@@ -111,12 +120,61 @@ namespace ft
             */
             ~vector(){ std::cout << "<vector>: Default Destructor Called" << std::endl; }
 
+            /*
+            ** Operator=:
+            */
+           // MOOOOOOOOOOOOOOOOOOOOOOOORE TESTSSSSSSSS :
+            // vector& operator= (const vector& x)
+            // {
+                // this->_vector_allocator.deallocate(this->_array, this->_capacity);
+                // this->_array = this->_vector_allocator.allocate(x._capacity);
+                // for (ft::vector<value_type>::iterator it = x.begin(); it < x.end(); it++)
+                // {
+                    // this->end() = *it;
+                // }
+            // }
+            /*
+            ** Constructors:
+            */
+                /*
+                ** Default Constructor:
+                */
+                iterator begin( void )
+                {
+                    iterator    it;
+
+                    it.setPtr(this->_array[0]);
+                    return (it);
+                }
+                const_iterator begin() const
+                {
+                    iterator    it;
+
+                    it.setPtr(this->_array[0]);
+                    return (it);
+                }
+                iterator end()
+                {
+                    iterator    it;
+
+                    it.setPtr(this->_array[this->_size]);
+                    return (it);
+                }
+                const_iterator end() const
+                {
+                    iterator    it;
+
+                    it.setPtr(this->_array[this->_size]);
+                    return (it);
+                }
+
         private:
-            value_type       *_array;
-            allocator_type   _vector_allocator;
-            size_type        _size;
-            size_type        _capacity;
-            
+            value_type                  *_array;
+            allocator_type              _vector_allocator;
+            size_type                   _size;
+            size_type                   _capacity;
+            iterator                    _iterator;
+
             size_type        ___capacity_calculator(size_type const current_size)
             {
                 if (current_size == 0)

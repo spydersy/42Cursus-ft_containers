@@ -11,5 +11,7 @@
 # **************************************************************************** #
 
 1) Vector
+    - implement dereference operator (->) in random_access_iterator;
+    
 2) Stack
 3) Map

@@ -15,31 +15,35 @@ namespace   ft
             /*
             ** Member Types:
             */
-            typedef     Type                        value_type;
-            typedef     Type*                       pointer;
-            typedef     Type&                       reference;
-            typedef     std::ptrdiff_t              difference_type;
-            typedef     random_access_iterator_tag  iterator_category;
+            typedef     Type                             value_type;
+            typedef     Type*                            pointer;
+            typedef     Type&                            reference;
+            typedef     std::ptrdiff_t                   difference_type;
+            typedef     std::random_access_iterator_tag  iterator_category;
+            typedef     size_t                           size_type;
 
             /*
             ** Constructors:
             */
                 /*
                 ** Default Constructor:
-                */            
+                */
                 Iterator( void )
                 {
-                    arr[0] = 1;
-                    arr[1] = 2;
-                    arr[2] = 3;
-                    arr[3] = 4;
-                    arr[4] = 5;
-                    arr[5] = 6;
-                    arr[6] = 7;
-                    arr[7] = 8;
-                    arr[8] = 9;
-                    arr[9] = 10;
-                    this->_ptr = arr;
+                    // arr[0] = 1;
+                    // arr[1] = 2;
+                    // arr[2] = 3;
+                    // arr[3] = 4;
+                    // arr[4] = 5;
+                    // arr[5] = 6;
+                    // arr[6] = 7;
+                    // arr[7] = 8;
+                    // arr[8] = 9;
+                    // arr[9] = 10;
+                    // this->_ptr = arr;
+
+                    this->_ptr = NULL;
+                    // this->_ptr = std::nullptr_t;
                     std::cout << "<void>: Iterator Constructor Called" << std::endl;
                 }
 
@@ -53,7 +57,7 @@ namespace   ft
                 }
 
                 /*
-                ** Assign Constructor:
+                ** Assignment Operator:
                 */
                 Iterator    &operator=( Iterator const & src )
                 {
@@ -65,12 +69,14 @@ namespace   ft
                 /*
                 ** Default Destructor:
                 */
-                ~Iterator(){ std::cout << "Iterator Destructor Called" << std::endl; }
+                ~Iterator()
+                {
+                    std::cout << "Iterator Destructor Called" << std::endl;
+                }
 
             /*
             ** Comparison for equivalence:
             */
-
                 /*
                 ** Equality opearator:
                 */
@@ -89,23 +95,22 @@ namespace   ft
                     return (this->_ptr != src._ptr);
                 }
 
-                Type    &operator*( void ) const
-                {
-                    return (*(this->_ptr));
-                }
-
-                Type    &operator->( void ) const
-                {
-                    return (*(this->_ptr));
-                }
-                
+            /*
+            ** Incrementation / Decrementaion Operators:
+            */
+                /*
+                ** Pre-increment opearator:
+                */
                 Iterator    &operator++()
                 {
                     this->_ptr++;
                     return (*this);
                 }
 
-                Iterator    operator++(int)
+                /*
+                ** Post-increment opearator:
+                */
+                Iterator    operator++( int )
                 {
                         Iterator   prev = *this;
 
@@ -113,13 +118,19 @@ namespace   ft
                         return (prev);
                 }
 
+                /*
+                ** Pre-decrement opearator:
+                */
                 Iterator    &operator--()
                 {
                     this->_ptr++;
                     return (*this);
                 }
 
-                Iterator    operator--(int)
+                /*
+                ** Post-decrement opearator:
+                */
+                Iterator    operator--( int )
                 {
                         Iterator   prev = *this;
 
@@ -127,15 +138,30 @@ namespace   ft
                         return (prev);
                 }
 
-                Iterator   operator-(Iterator const & src) const
+            /*
+            ** Dereference Operators:
+            */
+                reference   operator*( void ) const
+                {
+                    return (*(this->_ptr));
+                }
+                //  operator->() {}
+
+                reference   operator->( void ) const
+                {
+                    return (*(this->_ptr));
+                }
+
+                difference_type   operator-(Iterator const & src) const
                 {
                     Iterator   ret;
 
-                    ret._ptr = this->_ptr - src._ptr;
-                    return (ret);
+                    // ret._ptr = this->_ptr - src._ptr;
+                    // return (ret);
+                    return (this->_ptr - src._ptr);
                 }
 
-                Iterator   operator-(size_t value) const
+                Iterator   operator-(size_type value) const
                 {
                     Iterator   ret;
 
@@ -143,7 +169,7 @@ namespace   ft
                     return (ret);
                 }
 
-                Iterator   operator+(size_t value) const
+                Iterator   operator+(size_type value) const
                 {
                     Iterator   ret;
 
@@ -172,28 +198,37 @@ namespace   ft
                     return (this->_ptr >= src._ptr);
                 }
 
-                Iterator    &operator+=( size_t value)
+                Iterator    &operator+=( size_type value)
                 {
                     this->operator+(value);
                     return (*this);
                 }
 
-                Iterator    &operator-=( size_t value)
+                Iterator    &operator-=( size_type value)
                 {
                     this->operator-(value);
                     return (*this);
                 }
 
-                Type    &operator[]( size_t index ) const
+                reference   operator[]( size_type index ) const
                 {
                     return (this->_ptr[index]);
                 }
 
+            /*
+            ** Setters:
+            */
+                /*
+                **  _ptr Setter:
+                */
+                void    setPtr( reference address )
+                {
+                    _ptr = &address;
+                }
         private:
-            Type    *_ptr;
-            int     arr[10];
+            value_type    *_ptr;
+            // value_type      arr[10];
     };
 };
-
 
 #endif
