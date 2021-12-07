@@ -90,6 +90,21 @@ namespace ft
                 // template <class InputIterator>
                 // static typename std::enable_if< !std::is_integra<InputIterator>::type >
 
+
+                /*
+                	template<class InputIt>
+                	vector(InputIt first, InputIt last, const Allocator& alloc = Allocator(),
+                	typename ft::enable_if<InputIt::input_iter, InputIt>::type = NULL)
+                	: _alloc(alloc), _ptr(0), _size_alloc(0), _size_filled(0)
+                	{
+                		while (first != last)
+                		{
+                			this->push_back(*first);
+                			first++;
+                		}
+                	};
+                */
+
                 template <typename InputIterator>
                 vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
                 std::enable_if< !std::is_integral<InputIterator>::value, InputIterator = InputIterator()>)
