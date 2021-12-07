@@ -5,6 +5,32 @@
 #include <vector>
 #include <iostream>
 
+// // template <typename T, typename std::enable_if<std::is_integral<T>::value> >
+// template <typename T>
+// T   min(T a, T b)
+// {
+//     std::cout << "ENABLE_IF IS INT : DONE" << std::endl;
+//     if (a <= b)
+//         return (a);
+//     return (b);
+// }
+
+// template <typename T, typename std::enable_if<std::is_integral<T>::value> >
+// T   min(T a, T b)
+// {
+//     std::cout << "ENABLE_IF IS STRING : DONE" << std::endl;
+//     if (a <= b)
+//         return (a);
+//     return (b);
+// }
+
+// int main()
+// {
+//     std::cout << "min: " << min(3, 6) << std::endl;
+//     std::cout << "min: " << min("3", "6") << std::endl;
+//     return (0);
+// }
+
 // int main()
 // {
 //     int     i = 0;
@@ -81,7 +107,9 @@ int     main()
     // }
 
     std::cout << KYEL << "USR: ******************************************************" << KNRM << std::endl;
-
+    // {
+    //     ft::vector<int>     vect(12, 15);
+    // }
     {
         std::vector<int> vect0;
         int                 i = 1;

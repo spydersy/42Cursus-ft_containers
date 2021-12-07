@@ -5,7 +5,9 @@
 #include <iostream>
 #include <memory>
 #include <exception>
+#include <type_traits>
 #include "../iterator/random_access_iterator.hpp"
+#include "../iterator/enable_if.hpp"
 
 # define KNRM  "\x1B[0m"
 # define KRED  "\x1B[31m"
@@ -22,7 +24,6 @@ namespace ft
     class vector
     {
         public:
-
             /*
             ** Member types:
             */
@@ -35,8 +36,19 @@ namespace ft
                 typedef     size_t                                  size_type;
                 typedef     ft::Iterator<value_type>                iterator;
                 typedef     const iterator                          const_iterator;
+                // typedef     ft::enable_if<true, value_type>         enable_if;
                 // typedef    	typename allocator_type::reference      reference;
 
+
+            // // Eneble_if Implementation:
+            //     template<bool B, value_type T = void>
+            //     struct enable_if {};
+
+            //     template<class T>
+            //     struct enable_if<true, T> { typedef T type; };
+            // // Eneble_if Implementation (end):
+
+        public:
             /*
             ** Constructors:
             */
@@ -51,7 +63,6 @@ namespace ft
                     this->_size = 0;
                     std::cout << "<vector>: Default Constructor Called | Size:" << _size << " | Capacity:" << _capacity << std::endl;
                 }
-
                 /*
                 ** Fill Constructor:
                 */
@@ -76,8 +87,12 @@ namespace ft
                 /*
                 ** Range Constructor:
                 */
-                template <class InputIterator>
-                vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type())
+                // template <class InputIterator>
+                // static typename std::enable_if< !std::is_integra<InputIterator>::type >
+
+                template <typename InputIterator>
+                vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
+                std::enable_if< !std::is_integral<InputIterator>::value, InputIterator = InputIterator()>)
                 {
                     this->_size = last - first;
                     this->_capacity = this->_size;
@@ -116,7 +131,7 @@ namespace ft
                 }
 
             /*
-            ** Destructor: *********************************************************************************
+            ** Destructor:
             */
             ~vector(){ std::cout << "<vector>: Default Destructor Called" << std::endl; }
 
@@ -124,20 +139,21 @@ namespace ft
             ** Operator=:
             */
            // MOOOOOOOOOOOOOOOOOOOOOOOORE TESTSSSSSSSS :
-            // vector& operator= (const vector& x)
+            // vector& operator=(const vector& x)
             // {
-                // this->_vector_allocator.deallocate(this->_array, this->_capacity);
-                // this->_array = this->_vector_allocator.allocate(x._capacity);
-                // for (ft::vector<value_type>::iterator it = x.begin(); it < x.end(); it++)
-                // {
-                    // this->end() = *it;
-                // }
+            //     this->_vector_allocator.deallocate(this->_array, this->_capacity);
+            //     this->_array = this->_vector_allocator.allocate(x._capacity);
+            //     for (ft::vector<value_type>::iterator it = x.begin(); it < x.end(); it++)
+            //     {
+            //         this->end() = *it;
+            //     }
             // }
+
             /*
-            ** Constructors:
+            ** Iterators:
             */
                 /*
-                ** Default Constructor:
+                ** Begin:
                 */
                 iterator begin( void )
                 {
@@ -146,6 +162,10 @@ namespace ft
                     it.setPtr(this->_array[0]);
                     return (it);
                 }
+
+                /*
+                ** Const Begin:
+                */
                 const_iterator begin() const
                 {
                     iterator    it;
@@ -153,6 +173,10 @@ namespace ft
                     it.setPtr(this->_array[0]);
                     return (it);
                 }
+
+                /*
+                ** End:
+                */
                 iterator end()
                 {
                     iterator    it;
@@ -160,12 +184,76 @@ namespace ft
                     it.setPtr(this->_array[this->_size]);
                     return (it);
                 }
+
+                /*
+                ** Const End:
+                */
                 const_iterator end() const
                 {
                     iterator    it;
 
                     it.setPtr(this->_array[this->_size]);
                     return (it);
+                }
+
+            /*
+            ** Capacity:
+            */
+                /*
+                ** Size:
+                */
+                size_type size() const
+                {
+                    return (this->_size);
+                }
+
+                /*
+                ** Max Size:
+                */
+                size_type max_size() const
+                {
+                    return (std::pow(2, std::pow(sizeof(this->_array), 2)) / sizeof(value_type) - 1);
+                }
+
+                /*
+                ** Resize:
+                */
+                // void resize (size_type n, value_type val = value_type()); Not Completed;
+
+                /*
+                ** Capacity:
+                */
+                size_type capacity() const
+                {
+                    return (this->_capacity == 0);
+                }
+
+                /*
+                ** Capacity:
+                */
+                bool empty() const
+                {
+                    return ();
+                }
+
+                /*
+                ** Capacity:
+                */
+                void reserve (size_type n)
+                {
+                    if (n > 0 && this->capacity < n)
+                    {
+                        size_type   index = 0;
+                        value_type  *new_arr = allocator_type->allocate(n);
+                        for (iterator it = this->begin(); it < this->end(); it++)
+                        {
+                            new_arr[index] = *it;
+                            index++;
+                        }
+                        allocator_type->deallocate(this->_array, this->_capacity);
+                        this->_array = new_arr;
+                        this->_capacity = n;
+                    }
                 }
 
         private:
