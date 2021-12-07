@@ -1,8 +1,42 @@
 
-#include "./include/iterator/random_access_iterator.hpp"
+// #include "./include/iterator/random_access_iterator.hpp"
 #include "./include/vector/vector.hpp"
 #include <vector>
 #include <iostream>
+
+// int main()
+// {
+    // ft::vector<int>     vect0(15, 10);
+    // std::vector<int>    vect1;
+
+    // for (ft::vector<int>::iterator it = vect0.begin(); it < vect0.end(); it++)
+    // {
+        // std::cout << "it: " << *it << std::endl;
+    // }
+
+    // return (0);
+// }
+
+int main()
+{
+    std::vector<int>     vect0;
+
+    for (int i = 1; i <= 10; i++)
+    {
+        vect0.push_back(i);
+    }
+
+    for (int i = 1; i < 10; i++)
+    {
+        std::cout << vect0[i] << std::endl;
+    }
+    std::cout << "**************************************" << std::endl;
+        ft::vector<int>     vect1(vect0.begin(), vect0.end());
+    std::cout << "**************************************" << std::endl;
+
+    ft::vector<int>         vect2(10, 15);
+    return (0);
+}
 
 // int main()
 // {
@@ -105,21 +139,21 @@
     // return (0);
 // }
 
-int     main()
-{
-    ft::vector<int>     intVect(10, 12);
+// int     main()
+// {
+    // ft::vector<int>     intVect(10, 12);
 
-    std::cout << "***************************" << std::endl;
-    ft::vector<int>::iterator   it;
+    // std::cout << "***************************" << std::endl;
+    // ft::vector<int>::iterator   it;
 
-    it = intVect.begin();
-    for (ft::vector<int>::iterator it = intVect.begin(); it < intVect.end(); it++)
-    {
-        std::cout << *it << std::endl;
-    }
+    // it = intVect.begin();
+    // for (ft::vector<int>::iterator it = intVect.begin(); it < intVect.end(); it++)
+    // {
+        // std::cout << *it << std::endl;
+    // }
 
-    return (0);
-}
+    // return (0);
+// }
 
 
 // int main()

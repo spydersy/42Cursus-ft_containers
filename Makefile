@@ -1,14 +1,14 @@
 
 NAME=ft_containers
 
-SRCS=main.cpp\
+SRCS=test.cpp\
 
 OBJS=	$(SRCS:.cpp=.o)
 
-CPPFLAGS=	-Wall -Werror -Wextra -std=c++98
+CPPFLAGS= -Wall -Werror -Wextra -std=c++98
 
 $(NAME):	$(OBJS)
-			clang++ $(CPPFLAGS) $(OBJS) -o $(NAME)
+			clang++ $(OBJS) -o $(NAME)
 
 all: $(NAME)
 

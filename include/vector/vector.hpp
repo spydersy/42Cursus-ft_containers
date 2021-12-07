@@ -5,9 +5,10 @@
 #include <iostream>
 #include <memory>
 #include <exception>
-#include <type_traits>
+// #include <type_traits>
 #include "../iterator/random_access_iterator.hpp"
 #include "../iterator/enable_if.hpp"
+#include "../iterator/is_integral.hpp"
 
 # define KNRM  "\x1B[0m"
 # define KRED  "\x1B[31m"
@@ -92,26 +93,34 @@ namespace ft
 
 
                 /*
-                	template<class InputIt>
-                	vector(InputIt first, InputIt last, const Allocator& alloc = Allocator(),
-                	typename ft::enable_if<InputIt::input_iter, InputIt>::type = NULL)
-                	: _alloc(alloc), _ptr(0), _size_alloc(0), _size_filled(0)
-                	{
-                		while (first != last)
-                		{
-                			this->push_back(*first);
-                			first++;
-                		}
-                	};
+                    template<class InputIt>
+                    vector(InputIt first, InputIt last, const Allocator& alloc = Allocator(),
+                    typename ft::enable_if<InputIt::input_iter, InputIt>::type = NULL)
+                    : _alloc(alloc), _ptr(0), _size_alloc(0), _size_filled(0)
+                    {
+                        while (first != last)
+                        {
+                            this->push_back(*first);
+                            first++;
+                        }
+                    };
                 */
 
-                template <typename InputIterator>
-                vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
-                std::enable_if< !std::is_integral<InputIterator>::value, InputIterator = InputIterator()>)
+                // template <typename InputIterator>
+                // vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
+                // std::enable_if< !std::is_integral<InputIterator>::value, InputIterator = InputIterator()>)
+
+// typename std::enable_if<InputIterator::input_iter, InputIterator>::type = NULL
+
+                template<typename InputIterator>
+                vector(InputIterator first,
+                        InputIterator last,
+                        const allocator_type& alloc = allocator_type(),
+                        typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type = InputIterator()) : _vector_allocator(alloc)
                 {
                     this->_size = last - first;
                     this->_capacity = this->_size;
-                    this->_vector_allocator = alloc;
+                    // this->_vector_allocator = alloc;
 
                     std::cout << "<USR> Size: " << this->_size << " Capacity: " << this->_capacity << std::endl;
                     this->_array = this->_vector_allocator.allocate(this->_capacity);
@@ -225,10 +234,10 @@ namespace ft
                 /*
                 ** Max Size:
                 */
-                size_type max_size() const
-                {
-                    return (std::pow(2, std::pow(sizeof(this->_array), 2)) / sizeof(value_type) - 1);
-                }
+                // size_type max_size() const
+                // {
+                //     return (std::pow(2, std::pow(sizeof(this->_array), 2)) / sizeof(value_type) - 1);
+                // }
 
                 /*
                 ** Resize:
@@ -238,38 +247,38 @@ namespace ft
                 /*
                 ** Capacity:
                 */
-                size_type capacity() const
-                {
-                    return (this->_capacity == 0);
-                }
+                // size_type capacity() const
+                // {
+                //     return (this->_capacity == 0);
+                // }
 
                 /*
                 ** Capacity:
                 */
-                bool empty() const
-                {
-                    return ();
-                }
+                // bool empty() const
+                // {
+                //     return ();
+                // }
 
                 /*
                 ** Capacity:
                 */
-                void reserve (size_type n)
-                {
-                    if (n > 0 && this->capacity < n)
-                    {
-                        size_type   index = 0;
-                        value_type  *new_arr = allocator_type->allocate(n);
-                        for (iterator it = this->begin(); it < this->end(); it++)
-                        {
-                            new_arr[index] = *it;
-                            index++;
-                        }
-                        allocator_type->deallocate(this->_array, this->_capacity);
-                        this->_array = new_arr;
-                        this->_capacity = n;
-                    }
-                }
+                // void reserve (size_type n)
+                // {
+                //     if (n > 0 && this->capacity < n)
+                //     {
+                //         size_type   index = 0;
+                //         value_type  *new_arr = allocator_type->allocate(n);
+                //         for (iterator it = this->begin(); it < this->end(); it++)
+                //         {
+                //             new_arr[index] = *it;
+                //             index++;
+                //         }
+                //         allocator_type->deallocate(this->_array, this->_capacity);
+                //         this->_array = new_arr;
+                //         this->_capacity = n;
+                //     }
+                // }
 
         private:
             value_type                  *_array;
