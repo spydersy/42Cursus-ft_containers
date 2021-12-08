@@ -74,80 +74,29 @@
 //     return (0);
 // }
 
-int     main()
+int main()
 {
-    // std::cout << KYEL << "SYS: ******************************************************" << KNRM << std::endl;
-    // {
-    //     std::vector<int> vect0;
-    //     int                 i = 0;
+    std::vector<int>        vect1;
 
-    //     vect0.push_back(i++);
-    //     vect0.push_back(i++);
-    //     vect0.push_back(i++);
-    //     vect0.push_back(i++);
-    //     vect0.push_back(i++);
-    //     vect0.push_back(i++);
-    //     vect0.push_back(i++);
-
-
-    //     std::cout << KGRN << "Size: " << vect0.size() << " Capacity: " << vect0.capacity() << KNRM << std::endl;
-
-    //     std::vector<int>::iterator  b = vect0.begin();
-    //     std::vector<int>::iterator  e = vect0.end();
-
-    //     std::cout << "~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
-
-    //     std::vector<int>            vect2(b, e);
-
-    //     std::cout << " vect2***** : Size: " << vect2.size() << " Capacity: " << vect2.capacity() << std::endl;
-    //     for (std::vector<int>::iterator  b2 = vect2.begin(); b2 < vect2.end(); b2++)
-    //     {
-    //         std::cout << "SYS: " << *b2 << std::endl;
-    //     }
-    // }
-
-    std::cout << KYEL << "USR: ******************************************************" << KNRM << std::endl;
-    // {
-    //     ft::vector<int>     vect(12, 15);
-    // }
+    for (int i = 1; i <= 10; i++)
     {
-        std::vector<int> vect0;
-        int                 i = 1;
-
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-        vect0.push_back(i++);
-
-
-        std::cout << KGRN << "Size: " << vect0.size() << " Capacity: " << vect0.capacity() << KNRM << std::endl;
-
-        std::vector<int>::iterator  b = vect0.begin();
-        std::vector<int>::iterator  e = vect0.end();
-
-        std::cout << "~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
-
-        ft::vector<int>            vect2(b, e);
-        std::cout << KBLU << "~~~~~~~~~~~~~~~~~~~~~~" <<  KWHT << std::endl;
-
-        // for (ft::vector<int>::iterator it = vect2.begin(); it < vect2.end(); it++)
-        // {
-            // std::cout << *it << std::endl;
-        // }
-
-        ft::vector<int>::iterator it = vect2.begin();
-        ft::vector<int>::iterator end = vect2.end();
-        while (it < end)
-        {
-            std::cout << *it << std::endl;
-            ++it;
-        }
+        vect1.push_back(i);
     }
+
+    std::vector<int>        vect2;
+
+    for (int i = 100; i >= 50; i--)
+    {
+        vect2.push_back(i);
+    }
+
+    vect1 = vect2;
+
+    for (std::vector<int>::iterator it = vect1.begin(); it < vect1.end(); it++)
+    {
+        std::cout << *it << std::endl;
+    }
+
+
     return (0);
 }

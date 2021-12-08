@@ -40,15 +40,6 @@ namespace ft
                 // typedef     ft::enable_if<true, value_type>         enable_if;
                 // typedef    	typename allocator_type::reference      reference;
 
-
-            // // Eneble_if Implementation:
-            //     template<bool B, value_type T = void>
-            //     struct enable_if {};
-
-            //     template<class T>
-            //     struct enable_if<true, T> { typedef T type; };
-            // // Eneble_if Implementation (end):
-
         public:
             /*
             ** Constructors:
@@ -62,7 +53,7 @@ namespace ft
                     this->_array = _vector_allocator.allocate(0);
                     this->_capacity = 0;
                     this->_size = 0;
-                    std::cout << "<vector>: Default Constructor Called | Size:" << _size << " | Capacity:" << _capacity << std::endl;
+                    // std::cout << "<vector>: Default Constructor Called | Size:" << _size << " | Capacity:" << _capacity << std::endl;
                 }
                 /*
                 ** Fill Constructor:
@@ -78,63 +69,33 @@ namespace ft
                     }
                     this->_size = n;
                     this->_capacity = n;
-                    std::cout << "<vector>: Fill Constructor Called | Size:" << _size << " | Capacity:" << _capacity << std::endl;
-                    for (size_type i = 0; i < n; i++)
-                    {
-                        std::cout << this->_array[i] << std::endl;
-                    }
+                    // std::cout << "<vector>: Fill Constructor Called | Size:" << _size << " | Capacity:" << _capacity << std::endl;
                 }
-
                 /*
                 ** Range Constructor:
                 */
-                // template <class InputIterator>
-                // static typename std::enable_if< !std::is_integra<InputIterator>::type >
-
-
-                /*
-                    template<class InputIt>
-                    vector(InputIt first, InputIt last, const Allocator& alloc = Allocator(),
-                    typename ft::enable_if<InputIt::input_iter, InputIt>::type = NULL)
-                    : _alloc(alloc), _ptr(0), _size_alloc(0), _size_filled(0)
-                    {
-                        while (first != last)
-                        {
-                            this->push_back(*first);
-                            first++;
-                        }
-                    };
-                */
-
-                // template <typename InputIterator>
-                // vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
-                // std::enable_if< !std::is_integral<InputIterator>::value, InputIterator = InputIterator()>)
-
-// typename std::enable_if<InputIterator::input_iter, InputIterator>::type = NULL
-
                 template<typename InputIterator>
                 vector(InputIterator first,
                         InputIterator last,
                         const allocator_type& alloc = allocator_type(),
-                        typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type = InputIterator()) : _vector_allocator(alloc)
+                        typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type = InputIterator())
                 {
                     this->_size = last - first;
                     this->_capacity = this->_size;
-                    // this->_vector_allocator = alloc;
+                    this->_vector_allocator = alloc;
 
-                    std::cout << "<USR> Size: " << this->_size << " Capacity: " << this->_capacity << std::endl;
+                    // std::cout << "<USR> Size: " << this->_size << " Capacity: " << this->_capacity << std::endl;
                     this->_array = this->_vector_allocator.allocate(this->_capacity);
 
                     size_type   c = 0;
                     while (first != last)
                     {
                         this->_array[c] = *first;
-                        std::cout << "USR: " << this->_array[c] << std::endl;
+                        // std::cout << "USR: " << this->_array[c] << std::endl;
                         c++;
                         first++;
                     }
                 }
-
                 /*
                 ** Copy Constructor:
                 */
@@ -145,33 +106,46 @@ namespace ft
                     this->_vector_allocator = x._vector_allocator;
 
                     this->_array = this->_vector_allocator.allocate(this->_size);
-                    std::cout << "Copy Constructor: ---------------------------------------" << std::endl;
-                    std::cout << "USR: Size: " << this->_size << " Capacity: " << this->_capacity << std::endl;
+                    // std::cout << "Copy Constructor: ---------------------------------------" << std::endl;
+                    // std::cout << "USR: Size: " << this->_size << " Capacity: " << this->_capacity << std::endl;
                     for (size_type i = 0; i < x._size; i++)
                     {
                         this->_array[i] = x._array[i];
-                        std::cout << "USR: " << this->_array[i] << std::endl;
+                        // std::cout << "USR: " << this->_array[i] << std::endl;
                     }
                 }
 
             /*
             ** Destructor:
             */
-            ~vector(){ std::cout << "<vector>: Default Destructor Called" << std::endl; }
+            ~vector()
+            {
+                // std::cout << "<vector>: Default Destructor Called" << std::endl;
+                this->_vector_allocator.deallocate(this->_array, this->_capacity);
+                return ;
+            }
 
             /*
             ** Operator=:
             */
-           // MOOOOOOOOOOOOOOOOOOOOOOOORE TESTSSSSSSSS :
-            // vector& operator=(const vector& x)
-            // {
-            //     this->_vector_allocator.deallocate(this->_array, this->_capacity);
-            //     this->_array = this->_vector_allocator.allocate(x._capacity);
-            //     for (ft::vector<value_type>::iterator it = x.begin(); it < x.end(); it++)
-            //     {
-            //         this->end() = *it;
-            //     }
-            // }
+            vector& operator=(const vector& x)
+            {
+                size_type   index = 0;
+                iterator    end = x.end();
+                iterator    begin = x.begin();
+
+                this->_capacity = x._capacity;
+                this->_size = x._size;
+                this->_vector_allocator.deallocate(this->_array, this->_capacity);
+                std::cout << "DBG: x_capcacity: " << x._capacity << std::endl;
+                std::cout << "DBG: this_capcacity: " << _capacity << std::endl;
+                this->_array = this->_vector_allocator.allocate(x._capacity);
+                for (; begin < end; begin++)
+                {
+                    this->_array[index++] = *begin;
+                }
+                return (*this);
+            }
 
             /*
             ** Iterators:

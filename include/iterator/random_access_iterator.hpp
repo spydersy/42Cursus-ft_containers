@@ -44,7 +44,7 @@ namespace   ft
 
                     this->_ptr = NULL;
                     // this->_ptr = std::nullptr_t;
-                    std::cout << "<void>: Iterator Constructor Called" << std::endl;
+                    // std::cout << "<void>: Iterator Constructor Called" << std::endl;
                 }
 
                 /*
@@ -53,7 +53,7 @@ namespace   ft
                 Iterator( Iterator const & src )
                 {
                     this->_ptr = src._ptr;
-                    std::cout << "<copy>: Iterator Constructor Called" << std::endl;
+                    // std::cout << "<copy>: Iterator Constructor Called" << std::endl;
                 }
 
                 /*
@@ -62,7 +62,7 @@ namespace   ft
                 Iterator    &operator=( Iterator const & src )
                 {
                     this->_ptr = src._ptr;
-                    std::cout << "<assign>: Iterator Constructor Called" << std::endl;
+                    // std::cout << "<assign>: Iterator Constructor Called" << std::endl;
                     return ( *this );
                 }
 
@@ -71,7 +71,7 @@ namespace   ft
                 */
                 ~Iterator()
                 {
-                    std::cout << "Iterator Destructor Called" << std::endl;
+                    // std::cout << "Iterator Destructor Called" << std::endl;
                 }
 
             /*
@@ -82,7 +82,7 @@ namespace   ft
                 */
                 bool    operator==( Iterator const & src )
                 {
-                    std::cout << "< operator== >" << std::endl;
+                    // std::cout << "< operator== >" << std::endl;
                     return (this->_ptr == src._ptr);
                 }
 
@@ -91,7 +91,7 @@ namespace   ft
                 */
                 bool    operator!=( Iterator const & src )
                 {
-                    std::cout << "< operator!= >" << std::endl;
+                    // std::cout << "< operator!= >" << std::endl;
                     return (this->_ptr != src._ptr);
                 }
 

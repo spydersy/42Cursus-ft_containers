@@ -26,15 +26,59 @@ int main()
         vect0.push_back(i);
     }
 
-    for (int i = 1; i < 10; i++)
-    {
-        std::cout << vect0[i] << std::endl;
-    }
-    std::cout << "**************************************" << std::endl;
+    std::cout << "vect1 (Range Constructor) : **************************************" << std::endl;
         ft::vector<int>     vect1(vect0.begin(), vect0.end());
+        ft::vector<int>::iterator   beg1 =vect1.begin();
+        ft::vector<int>::iterator   end1 =vect1.end();
+        for (; beg1 < end1; beg1++)
+        {
+            std::cout << "vect1: " << *beg1 << std::endl;
+        }
+
+    std::cout << std::endl << "vect2 (Fill Constructor) : **************************************" << std::endl;
+        ft::vector<int>         vect2(20, 42);
+        ft::vector<int>::iterator   beg2 =vect2.begin();
+        ft::vector<int>::iterator   end2 =vect2.end();
+        for (; beg2 < end2; beg2++)
+        {
+            std::cout << "vect2: " << *beg2 << std::endl;
+        }
+
+    std::cout << std::endl << "vect3 (Copy Constructor) : **************************************" << std::endl;
+        ft::vector<int>         vect3(vect2);
+        ft::vector<int>::iterator   beg3 =vect3.begin();
+        ft::vector<int>::iterator   end3 =vect3.end();
+        for (; beg3 < end3; beg3++)
+        {
+            std::cout << "vect3: " << *beg3 << std::endl;
+        }
+
+    std::cout << std::endl << "operator= (vect1 = vect3) : **************************************" << std::endl;
+        vect1 = vect3;
+        beg1 =vect1.begin();
+        end1 =vect1.end();
+        for (; beg1 < end1; beg1++)
+        {
+            std::cout << "vect1: " << *beg1 << std::endl;
+        }
+        std::cout << "~~~~~~~~~~~~~~~" << std::endl;
+        beg3 =vect3.begin();
+        end3 =vect3.end();
+        for (; beg3 < end3; beg3++)
+        {
+            std::cout << "vect3: " << *beg3 << std::endl;
+        }
+
     std::cout << "**************************************" << std::endl;
 
-    ft::vector<int>         vect2(10, 15);
+    ft::vector<int>::iterator       beg = vect1.begin();
+    ft::vector<int>::iterator       end = vect1.end();
+
+    for (; beg < end; beg++)
+    {
+        std::cout << "operator= test: " << *beg << std::endl;
+    }
+
     return (0);
 }
 
