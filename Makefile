@@ -1,7 +1,7 @@
 
 NAME=ft_containers
 
-SRCS=test.cpp\
+SRCS=reverse_iterator_test.cpp\
 
 OBJS=	$(SRCS:.cpp=.o)
 

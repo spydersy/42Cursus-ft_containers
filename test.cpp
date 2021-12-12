@@ -4,6 +4,8 @@
 #include <vector>
 #include <iostream>
 
+#include "./include/iterator/reverse_iterator.hpp"
+
 // int main()
 // {
     // ft::vector<int>     vect0(15, 10);
