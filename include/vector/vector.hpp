@@ -220,7 +220,43 @@ namespace ft
                 */
                 void resize (size_type n, value_type val = value_type())
                 {
+                    if (n <= this->_size)
+                    {
+                        std::cout << "DBG_A" << std::endl;
+                        this->_size = n;
+                    }
+                    if (n > this->_size && n <= this->_capacity)
+                    {
+                        std::cout << "DBG_B" << std::endl;
+                        iterator    it = this->end();
+                        for (size_type i = this->_size; i < n; i++)
+                        {
+                            *it = val;
+                            it++;
+                        }
+                        this->_size = n;
 
+                    }
+                    if (n > this->_size && n > this->_capacity)
+                    {
+                        std::cout << "DBG_C" << std::endl;
+                        size_type   index = 0;
+                        value_type  *new_array = _vector_allocator.allocate(n);
+
+                        for (iterator it = this->begin(); it < this->end(); it++)
+                        {
+                            new_array[index++] = *it;
+                        }
+                        while (index < n)
+                        {
+                            new_array[index++] = val;
+                        }
+                        _vector_allocator.deallocate(this->_array, this->_capacity);
+                        // std::cout << "LIVE_DBG: " << (this->_capacity = this->_size * 2) << std::endl;
+                        this->_size = n;
+                        std::cout << "LIVE_DBG: " << (this->_capacity = n) << std::endl;
+                        this->_array = new_array;
+                    }
                 }
 
                 /*
