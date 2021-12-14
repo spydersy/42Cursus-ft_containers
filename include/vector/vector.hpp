@@ -6,10 +6,9 @@
 #include <memory>
 #include <exception>
 // #include <type_traits>
-#include "../iterator/random_access_iterator.hpp"
-#include "../iterator/reverse_iterator.hpp"
-#include "../iterator/enable_if.hpp"
-#include "../iterator/is_integral.hpp"
+#include "../../utils/reverse_iterator.hpp"
+#include "../../utils/enable_if.hpp"
+#include "../../utils/is_integral.hpp"
 
 # define KNRM  "\x1B[0m"
 # define KRED  "\x1B[31m"
@@ -451,7 +450,6 @@ namespace ft
 
                     if (this->_size + 1 <= this->_capacity)
                     {
-                        // size_type   c = this->_size - 1;
                         iterator    it = this->end() - 1;
                         for (; it >= position + 1; it--)
                         {
@@ -466,22 +464,19 @@ namespace ft
                     {
                         iterator    ret;
                         pointer     new_array = this->_vector_allocator.allocate(this->_size * 2);
-                        size_type   c = 0;
+                        size_type   index = 0;
 
                         for (iterator it = this->begin(); it <= this->end(); it++)
                         {
                             if (it == position)
                             {
-                                // std::cout << "Trueee condition" << std::endl;
-                                new_array[c++] = val;
-                                // it--;
-                                new_array[c++] = *it;
+                                new_array[index++] = val;
+                                new_array[index++] = *it;
                                 ret = it;
                             }
                             else
                             {
-                                // std::cout << "Faaaalse condition" << std::endl;
-                                new_array[c++] = *it;
+                                new_array[index++] = *it;
                             }
                         }
                         this->_vector_allocator.deallocate(this->_array, this->_capacity);
@@ -494,17 +489,35 @@ namespace ft
                 /*
                 **  Fill - Insert:
                 */
-                // void insert (iterator position, size_type n, const value_type& val)
-                // {
-                    // if (this->_size + n <= this->_capacity)
-                    // {
+                void insert (iterator position, size_type n, const value_type& val)
+                {
+                    if (this->_size + n <= this->_capacity)
+                    {
+                        iterator    it = this->end() - 1;
+                        size_type   tmp = n;
 
-                    // }
+                        for (; it > position; it--)
+                        {
+                            *(it + n) = *it;
+                        }
+                        while (n)
+                        {
+                            *it = val;
+                            it++;
+                            n--;
+                        }
+                        this->_size += tmp;
+                        // *(it + n) = *it;
+                        // for (; n >= 0; n--)
+                        // {   
+                            // *(it + n) = val;
+                        // }
+                    }
                     // else
                     // {
 
                     // }
-                // }
+                }
                 /*
                 **  Range - Insert:
                 */

@@ -1,47 +1,31 @@
-DBG: 1
-DBG: 2
-DBG: 3
-DBG: 4
-DBG: 5
-DBG: 6
-DBG: 7
-DBG: 8
-DBG: 9
-DBG: 10
-Size: 10 Capacity: 10
-Size: 11 Capacity: 20
-It[0]: 100
-It[1]: 1
-It[2]: 2
-It[3]: 3
-It[4]: 4
-It[5]: 5
-It[6]: 6
-It[7]: 7
-It[8]: 8
-It[9]: 9
-It[10]: 10
-****************************************
-DBG: 1
-DBG: 2
-DBG: 3
-DBG: 4
-DBG: 5
-DBG: 6
-DBG: 7
-DBG: 8
-DBG: 9
-DBG: 10
-Size: 10 Capacity: 10
-Size: 11 Capacity: 20
-It[0]: 100
-It[1]: 1
-It[2]: 2
-It[3]: 3
-It[4]: 4
-It[5]: 5
-It[6]: 6
-It[7]: 7
-It[8]: 8
-It[9]: 9
-It[10]: 10
+Size: 11 Capacity: 100
+It: 1
+It: 2
+It: 3
+It: 4
+It: 5
+It: 1337
+It: 1337
+It: 1337
+It: 1337
+It: 1337
+It: 1337
+It: 1337
+It: 1337
+It: 1337
+It: 1337
+It: 1337
+It: 1337
+It: 1337
+It: 1337
+It: 1337
+It: 6
+It: 7
+It: 8
+It: 9
+It: 10
+It: 11
+Size: 26Capacity: 100
+******************************************************
+Size: 11 Capacity: 100
+DBG_AAAAA
