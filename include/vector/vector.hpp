@@ -38,8 +38,6 @@ namespace ft
                 typedef     ft::Iterator<value_type>                iterator;
                 typedef     ft::reverse_iterator<value_type>        reverse_iterator;
                 typedef     const iterator                          const_iterator;
-                // typedef     ft::enable_if<true, value_type>         enable_if;
-                // typedef    	typename allocator_type::reference      reference;
 
         public:
 /* Constructors: *****************************************************************************************************/
@@ -507,25 +505,32 @@ namespace ft
                             n--;
                         }
                         this->_size += tmp;
-                        // *(it + n) = *it;
-                        // for (; n >= 0; n--)
-                        // {   
-                            // *(it + n) = val;
-                        // }
                     }
-                    // else
-                    // {
-
-                    // }
+                    else
+                    {
+                        pointer     new_array = this->_vector_allocator.allocate(this->_size + n);
+                        iterator    it = this->begin();
+                        size_type   tmp = n;
+                        for (size_type index = 0; index <= this->_size + n; index++)
+                        {
+                            if (it == position && tmp)
+                            {
+                                new_array[index] = val;
+                            }
+                            else
+                            it++;
+                        }
+                    }
                 }
                 /*
                 **  Range - Insert:
                 */
-                // template <class InputIterator>
-                // void insert (iterator position, InputIterator first, InputIterator last)
-                // {
+                template <class InputIterator>
+                void insert (iterator position, InputIterator first, InputIterator last,
+                typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type = InputIterator())
+                {
 
-                // }
+                }
             /*
             ** Allocator: *************************************************************************
             */
