@@ -226,7 +226,7 @@ int		main()
 {
 	{
 		std::vector<int>	vect;
-		vect.reserve(100);
+		vect.reserve(10);
 
 		for (int i = 1; i < 11; i++)
 		{
@@ -251,7 +251,7 @@ int		main()
 	std::cout << "****************************************" << std::endl;
 	{
 		ft::vector<int>		vect;
-		vect.reserve(100);
+		vect.reserve(10);
 
 		for (int i = 1; i < 11; i++)
 		{

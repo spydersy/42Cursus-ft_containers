@@ -470,18 +470,18 @@ namespace ft
 
                         for (iterator it = this->begin(); it <= this->end(); it++)
                         {
-                            std::cout << "A" << std::endl;
                             if (it == position)
                             {
-                                // new_array.push_back(val);
+                                // std::cout << "Trueee condition" << std::endl;
                                 new_array[c++] = val;
-                                it--;
+                                // it--;
+                                new_array[c++] = *it;
                                 ret = it;
                             }
                             else
                             {
+                                // std::cout << "Faaaalse condition" << std::endl;
                                 new_array[c++] = *it;
-                                // new_array.push_back(*it);
                             }
                         }
                         this->_vector_allocator.deallocate(this->_array, this->_capacity);
