@@ -10,8 +10,35 @@
 #                                                                              #
 # **************************************************************************** #
 
-1) Vector
-    - implement dereference operator (->) in random_access_iterator;
-    
-2) Stack
-3) Map
+1) vector:
+    {
+        Iterators:
+            rbegin()
+            rend()
+                ------> reverse iterator not completed.
+
+        Capacity:
+            resize
+
+        Element Access:
+            operator[ ]
+            at
+            front
+            back
+
+        Modifiers:
+            assign
+            push_back
+            pop_back
+            insert
+            erase
+            swap
+            clear
+
+        Allocator:
+            get_allocator
+
+        Non-member function overloads:
+            relational operators
+            swap
+    }

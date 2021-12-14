@@ -123,7 +123,7 @@ namespace   ft
                 */
                 Iterator    &operator--()
                 {
-                    this->_ptr++;
+                    this->_ptr--;
                     return (*this);
                 }
 
@@ -134,7 +134,7 @@ namespace   ft
                 {
                         Iterator   prev = *this;
 
-                        this->_ptr++;
+                        this->_ptr--;
                         return (prev);
                 }
 
