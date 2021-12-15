@@ -66,6 +66,13 @@ namespace   ft
                     return ( *this );
                 }
 
+                const Iterator    &operator=( Iterator const & src )
+                {
+                    this->_ptr = src._ptr;
+                    // std::cout << "<assign>: Iterator Constructor Called" << std::endl;
+                    return ( *this );
+                }
+
                 /*
                 ** Default Destructor:
                 */

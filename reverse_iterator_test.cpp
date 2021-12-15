@@ -411,14 +411,42 @@
 // 	return (0);
 // }
 
-int	main()
+// int	main()
+// {
+	// std::vector<int>	vect;
+
+	// for (int i = 1; i <= 10; i++)	vect.push_back(i);
+	// std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+
+	// vect.clear();
+	// std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+	// return (0);
+// }
+
+// int		main()
+// {
+	// std::vector<int>	vect1;
+	// std::vector<int>	vect2;
+
+	// vect1.reserve(10000);
+	// for (int i = 1; i<11; i++) vect1.push_back(i);
+	// for (int i = 1; i<11; i++) vect2.push_back(i);
+
+	// std::cout << (vect1 == vect2) << std::endl;
+	// std::cout << (vect1 > vect2) << std::endl;
+	// return (0);
+// }
+
+int		main()
 {
-	std::vector<int>	vect;
+	std::vector<int>	vect1;
+	std::vector<int>	vect2;
 
-	for (int i = 1; i <= 10; i++)	vect.push_back(i);
-	std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+	for (int i = 1; i <= 10; i++) vect1.push_back(i);
+	for (int i = 1; i <= 5; i++) vect2.push_back(i);
 
-	vect.clear();
-	std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+	std::cout <<(vect1 < vect2)<< std::endl;
+	std::cout <<(vect2 < vect1)<< std::endl;
+
 	return (0);
 }

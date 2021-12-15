@@ -1,15 +1,129 @@
-It: 42
-It: 50
-It: 51
-It: 52
-It: 53
-It: 54
-It: 55
-It: 56
-It: 57
-It: 58
-It: 59
-It: 60
-It: 13
-It: 125
-Size: 14 Capacity: 14
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+In file included from ./../vector/../../utils/reverse_iterator.hpp:5:
+./../vector/../../utils/random_access_iterator.hpp:69:36: error: functions that differ only in their return type cannot be overloaded
+                const Iterator    &operator=( Iterator const & src )
+                      ~~~~~~~~~~~~~^
+./../vector/../../utils/random_access_iterator.hpp:62:30: note: previous definition is here
+                Iterator    &operator=( Iterator const & src )
+                ~~~~~~~~~~~~~^
+Vector_tests.cpp:56:14: error: no viable overloaded '='
+        c_it = my_it;
+        ~~~~ ^ ~~~~~
+./../vector/../../utils/random_access_iterator.hpp:62:30: note: candidate function not viable: 'this' argument has type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'), but method is not marked const
+                Iterator    &operator=( Iterator const & src )
+                             ^
+Vector_tests.cpp:91:36: error: member reference type 'std::__cxx11::basic_string<char>' is not a pointer
+        EQUAL(it->length() == my_it->length());
+                              ~~~~~^
+Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
+#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
+                   ^
+./../vector/../../utils/random_access_iterator.hpp:157:17: note: '->' applied to return value of the operator->() declared here
+                reference   operator->( void ) const
+                ^
+Vector_tests.cpp:117:17: error: invalid operands to binary expression ('int' and 'ft::vector<int>::iterator' (aka 'Iterator<int>'))
+    EQUAL(&(*(1 + my_it)) == &(*(my_it1)) && (&(*my_it) == &(*(my_v.begin()))));
+              ~ ^ ~~~~~
+Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
+#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
+                   ^
+Vector_tests.cpp:144:11: error: no viable overloaded '='
+    my_it = my_v.begin();
+    ~~~~~ ^ ~~~~~~~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:62:30: note: candidate function not viable: 'this' argument has type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'), but method is not marked const
+                Iterator    &operator=( Iterator const & src )
+                             ^
+Vector_tests.cpp:145:12: error: no viable overloaded '='
+    my_it1 = my_v.begin() + 1;
+    ~~~~~~ ^ ~~~~~~~~~~~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:62:30: note: candidate function not viable: 'this' argument has type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'), but method is not marked const
+                Iterator    &operator=( Iterator const & src )
+                             ^
+Vector_tests.cpp:155:33: error: invalid operands to binary expression ('ft::vector<int>::const_iterator' (aka 'const Iterator<int>') and 'ft::vector<int>::const_iterator')
+    EQUAL((it == it1) == (my_it == my_it1));
+                          ~~~~~ ^  ~~~~~~
+Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
+#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
+                   ^
+./../vector/../../utils/random_access_iterator.hpp:90:25: note: candidate function not viable: 'this' argument has type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'), but method is not marked const
+                bool    operator==( Iterator const & src )
+                        ^
+./../vector/vector.hpp:711:10: note: candidate template ignored: could not match 'vector' against 'Iterator'
+    bool operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+         ^
+Vector_tests.cpp:158:33: error: invalid operands to binary expression ('ft::vector<int>::const_iterator' (aka 'const Iterator<int>') and 'ft::vector<int>::const_iterator')
+    EQUAL((it != it1) == (my_it != my_it1));
+                          ~~~~~ ^  ~~~~~~
+Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
+#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
+                   ^
+./../vector/../../utils/random_access_iterator.hpp:99:25: note: candidate function not viable: 'this' argument has type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'), but method is not marked const
+                bool    operator!=( Iterator const & src )
+                        ^
+./../vector/vector.hpp:729:10: note: candidate template ignored: could not match 'vector' against 'Iterator'
+    bool operator!= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+         ^
+Vector_tests.cpp:185:36: error: member reference type 'std::__cxx11::basic_string<char>' is not a pointer
+        EQUAL(it->length() == my_it->length());
+                              ~~~~~^
+Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
+#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
+                   ^
+./../vector/../../utils/random_access_iterator.hpp:157:17: note: '->' applied to return value of the operator->() declared here
+                reference   operator->( void ) const
+                ^
+Vector_tests.cpp:192:11: error: no viable overloaded '+='
+    my_it += 1;
+    ~~~~~ ^  ~
+./../vector/../../utils/random_access_iterator.hpp:208:30: note: candidate function not viable: 'this' argument has type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'), but method is not marked const
+                Iterator    &operator+=( size_type value)
+                             ^
+Vector_tests.cpp:196:11: error: no viable overloaded '-='
+    my_it -= 1;
+    ~~~~~ ^  ~
+./../vector/../../utils/random_access_iterator.hpp:214:30: note: candidate function not viable: 'this' argument has type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'), but method is not marked const
+                Iterator    &operator-=( size_type value)
+                             ^
+Vector_tests.cpp:203:5: error: cannot increment value of type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>')
+    ++my_it; // I incremented here to make sure that the object changes
+    ^ ~~~~~
+Vector_tests.cpp:207:5: error: cannot decrement value of type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>')
+    --my_it; // I decremented here to make sure that the object changes
+    ^ ~~~~~
+Vector_tests.cpp:211:17: error: invalid operands to binary expression ('int' and 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'))
+    EQUAL(&(*(1 + my_it)) == &(*(my_it1)) && (&(*my_it) == &(*(my_v.begin()))));
+              ~ ^ ~~~~~
+Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
+#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
+                   ^
+Vector_tests.cpp:217:16: error: cannot increment value of type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>')
+    tmp = my_it++;
+          ~~~~~^
+Vector_tests.cpp:221:16: error: cannot decrement value of type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>')
+    tmp = my_it--;
+          ~~~~~^
+In file included from Vector_tests.cpp:2:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/vector:60:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_algobase.h:65:
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_iterator_base_types.h:168:24: error: type 'int' cannot be used prior to '::' because it has no members
+      typedef typename _Iterator::iterator_category iterator_category;
+                       ^
+./../vector/../../utils/reverse_iterator.hpp:17:39: note: in instantiation of template class 'std::iterator_traits<int>' requested here
+            typedef     typename std::iterator_traits<Iterator>::iterator_category      iterator_category;
+                                      ^
+Vector_tests.cpp:246:43: note: in instantiation of template class 'ft::reverse_iterator<int>' requested here
+        ft::vector<int>::reverse_iterator my_rit2(v.end());
+                                          ^
+In file included from Vector_tests.cpp:2:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/vector:60:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_algobase.h:65:
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_iterator_base_types.h:169:24: error: type 'int' cannot be used prior to '::' because it has no members
+      typedef typename _Iterator::value_type        value_type;
+                       ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_iterator_base_types.h:170:24: error: type 'int' cannot be used prior to '::' because it has no members
+      typedef typename _Iterator::difference_type   difference_type;
+                       ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [Makefile:17: vector] Error 1

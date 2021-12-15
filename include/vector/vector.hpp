@@ -706,6 +706,70 @@ namespace ft
                 }
             }
     };
+
+    template <class T, class Alloc>
+    bool operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+    {
+        if (lhs.size() != rhs.size())
+            return (false);
+        typename ft::vector<T>::iterator     lit = lhs.begin();
+        typename ft::vector<T>::iterator     rit = rhs.begin();
+
+        for (; lit < lhs.end(); lit++, rit++)
+        {
+            if (*lit != *rit)
+            {
+                return (false);
+            }
+        }
+        return (true);
+    }
+
+    template <class T, class Alloc>
+    bool operator!= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+    {
+        return (!(operator==(lhs, rhs)));
+    }
+
+    template <class T, class Alloc>
+    bool operator<  (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+    {
+        typename    ft::vector<T>::iterator lit = lhs.begin();
+        typename    ft::vector<T>::iterator rit = rhs.begin();
+
+        for (; lit < lhs.end(), rit < rhs.end(); lit++, rit++)
+        {
+            if (*lit < *rit)
+            {
+                return (true);
+            }
+        }
+        return (false);
+    }
+
+    template <class T, class Alloc>
+    bool operator>  (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+    {
+        return (operator<(rhs, lhs));
+    }
+
+    template <class T, class Alloc>
+    bool operator<= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+    {
+        return (!(operator<(rhs, lhs)));
+    }
+
+    template <class T, class Alloc>
+    bool operator>= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+    {
+        return (!(operator<(lhs, rhs)));
+    }
+
+    template <class T, class Alloc>
+    void swap (vector<T,Alloc>& x, vector<T,Alloc>& y)
+    {
+        x.swap(y);
+    }
 };
 
 #endif
