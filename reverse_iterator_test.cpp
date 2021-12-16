@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "./include/vector/vector.hpp"
+#include "./utils/random_access_iterator.hpp"
 
 // int	main()
 // {

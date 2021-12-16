@@ -30,21 +30,7 @@ namespace   ft
                 */
                 Iterator( void )
                 {
-                    // arr[0] = 1;
-                    // arr[1] = 2;
-                    // arr[2] = 3;
-                    // arr[3] = 4;
-                    // arr[4] = 5;
-                    // arr[5] = 6;
-                    // arr[6] = 7;
-                    // arr[7] = 8;
-                    // arr[8] = 9;
-                    // arr[9] = 10;
-                    // this->_ptr = arr;
-
                     this->_ptr = NULL;
-                    // this->_ptr = std::nullptr_t;
-                    // std::cout << "<void>: Iterator Constructor Called" << std::endl;
                 }
 
                 /*
@@ -53,32 +39,29 @@ namespace   ft
                 Iterator( Iterator const & src )
                 {
                     this->_ptr = src._ptr;
-                    // std::cout << "<copy>: Iterator Constructor Called" << std::endl;
                 }
 
                 /*
                 ** Assignment Operator:
                 */
-                Iterator    &operator=( Iterator const & src )
+                Iterator    &operator=( Iterator const & src ) const
                 {
                     this->_ptr = src._ptr;
-                    // std::cout << "<assign>: Iterator Constructor Called" << std::endl;
                     return ( *this );
                 }
 
-                const Iterator    &operator=( Iterator const & src )
-                {
-                    this->_ptr = src._ptr;
-                    // std::cout << "<assign>: Iterator Constructor Called" << std::endl;
-                    return ( *this );
-                }
+                // const Iterator    &operator=( Iterator const & src ) const
+                // {
+                    // this->_ptr = src._ptr;
+                    // return ( *this );
+                // }
 
                 /*
                 ** Default Destructor:
                 */
                 ~Iterator()
                 {
-                    // std::cout << "Iterator Destructor Called" << std::endl;
+                    return ;
                 }
 
             /*
@@ -87,16 +70,15 @@ namespace   ft
                 /*
                 ** Equality opearator:
                 */
-                bool    operator==( Iterator const & src )
+                bool    operator==( Iterator const & src ) const
                 {
-                    // std::cout << "< operator== >" << std::endl;
                     return (this->_ptr == src._ptr);
                 }
 
                 /*
                 ** Inequality opearator:
                 */
-                bool    operator!=( Iterator const & src )
+                bool    operator!=( Iterator const & src ) const
                 {
                     // std::cout << "< operator!= >" << std::endl;
                     return (this->_ptr != src._ptr);
@@ -108,7 +90,7 @@ namespace   ft
                 /*
                 ** Pre-increment opearator:
                 */
-                Iterator    &operator++()
+                Iterator    &operator++() const
                 {
                     this->_ptr++;
                     return (*this);
@@ -117,7 +99,7 @@ namespace   ft
                 /*
                 ** Post-increment opearator:
                 */
-                Iterator    operator++( int )
+                Iterator    operator++( int ) const
                 {
                         Iterator   prev = *this;
 
@@ -128,7 +110,7 @@ namespace   ft
                 /*
                 ** Pre-decrement opearator:
                 */
-                Iterator    &operator--()
+                Iterator    &operator--() const
                 {
                     this->_ptr--;
                     return (*this);
@@ -137,7 +119,7 @@ namespace   ft
                 /*
                 ** Post-decrement opearator:
                 */
-                Iterator    operator--( int )
+                Iterator    operator--( int ) const
                 {
                         Iterator   prev = *this;
 
@@ -154,9 +136,9 @@ namespace   ft
                 }
                 //  operator->() {}
 
-                reference   operator->( void ) const
+                pointer   operator->( void ) const
                 {
-                    return (*(this->_ptr));
+                    return (&operator*());
                 }
 
                 difference_type   operator-(Iterator const & src) const
@@ -176,7 +158,7 @@ namespace   ft
                     return (ret);
                 }
 
-                Iterator   operator+(size_type value) const
+                Iterator   operator+(size_type value)
                 {
                     Iterator   ret;
 
@@ -194,6 +176,10 @@ namespace   ft
                     return (this->_ptr <= src._ptr);
                 }
 
+                // Iterator operator+(int n, Iterator const & src)
+                // {
+                    // return (&(*src) + n);
+                // }
 
                 bool    operator>( Iterator const & src ) const
                 {
@@ -205,15 +191,15 @@ namespace   ft
                     return (this->_ptr >= src._ptr);
                 }
 
-                Iterator    &operator+=( size_type value)
+                reference   operator+=( size_type value) const
                 {
-                    this->operator+(value);
+                    this->_ptr += value;
                     return (*this);
                 }
 
-                Iterator    &operator-=( size_type value)
+                reference   operator-=( size_type value) const
                 {
-                    this->operator-(value);
+                    this->_ptr -= value;
                     return (*this);
                 }
 
@@ -222,6 +208,9 @@ namespace   ft
                     return (this->_ptr[index]);
                 }
 
+        private:
+            value_type    *_ptr;
+            // value_type      arr[10];
             /*
             ** Setters:
             */
@@ -232,9 +221,6 @@ namespace   ft
                 {
                     _ptr = &address;
                 }
-        private:
-            value_type    *_ptr;
-            // value_type      arr[10];
     };
 };
 

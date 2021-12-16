@@ -1,129 +1,553 @@
 In file included from Vector_tests.cpp:10:
 In file included from ./../vector/vector.hpp:9:
-In file included from ./../vector/../../utils/reverse_iterator.hpp:5:
-./../vector/../../utils/random_access_iterator.hpp:69:36: error: functions that differ only in their return type cannot be overloaded
-                const Iterator    &operator=( Iterator const & src )
-                      ~~~~~~~~~~~~~^
-./../vector/../../utils/random_access_iterator.hpp:62:30: note: previous definition is here
-                Iterator    &operator=( Iterator const & src )
-                ~~~~~~~~~~~~~^
-Vector_tests.cpp:56:14: error: no viable overloaded '='
-        c_it = my_it;
-        ~~~~ ^ ~~~~~
-./../vector/../../utils/random_access_iterator.hpp:62:30: note: candidate function not viable: 'this' argument has type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'), but method is not marked const
-                Iterator    &operator=( Iterator const & src )
-                             ^
-Vector_tests.cpp:91:36: error: member reference type 'std::__cxx11::basic_string<char>' is not a pointer
-        EQUAL(it->length() == my_it->length());
-                              ~~~~~^
-Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
-#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
-                   ^
-./../vector/../../utils/random_access_iterator.hpp:157:17: note: '->' applied to return value of the operator->() declared here
-                reference   operator->( void ) const
+./../vector/../../utils/reverse_iterator.hpp:209:17: error: use of class template 'Iterator' requires template arguments
+                Iterator base() const
                 ^
+./../vector/../../utils/random_access_iterator.hpp:11:13: note: template is declared here
+    class   Iterator
+            ^
 Vector_tests.cpp:117:17: error: invalid operands to binary expression ('int' and 'ft::vector<int>::iterator' (aka 'Iterator<int>'))
     EQUAL(&(*(1 + my_it)) == &(*(my_it1)) && (&(*my_it) == &(*(my_v.begin()))));
               ~ ^ ~~~~~
 Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
 #define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
                    ^
-Vector_tests.cpp:144:11: error: no viable overloaded '='
-    my_it = my_v.begin();
-    ~~~~~ ^ ~~~~~~~~~~~~
-./../vector/../../utils/random_access_iterator.hpp:62:30: note: candidate function not viable: 'this' argument has type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'), but method is not marked const
-                Iterator    &operator=( Iterator const & src )
-                             ^
-Vector_tests.cpp:145:12: error: no viable overloaded '='
-    my_it1 = my_v.begin() + 1;
-    ~~~~~~ ^ ~~~~~~~~~~~~~~~~
-./../vector/../../utils/random_access_iterator.hpp:62:30: note: candidate function not viable: 'this' argument has type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'), but method is not marked const
-                Iterator    &operator=( Iterator const & src )
-                             ^
-Vector_tests.cpp:155:33: error: invalid operands to binary expression ('ft::vector<int>::const_iterator' (aka 'const Iterator<int>') and 'ft::vector<int>::const_iterator')
-    EQUAL((it == it1) == (my_it == my_it1));
-                          ~~~~~ ^  ~~~~~~
-Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
-#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
-                   ^
-./../vector/../../utils/random_access_iterator.hpp:90:25: note: candidate function not viable: 'this' argument has type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'), but method is not marked const
-                bool    operator==( Iterator const & src )
-                        ^
-./../vector/vector.hpp:711:10: note: candidate template ignored: could not match 'vector' against 'Iterator'
-    bool operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
-         ^
-Vector_tests.cpp:158:33: error: invalid operands to binary expression ('ft::vector<int>::const_iterator' (aka 'const Iterator<int>') and 'ft::vector<int>::const_iterator')
-    EQUAL((it != it1) == (my_it != my_it1));
-                          ~~~~~ ^  ~~~~~~
-Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
-#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
-                   ^
-./../vector/../../utils/random_access_iterator.hpp:99:25: note: candidate function not viable: 'this' argument has type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'), but method is not marked const
-                bool    operator!=( Iterator const & src )
-                        ^
-./../vector/vector.hpp:729:10: note: candidate template ignored: could not match 'vector' against 'Iterator'
-    bool operator!= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
-         ^
-Vector_tests.cpp:185:36: error: member reference type 'std::__cxx11::basic_string<char>' is not a pointer
-        EQUAL(it->length() == my_it->length());
-                              ~~~~~^
-Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
-#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
-                   ^
-./../vector/../../utils/random_access_iterator.hpp:157:17: note: '->' applied to return value of the operator->() declared here
-                reference   operator->( void ) const
-                ^
-Vector_tests.cpp:192:11: error: no viable overloaded '+='
-    my_it += 1;
-    ~~~~~ ^  ~
-./../vector/../../utils/random_access_iterator.hpp:208:30: note: candidate function not viable: 'this' argument has type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'), but method is not marked const
-                Iterator    &operator+=( size_type value)
-                             ^
-Vector_tests.cpp:196:11: error: no viable overloaded '-='
-    my_it -= 1;
-    ~~~~~ ^  ~
-./../vector/../../utils/random_access_iterator.hpp:214:30: note: candidate function not viable: 'this' argument has type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'), but method is not marked const
-                Iterator    &operator-=( size_type value)
-                             ^
-Vector_tests.cpp:203:5: error: cannot increment value of type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>')
-    ++my_it; // I incremented here to make sure that the object changes
-    ^ ~~~~~
-Vector_tests.cpp:207:5: error: cannot decrement value of type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>')
-    --my_it; // I decremented here to make sure that the object changes
-    ^ ~~~~~
 Vector_tests.cpp:211:17: error: invalid operands to binary expression ('int' and 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>'))
     EQUAL(&(*(1 + my_it)) == &(*(my_it1)) && (&(*my_it) == &(*(my_v.begin()))));
               ~ ^ ~~~~~
 Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
 #define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
                    ^
-Vector_tests.cpp:217:16: error: cannot increment value of type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>')
+Vector_tests.cpp:234:71: error: no matching constructor for initialization of 'ft::reverse_iterator<std::vector<int>::iterator>' (aka 'reverse_iterator<__normal_iterator<int *, std::vector<int, std::allocator<int> > > >')
+    ft::reverse_iterator<std::vector<int>::iterator> my_rit(v.end()), my_rit1(v.end() - 1);
+                                                                      ^       ~~~~~~~~~~~
+./../vector/../../utils/reverse_iterator.hpp:35:17: note: candidate constructor not viable: no known conversion from '__gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > >' to 'const ft::reverse_iterator<__gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > > >' for 1st argument
+                reverse_iterator( reverse_iterator const & src ) : _iterator(src._iterator)
+                ^
+./../vector/../../utils/reverse_iterator.hpp:39:17: note: candidate constructor not viable: no known conversion from '__gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > >' to 'typename ft::Iterator<value_type>' (aka 'Iterator<__gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > > >') for 1st argument
+                reverse_iterator( typename ft::Iterator<value_type> src ) : _iterator(src)
+                ^
+./../vector/../../utils/reverse_iterator.hpp:27:17: note: candidate constructor not viable: requires 0 arguments, but 1 was provided
+                reverse_iterator( void )
+                ^
+Vector_tests.cpp:338:78: error: no matching constructor for initialization of 'ft::reverse_iterator<std::vector<char>::iterator>' (aka 'reverse_iterator<__normal_iterator<char *, std::vector<char, std::allocator<char> > > >')
+        ft::reverse_iterator<std::vector<char>::iterator> my_start(v.end()), my_end(v.begin());
+                                                                             ^      ~~~~~~~~~
+./../vector/../../utils/reverse_iterator.hpp:35:17: note: candidate constructor not viable: no known conversion from 'std::vector<char, std::allocator<char> >::iterator' (aka '__normal_iterator<char *, std::vector<char, std::allocator<char> > >') to 'const ft::reverse_iterator<__gnu_cxx::__normal_iterator<char *, std::vector<char, std::allocator<char> > > >' for 1st argument
+                reverse_iterator( reverse_iterator const & src ) : _iterator(src._iterator)
+                ^
+./../vector/../../utils/reverse_iterator.hpp:39:17: note: candidate constructor not viable: no known conversion from 'std::vector<char, std::allocator<char> >::iterator' (aka '__normal_iterator<char *, std::vector<char, std::allocator<char> > >') to 'typename ft::Iterator<value_type>' (aka 'Iterator<__gnu_cxx::__normal_iterator<char *, std::vector<char, std::allocator<char> > > >') for 1st argument
+                reverse_iterator( typename ft::Iterator<value_type> src ) : _iterator(src)
+                ^
+./../vector/../../utils/reverse_iterator.hpp:27:17: note: candidate constructor not viable: requires 0 arguments, but 1 was provided
+                reverse_iterator( void )
+                ^
+Vector_tests.cpp:370:70: error: no member named 'base' in 'ft::reverse_iterator<int>'
+    EQUAL((&(*rit) == &(*rit_1.base())) && (&(*my_rit) == &(*my_rit1.base())));
+                                                             ~~~~~~~ ^
+Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
+#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
+                   ^
+Vector_tests.cpp:432:18: error: invalid operands to binary expression ('int' and 'ft::vector<int>::reverse_iterator' (aka 'reverse_iterator<int>'))
+    EQUAL((&(*(2 + my_rit)) == &(*(1 + my_rit1))) && (&(*(2 + rit)) == &(*(1 + rit_1))));
+               ~ ^ ~~~~~~
+Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
+#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
+                   ^
+Vector_tests.cpp:432:38: error: invalid operands to binary expression ('int' and 'ft::vector<int>::reverse_iterator' (aka 'reverse_iterator<int>'))
+    EQUAL((&(*(2 + my_rit)) == &(*(1 + my_rit1))) && (&(*(2 + rit)) == &(*(1 + rit_1))));
+                                   ~ ^ ~~~~~~~
+Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
+#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
+                   ^
+Vector_tests.cpp:880:19: error: no member named 'rend' in 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >'; did you mean 'end'?
+            ft_v1.rend();
+                  ^~~~
+                  end
+./../vector/vector.hpp:174:26: note: 'end' declared here
+                iterator end()
+                         ^
+Vector_tests.cpp:901:91: error: no member named 'rend' in 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >'
+        for (ft::vector<std::string>::reverse_iterator rit = ft_v1.rbegin(); rit != ft_v1.rend(); ++rit) // fill ft_res from ft_v1
+                                                                                    ~~~~~ ^
+Vector_tests.cpp:903:97: error: no member named 'rend' in 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >'
+        for (ft::vector<std::string>::const_reverse_iterator rit = ft_v2.rbegin(); rit != ft_v2.rend(); ++rit) // fill c_ft_res from const ft_v1
+                                                                                          ~~~~~ ^
+Vector_tests.cpp:942:61: error: no member named 'rend' in 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >'
+        ft::vector<std::string> ft_v5(ft_v1.rbegin(), ft_v1.rend());
+                                                      ~~~~~ ^
+Vector_tests.cpp:980:61: error: no member named 'rend' in 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >'
+        ft::vector<std::string> ft_v5(ft_v1.rbegin(), ft_v1.rend());
+                                                      ~~~~~ ^
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:156:24: error: 'setPtr' is a private member of 'ft::Iterator<int>'
+                    it.setPtr(this->_array[0]);
+                       ^
+Vector_tests.cpp:43:18: note: in instantiation of member function 'ft::vector<int, std::allocator<int> >::begin' requested here
+    my_it = my_v.begin();
+                 ^
+./../vector/../../utils/random_access_iterator.hpp:220:25: note: declared private here
+                void    setPtr( reference address )
+                        ^
+./../vector/../../utils/random_access_iterator.hpp:49:32: error: cannot assign to non-static data member within const member function 'operator='
+                    this->_ptr = src._ptr;
+                    ~~~~~~~~~~ ^
+Vector_tests.cpp:43:11: note: in instantiation of member function 'ft::Iterator<int>::operator=' requested here
+    my_it = my_v.begin();
+          ^
+./../vector/../../utils/random_access_iterator.hpp:47:30: note: member function 'ft::Iterator<int>::operator=' is declared const here
+                Iterator    &operator=( Iterator const & src ) const
+                ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:50:28: error: binding value of type 'const Iterator<...>' to reference to type 'Iterator<...>' drops 'const' qualifier
+                    return ( *this );
+                           ^~~~~~~~~
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:156:24: error: 'setPtr' is a private member of 'ft::Iterator<std::__cxx11::basic_string<char> >'
+                    it.setPtr(this->_array[0]);
+                       ^
+Vector_tests.cpp:89:56: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::begin' requested here
+        ft::vector<std::string>::iterator my_it = my_v.begin();
+                                                       ^
+./../vector/../../utils/random_access_iterator.hpp:220:25: note: declared private here
+                void    setPtr( reference address )
+                        ^
+./../vector/../../utils/random_access_iterator.hpp:196:32: error: cannot assign to non-static data member within const member function 'operator+='
+                    this->_ptr += value;
+                    ~~~~~~~~~~ ^
+Vector_tests.cpp:98:11: note: in instantiation of member function 'ft::Iterator<int>::operator+=' requested here
+    my_it += 1;
+          ^
+./../vector/../../utils/random_access_iterator.hpp:194:29: note: member function 'ft::Iterator<int>::operator+=' is declared const here
+                reference   operator+=( size_type value) const
+                ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:197:28: error: non-const lvalue reference to type 'int' cannot bind to a value of unrelated type 'const ft::Iterator<int>'
+                    return (*this);
+                           ^~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:202:32: error: cannot assign to non-static data member within const member function 'operator-='
+                    this->_ptr -= value;
+                    ~~~~~~~~~~ ^
+Vector_tests.cpp:102:11: note: in instantiation of member function 'ft::Iterator<int>::operator-=' requested here
+    my_it -= 1;
+          ^
+./../vector/../../utils/random_access_iterator.hpp:200:29: note: member function 'ft::Iterator<int>::operator-=' is declared const here
+                reference   operator-=( size_type value) const
+                ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:203:28: error: non-const lvalue reference to type 'int' cannot bind to a value of unrelated type 'const ft::Iterator<int>'
+                    return (*this);
+                           ^~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:95:31: error: cannot assign to non-static data member within const member function 'operator++'
+                    this->_ptr++;
+                    ~~~~~~~~~~^
+Vector_tests.cpp:109:5: note: in instantiation of member function 'ft::Iterator<int>::operator++' requested here
+    ++my_it; // I incremented here to make sure that the object changes
+    ^
+./../vector/../../utils/random_access_iterator.hpp:93:30: note: member function 'ft::Iterator<int>::operator++' is declared const here
+                Iterator    &operator++() const
+                ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:96:28: error: binding value of type 'const Iterator<...>' to reference to type 'Iterator<...>' drops 'const' qualifier
+                    return (*this);
+                           ^~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:115:31: error: cannot assign to non-static data member within const member function 'operator--'
+                    this->_ptr--;
+                    ~~~~~~~~~~^
+Vector_tests.cpp:113:5: note: in instantiation of member function 'ft::Iterator<int>::operator--' requested here
+    --my_it; // I decremented here to make sure that the object changes
+    ^
+./../vector/../../utils/random_access_iterator.hpp:113:30: note: member function 'ft::Iterator<int>::operator--' is declared const here
+                Iterator    &operator--() const
+                ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:116:28: error: binding value of type 'const Iterator<...>' to reference to type 'Iterator<...>' drops 'const' qualifier
+                    return (*this);
+                           ^~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:106:35: error: cannot assign to non-static data member within const member function 'operator++'
+                        this->_ptr++;
+                        ~~~~~~~~~~^
+Vector_tests.cpp:123:16: note: in instantiation of member function 'ft::Iterator<int>::operator++' requested here
     tmp = my_it++;
-          ~~~~~^
-Vector_tests.cpp:221:16: error: cannot decrement value of type 'ft::vector<int>::const_iterator' (aka 'const Iterator<int>')
+               ^
+./../vector/../../utils/random_access_iterator.hpp:102:29: note: member function 'ft::Iterator<int>::operator++' is declared const here
+                Iterator    operator++( int ) const
+                ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:126:35: error: cannot assign to non-static data member within const member function 'operator--'
+                        this->_ptr--;
+                        ~~~~~~~~~~^
+Vector_tests.cpp:127:16: note: in instantiation of member function 'ft::Iterator<int>::operator--' requested here
     tmp = my_it--;
-          ~~~~~^
-In file included from Vector_tests.cpp:2:
-In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/vector:60:
-In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_algobase.h:65:
-/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_iterator_base_types.h:168:24: error: type 'int' cannot be used prior to '::' because it has no members
-      typedef typename _Iterator::iterator_category iterator_category;
+               ^
+./../vector/../../utils/random_access_iterator.hpp:122:29: note: member function 'ft::Iterator<int>::operator--' is declared const here
+                Iterator    operator--( int ) const
+                ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:178:24: error: 'setPtr' is a private member of 'ft::Iterator<int>'
+                    it.setPtr(this->_array[this->_size]);
                        ^
-./../vector/../../utils/reverse_iterator.hpp:17:39: note: in instantiation of template class 'std::iterator_traits<int>' requested here
-            typedef     typename std::iterator_traits<Iterator>::iterator_category      iterator_category;
-                                      ^
-Vector_tests.cpp:246:43: note: in instantiation of template class 'ft::reverse_iterator<int>' requested here
+Vector_tests.cpp:246:53: note: in instantiation of member function 'ft::vector<int, std::allocator<int> >::end' requested here
         ft::vector<int>::reverse_iterator my_rit2(v.end());
-                                          ^
+                                                    ^
+./../vector/../../utils/random_access_iterator.hpp:220:25: note: declared private here
+                void    setPtr( reference address )
+                        ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:29:27: error: expression result unused [-Werror,-Wunused-value]
+                    this->_iterator;
+                    ~~~~  ^~~~~~~~~
+Vector_tests.cpp:247:49: note: in instantiation of member function 'ft::reverse_iterator<int>::reverse_iterator' requested here
+        ft::vector<int>::const_reverse_iterator c_it, c_ob(v.end());
+                                                ^
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:178:24: error: 'setPtr' is a private member of 'ft::Iterator<std::__cxx11::basic_string<char> >'
+                    it.setPtr(this->_array[this->_size]);
+                       ^
+Vector_tests.cpp:398:63: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::end' requested here
+        ft::vector<std::string>::reverse_iterator my_rit(my_v.end());
+                                                              ^
+./../vector/../../utils/random_access_iterator.hpp:220:25: note: declared private here
+                void    setPtr( reference address )
+                        ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:155:53: error: invalid operands to binary expression ('const ft::Iterator<int>' and 'ft::reverse_iterator::size_type' (aka 'unsigned long'))
+                    ret._iterator = this->_iterator + value;
+                                    ~~~~~~~~~~~~~~~ ^ ~~~~~
+Vector_tests.cpp:403:38: note: in instantiation of member function 'ft::reverse_iterator<int>::operator-' requested here
+    EQUAL((&(*my_rit) == &(*(my_rit1 - 1))) && (&(*rit) == &(*(rit_1 - 1))));
+                                     ^
+./../vector/../../utils/random_access_iterator.hpp:161:28: note: candidate function not viable: 'this' argument has type 'const ft::Iterator<int>', but method is not marked const
+                Iterator   operator+(size_type value)
+                           ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:195:28: error: non-const lvalue reference to type 'int' cannot bind to a value of unrelated type 'const ft::reverse_iterator<int>'
+                    return (*this);
+                           ^~~~~~~
+Vector_tests.cpp:409:12: note: in instantiation of member function 'ft::reverse_iterator<int>::operator+=' requested here
+    my_rit += 1;
+           ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:201:28: error: non-const lvalue reference to type 'int' cannot bind to a value of unrelated type 'const ft::reverse_iterator<int>'
+                    return (*this);
+                           ^~~~~~~
+Vector_tests.cpp:414:12: note: in instantiation of member function 'ft::reverse_iterator<int>::operator-=' requested here
+    my_rit -= 1;
+           ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:94:28: error: binding value of type 'const reverse_iterator<...>' to reference to type 'reverse_iterator<...>' drops 'const' qualifier
+                    return (*this);
+                           ^~~~~~~
+Vector_tests.cpp:422:5: note: in instantiation of member function 'ft::reverse_iterator<int>::operator++' requested here
+    ++my_rit; // I incremented here to make sure that the object changes
+    ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:114:28: error: binding value of type 'const reverse_iterator<...>' to reference to type 'reverse_iterator<...>' drops 'const' qualifier
+                    return (*this);
+                           ^~~~~~~
+Vector_tests.cpp:427:5: note: in instantiation of member function 'ft::reverse_iterator<int>::operator--' requested here
+    --my_rit; // I incremented here to make sure that the object changes
+    ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:124:25: error: type 'ft::Iterator<int>' does not provide a call operator
+                        this->_iterator++(1);
+                        ^~~~~~~~~~~~~~~~~
+Vector_tests.cpp:447:56: note: in instantiation of member function 'ft::reverse_iterator<int>::operator--' requested here
+        ft::vector<int>::reverse_iterator my_tmp(my_rit--);
+                                                       ^
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:178:24: error: 'setPtr' is a private member of 'ft::Iterator<char>'
+                    it.setPtr(this->_array[this->_size]);
+                       ^
+Vector_tests.cpp:457:58: note: in instantiation of member function 'ft::vector<char, std::allocator<char> >::end' requested here
+        ft::vector<char>::reverse_iterator my_start(my_v.end()), my_end(my_v.begin());
+                                                         ^
+./../vector/../../utils/random_access_iterator.hpp:220:25: note: declared private here
+                void    setPtr( reference address )
+                        ^
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:156:24: error: 'setPtr' is a private member of 'ft::Iterator<char>'
+                    it.setPtr(this->_array[0]);
+                       ^
+Vector_tests.cpp:457:78: note: in instantiation of member function 'ft::vector<char, std::allocator<char> >::begin' requested here
+        ft::vector<char>::reverse_iterator my_start(my_v.end()), my_end(my_v.begin());
+                                                                             ^
+./../vector/../../utils/random_access_iterator.hpp:220:25: note: declared private here
+                void    setPtr( reference address )
+                        ^
+./../vector/../../utils/random_access_iterator.hpp:95:31: error: cannot assign to non-static data member within const member function 'operator++'
+                    this->_ptr++;
+                    ~~~~~~~~~~^
+Vector_tests.cpp:461:78: note: in instantiation of member function 'ft::Iterator<char>::operator++' requested here
+        for (ft::vector<char>::iterator it = my_v.begin(); it != my_v.end(); ++it)
+                                                                             ^
+./../vector/../../utils/random_access_iterator.hpp:93:30: note: member function 'ft::Iterator<char>::operator++' is declared const here
+                Iterator    &operator++() const
+                ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:96:28: error: binding value of type 'const Iterator<...>' to reference to type 'Iterator<...>' drops 'const' qualifier
+                    return (*this);
+                           ^~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:95:31: error: cannot assign to non-static data member within const member function 'operator++'
+                    this->_ptr++;
+                    ~~~~~~~~~~^
+Vector_tests.cpp:504:85: note: in instantiation of member function 'ft::Iterator<std::__cxx11::basic_string<char> >::operator++' requested here
+        for (ft::vector<std::string>::iterator it = my_v.begin(); it != my_v.end(); ++it) // fill my_res from ft::vector
+                                                                                    ^
+./../vector/../../utils/random_access_iterator.hpp:93:30: note: member function 'ft::Iterator<std::__cxx11::basic_string<char> >::operator++' is declared const here
+                Iterator    &operator++() const
+                ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:96:28: error: binding value of type 'const Iterator<...>' to reference to type 'Iterator<...>' drops 'const' qualifier
+                    return (*this);
+                           ^~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:106:35: error: cannot assign to non-static data member within const member function 'operator++'
+                        this->_ptr++;
+                        ~~~~~~~~~~^
+./../vector/vector.hpp:139:42: note: in instantiation of member function 'ft::Iterator<std::__cxx11::basic_string<char> >::operator++' requested here
+                for (; begin < end; begin++)
+                                         ^
+Vector_tests.cpp:598:19: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::operator=' requested here
+            ft_v1 = ft_v2;
+                  ^
+./../vector/../../utils/random_access_iterator.hpp:102:29: note: member function 'ft::Iterator<std::__cxx11::basic_string<char> >::operator++' is declared const here
+                Iterator    operator++( int ) const
+                ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:167:24: error: 'setPtr' is a private member of 'ft::Iterator<std::__cxx11::basic_string<char> >'
+                    it.setPtr(this->_array[0]);
+                       ^
+Vector_tests.cpp:855:66: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::begin' requested here
+        for (ft::vector<std::string>::const_iterator rit = ft_v2.begin(); rit != ft_v2.end(); ++rit) // fill c_ft_res from const ft_v1
+                                                                 ^
+./../vector/../../utils/random_access_iterator.hpp:220:25: note: declared private here
+                void    setPtr( reference address )
+                        ^
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:189:24: error: 'setPtr' is a private member of 'ft::Iterator<std::__cxx11::basic_string<char> >'
+                    it.setPtr(this->_array[this->_size]);
+                       ^
+Vector_tests.cpp:855:88: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::end' requested here
+        for (ft::vector<std::string>::const_iterator rit = ft_v2.begin(); rit != ft_v2.end(); ++rit) // fill c_ft_res from const ft_v1
+                                                                                       ^
+./../vector/../../utils/random_access_iterator.hpp:220:25: note: declared private here
+                void    setPtr( reference address )
+                        ^
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:197:25: error: '_iterator' is a private member of 'ft::reverse_iterator<std::__cxx11::basic_string<char> >'
+                    rit._iterator = this->end() - 1;
+                        ^
+Vector_tests.cpp:879:19: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::rbegin' requested here
+            ft_v1.rbegin();
+                  ^
+./../vector/../../utils/reverse_iterator.hpp:215:28: note: declared private here
+        ft::Iterator<Type> _iterator;
+                           ^
+./../vector/../../utils/reverse_iterator.hpp:29:27: error: expression result unused [-Werror,-Wunused-value]
+                    this->_iterator;
+                    ~~~~  ^~~~~~~~~
+./../vector/vector.hpp:195:41: note: in instantiation of member function 'ft::reverse_iterator<std::__cxx11::basic_string<char> >::reverse_iterator' requested here
+                    reverse_iterator    rit;
+                                        ^
+Vector_tests.cpp:879:19: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::rbegin' requested here
+            ft_v1.rbegin();
+                  ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:94:28: error: binding value of type 'const reverse_iterator<...>' to reference to type 'reverse_iterator<...>' drops 'const' qualifier
+                    return (*this);
+                           ^~~~~~~
+Vector_tests.cpp:901:99: note: in instantiation of member function 'ft::reverse_iterator<std::__cxx11::basic_string<char> >::operator++' requested here
+        for (ft::vector<std::string>::reverse_iterator rit = ft_v1.rbegin(); rit != ft_v1.rend(); ++rit) // fill ft_res from ft_v1
+                                                                                                  ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+In file included from ./../vector/../../utils/reverse_iterator.hpp:5:
+./../vector/../../utils/random_access_iterator.hpp:126:35: error: cannot assign to non-static data member within const member function 'operator--'
+                        this->_ptr--;
+                        ~~~~~~~~~~^
+./../vector/../../utils/reverse_iterator.hpp:93:36: note: in instantiation of member function 'ft::Iterator<std::__cxx11::basic_string<char> >::operator--' requested here
+                    this->_iterator--;
+                                   ^
+Vector_tests.cpp:901:99: note: in instantiation of member function 'ft::reverse_iterator<std::__cxx11::basic_string<char> >::operator++' requested here
+        for (ft::vector<std::string>::reverse_iterator rit = ft_v1.rbegin(); rit != ft_v1.rend(); ++rit) // fill ft_res from ft_v1
+                                                                                                  ^
+./../vector/../../utils/random_access_iterator.hpp:122:29: note: member function 'ft::Iterator<std::__cxx11::basic_string<char> >::operator--' is declared const here
+                Iterator    operator--( int ) const
+                ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:205:25: error: '_iterator' is a private member of 'ft::reverse_iterator<std::__cxx11::basic_string<char> >'
+                    rit._iterator = this->end() - 1;
+                        ^
+Vector_tests.cpp:903:74: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::rbegin' requested here
+        for (ft::vector<std::string>::const_reverse_iterator rit = ft_v2.rbegin(); rit != ft_v2.rend(); ++rit) // fill c_ft_res from const ft_v1
+                                                                         ^
+./../vector/../../utils/reverse_iterator.hpp:215:28: note: declared private here
+        ft::Iterator<Type> _iterator;
+                           ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+In file included from ./../vector/../../utils/reverse_iterator.hpp:5:
+./../vector/../../utils/random_access_iterator.hpp:49:32: error: cannot assign to non-static data member within const member function 'operator='
+                    this->_ptr = src._ptr;
+                    ~~~~~~~~~~ ^
+Vector_tests.cpp:1120:21: note: in instantiation of member function 'ft::Iterator<std::__cxx11::basic_string<char> >::operator=' requested here
+        ft_valid_it = ft_v1.begin();
+                    ^
+./../vector/../../utils/random_access_iterator.hpp:47:30: note: member function 'ft::Iterator<std::__cxx11::basic_string<char> >::operator=' is declared const here
+                Iterator    &operator=( Iterator const & src ) const
+                ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:50:28: error: binding value of type 'const Iterator<...>' to reference to type 'Iterator<...>' drops 'const' qualifier
+                    return ( *this );
+                           ^~~~~~~~~
+./../vector/../../utils/random_access_iterator.hpp:106:35: error: cannot assign to non-static data member within const member function 'operator++'
+                        this->_ptr++;
+                        ~~~~~~~~~~^
+./../vector/vector.hpp:297:79: note: in instantiation of member function 'ft::Iterator<char>::operator++' requested here
+                        for (iterator it = this->begin(); it < this->end(); it++)
+                                                                              ^
+Vector_tests.cpp:1314:15: note: in instantiation of member function 'ft::vector<char, std::allocator<char> >::reserve' requested here
+        ft_v2.reserve(200);
+              ^
+./../vector/../../utils/random_access_iterator.hpp:102:29: note: member function 'ft::Iterator<char>::operator++' is declared const here
+                Iterator    operator++( int ) const
+                ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
 In file included from Vector_tests.cpp:2:
 In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/vector:60:
-In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_algobase.h:65:
-/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_iterator_base_types.h:169:24: error: type 'int' cannot be used prior to '::' because it has no members
-      typedef typename _Iterator::value_type        value_type;
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_algobase.h:343:8: error: cannot increment value of type 'ft::Iterator<std::__cxx11::basic_string<char> >'
+              ++__first;
+              ^ ~~~~~~~
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_algobase.h:404:22: note: in instantiation of function template specialization 'std::__copy_move<false, false, std::random_access_iterator_tag>::__copy_m<ft::Iterator<std::__cxx11::basic_string<char> >, std::__cxx11::basic_string<char> *>' requested here
+                              _Category>::__copy_m(__first, __last, __result);
+                                          ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_algobase.h:441:8: note: in instantiation of function template specialization 'std::__copy_move_a<false, ft::Iterator<std::__cxx11::basic_string<char> >, std::__cxx11::basic_string<char> *>' requested here
+                std::__copy_move_a<_IsMove>(std::__niter_base(__first),
+                     ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_algobase.h:473:19: note: in instantiation of function template specialization 'std::__copy_move_a2<false, ft::Iterator<std::__cxx11::basic_string<char> >, std::__cxx11::basic_string<char> *>' requested here
+      return std::__copy_move_a2<__is_move_iterator<_II>::__value>
+                  ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/vector.tcc:321:25: note: in instantiation of function template specialization 'std::copy<ft::Iterator<std::__cxx11::basic_string<char> >, std::__cxx11::basic_string<char> *>' requested here
+          _M_erase_at_end(std::copy(__first, __last, this->_M_impl._M_start));
+                               ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_vector.h:1625:4: note: in instantiation of function template specialization 'std::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::_M_assign_aux<ft::Iterator<std::__cxx11::basic_string<char> > >' requested here
+        { _M_assign_aux(__first, __last, std::__iterator_category(__first)); }
+          ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_vector.h:774:4: note: in instantiation of function template specialization 'std::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::_M_assign_dispatch<ft::Iterator<std::__cxx11::basic_string<char> > >' requested here
+          _M_assign_dispatch(__first, __last, _Integral());
+          ^
+Vector_tests.cpp:1557:16: note: in instantiation of function template specialization 'std::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::assign<ft::Iterator<std::__cxx11::basic_string<char> > >' requested here
+            v2.assign(ft_v1.begin(), ft_v1.end());
+               ^
+In file included from Vector_tests.cpp:2:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/vector:60:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_algobase.h:66:
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_iterator_base_funcs.h:181:2: error: cannot increment value of type 'ft::Iterator<std::__cxx11::basic_string<char> >'
+        ++__i;
+        ^ ~~~
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_iterator_base_funcs.h:206:12: note: in instantiation of function template specialization 'std::__advance<ft::Iterator<std::__cxx11::basic_string<char> >, long>' requested here
+      std::__advance(__i, __d, std::__iterator_category(__i));
+           ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/vector.tcc:325:11: note: in instantiation of function template specialization 'std::advance<ft::Iterator<std::__cxx11::basic_string<char> >, unsigned long>' requested here
+            std::advance(__mid, size());
+                 ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_vector.h:1625:4: note: in instantiation of function template specialization 'std::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::_M_assign_aux<ft::Iterator<std::__cxx11::basic_string<char> > >' requested here
+        { _M_assign_aux(__first, __last, std::__iterator_category(__first)); }
+          ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_vector.h:774:4: note: in instantiation of function template specialization 'std::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::_M_assign_dispatch<ft::Iterator<std::__cxx11::basic_string<char> > >' requested here
+          _M_assign_dispatch(__first, __last, _Integral());
+          ^
+Vector_tests.cpp:1557:16: note: in instantiation of function template specialization 'std::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::assign<ft::Iterator<std::__cxx11::basic_string<char> > >' requested here
+            v2.assign(ft_v1.begin(), ft_v1.end());
+               ^
+In file included from Vector_tests.cpp:2:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/vector:66:
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_uninitialized.h:82:34: error: cannot increment value of type 'ft::Iterator<std::__cxx11::basic_string<char> >'
+              for (; __first != __last; ++__first, (void)++__cur)
+                                        ^ ~~~~~~~
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_uninitialized.h:140:2: note: in instantiation of function template specialization 'std::__uninitialized_copy<false>::__uninit_copy<ft::Iterator<std::__cxx11::basic_string<char> >, std::__cxx11::basic_string<char> *>' requested here
+        __uninit_copy(__first, __last, __result);
+        ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_uninitialized.h:307:19: note: in instantiation of function template specialization 'std::uninitialized_copy<ft::Iterator<std::__cxx11::basic_string<char> >, std::__cxx11::basic_string<char> *>' requested here
+    { return std::uninitialized_copy(__first, __last, __result); }
+                  ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/vector.tcc:330:13: note: in instantiation of function template specialization 'std::__uninitialized_copy_a<ft::Iterator<std::__cxx11::basic_string<char> >, std::__cxx11::basic_string<char> *, std::__cxx11::basic_string<char> >' requested here
+              std::__uninitialized_copy_a(__mid, __last,
+                   ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_vector.h:1625:4: note: in instantiation of function template specialization 'std::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::_M_assign_aux<ft::Iterator<std::__cxx11::basic_string<char> > >' requested here
+        { _M_assign_aux(__first, __last, std::__iterator_category(__first)); }
+          ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_vector.h:774:4: note: in instantiation of function template specialization 'std::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::_M_assign_dispatch<ft::Iterator<std::__cxx11::basic_string<char> > >' requested here
+          _M_assign_dispatch(__first, __last, _Integral());
+          ^
+Vector_tests.cpp:1557:16: note: in instantiation of function template specialization 'std::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::assign<ft::Iterator<std::__cxx11::basic_string<char> > >' requested here
+            v2.assign(ft_v1.begin(), ft_v1.end());
+               ^
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:462:54: error: cannot decrement value of type 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::iterator' (aka 'Iterator<std::__cxx11::basic_string<char> >')
+                        for (; it >= position + 1; it--)
+                                                   ~~^
+Vector_tests.cpp:1799:23: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::insert' requested here
+                ft_v1.insert(ft_v1.begin() + 1e5, "string1");
+                      ^
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:509:49: error: cannot decrement value of type 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::iterator' (aka 'Iterator<std::__cxx11::basic_string<char> >')
+                        for (; it > position; it--)
+                                              ~~^
+Vector_tests.cpp:1948:23: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::insert' requested here
+                ft_v1.insert(ft_v1.begin() + 1e5, 100, "string1");
+                      ^
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:563:49: error: cannot decrement value of type 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::iterator' (aka 'Iterator<std::__cxx11::basic_string<char> >')
+                        for (; it > position; it--)
+                                              ~~^
+Vector_tests.cpp:2116:23: note: in instantiation of function template specialization 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::insert<ft::Iterator<std::__cxx11::basic_string<char> > >' requested here
+                ft_v1.insert(ft_v1.begin() + 1e5, ft_v.begin(), ft_v.end());
+                      ^
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:563:49: error: cannot decrement value of type 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::iterator' (aka 'Iterator<std::__cxx11::basic_string<char> >')
+                        for (; it > position; it--)
+                                              ~~^
+Vector_tests.cpp:2159:18: note: in instantiation of function template specialization 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::insert<__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char> *, std::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > > > >' requested here
+            ft_v.insert(ft_v.begin(), v1.begin(), v1.end());
+                 ^
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:167:24: error: 'setPtr' is a private member of 'ft::Iterator<int>'
+                    it.setPtr(this->_array[0]);
                        ^
-/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_iterator_base_types.h:170:24: error: type 'int' cannot be used prior to '::' because it has no members
-      typedef typename _Iterator::difference_type   difference_type;
+./../vector/vector.hpp:723:56: note: in instantiation of member function 'ft::vector<int, std::allocator<int> >::begin' requested here
+        typename ft::vector<T>::iterator     lit = lhs.begin();
+                                                       ^
+Vector_tests.cpp:2684:40: note: in instantiation of function template specialization 'ft::operator==<int, std::allocator<int> >' requested here
+            cond = ((v == v1) == (ft_v == ft_v1));
+                                       ^
+./../vector/../../utils/random_access_iterator.hpp:220:25: note: declared private here
+                void    setPtr( reference address )
+                        ^
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:189:24: error: 'setPtr' is a private member of 'ft::Iterator<int>'
+                    it.setPtr(this->_array[this->_size]);
                        ^
-fatal error: too many errors emitted, stopping now [-ferror-limit=]
-20 errors generated.
+./../vector/vector.hpp:726:26: note: in instantiation of member function 'ft::vector<int, std::allocator<int> >::end' requested here
+        for (; lit < lhs.end(); lit++, rit++)
+                         ^
+Vector_tests.cpp:2684:40: note: in instantiation of function template specialization 'ft::operator==<int, std::allocator<int> >' requested here
+            cond = ((v == v1) == (ft_v == ft_v1));
+                                       ^
+./../vector/../../utils/random_access_iterator.hpp:220:25: note: declared private here
+                void    setPtr( reference address )
+                        ^
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:748:20: error: relational comparison result unused [-Werror,-Wunused-comparison]
+        for (; lit < lhs.end(), rit < rhs.end(); lit++, rit++)
+               ~~~~^~~~~~~~~~~
+Vector_tests.cpp:2839:29: note: in instantiation of function template specialization 'ft::operator<<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >' requested here
+                (void)(ft_v < ft_v1);
+                            ^
+In file included from Vector_tests.cpp:10:
+./../vector/vector.hpp:748:20: error: relational comparison result unused [-Werror,-Wunused-comparison]
+        for (; lit < lhs.end(), rit < rhs.end(); lit++, rit++)
+               ~~~~^~~~~~~~~~~
+Vector_tests.cpp:2870:39: note: in instantiation of function template specialization 'ft::operator<<int, std::allocator<int> >' requested here
+            cond = ((v < v1) == (ft_v < ft_v1));
+                                      ^
+64 errors generated.
 make: *** [Makefile:17: vector] Error 1

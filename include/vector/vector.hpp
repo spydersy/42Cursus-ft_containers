@@ -5,19 +5,11 @@
 #include <iostream>
 #include <memory>
 #include <exception>
-// #include <type_traits>
+
 #include "../../utils/reverse_iterator.hpp"
+#include "../../utils/random_access_iterator.hpp"
 #include "../../utils/enable_if.hpp"
 #include "../../utils/is_integral.hpp"
-
-# define KNRM  "\x1B[0m"
-# define KRED  "\x1B[31m"
-# define KGRN  "\x1B[32m"
-# define KYEL  "\x1B[33m"
-# define KBLU  "\x1B[34m"
-# define KMAG  "\x1B[35m"
-# define KCYN  "\x1B[36m"
-# define KWHT  "\x1B[37m"
 
 namespace ft
 {
@@ -36,9 +28,9 @@ namespace ft
                 typedef     const value_type*                       const_pointer;
                 typedef     size_t                                  size_type;
                 typedef     ft::Iterator<value_type>                iterator;
-                typedef     ft::reverse_iterator<value_type>        reverse_iterator;
                 typedef     const iterator                          const_iterator;
-
+                typedef     ft::reverse_iterator<value_type>        reverse_iterator;
+                typedef     const reverse_iterator                  const_reverse_iterator;
         public:
 /* Constructors: *****************************************************************************************************/
             /*
@@ -197,6 +189,38 @@ namespace ft
                     it.setPtr(this->_array[this->_size]);
                     return (it);
                 }
+
+                reverse_iterator rbegin()
+                {
+                    reverse_iterator    rit;
+
+                    rit._iterator = this->end() - 1;
+                    return (rit);
+                }
+
+                const_reverse_iterator rbegin() const
+                {
+                    reverse_iterator    rit;
+
+                    rit._iterator = this->end() - 1;
+                    return (rit);
+                }
+
+                reverse_iterator rend()
+                {
+                    reverse_iterator    rit;
+
+                    rit._iterator = this->begin();
+                    return (rit);
+                }
+
+                const_reverse_iterator rend() const
+                {
+                    reverse_iterator    rit;
+
+                    rit._iterator = this->begin();
+                    return (rit);
+                }
 /* Capacity: ****************************************************************************************************/
             /*
             ** Capacity:
@@ -220,46 +244,46 @@ namespace ft
                 /*
                 ** Resize:
                 */
-                // void resize (size_type n, value_type val = value_type())
-                // {
-                //     if (n <= this->_size)
-                //     {
-                //         std::cout << "DBG_A" << std::endl;
-                //         this->_size = n;
-                //     }
-                //     if (n > this->_size && n <= this->_capacity)
-                //     {
-                //         std::cout << "DBG_B" << std::endl;
-                //         iterator    it = this->end();
-                //         for (size_type i = this->_size; i < n; i++)
-                //         {
-                //             *it = val;
-                //             it++;
-                //         }
-                //         this->_size = n;
+                void resize (size_type n, value_type val = value_type())
+                {
+                    if (n <= this->_size)
+                    {
+                        std::cout << "DBG_A" << std::endl;
+                        this->_size = n;
+                    }
+                    if (n > this->_size && n <= this->_capacity)
+                    {
+                        std::cout << "DBG_B" << std::endl;
+                        iterator    it = this->end();
+                        for (size_type i = this->_size; i < n; i++)
+                        {
+                            *it = val;
+                            it++;
+                        }
+                        this->_size = n;
 
-                //     }
-                //     if (n > this->_size && n > this->_capacity)
-                //     {
-                //         std::cout << "DBG_C" << std::endl;
-                //         size_type   index = 0;
-                //         value_type  *new_array = _vector_allocator.allocate(n);
+                    }
+                    if (n > this->_size && n > this->_capacity)
+                    {
+                        std::cout << "DBG_C" << std::endl;
+                        size_type   index = 0;
+                        value_type  *new_array = _vector_allocator.allocate(n);
 
-                //         for (iterator it = this->begin(); it < this->end(); it++)
-                //         {
-                //             new_array[index++] = *it;
-                //         }
-                //         while (index < n)
-                //         {
-                //             new_array[index++] = val;
-                //         }
-                //         _vector_allocator.deallocate(this->_array, this->_capacity);
-                //         // std::cout << "LIVE_DBG: " << (this->_capacity = this->_size * 2) << std::endl;
-                //         this->_size = n;
-                //         std::cout << "LIVE_DBG: " << (this->_capacity = n) << std::endl;
-                //         this->_array = new_array;
-                //     }
-                // }
+                        for (iterator it = this->begin(); it < this->end(); it++)
+                        {
+                            new_array[index++] = *it;
+                        }
+                        while (index < n)
+                        {
+                            new_array[index++] = val;
+                        }
+                        _vector_allocator.deallocate(this->_array, this->_capacity);
+                        // std::cout << "LIVE_DBG: " << (this->_capacity = this->_size * 2) << std::endl;
+                        this->_size = n;
+                        std::cout << "LIVE_DBG: " << (this->_capacity = n) << std::endl;
+                        this->_array = new_array;
+                    }
+                }
 
                 /*
                 ** Capacity:
@@ -274,7 +298,7 @@ namespace ft
                 */
                 bool empty() const
                 {
-                    return (this->size == 0);
+                    return (this->_size == 0);
                 }
 
                 /*
