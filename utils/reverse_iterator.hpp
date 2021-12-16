@@ -27,7 +27,6 @@ namespace ft
                 */
                 reverse_iterator( void )
                 {
-                    this->_iterator;
                 }
 
                 /*
@@ -39,9 +38,9 @@ namespace ft
                     this->_iterator = src;
                 }
 
-                reverse_iterator( typename ft::Iterator<value_type> src ) : _iterator(src)
-                {
-                }
+                // reverse_iterator( typename ft::Iterator<value_type> src ) : _iterator(src)
+                // {
+                // }
 
                 /*
                 ** Assignment Operator:
@@ -133,13 +132,15 @@ namespace ft
             */
                 reference   operator*( void ) const
                 {
-                    return (*(this->_iterator));
+                    return (this->_iterator.operator*());
+                    // return (*(this->_iterator));
                 }
                 //  operator->() {}
 
                 pointer   operator->( void ) const
                 {
-                    return (&operator*());
+                    return (&this->_iterator.operator*());
+                    // return (&operator*());
                 }
 
                 difference_type   operator-(reverse_iterator const & src) const
@@ -209,7 +210,7 @@ namespace ft
                     return (this->_iterator[index]);
                 }
 
-                Iterator base() const
+                Iterator<Type> base() const
                 {
                     return (this->_iterator);
                 }

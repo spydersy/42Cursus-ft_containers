@@ -192,6 +192,9 @@ namespace ft
 
                 reverse_iterator rbegin()
                 {
+                    iterator    it;
+
+                    it.setPtr()
                     reverse_iterator    rit;
 
                     rit._iterator = this->end() - 1;

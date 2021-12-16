@@ -4,6 +4,7 @@
 
 #include "./include/vector/vector.hpp"
 #include "./utils/random_access_iterator.hpp"
+#include "./utils/reverse_iterator.hpp"
 
 // int	main()
 // {
@@ -438,16 +439,48 @@
 	// return (0);
 // }
 
-int		main()
+// int		main()
+// {
+	// std::vector<int>	vect1;
+	// std::vector<int>	vect2;
+
+	// for (int i = 1; i <= 10; i++) vect1.push_back(i);
+	// for (int i = 1; i <= 5; i++) vect2.push_back(i);
+
+	// std::cout <<(vect1 < vect2)<< std::endl;
+	// std::cout <<(vect2 < vect1)<< std::endl;
+
+	// return (0);
+// }
+
+int	main()
 {
-	std::vector<int>	vect1;
-	std::vector<int>	vect2;
+	{
+		std::vector<int>					vect;
+		std::vector<int>::reverse_iterator	rit;
 
-	for (int i = 1; i <= 10; i++) vect1.push_back(i);
-	for (int i = 1; i <= 5; i++) vect2.push_back(i);
+		for(int i = 1; i < 11 ; i++) vect.push_back(i);
 
-	std::cout <<(vect1 < vect2)<< std::endl;
-	std::cout <<(vect2 < vect1)<< std::endl;
+		rit = vect.rbegin();
+		for (; rit <= vect.rend(); rit++)
+		{
+			std::cout << "Rit: " << *rit << std::endl;
+		}
 
+	}
+	std::cout << "**************************" << std::endl;
+	{
+		ft::vector<int>					vect;
+		ft::vector<int>::reverse_iterator	rit;
+
+		for(int i = 1; i < 11 ; i++) vect.push_back(i);
+
+		rit = vect.rbegin();
+		for (; rit <= vect.rend(); rit++)
+		{
+			std::cout << "Rit: " << *rit << std::endl;
+		}
+
+	}
 	return (0);
 }
