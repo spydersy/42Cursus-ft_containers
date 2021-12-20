@@ -40,7 +40,13 @@ namespace   ft
 
                 Iterator    &operator=( Iterator const & src)
                 {
+                    std::cout << "this->_ptr = src._ptr: " << *(this->_ptr) << " " << *(src._ptr) << std::endl;
+                    std::cout << "this->_ptr = src._ptr: " << &(this->_ptr) << " " << &(src._ptr) << std::endl;
+                    std::cout << "this->_ptr = src._ptr: " <<  (this->_ptr) << " " <<  (src._ptr) << std::endl;
                     this->_ptr = src._ptr;
+                    std::cout << "this->_ptr = src._ptr: " << *(this->_ptr) << " " << *(src._ptr) << std::endl;
+                    std::cout << "this->_ptr = src._ptr: " << &(this->_ptr) << " " << &(src._ptr) << std::endl;
+                    std::cout << "this->_ptr = src._ptr: " <<  (this->_ptr) << " " <<  (src._ptr) << std::endl;
                     return ( *this );
                 }
 
@@ -178,23 +184,12 @@ namespace   ft
                 // operator    value_type() { return _ptr; }
                 operator Iterator<const Type>()
                 {
-                    // std::cout << "Operator Callleed" << std::endl;
+                    std::cout << "Operator d zeb called :) " << std::endl;
                     return (Iterator< const Type>(*_ptr));
                 }
 
         private:
             value_type    *_ptr;
-            // value_type      arr[10];
-            /*
-            ** Setters:
-            */
-                /*
-                **  _ptr Setter:
-                */
-                void    setPtr( reference address )
-                {
-                    this->_ptr = &address;
-                }
     };
 };
 

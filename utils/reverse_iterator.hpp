@@ -71,7 +71,7 @@ namespace ft
                 /*
                 ** Equality opearator:
                 */
-                bool    operator==( reverse_iterator const & src ) const
+                bool    operator==( reverse_iterator const & src )
                 {
                     return (this->_iterator == src._iterator);
                 }
@@ -132,7 +132,9 @@ namespace ft
             */
                 reference   operator*( void )
                 {
-                    return (this->_iterator.operator*());
+                    value_type  holder = this->_iterator.operator*();
+                    // return (this->_iterator.operator*());
+                    return (holder);
                     // return (*(this->_iterator));
                 }
                 //  operator->() {}
@@ -214,87 +216,15 @@ namespace ft
                 {
                     return (this->_iterator);
                 }
-
+                operator reverse_iterator<const Type>()
+                {
+                    std::cout << "Operator d zeb called :) " << std::endl;
+                    return (reverse_iterator< const Type>(*_ptr));
+                }
     private:
         ft::Iterator<Type> _iterator;
     };  // class reverse_iterator
 
 }; // namespace ft
-
-
-// namespace ft
-// {
-//     template <typename Iterator>
-//     class reverse_iterator
-//     {
-//         public:
-//         /*
-//         **  Member Types:
-//         */
-//             typedef     Iterator                                                        iterator_type;
-//             typedef     typename std::iterator_traits<Iterator>::iterator_category      iterator_category;
-//             typedef     typename std::iterator_traits<Iterator>::value_type             value_type;
-//             typedef     typename std::iterator_traits<Iterator>::difference_type	    difference_type;
-//             typedef     typename std::iterator_traits<Iterator>::pointer	            pointer;
-//             typedef     typename std::iterator_traits<Iterator>::reference              reference;
-//         /*
-//         **  Constructors:
-//         */
-//             /*
-//             **  Default Constructor:
-//             */
-//             reverse_iterator()
-//             {
-//                 this->_iterator->_ptr = NULL;
-//                 return ;
-//             }
-//             /*
-//             **  Initialization Constructor:
-//             */
-//             explicit reverse_iterator (iterator_type it)
-//             {
-//                 this->_iterator->_ptr = it._ptr;
-//             }
-//             /*
-//             ** Copy Constructor:
-//             */
-//             template <class Iter>
-//             reverse_iterator (const reverse_iterator<Iter>& rev_it)
-//             {
-//                 this->_iterator->_ptr = rev_it._iterator._ptr;
-//             }
-
-//         /*
-//         **  Base:
-//         */
-//             iterator_type base() const
-//             {
-//                 return (this->_iterator);
-//             }
-
-//         /*
-//         **  Operator*:
-//         */
-//             reference operator*() const
-//             {
-//                 return (this->_iterator->operator*());
-//             }
-
-//         /*
-//         **  Operator+:
-//         */
-//             reverse_iterator operator+ (difference_type n) const
-//             {
-//                 reverse_iterator    ret;
-
-//                 ret._iterator._ptr = this->_iterator._ptr - n;
-//                 return (ret);
-//             }
-
-//         private:
-//             ft::Iterator<Iterator>  _iterator;
-
-//     };
-// };
 
 #endif

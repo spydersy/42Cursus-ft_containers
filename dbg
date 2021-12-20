@@ -1,3 +1,8 @@
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:222:60: error: use of undeclared identifier '_ptr'
+                    return (reverse_iterator< const Type>(*_ptr));
+                                                           ^
 Vector_tests.cpp:117:17: error: invalid operands to binary expression ('int' and 'ft::vector<int>::iterator' (aka 'Iterator<int>'))
     EQUAL(&(*(1 + my_it)) == &(*(my_it1)) && (&(*my_it) == &(*(my_v.begin()))));
               ~ ^ ~~~~~
@@ -7,24 +12,6 @@ Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
 Vector_tests.cpp:212:17: error: invalid operands to binary expression ('int' and 'ft::vector<int>::const_iterator' (aka 'Iterator<const int>'))
     EQUAL(&(*(1 + my_it)) == &(*(my_it1)) && (&(*my_it) == &(*(my_v.begin()))));
               ~ ^ ~~~~~
-Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
-#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
-                   ^
-Vector_tests.cpp:250:14: error: no viable overloaded '='
-        c_it = my_rit2;
-        ~~~~ ^ ~~~~~~~
-./../vector/../../utils/reverse_iterator.hpp:48:38: note: candidate function not viable: 'this' argument has type 'ft::vector<int>::const_reverse_iterator' (aka 'const reverse_iterator<int>'), but method is not marked const
-                reverse_iterator    &operator=( reverse_iterator const & src )
-                                     ^
-Vector_tests.cpp:251:32: error: indirection requires pointer operand ('ft::vector<int>::const_reverse_iterator' (aka 'const reverse_iterator<int>') invalid)
-        EQUAL(&(*my_rit2) == &(*c_it) && (&(*my_rit2) == &(*c_ob)));
-                               ^~~~~
-Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
-#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
-                   ^
-Vector_tests.cpp:251:60: error: indirection requires pointer operand ('ft::vector<int>::const_reverse_iterator' (aka 'const reverse_iterator<int>') invalid)
-        EQUAL(&(*my_rit2) == &(*c_it) && (&(*my_rit2) == &(*c_ob)));
-                                                           ^~~~~
 Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
 #define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
                    ^
@@ -217,31 +204,25 @@ Vector_tests.cpp:435:38: error: invalid operands to binary expression ('int' and
 Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
 #define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
                    ^
-Vector_tests.cpp:906:105: error: cannot increment value of type 'ft::vector<std::string>::const_reverse_iterator' (aka 'const reverse_iterator<std::__1::basic_string<char> >')
-        for (ft::vector<std::string>::const_reverse_iterator rit = ft_v2.rbegin(); rit != ft_v2.rend(); ++rit) // fill c_ft_res from const ft_v1
-                                                                                                        ^ ~~~
-Vector_tests.cpp:907:25: error: indirection requires pointer operand ('ft::vector<std::string>::const_reverse_iterator' (aka 'const reverse_iterator<std::__1::basic_string<char> >') invalid)
-            c_ft_res += *rit;
-                        ^~~~
 In file included from Vector_tests.cpp:10:
 In file included from ./../vector/vector.hpp:9:
 In file included from ./../vector/../../utils/reverse_iterator.hpp:5:
-./../vector/../../utils/random_access_iterator.hpp:114:30: error: 'this' argument to member function 'operator*' has type 'const ft::Iterator<std::__1::basic_string<char> >', but function is not marked const
+./../vector/../../utils/random_access_iterator.hpp:120:30: error: 'this' argument to member function 'operator*' has type 'const ft::Iterator<std::__1::basic_string<char> >', but function is not marked const
                     return (&operator*());
                              ^~~~~~~~
 Vector_tests.cpp:91:36: note: in instantiation of member function 'ft::Iterator<std::__1::basic_string<char> >::operator->' requested here
         EQUAL(it->length() == my_it->length());
                                    ^
-./../vector/../../utils/random_access_iterator.hpp:105:29: note: 'operator*' declared here
+./../vector/../../utils/random_access_iterator.hpp:111:29: note: 'operator*' declared here
                 reference   operator*( void )
                             ^
-./../vector/../../utils/random_access_iterator.hpp:114:30: error: 'this' argument to member function 'operator*' has type 'const ft::Iterator<const std::__1::basic_string<char> >', but function is not marked const
+./../vector/../../utils/random_access_iterator.hpp:120:30: error: 'this' argument to member function 'operator*' has type 'const ft::Iterator<const std::__1::basic_string<char> >', but function is not marked const
                     return (&operator*());
                              ^~~~~~~~
 Vector_tests.cpp:186:36: note: in instantiation of member function 'ft::Iterator<const std::__1::basic_string<char> >::operator->' requested here
         EQUAL(it->length() == my_it->length());
                                    ^
-./../vector/../../utils/random_access_iterator.hpp:105:29: note: 'operator*' declared here
+./../vector/../../utils/random_access_iterator.hpp:111:29: note: 'operator*' declared here
                 reference   operator*( void )
                             ^
 In file included from Vector_tests.cpp:10:
@@ -257,6 +238,41 @@ Vector_tests.cpp:236:54: note: in instantiation of function template specializat
                              ^
 In file included from Vector_tests.cpp:10:
 In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:137:29: error: reference to stack memory associated with local variable 'holder' returned [-Werror,-Wreturn-stack-address]
+                    return (holder);
+                            ^~~~~~
+Vector_tests.cpp:242:17: note: in instantiation of member function 'ft::reverse_iterator<std::__1::__wrap_iter<int *> >::operator*' requested here
+        EQUAL(&(*my_rit) == &(*ob));
+                ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:38:37: error: no viable overloaded '='
+                    this->_iterator = src;
+                    ~~~~~~~~~~~~~~~ ^ ~~~
+Vector_tests.cpp:249:55: note: in instantiation of function template specialization 'ft::reverse_iterator<const int>::reverse_iterator<ft::Iterator<int> >' requested here
+        ft::vector<int>::const_reverse_iterator c_it, c_ob(v.end());
+                                                      ^
+./../vector/../../utils/random_access_iterator.hpp:41:30: note: candidate function not viable: no known conversion from 'const Iterator<int>' to 'const Iterator<const int>' for 1st argument
+                Iterator    &operator=( Iterator const & src)
+                             ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:137:29: error: reference to stack memory associated with local variable 'holder' returned [-Werror,-Wreturn-stack-address]
+                    return (holder);
+                            ^~~~~~
+Vector_tests.cpp:251:17: note: in instantiation of member function 'ft::reverse_iterator<int>::operator*' requested here
+        EQUAL(&(*my_rit2) == &(*c_it) && (&(*my_rit2) == &(*c_ob)));
+                ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:137:29: error: reference to stack memory associated with local variable 'holder' returned [-Werror,-Wreturn-stack-address]
+                    return (holder);
+                            ^~~~~~
+Vector_tests.cpp:251:32: note: in instantiation of member function 'ft::reverse_iterator<const int>::operator*' requested here
+        EQUAL(&(*my_rit2) == &(*c_it) && (&(*my_rit2) == &(*c_ob)));
+                               ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
 ./../vector/../../utils/reverse_iterator.hpp:38:37: error: no viable overloaded '='
                     this->_iterator = src;
                     ~~~~~~~~~~~~~~~ ^ ~~~
@@ -268,18 +284,255 @@ Vector_tests.cpp:283:66: note: in instantiation of function template specializat
                              ^
 In file included from Vector_tests.cpp:10:
 In file included from ./../vector/vector.hpp:9:
-./../vector/../../utils/reverse_iterator.hpp:142:30: error: 'this' argument to member function 'operator*' has type 'const ft::Iterator<__wrap_iter<basic_string<char> *> >', but function is not marked const
+./../vector/../../utils/reverse_iterator.hpp:144:30: error: 'this' argument to member function 'operator*' has type 'const ft::Iterator<__wrap_iter<basic_string<char> *> >', but function is not marked const
                     return (&this->_iterator.operator*());
                              ^~~~~~~~~~~~~~~
 Vector_tests.cpp:284:38: note: in instantiation of member function 'ft::reverse_iterator<std::__1::__wrap_iter<std::__1::basic_string<char> *> >::operator->' requested here
         EQUAL(rit->length() == my_rit->length());
                                      ^
-./../vector/../../utils/random_access_iterator.hpp:105:29: note: 'operator*' declared here
+./../vector/../../utils/random_access_iterator.hpp:111:29: note: 'operator*' declared here
                 reference   operator*( void )
                             ^
+./../vector/../../utils/random_access_iterator.hpp:43:60: error: invalid operands to binary expression ('basic_ostream<char, std::__1::char_traits<char> >' and 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>'))
+                    std::cout << "this->_ptr = src._ptr: " << *(this->_ptr) << " " << *(src._ptr) << std::endl;
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^  ~~~~~~~~~~~~~
+./../vector/../../utils/reverse_iterator.hpp:161:35: note: in instantiation of member function 'ft::Iterator<std::__1::__wrap_iter<int *> >::operator=' requested here
+                    ret._iterator = this->_iterator + value;
+                                  ^
+Vector_tests.cpp:288:38: note: in instantiation of member function 'ft::reverse_iterator<std::__1::__wrap_iter<int *> >::operator-' requested here
+    EQUAL((&(*my_rit) == &(*(my_rit1 - 1))) && (&(*rit) == &(*(rit_1 - 1))));
+                                     ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:219:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'const void *' for 1st argument; remove *
+    basic_ostream& operator<<(const void* __p);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:195:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'std::__1::basic_ostream<char> &(*)(std::__1::basic_ostream<char> &)' for 1st argument
+    basic_ostream& operator<<(basic_ostream& (*__pf)(basic_ostream&))
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:199:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'basic_ios<std::__1::basic_ostream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_ostream<char, std::__1::char_traits<char> >::traits_type> &(*)(basic_ios<std::__1::basic_ostream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_ostream<char, std::__1::char_traits<char> >::traits_type> &)' (aka 'basic_ios<char, std::__1::char_traits<char> > &(*)(basic_ios<char, std::__1::char_traits<char> > &)') for 1st argument
+    basic_ostream& operator<<(basic_ios<char_type, traits_type>&
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:204:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'std::__1::ios_base &(*)(std::__1::ios_base &)' for 1st argument
+    basic_ostream& operator<<(ios_base& (*__pf)(ios_base&))
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:207:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'bool' for 1st argument
+    basic_ostream& operator<<(bool __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:208:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'short' for 1st argument
+    basic_ostream& operator<<(short __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:209:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'unsigned short' for 1st argument
+    basic_ostream& operator<<(unsigned short __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:210:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'int' for 1st argument
+    basic_ostream& operator<<(int __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:211:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'unsigned int' for 1st argument
+    basic_ostream& operator<<(unsigned int __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:212:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'long' for 1st argument
+    basic_ostream& operator<<(long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:213:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'unsigned long' for 1st argument
+    basic_ostream& operator<<(unsigned long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:214:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'long long' for 1st argument
+    basic_ostream& operator<<(long long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:215:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'unsigned long long' for 1st argument
+    basic_ostream& operator<<(unsigned long long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:216:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'float' for 1st argument
+    basic_ostream& operator<<(float __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:217:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'double' for 1st argument
+    basic_ostream& operator<<(double __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:218:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'long double' for 1st argument
+    basic_ostream& operator<<(long double __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:220:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'basic_streambuf<std::__1::basic_ostream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_ostream<char, std::__1::char_traits<char> >::traits_type> *' (aka 'basic_streambuf<char, std::__1::char_traits<char> > *') for 1st argument
+    basic_ostream& operator<<(basic_streambuf<char_type, traits_type>* __sb);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:756:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'char' for 2nd argument
+operator<<(basic_ostream<_CharT, _Traits>& __os, char __cn)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:789:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'char' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, char __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:796:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'signed char' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, signed char __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:803:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'unsigned char' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, unsigned char __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:817:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'const char *' for 2nd argument
+operator<<(basic_ostream<_CharT, _Traits>& __os, const char* __strn)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:863:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'const char *' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, const char* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:870:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'const signed char *' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, const signed char* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:878:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'const unsigned char *' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, const unsigned char* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1062:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'const std::__1::error_code' for 2nd argument
+operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __ec)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:749:1: note: candidate template ignored: deduced conflicting types for parameter '_CharT' ('char' vs. 'std::__1::__wrap_iter<int *>')
+operator<<(basic_ostream<_CharT, _Traits>& __os, _CharT __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:810:1: note: candidate template ignored: could not match 'const _CharT *' against 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>')
+operator<<(basic_ostream<_CharT, _Traits>& __os, const _CharT* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1045:1: note: candidate template ignored: could not match 'basic_string' against '__wrap_iter'
+operator<<(basic_ostream<_CharT, _Traits>& __os,
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1053:1: note: candidate template ignored: could not match 'basic_string_view' against '__wrap_iter'
+operator<<(basic_ostream<_CharT, _Traits>& __os,
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1070:1: note: candidate template ignored: could not match 'shared_ptr' against '__wrap_iter'
+operator<<(basic_ostream<_CharT, _Traits>& __os, shared_ptr<_Yp> const& __p)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1082:1: note: candidate template ignored: could not match 'unique_ptr' against '__wrap_iter'
+operator<<(basic_ostream<_CharT, _Traits>& __os, unique_ptr<_Yp, _Dp> const& __p)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1089:1: note: candidate template ignored: could not match 'bitset' against '__wrap_iter'
+operator<<(basic_ostream<_CharT, _Traits>& __os, const bitset<_Size>& __x)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iomanip:363:1: note: candidate template ignored: could not match '__iom_t8' against '__wrap_iter'
+operator<<(basic_ostream<_CharT, _Traits>& __os, const __iom_t8<_MoneyT>& __x)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iomanip:478:5: note: candidate template ignored: could not match '__iom_t10' against '__wrap_iter'
+    operator<<(basic_ostream<_Cp, _Traits>& __os, const __iom_t10<_Cp>& __x);
+    ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iomanip:573:33: note: candidate template ignored: could not match '__quoted_output_proxy' against '__wrap_iter'
+basic_ostream<_CharT, _Traits>& operator<<(
+                                ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iomanip:593:33: note: candidate template ignored: could not match '__quoted_proxy' against '__wrap_iter'
+basic_ostream<_CharT, _Traits>& operator<<(
+                                ^
 In file included from Vector_tests.cpp:10:
 In file included from ./../vector/vector.hpp:9:
-./../vector/../../utils/reverse_iterator.hpp:199:28: error: non-const lvalue reference to type 'std::__1::__wrap_iter<int *>' cannot bind to a value of unrelated type 'ft::reverse_iterator<std::__1::__wrap_iter<int *> >'
+In file included from ./../vector/../../utils/reverse_iterator.hpp:5:
+./../vector/../../utils/random_access_iterator.hpp:47:60: error: invalid operands to binary expression ('basic_ostream<char, std::__1::char_traits<char> >' and 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>'))
+                    std::cout << "this->_ptr = src._ptr: " << *(this->_ptr) << " " << *(src._ptr) << std::endl;
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^  ~~~~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:219:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'const void *' for 1st argument; remove *
+    basic_ostream& operator<<(const void* __p);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:195:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'std::__1::basic_ostream<char> &(*)(std::__1::basic_ostream<char> &)' for 1st argument
+    basic_ostream& operator<<(basic_ostream& (*__pf)(basic_ostream&))
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:199:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'basic_ios<std::__1::basic_ostream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_ostream<char, std::__1::char_traits<char> >::traits_type> &(*)(basic_ios<std::__1::basic_ostream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_ostream<char, std::__1::char_traits<char> >::traits_type> &)' (aka 'basic_ios<char, std::__1::char_traits<char> > &(*)(basic_ios<char, std::__1::char_traits<char> > &)') for 1st argument
+    basic_ostream& operator<<(basic_ios<char_type, traits_type>&
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:204:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'std::__1::ios_base &(*)(std::__1::ios_base &)' for 1st argument
+    basic_ostream& operator<<(ios_base& (*__pf)(ios_base&))
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:207:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'bool' for 1st argument
+    basic_ostream& operator<<(bool __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:208:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'short' for 1st argument
+    basic_ostream& operator<<(short __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:209:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'unsigned short' for 1st argument
+    basic_ostream& operator<<(unsigned short __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:210:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'int' for 1st argument
+    basic_ostream& operator<<(int __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:211:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'unsigned int' for 1st argument
+    basic_ostream& operator<<(unsigned int __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:212:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'long' for 1st argument
+    basic_ostream& operator<<(long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:213:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'unsigned long' for 1st argument
+    basic_ostream& operator<<(unsigned long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:214:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'long long' for 1st argument
+    basic_ostream& operator<<(long long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:215:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'unsigned long long' for 1st argument
+    basic_ostream& operator<<(unsigned long long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:216:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'float' for 1st argument
+    basic_ostream& operator<<(float __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:217:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'double' for 1st argument
+    basic_ostream& operator<<(double __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:218:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'long double' for 1st argument
+    basic_ostream& operator<<(long double __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:220:20: note: candidate function not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'basic_streambuf<std::__1::basic_ostream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_ostream<char, std::__1::char_traits<char> >::traits_type> *' (aka 'basic_streambuf<char, std::__1::char_traits<char> > *') for 1st argument
+    basic_ostream& operator<<(basic_streambuf<char_type, traits_type>* __sb);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:756:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'char' for 2nd argument
+operator<<(basic_ostream<_CharT, _Traits>& __os, char __cn)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:789:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'char' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, char __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:796:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'signed char' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, signed char __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:803:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'unsigned char' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, unsigned char __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:817:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'const char *' for 2nd argument
+operator<<(basic_ostream<_CharT, _Traits>& __os, const char* __strn)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:863:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'const char *' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, const char* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:870:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'const signed char *' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, const signed char* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:878:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'const unsigned char *' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, const unsigned char* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1062:1: note: candidate function template not viable: no known conversion from 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>') to 'const std::__1::error_code' for 2nd argument
+operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __ec)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:749:1: note: candidate template ignored: deduced conflicting types for parameter '_CharT' ('char' vs. 'std::__1::__wrap_iter<int *>')
+operator<<(basic_ostream<_CharT, _Traits>& __os, _CharT __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:810:1: note: candidate template ignored: could not match 'const _CharT *' against 'ft::Iterator<std::__1::__wrap_iter<int *> >::value_type' (aka 'std::__1::__wrap_iter<int *>')
+operator<<(basic_ostream<_CharT, _Traits>& __os, const _CharT* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1045:1: note: candidate template ignored: could not match 'basic_string' against '__wrap_iter'
+operator<<(basic_ostream<_CharT, _Traits>& __os,
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1053:1: note: candidate template ignored: could not match 'basic_string_view' against '__wrap_iter'
+operator<<(basic_ostream<_CharT, _Traits>& __os,
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1070:1: note: candidate template ignored: could not match 'shared_ptr' against '__wrap_iter'
+operator<<(basic_ostream<_CharT, _Traits>& __os, shared_ptr<_Yp> const& __p)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1082:1: note: candidate template ignored: could not match 'unique_ptr' against '__wrap_iter'
+operator<<(basic_ostream<_CharT, _Traits>& __os, unique_ptr<_Yp, _Dp> const& __p)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1089:1: note: candidate template ignored: could not match 'bitset' against '__wrap_iter'
+operator<<(basic_ostream<_CharT, _Traits>& __os, const bitset<_Size>& __x)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iomanip:363:1: note: candidate template ignored: could not match '__iom_t8' against '__wrap_iter'
+operator<<(basic_ostream<_CharT, _Traits>& __os, const __iom_t8<_MoneyT>& __x)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iomanip:478:5: note: candidate template ignored: could not match '__iom_t10' against '__wrap_iter'
+    operator<<(basic_ostream<_Cp, _Traits>& __os, const __iom_t10<_Cp>& __x);
+    ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iomanip:573:33: note: candidate template ignored: could not match '__quoted_output_proxy' against '__wrap_iter'
+basic_ostream<_CharT, _Traits>& operator<<(
+                                ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iomanip:593:33: note: candidate template ignored: could not match '__quoted_proxy' against '__wrap_iter'
+basic_ostream<_CharT, _Traits>& operator<<(
+                                ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:201:28: error: non-const lvalue reference to type 'std::__1::__wrap_iter<int *>' cannot bind to a value of unrelated type 'ft::reverse_iterator<std::__1::__wrap_iter<int *> >'
                     return (*this);
                            ^~~~~~~
 Vector_tests.cpp:294:12: note: in instantiation of member function 'ft::reverse_iterator<std::__1::__wrap_iter<int *> >::operator+=' requested here
@@ -287,7 +540,7 @@ Vector_tests.cpp:294:12: note: in instantiation of member function 'ft::reverse_
            ^
 In file included from Vector_tests.cpp:10:
 In file included from ./../vector/vector.hpp:9:
-./../vector/../../utils/reverse_iterator.hpp:205:28: error: non-const lvalue reference to type 'std::__1::__wrap_iter<int *>' cannot bind to a value of unrelated type 'ft::reverse_iterator<std::__1::__wrap_iter<int *> >'
+./../vector/../../utils/reverse_iterator.hpp:207:28: error: non-const lvalue reference to type 'std::__1::__wrap_iter<int *>' cannot bind to a value of unrelated type 'ft::reverse_iterator<std::__1::__wrap_iter<int *> >'
                     return (*this);
                            ^~~~~~~
 Vector_tests.cpp:299:12: note: in instantiation of member function 'ft::reverse_iterator<std::__1::__wrap_iter<int *> >::operator-=' requested here
@@ -325,18 +578,26 @@ Vector_tests.cpp:341:59: note: in instantiation of function template specializat
                              ^
 In file included from Vector_tests.cpp:10:
 In file included from ./../vector/vector.hpp:9:
-./../vector/../../utils/reverse_iterator.hpp:142:30: error: 'this' argument to member function 'operator*' has type 'const ft::Iterator<basic_string<char> >', but function is not marked const
+./../vector/../../utils/reverse_iterator.hpp:137:29: error: reference to stack memory associated with local variable 'holder' returned [-Werror,-Wreturn-stack-address]
+                    return (holder);
+                            ^~~~~~
+Vector_tests.cpp:348:30: note: in instantiation of member function 'ft::reverse_iterator<std::__1::__wrap_iter<char *> >::operator*' requested here
+            my_res.push_back(*my_start++);
+                             ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:144:30: error: 'this' argument to member function 'operator*' has type 'const ft::Iterator<basic_string<char> >', but function is not marked const
                     return (&this->_iterator.operator*());
                              ^~~~~~~~~~~~~~~
 Vector_tests.cpp:402:38: note: in instantiation of member function 'ft::reverse_iterator<std::__1::basic_string<char> >::operator->' requested here
         EQUAL(rit->length() == my_rit->length());
                                      ^
-./../vector/../../utils/random_access_iterator.hpp:105:29: note: 'operator*' declared here
+./../vector/../../utils/random_access_iterator.hpp:111:29: note: 'operator*' declared here
                 reference   operator*( void )
                             ^
 In file included from Vector_tests.cpp:10:
 In file included from ./../vector/vector.hpp:9:
-./../vector/../../utils/reverse_iterator.hpp:199:28: error: non-const lvalue reference to type 'int' cannot bind to a value of unrelated type 'ft::reverse_iterator<int>'
+./../vector/../../utils/reverse_iterator.hpp:201:28: error: non-const lvalue reference to type 'int' cannot bind to a value of unrelated type 'ft::reverse_iterator<int>'
                     return (*this);
                            ^~~~~~~
 Vector_tests.cpp:412:12: note: in instantiation of member function 'ft::reverse_iterator<int>::operator+=' requested here
@@ -344,7 +605,7 @@ Vector_tests.cpp:412:12: note: in instantiation of member function 'ft::reverse_
            ^
 In file included from Vector_tests.cpp:10:
 In file included from ./../vector/vector.hpp:9:
-./../vector/../../utils/reverse_iterator.hpp:205:28: error: non-const lvalue reference to type 'int' cannot bind to a value of unrelated type 'ft::reverse_iterator<int>'
+./../vector/../../utils/reverse_iterator.hpp:207:28: error: non-const lvalue reference to type 'int' cannot bind to a value of unrelated type 'ft::reverse_iterator<int>'
                     return (*this);
                            ^~~~~~~
 Vector_tests.cpp:417:12: note: in instantiation of member function 'ft::reverse_iterator<int>::operator-=' requested here
@@ -370,6 +631,14 @@ Vector_tests.cpp:450:56: note: in instantiation of member function 'ft::reverse_
         ft::vector<int>::reverse_iterator my_tmp(my_rit--);
                                                        ^
 In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:137:29: error: reference to stack memory associated with local variable 'holder' returned [-Werror,-Wreturn-stack-address]
+                    return (holder);
+                            ^~~~~~
+Vector_tests.cpp:469:30: note: in instantiation of member function 'ft::reverse_iterator<char>::operator*' requested here
+            my_res.push_back(*my_start++);
+                             ^
+In file included from Vector_tests.cpp:10:
 ./../vector/vector.hpp:131:29: error: no viable conversion from 'Iterator<const basic_string<...>>' to 'Iterator<basic_string<...>>'
                 iterator    end = x.end();
                             ^     ~~~~~~~
@@ -382,7 +651,7 @@ Vector_tests.cpp:601:19: note: in instantiation of member function 'ft::vector<s
 ./../vector/../../utils/random_access_iterator.hpp:36:17: note: candidate constructor not viable: no known conversion from 'ft::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char> > >::const_iterator' (aka 'Iterator<const std::__1::basic_string<char> >') to 'ft::Iterator<std::__1::basic_string<char> >::value_type &' (aka 'std::__1::basic_string<char> &') for 1st argument
                 Iterator( value_type &src )
                 ^
-./../vector/../../utils/random_access_iterator.hpp:179:17: note: candidate function
+./../vector/../../utils/random_access_iterator.hpp:185:17: note: candidate function
                 operator Iterator<const Type>()
                 ^
 In file included from Vector_tests.cpp:10:
@@ -395,9 +664,17 @@ In file included from Vector_tests.cpp:10:
 ./../vector/../../utils/random_access_iterator.hpp:36:17: note: candidate constructor not viable: no known conversion from 'ft::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char> > >::const_iterator' (aka 'Iterator<const std::__1::basic_string<char> >') to 'ft::Iterator<std::__1::basic_string<char> >::value_type &' (aka 'std::__1::basic_string<char> &') for 1st argument
                 Iterator( value_type &src )
                 ^
-./../vector/../../utils/random_access_iterator.hpp:179:17: note: candidate function
+./../vector/../../utils/random_access_iterator.hpp:185:17: note: candidate function
                 operator Iterator<const Type>()
                 ^
+In file included from Vector_tests.cpp:10:
+In file included from ./../vector/vector.hpp:9:
+./../vector/../../utils/reverse_iterator.hpp:137:29: error: reference to stack memory associated with local variable 'holder' returned [-Werror,-Wreturn-stack-address]
+                    return (holder);
+                            ^~~~~~
+Vector_tests.cpp:905:23: note: in instantiation of member function 'ft::reverse_iterator<std::__1::basic_string<char> >::operator*' requested here
+            ft_res += *rit;
+                      ^
 In file included from Vector_tests.cpp:10:
 In file included from ./../vector/vector.hpp:9:
 ./../vector/../../utils/reverse_iterator.hpp:38:37: error: no viable overloaded '='
@@ -431,6 +708,12 @@ Vector_tests.cpp:906:97: note: in instantiation of member function 'ft::vector<s
 ./../vector/../../utils/reverse_iterator.hpp:28:17: note: candidate constructor not viable: requires 0 arguments, but 1 was provided
                 reverse_iterator( void )
                 ^
+./../vector/../../utils/reverse_iterator.hpp:137:29: error: reference to stack memory associated with local variable 'holder' returned [-Werror,-Wreturn-stack-address]
+                    return (holder);
+                            ^~~~~~
+Vector_tests.cpp:907:25: note: in instantiation of member function 'ft::reverse_iterator<const std::__1::basic_string<char> >::operator*' requested here
+            c_ft_res += *rit;
+                        ^
 In file included from Vector_tests.cpp:10:
 ./../vector/vector.hpp:739:46: error: no viable conversion from 'Iterator<const basic_string<...>>' to 'Iterator<basic_string<...>>'
         typename ft::vector<T>::iterator     lit = lhs.begin();
@@ -444,7 +727,7 @@ Vector_tests.cpp:2656:29: note: in instantiation of function template specializa
 ./../vector/../../utils/random_access_iterator.hpp:36:17: note: candidate constructor not viable: no known conversion from 'ft::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char> > >::const_iterator' (aka 'Iterator<const std::__1::basic_string<char> >') to 'ft::Iterator<std::__1::basic_string<char> >::value_type &' (aka 'std::__1::basic_string<char> &') for 1st argument
                 Iterator( value_type &src )
                 ^
-./../vector/../../utils/random_access_iterator.hpp:179:17: note: candidate function
+./../vector/../../utils/random_access_iterator.hpp:185:17: note: candidate function
                 operator Iterator<const Type>()
                 ^
 In file included from Vector_tests.cpp:10:
@@ -457,7 +740,7 @@ In file included from Vector_tests.cpp:10:
 ./../vector/../../utils/random_access_iterator.hpp:36:17: note: candidate constructor not viable: no known conversion from 'ft::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char> > >::const_iterator' (aka 'Iterator<const std::__1::basic_string<char> >') to 'ft::Iterator<std::__1::basic_string<char> >::value_type &' (aka 'std::__1::basic_string<char> &') for 1st argument
                 Iterator( value_type &src )
                 ^
-./../vector/../../utils/random_access_iterator.hpp:179:17: note: candidate function
+./../vector/../../utils/random_access_iterator.hpp:185:17: note: candidate function
                 operator Iterator<const Type>()
                 ^
 In file included from Vector_tests.cpp:10:
@@ -473,7 +756,7 @@ Vector_tests.cpp:2687:40: note: in instantiation of function template specializa
 ./../vector/../../utils/random_access_iterator.hpp:36:17: note: candidate constructor not viable: no known conversion from 'ft::vector<int, std::__1::allocator<int> >::const_iterator' (aka 'Iterator<const int>') to 'ft::Iterator<int>::value_type &' (aka 'int &') for 1st argument
                 Iterator( value_type &src )
                 ^
-./../vector/../../utils/random_access_iterator.hpp:179:17: note: candidate function
+./../vector/../../utils/random_access_iterator.hpp:185:17: note: candidate function
                 operator Iterator<const Type>()
                 ^
 In file included from Vector_tests.cpp:10:
@@ -486,7 +769,7 @@ In file included from Vector_tests.cpp:10:
 ./../vector/../../utils/random_access_iterator.hpp:36:17: note: candidate constructor not viable: no known conversion from 'ft::vector<int, std::__1::allocator<int> >::const_iterator' (aka 'Iterator<const int>') to 'ft::Iterator<int>::value_type &' (aka 'int &') for 1st argument
                 Iterator( value_type &src )
                 ^
-./../vector/../../utils/random_access_iterator.hpp:179:17: note: candidate function
+./../vector/../../utils/random_access_iterator.hpp:185:17: note: candidate function
                 operator Iterator<const Type>()
                 ^
 In file included from Vector_tests.cpp:10:
@@ -690,7 +973,7 @@ Vector_tests.cpp:2842:29: note: in instantiation of function template specializa
 ./../vector/../../utils/random_access_iterator.hpp:36:17: note: candidate constructor not viable: no known conversion from 'ft::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char> > >::const_iterator' (aka 'Iterator<const std::__1::basic_string<char> >') to 'ft::Iterator<std::__1::basic_string<char> >::value_type &' (aka 'std::__1::basic_string<char> &') for 1st argument
                 Iterator( value_type &src )
                 ^
-./../vector/../../utils/random_access_iterator.hpp:179:17: note: candidate function
+./../vector/../../utils/random_access_iterator.hpp:185:17: note: candidate function
                 operator Iterator<const Type>()
                 ^
 In file included from Vector_tests.cpp:10:
@@ -703,7 +986,7 @@ In file included from Vector_tests.cpp:10:
 ./../vector/../../utils/random_access_iterator.hpp:36:17: note: candidate constructor not viable: no known conversion from 'ft::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char> > >::const_iterator' (aka 'Iterator<const std::__1::basic_string<char> >') to 'ft::Iterator<std::__1::basic_string<char> >::value_type &' (aka 'std::__1::basic_string<char> &') for 1st argument
                 Iterator( value_type &src )
                 ^
-./../vector/../../utils/random_access_iterator.hpp:179:17: note: candidate function
+./../vector/../../utils/random_access_iterator.hpp:185:17: note: candidate function
                 operator Iterator<const Type>()
                 ^
 In file included from Vector_tests.cpp:10:
@@ -719,7 +1002,7 @@ Vector_tests.cpp:2873:39: note: in instantiation of function template specializa
 ./../vector/../../utils/random_access_iterator.hpp:36:17: note: candidate constructor not viable: no known conversion from 'ft::vector<int, std::__1::allocator<int> >::const_iterator' (aka 'Iterator<const int>') to 'ft::Iterator<int>::value_type &' (aka 'int &') for 1st argument
                 Iterator( value_type &src )
                 ^
-./../vector/../../utils/random_access_iterator.hpp:179:17: note: candidate function
+./../vector/../../utils/random_access_iterator.hpp:185:17: note: candidate function
                 operator Iterator<const Type>()
                 ^
 In file included from Vector_tests.cpp:10:
@@ -732,7 +1015,7 @@ In file included from Vector_tests.cpp:10:
 ./../vector/../../utils/random_access_iterator.hpp:36:17: note: candidate constructor not viable: no known conversion from 'ft::vector<int, std::__1::allocator<int> >::const_iterator' (aka 'Iterator<const int>') to 'ft::Iterator<int>::value_type &' (aka 'int &') for 1st argument
                 Iterator( value_type &src )
                 ^
-./../vector/../../utils/random_access_iterator.hpp:179:17: note: candidate function
+./../vector/../../utils/random_access_iterator.hpp:185:17: note: candidate function
                 operator Iterator<const Type>()
                 ^
 In file included from Vector_tests.cpp:10:
@@ -1137,5 +1420,5 @@ operator< (const basic_string<_CharT, _Traits, _Allocator>& __lhs,
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/string:3939:1: note: candidate template ignored: could not match 'const _CharT *' against 'vector<int, std::__1::allocator<int> >'
 operator< (const _CharT* __lhs,
 ^
-53 errors generated.
+59 errors generated.
 make: *** [vector] Error 1

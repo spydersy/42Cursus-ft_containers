@@ -31,7 +31,7 @@ namespace ft
                 typedef     ft::Iterator<value_type const>                const_iterator;
                 // typedef     const iterator                          const_iterator;
                 typedef     ft::reverse_iterator<value_type>        reverse_iterator;
-                typedef     const reverse_iterator                  const_reverse_iterator;
+                typedef     ft::reverse_iterator< const value_type> const_reverse_iterator;
         public:
 /* Constructors: *****************************************************************************************************/
             /*

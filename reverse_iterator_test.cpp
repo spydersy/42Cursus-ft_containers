@@ -626,36 +626,41 @@
 
 int		main()
 {
-	{
-		std::vector<int>	vect;
+	// {
+	// 	std::vector<int>	vect;
 
-		for (int i = 1; i <= 10; i++) vect.push_back(i);
+	// 	for (int i = 1; i <= 10; i++) vect.push_back(i);
 
-		std::vector<int>::const_iterator	it = vect.begin();
+	// 	std::vector<int>::const_iterator	it = vect.begin();
 
-		std::cout << *(++it) << std::endl;
+	// 	std::cout << *(++it) << std::endl;
+	// 	it = 32;
+	// 	for (; it < vect.end(); it++)
+	// 	{
 
-		for (; it < vect.end(); it++)
-		{
-
-			std::cout << *it << std::endl;
-		}
-	}
-	std::cout << "******************************" << std::endl;
+	// 		std::cout << *it << std::endl;
+	// 	}
+	// }
+	std::cout << "************************************" << std::endl;
 	{
 		ft::vector<int>	vect;
 
 		for (int i = 1; i <= 10; i++) vect.push_back(i);
 
-		ft::vector<int>::const_iterator	it = vect.begin();
+		ft::vector<int>::iterator	it = vect.begin();
 
-		std::cout << *(++it) << std::endl;
+		it = 3;
 
-		for (; it < vect.end(); it++)
-		{
-
-			std::cout << *it << std::endl;
-		}
+		std::cout << "*it: " << *it + 0 << std::endl;
+		std::cout << "*it: " << *it + 1 << std::endl;
+		std::cout << "*it: " << *it + 2 << std::endl;
+		std::cout << "*it: " << *it + 3 << std::endl;
+		std::cout << "*it: " << *it + 4 << std::endl;
+		std::cout << "*it: " << *it + 5 << std::endl;
+		std::cout << "*it: " << *it + 6 << std::endl;
+		std::cout << "*it: " << *it + 7 << std::endl;
+		std::cout << "*it: " << *it + 8 << std::endl;
+		std::cout << "*it: " << *it + 9 << std::endl;
 	}
 	return (0);
 }
