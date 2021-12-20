@@ -16,71 +16,43 @@ namespace   ft
             ** Member Types:
             */
             typedef     Type                             value_type;
+            typedef     const Type                             const_value_type;
             typedef     Type*                            pointer;
             typedef     Type&                            reference;
             typedef     std::ptrdiff_t                   difference_type;
             typedef     std::random_access_iterator_tag  iterator_category;
             typedef     size_t                           size_type;
 
-            /*
-            ** Constructors:
-            */
-                /*
-                ** Default Constructor:
-                */
                 Iterator( void )
                 {
                     this->_ptr = NULL;
                 }
 
-                /*
-                ** Copy Constructor:
-                */
                 Iterator( Iterator const & src )
                 {
                     this->_ptr = src._ptr;
                 }
 
-                /*
-                ** Assignment Operator:
-                */
-                Iterator    &operator=( Iterator const & src ) const
+                Iterator( value_type &src )
+                {
+                    this->_ptr = &src;
+                }
+
+                Iterator    &operator=( Iterator const & src)
                 {
                     this->_ptr = src._ptr;
                     return ( *this );
                 }
 
-                // const Iterator    &operator=( Iterator const & src ) const
-                // {
-                    // this->_ptr = src._ptr;
-                    // return ( *this );
-                // }
+                ~Iterator() { return ; }
 
-                /*
-                ** Default Destructor:
-                */
-                ~Iterator()
-                {
-                    return ;
-                }
-
-            /*
-            ** Comparison for equivalence:
-            */
-                /*
-                ** Equality opearator:
-                */
                 bool    operator==( Iterator const & src ) const
                 {
                     return (this->_ptr == src._ptr);
                 }
 
-                /*
-                ** Inequality opearator:
-                */
                 bool    operator!=( Iterator const & src ) const
                 {
-                    // std::cout << "< operator!= >" << std::endl;
                     return (this->_ptr != src._ptr);
                 }
 
@@ -90,7 +62,7 @@ namespace   ft
                 /*
                 ** Pre-increment opearator:
                 */
-                Iterator    &operator++() const
+                Iterator    &operator++()
                 {
                     this->_ptr++;
                     return (*this);
@@ -99,7 +71,7 @@ namespace   ft
                 /*
                 ** Post-increment opearator:
                 */
-                Iterator    operator++( int ) const
+                Iterator    operator++( int )
                 {
                         Iterator   prev = *this;
 
@@ -110,7 +82,7 @@ namespace   ft
                 /*
                 ** Pre-decrement opearator:
                 */
-                Iterator    &operator--() const
+                Iterator    &operator--()
                 {
                     this->_ptr--;
                     return (*this);
@@ -119,7 +91,7 @@ namespace   ft
                 /*
                 ** Post-decrement opearator:
                 */
-                Iterator    operator--( int ) const
+                Iterator    operator--( int )
                 {
                         Iterator   prev = *this;
 
@@ -134,14 +106,13 @@ namespace   ft
                 {
                     return (*(this->_ptr));
                 }
-                //  operator->() {}
 
                 pointer   operator->( void ) const
                 {
                     return (&operator*());
                 }
 
-                difference_type   operator-(Iterator const & src) const
+                difference_type   operator-(Iterator const & src)
                 {
                     Iterator   ret;
 
@@ -150,7 +121,7 @@ namespace   ft
                     return (this->_ptr - src._ptr);
                 }
 
-                Iterator   operator-(size_type value) const
+                Iterator   operator-(size_type value)
                 {
                     Iterator   ret;
 
@@ -176,11 +147,6 @@ namespace   ft
                     return (this->_ptr <= src._ptr);
                 }
 
-                // Iterator operator+(int n, Iterator const & src)
-                // {
-                    // return (&(*src) + n);
-                // }
-
                 bool    operator>( Iterator const & src ) const
                 {
                     return (this->_ptr > src._ptr);
@@ -191,13 +157,13 @@ namespace   ft
                     return (this->_ptr >= src._ptr);
                 }
 
-                reference   operator+=( size_type value) const
+                Iterator operator+=( size_type const value)
                 {
                     this->_ptr += value;
                     return (*this);
                 }
 
-                reference   operator-=( size_type value) const
+                Iterator   operator-=( size_type value)
                 {
                     this->_ptr -= value;
                     return (*this);
@@ -206,6 +172,12 @@ namespace   ft
                 reference   operator[]( size_type index ) const
                 {
                     return (this->_ptr[index]);
+                }
+                // operator    value_type() { return _ptr; }
+                operator Iterator<const Type>()
+                {
+                    std::cout << "Operator Callleed" << std::endl;
+                    return ft::Iterator<const Type>(*this);
                 }
 
         private:
@@ -219,7 +191,7 @@ namespace   ft
                 */
                 void    setPtr( reference address )
                 {
-                    _ptr = &address;
+                    this->_ptr = &address;
                 }
     };
 };

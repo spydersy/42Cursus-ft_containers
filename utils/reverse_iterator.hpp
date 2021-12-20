@@ -38,14 +38,14 @@ namespace ft
                     this->_iterator = src;
                 }
 
-                // reverse_iterator( typename ft::Iterator<value_type> src ) : _iterator(src)
-                // {
-                // }
+                reverse_iterator( typename ft::Iterator<value_type> src ) : _iterator(src)
+                {
+                }
 
                 /*
                 ** Assignment Operator:
                 */
-                reverse_iterator    &operator=( reverse_iterator const & src ) const
+                reverse_iterator    &operator=( reverse_iterator const & src )
                 {
                     this->_iterator = src._iterator;
                     return ( *this );
@@ -90,7 +90,7 @@ namespace ft
                 /*
                 ** Pre-increment opearator:
                 */
-                reverse_iterator    &operator++() const
+                reverse_iterator    &operator++()
                 {
                     this->_iterator--;
                     return (*this);
@@ -99,7 +99,7 @@ namespace ft
                 /*
                 ** Post-increment opearator:
                 */
-                reverse_iterator    operator++( int ) const
+                reverse_iterator    operator++( int )
                 {
                         reverse_iterator   prev = *this;
 
@@ -143,7 +143,7 @@ namespace ft
                     // return (&operator*());
                 }
 
-                difference_type   operator-(reverse_iterator const & src) const
+                difference_type   operator-(reverse_iterator const & src)
                 {
                     reverse_iterator   ret;
 
@@ -152,7 +152,7 @@ namespace ft
                     return (this->_iterator - src._iterator);
                 }
 
-                reverse_iterator   operator-(size_type value) const
+                reverse_iterator   operator-(size_type value)
                 {
                     reverse_iterator   ret;
 
@@ -170,12 +170,12 @@ namespace ft
 
                 bool    operator<( reverse_iterator const & src ) const
                 {
-                    return (this->_iterator < src._iterator);
+                    return (this->_iterator >= src._iterator);
                 }
 
                 bool    operator<=( reverse_iterator const & src ) const
                 {
-                    return (this->_iterator <= src._iterator);
+                    return (this->_iterator > src._iterator);
                 }
 
                 // Iterator operator+(int n, Iterator const & src)
@@ -185,27 +185,27 @@ namespace ft
 
                 bool    operator>( reverse_iterator const & src ) const
                 {
-                    return (this->_iterator > src._iterator);
+                    return (this->_iterator <= src._iterator);
                 }
 
                 bool    operator>=( reverse_iterator const & src ) const
                 {
-                    return (this->_iterator >= src._iterator);
+                    return (this->_iterator < src._iterator);
                 }
 
-                reference   operator+=( size_type value) const
+                reference   operator+=( size_type value)
                 {
                     this->_iterator -= value;
                     return (*this);
                 }
 
-                reference   operator-=( size_type value) const
+                reference   operator-=( size_type value)
                 {
                     this->_iterator += value;
                     return (*this);
                 }
 
-                reference   operator[]( size_type index ) const
+                reference   operator[]( size_type index )
                 {
                     return (this->_iterator[index]);
                 }

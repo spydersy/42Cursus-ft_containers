@@ -24,20 +24,20 @@
 
 // int	main()
 // {
-	// std::vector<int>	vect;
-	// std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+// 	std::vector<int>	vect;
+// 	std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
 
-	// vect.resize(15, 4);
-	// std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+// 	vect.resize(15, 4);
+// 	std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
 
-	// vect.resize(19, 4);
-	// std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+// 	vect.resize(19, 4);
+// 	std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
 
-	// vect.resize(31, 4);
-	// std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+// 	vect.resize(31, 4);
+// 	std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
 
-	// vect.resize(39, 4);
-	// std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+// 	vect.resize(39, 4);
+// 	std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
 
 // }
 	// std::cout << "********************" << std::endl;
@@ -63,76 +63,107 @@
 
 // int	main()
 // {
-	// {
-		// std::vector<int>	sys;
+// 	ft::vector<int> abc;
+//     ft::vector<int> data(20);
+//     ft::vector<int>::const_iterator it;
 
-		// for (int i = 1; i < 11; i++)
-		// {
-			// sys.push_back(i);
-		// }
+//     for (int i = 0; i < 10;i++)
+//         abc.push_back(i);
+//     it = data.begin();
+//     it = it + 3;
+//     data.insert(it,abc.begin(),abc.end());
+// 	return (0);
+// }
 
-		// std::vector<int>		vect(sys.begin(), sys.end());
-		// std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+// int		main()
+// {
+// 	ft::vector<int>	vect;
+// 	for (int i = 1; i <= 10; i++)	vect.push_back(i);
 
-		// vect.resize(5, 4);
-		// std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+// 	ft::vector<int>::const_iterator	cit = vect.begin();
 
-		// for (std::vector<int>::iterator i = vect.begin(); i < vect.end(); i++)
-		// {
-			// std::cout << "*it: " << *i << std::endl;
-		// }
+// 	for (; cit < vect.end(); cit++)
+// 	{
+// 		std::cout << "*Cit: " << *cit << std::endl;
+// 	}
 
-		// std::vector<int>::iterator	it = vect.end();
-		// std::cout << "check value: " << *it++ << std::endl;
-		// std::cout << "check value: " << *it++ << std::endl;
-		// std::cout << "check value: " << *it++ << std::endl;
 
-		// std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
-		// vect.resize(21, 1337);
-		// std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
-		// std::cout << "				~~~~~~~~~~~" << std::endl;
-		// for (std::vector<int>::iterator it = vect.begin(); it < vect.end(); it++)
-		// {
-			// std::cout << "It checker: " << *it << std::endl;
-		// }
+// 	return (0);
+// }
 
-	// }
-	// std::cout << "***************************************" << std::endl;
-	// {
-		// std::vector<int>	sys;
+// int	main()
+// {
+// 	{
+// 		std::vector<int>	sys;
 
-		// for (int i = 1; i < 11; i++)
-		// {
-			// sys.push_back(i);
-		// }
+// 		for (int i = 1; i < 11; i++)
+// 		{
+// 			sys.push_back(i);
+// 		}
 
-		// ft::vector<int>		vect(sys.begin(), sys.end());
-		// std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+// 		std::vector<int>		vect(sys.begin(), sys.end());
+// 		std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
 
-		// vect.resize(5, 4);
-		// std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+// 		vect.resize(5, 4);
+// 		std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
 
-		// for (ft::vector<int>::iterator i = vect.begin(); i < vect.end(); i++)
-		// {
-			// std::cout << "*it: " << *i << std::endl;
-		// }
+// 		for (std::vector<int>::iterator i = vect.begin(); i < vect.end(); i++)
+// 		{
+// 			std::cout << "*it: " << *i << std::endl;
+// 		}
 
-		// ft::vector<int>::iterator	it = vect.end();
-		// std::cout << "check value: " << *it++ << std::endl;
-		// std::cout << "check value: " << *it++ << std::endl;
-		// std::cout << "check value: " << *it++ << std::endl;
+// 		std::vector<int>::iterator	it = vect.end();
+// 		std::cout << "check value: " << *it++ << std::endl;
+// 		std::cout << "check value: " << *it++ << std::endl;
+// 		std::cout << "check value: " << *it++ << std::endl;
 
-		// std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
-		// vect.resize(21, 1337);
-		// std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
-		// std::cout << "				~~~~~~~~~~~" << std::endl;
-		// for (ft::vector<int>::iterator it = vect.begin(); it < vect.end(); it++)
-		// {
-			// std::cout << "It checker: " << *it << std::endl;
-		// }
+// 		std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+// 		vect.resize(21, 1337);
+// 		std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+// 		std::cout << "				~~~~~~~~~~~" << std::endl;
+// 		for (std::vector<int>::iterator it = vect.begin(); it < vect.end(); it++)
+// 		{
+// 			std::cout << "It checker: " << *it << std::endl;
+// 		}
 
-	// }
-	// return (0);
+// 	}
+// }
+// 	std::cout << "***************************************" << std::endl;
+// 	{
+// 		std::vector<int>	sys;
+
+// 		for (int i = 1; i < 11; i++)
+// 		{
+// 			sys.push_back(i);
+// 		}
+
+// 		ft::vector<int>		vect(sys.begin(), sys.end());
+// 		std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+
+// 		vect.resize(5, 4);
+// 		std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+
+// 		for (ft::vector<int>::iterator i = vect.begin(); i < vect.end(); i++)
+// 		{
+// 			std::cout << "*it: " << *i << std::endl;
+// 		}
+
+// 		ft::vector<int>::iterator	it = vect.end();
+// 		std::cout << "check value: " << *it++ << std::endl;
+// 		std::cout << "check value: " << *it++ << std::endl;
+// 		std::cout << "check value: " << *it++ << std::endl;
+
+// 		std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+// 		vect.resize(21, 1337);
+// 		std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+// 		std::cout << "				~~~~~~~~~~~" << std::endl;
+// 		for (ft::vector<int>::iterator it = vect.begin(); it < vect.end(); it++)
+// 		{
+// 			std::cout << "It checker: " << *it << std::endl;
+// 		}
+
+// 	}
+// 	return (0);
 // }
 
 
@@ -453,34 +484,161 @@
 	// return (0);
 // }
 
-int	main()
+// int		main()
+// {
+// 	{
+// 		std::vector<int>	vect;
+// 		for (int i = 1; i < 21; i++)	vect.push_back(i);
+// 		for (std::vector<int>::reverse_iterator it = vect.rend(); it < vect.rbegin(); it++)
+// 		{
+// 			std::cout << "*it: " << *it << std::endl;
+// 		}
+// 	}
+// 	std::cout << "**************************" << std::endl;
+// 	{
+// 		ft::vector<int>	vect;
+// 		for (int i = 1; i < 21; i++)	vect.push_back(i);
+// 		for (ft::vector<int>::iterator it = vect.begin(); it < vect.end(); it++)
+// 		{
+// 			std::cout << "*it: " << *it << std::endl;
+// 		}
+// 	}
+// 	return (0);
+// }
+
+// int main ()
+// {
+// 	{
+//   std::vector<int> myvector (5);  // 5 default-constructed ints
+
+//   int i=0;
+
+//   std::vector<int>::reverse_iterator rit = myvector.rbegin();
+//   for (; rit!= myvector.rend(); ++rit)
+//     *rit = ++i;
+
+//   std::cout << "myvector contains:";
+//   for (std::vector<int>::iterator it = myvector.begin(); it != myvector.end(); ++it)
+//     std::cout << ' ' << *it;
+//   std::cout << '\n';
+// 	}
+// 	{
+//   ft::vector<int> myvector (5);  // 5 default-constructed ints
+
+//   int i=0;
+
+//   ft::vector<int>::reverse_iterator rit = myvector.rbegin();
+//   for (; rit!= myvector.rend(); ++rit)
+//     *rit = ++i;
+
+//   std::cout << "myvector contains:";
+//   for (ft::vector<int>::iterator it = myvector.begin(); it != myvector.end(); ++it)
+//     std::cout << ' ' << *it;
+//   std::cout << '\n';
+
+// 	}
+//   return 0;
+// }
+
+// int	main()
+// {
+// 	{
+// 		std::vector<int>					vect;
+// 		std::vector<int>::reverse_iterator	rit;
+
+// 		for(int i = 1; i < 11 ; i++) vect.push_back(i);
+
+// 		rit = vect.rbegin();
+// 		// std::cout << *rit << std::endl;
+// 		std::cout << *vect.rbegin() << std::endl;
+// 		std::cout << *vect.rend() << " DBG" << std::endl;
+// 		if (rit <= vect.rend())	std::cout << "Yeeeeeeees" << std::endl;
+// 		else	                std::cout << "Nooooooooo" << std::endl;
+// 		for (; rit < vect.rend(); rit++)
+// 		{
+// 			std::cout << "Rit: " << *rit << std::endl;
+// 		}
+
+// 	}
+// 	std::cout << "**************************" << std::endl;
+// 	{
+// 		ft::vector<int>					vect;
+// 		ft::vector<int>::reverse_iterator	rit;
+
+// 		for(int i = 1; i < 11 ; i++) vect.push_back(i);
+
+// 		rit = vect.rbegin();
+// 		// std::cout << *rit << std::endl;
+// 		std::cout << *vect.rbegin() << std::endl;
+// 		std::cout << *vect.rend() << " DBG" << std::endl;
+// 		if (rit <= vect.rend())	std::cout << "Yeeeeeeees" << std::endl;
+// 		else	                std::cout << "Nooooooooo" << std::endl;
+// 		for (; rit < vect.rend(); rit++)
+// 		{
+// 			std::cout << "Rit: " << *rit << std::endl;
+// 		}
+// 	}
+// 	return (0);
+// }
+
+// int		main()
+// {
+// 	ft::vector<int>	vect;
+
+// 	for (int i = 1; i <= 20; i++)	vect.push_back(i);
+
+// 	ft::vector<int>::iterator			it = vect.end() - 1;
+// 	ft::vector<int>::reverse_iterator	rit = vect.rbegin();
+
+// 	for (; it >= vect.begin() - 5; it--)
+// 	{
+// 		std::cout << "*it: " << *it << " *rit: " << *rit << std::endl;
+// 		rit++;
+// 	}
+
+
+// 	return (0);
+// }
+
+// int	main()
+// {
+// 	{
+// 		std::vector<int>	vect(15, 12);
+// 		std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+
+// 		for (std::vector<int>::iterator it = vect.begin(); it < vect.end(); it++)
+// 		{
+// 			std::cout << "*it: " << *it << std::endl;
+// 		}
+// 	}
+// 	std::cout << "**************************************************************" << std::endl;
+// 	{
+// 		ft::vector<int>	vect(15, 12);
+// 		std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+// 		ft::vector<int>::iterator it = vect.begin();
+
+// 		for (; it < vect.end(); it++)
+// 		{
+// 			std::cout << "*it: " << *it << std::endl;
+// 		}
+// 	}
+// }
+
+int		main()
 {
+	ft::vector<int>	vect;
+
+	for (int i = 1; i <= 10; i++) vect.push_back(i);
+
+	ft::vector<int>::const_iterator	it = vect.begin();
+
+	std::cout << *(++it) << std::endl;
+
+	for (; it < vect.end(); it++)
 	{
-		std::vector<int>					vect;
-		std::vector<int>::reverse_iterator	rit;
 
-		for(int i = 1; i < 11 ; i++) vect.push_back(i);
-
-		rit = vect.rbegin();
-		for (; rit <= vect.rend(); rit++)
-		{
-			std::cout << "Rit: " << *rit << std::endl;
-		}
-
+		std::cout << *it << std::endl;
 	}
-	std::cout << "**************************" << std::endl;
-	{
-		ft::vector<int>					vect;
-		ft::vector<int>::reverse_iterator	rit;
 
-		for(int i = 1; i < 11 ; i++) vect.push_back(i);
-
-		rit = vect.rbegin();
-		for (; rit <= vect.rend(); rit++)
-		{
-			std::cout << "Rit: " << *rit << std::endl;
-		}
-
-	}
 	return (0);
 }

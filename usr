@@ -1,15 +1,34 @@
-It: 42
-It: 50
-It: 51
-It: 52
-It: 53
-It: 54
-It: 55
-It: 56
-It: 57
-It: 58
-It: 59
-It: 60
-It: 13
-It: 125
-Size: 14 Capacity: 14
+Size: 10 Capacity: 10
+Size: 5 Capacity: 10
+*it: 1
+*it: 2
+*it: 3
+*it: 4
+*it: 5
+check value: 6
+check value: 7
+check value: 8
+Size: 5 Capacity: 10
+Size: 21 Capacity: 21
+				~~~~~~~~~~~
+It checker: 1
+It checker: 2
+It checker: 3
+It checker: 4
+It checker: 5
+It checker: 1337
+It checker: 1337
+It checker: 1337
+It checker: 1337
+It checker: 1337
+It checker: 1337
+It checker: 1337
+It checker: 1337
+It checker: 1337
+It checker: 1337
+It checker: 1337
+It checker: 1337
+It checker: 1337
+It checker: 1337
+It checker: 1337
+It checker: 1337

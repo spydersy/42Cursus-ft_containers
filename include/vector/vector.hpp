@@ -28,7 +28,8 @@ namespace ft
                 typedef     const value_type*                       const_pointer;
                 typedef     size_t                                  size_type;
                 typedef     ft::Iterator<value_type>                iterator;
-                typedef     const iterator                          const_iterator;
+                typedef     ft::Iterator<value_type const>                const_iterator;
+                // typedef     const iterator                          const_iterator;
                 typedef     ft::reverse_iterator<value_type>        reverse_iterator;
                 typedef     const reverse_iterator                  const_reverse_iterator;
         public:
@@ -151,9 +152,9 @@ namespace ft
                 */
                 iterator begin( void )
                 {
-                    iterator    it;
+                    iterator    it(this->_array[0]);
 
-                    it.setPtr(this->_array[0]);
+                    // it.setPtr(this->_array[0]);
                     return (it);
                 }
 
@@ -162,9 +163,10 @@ namespace ft
                 */
                 const_iterator begin() const
                 {
-                    iterator    it;
+                    iterator    it(this->_array[0]);
 
-                    it.setPtr(this->_array[0]);
+                    // *it = this->_array[0];
+                    // it.setPtr(this->_array[0]);
                     return (it);
                 }
 
@@ -173,9 +175,11 @@ namespace ft
                 */
                 iterator end()
                 {
-                    iterator    it;
+                    iterator    it(_array[this->_size]);
 
-                    it.setPtr(this->_array[this->_size]);
+                    // *it = this->_array[this->_size];
+
+                    // it.setPtr(this->_array[this->_size]);
                     return (it);
                 }
 
@@ -184,44 +188,37 @@ namespace ft
                 */
                 const_iterator end() const
                 {
-                    iterator    it;
+                    iterator    it(this->_array[this->_size]);
 
-                    it.setPtr(this->_array[this->_size]);
+                    // *it = this->_array[this->_size];
+
+                    // it.setPtr(this->_array[this->_size]);
                     return (it);
                 }
 
                 reverse_iterator rbegin()
                 {
-                    iterator    it;
+                    reverse_iterator    rit(this->end() - 1);
 
-                    it.setPtr()
-                    reverse_iterator    rit;
-
-                    rit._iterator = this->end() - 1;
+                    // rit._iterator = this->end() - 1;
                     return (rit);
                 }
 
                 const_reverse_iterator rbegin() const
                 {
-                    reverse_iterator    rit;
-
-                    rit._iterator = this->end() - 1;
+                    reverse_iterator    rit(this->end() - 1);
                     return (rit);
                 }
 
                 reverse_iterator rend()
                 {
-                    reverse_iterator    rit;
-
-                    rit._iterator = this->begin();
+                    reverse_iterator    rit(this->begin() - 2);
                     return (rit);
                 }
 
                 const_reverse_iterator rend() const
                 {
-                    reverse_iterator    rit;
-
-                    rit._iterator = this->begin();
+                    reverse_iterator    rit(this->begin() - 2);
                     return (rit);
                 }
 /* Capacity: ****************************************************************************************************/
