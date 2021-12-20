@@ -626,19 +626,36 @@
 
 int		main()
 {
-	ft::vector<int>	vect;
-
-	for (int i = 1; i <= 10; i++) vect.push_back(i);
-
-	ft::vector<int>::const_iterator	it = vect.begin();
-
-	std::cout << *(++it) << std::endl;
-
-	for (; it < vect.end(); it++)
 	{
+		std::vector<int>	vect;
 
-		std::cout << *it << std::endl;
+		for (int i = 1; i <= 10; i++) vect.push_back(i);
+
+		std::vector<int>::const_iterator	it = vect.begin();
+
+		std::cout << *(++it) << std::endl;
+
+		for (; it < vect.end(); it++)
+		{
+
+			std::cout << *it << std::endl;
+		}
 	}
+	std::cout << "******************************" << std::endl;
+	{
+		ft::vector<int>	vect;
 
+		for (int i = 1; i <= 10; i++) vect.push_back(i);
+
+		ft::vector<int>::const_iterator	it = vect.begin();
+
+		std::cout << *(++it) << std::endl;
+
+		for (; it < vect.end(); it++)
+		{
+
+			std::cout << *it << std::endl;
+		}
+	}
 	return (0);
 }

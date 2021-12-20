@@ -119,7 +119,7 @@ namespace ft
                 /*
                 ** Post-decrement opearator:
                 */
-                reverse_iterator    operator--( int ) const
+                reverse_iterator    operator--( int )
                 {
                         reverse_iterator   prev = *this;
 
@@ -130,7 +130,7 @@ namespace ft
             /*
             ** Dereference Operators:
             */
-                reference   operator*( void ) const
+                reference   operator*( void )
                 {
                     return (this->_iterator.operator*());
                     // return (*(this->_iterator));

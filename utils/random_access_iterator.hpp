@@ -102,8 +102,10 @@ namespace   ft
             /*
             ** Dereference Operators:
             */
-                reference   operator*( void ) const
+                reference   operator*( void )
                 {
+                    // std::cout << "DBBBBBBBBBBBBG: " << &(this->_ptr) << std::endl;
+                    // std::cout << "DBBBBBBBBBBBBG: " <<  (this->_ptr) << std::endl;
                     return (*(this->_ptr));
                 }
 
@@ -176,8 +178,8 @@ namespace   ft
                 // operator    value_type() { return _ptr; }
                 operator Iterator<const Type>()
                 {
-                    std::cout << "Operator Callleed" << std::endl;
-                    return ft::Iterator<const Type>(*this);
+                    // std::cout << "Operator Callleed" << std::endl;
+                    return (Iterator< const Type>(*_ptr));
                 }
 
         private:
