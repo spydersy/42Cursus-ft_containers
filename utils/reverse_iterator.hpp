@@ -73,7 +73,7 @@ namespace ft
                 */
                 bool    operator==( reverse_iterator const & src )
                 {
-                    return (this->_iterator == src._iterator);
+                    return ((this->_iterator == src._iterator));
                 }
 
                 /*
@@ -132,9 +132,7 @@ namespace ft
             */
                 reference   operator*( void )
                 {
-                    value_type  holder = this->_iterator.operator*();
-                    // return (this->_iterator.operator*());
-                    return (holder);
+                    return (this->_iterator.operator*());
                     // return (*(this->_iterator));
                 }
                 //  operator->() {}
@@ -219,7 +217,7 @@ namespace ft
                 operator reverse_iterator<const Type>()
                 {
                     std::cout << "Operator d zeb called :) " << std::endl;
-                    return (reverse_iterator< const Type>(*_ptr));
+                    return (reverse_iterator< const Type>(_iterator));
                 }
     private:
         ft::Iterator<Type> _iterator;

@@ -647,20 +647,17 @@ int		main()
 
 		for (int i = 1; i <= 10; i++) vect.push_back(i);
 
-		ft::vector<int>::iterator	it = vect.begin();
+		ft::vector<int>::reverse_iterator	it = vect.rbegin();
+		ft::vector<int>::reverse_iterator	it0 = vect.rend();
 
-		it = 3;
+	std::cout << (*it == *(vect.end() - 1)) << std::endl;
 
-		std::cout << "*it: " << *it + 0 << std::endl;
-		std::cout << "*it: " << *it + 1 << std::endl;
-		std::cout << "*it: " << *it + 2 << std::endl;
-		std::cout << "*it: " << *it + 3 << std::endl;
-		std::cout << "*it: " << *it + 4 << std::endl;
-		std::cout << "*it: " << *it + 5 << std::endl;
-		std::cout << "*it: " << *it + 6 << std::endl;
-		std::cout << "*it: " << *it + 7 << std::endl;
-		std::cout << "*it: " << *it + 8 << std::endl;
-		std::cout << "*it: " << *it + 9 << std::endl;
+	for (; it < vect.rend(); it++)
+	{
+		std::cout << "*it: " << *it << std::endl;
+	}
+
+
 	}
 	return (0);
 }
