@@ -1,0 +1,93 @@
+../utilities_tests/iterator_traits.cpp:2:10: error: expected "FILENAME" or <FILENAME>
+#include UTILITIES
+         ^
+../utilities_tests/lexicographical.cpp:20:20: error: use of undeclared identifier 'ft'
+        result2.push_back(_lexicographical(b1.begin(), b1.end(), b2.begin(), b2.end()));
+                          ^
+../utilities_tests/../system/../../config.hpp:28:26: note: expanded from macro '_lexicographical'
+#define _lexicographical        ft::lexicographical_compare
+                                ^
+2 errors generated.
+ected a qualified name after 'typename'
+template <class T> typename _enable_if< std::is_unsigned<T>::value >::type
+                                                                      ^
+../utilities_tests/enable_if.cpp:4:71: warning:  j
+                                                                          ^
+                                                                          ;
+../utilities_tests/enable_if.cpp:5:3: error: unknown type name 'foo'
+                foo(T) {
+                ^
+../utilities_tests/enable_if.cpp:5:9: error: expected ';' after top level declarator
+                foo(T) {
+                      ^
+                      ;
+1 warning and 6 errors generated.
+tegral
+                                ^
+../utilities_tests/is_integral.cpp:12:3: error: use of undeclared identifier 'ft'
+        (_is_integral<signed char>() == std::is_integral<signed char>()) ? 0 : res = 0;
+         ^
+../utilities_tests/../system/../../config.hpp:24:24: note: expanded from macro '_is_integral'
+#define _is_integral            ft::is_integral
+                                ^
+../utilities_tests/is_integral.cpp:13:3: error: use of undeclared identifier 'ft'
+        (_is_integral<unsigned char>() == std::is_integral<unsigned char>()) ? 0 : res = 0;
+         ^
+../utilities_tests/../system/../../config.hpp:24:24: note: expanded from macro '_is_integral'
+#define _is_integral            ft::is_integral
+                                ^
+../utilities_tests/is_integral.cpp:14:3: error: use of undeclared identifier 'ft'
+        (_is_integral<wchar_t>() == std::is_integral<wchar_t>()) ? 0 : res = 0;
+         ^
+../utilities_tests/../system/../../config.hpp:24:24: note: expanded from macro '_is_integral'
+#define _is_integral            ft::is_integral
+                                ^
+../utilities_tests/is_integral.cpp:15:3: error: use of undeclared identifier 'ft'
+        (_is_integral<char16_t>() == std::is_integral<char16_t>()) ? 0 : res = 0;
+         ^
+../utilities_tests/../system/../../config.hpp:24:24: note: expanded from macro '_is_integral'
+#define _is_integral            ft::is_integral
+                                ^
+../utilities_tests/is_integral.cpp:16:3: error: use of undeclared identifier 'ft'
+        (_is_integral<short>() == std::is_integral<short>()) ? 0 : res = 0;
+         ^
+../utilities_tests/../system/../../config.hpp:24:24: note: expanded from macro '_is_integral'
+#define _is_integral            ft::is_integral
+                                ^
+../utilities_tests/is_integral.cpp:17:3: error: use of undeclared identifier 'ft'
+        (_is_integral<unsigned short>() == std::is_integral<unsigned short>()) ? 0 : res = 0;
+         ^
+../utilities_tests/../system/../../config.hpp:24:24: note: expanded from macro '_is_integral'
+#define _is_integral            ft::is_integral
+                                ^
+../utilities_tests/is_integral.cpp:18:3: error: use of undeclared identifier 'ft'
+        (_is_integral<unsigned int>() == std::is_integral<unsigned int>()) ? 0 : res = 0;
+         ^
+../utilities_tests/../system/../../config.hpp:24:24: note: expanded from macro '_is_integral'
+#define _is_integral            ft::is_integral
+                                ^
+../utilities_tests/is_integral.cpp:19:3: error: use of undeclared identifier 'ft'
+        (_is_integral<long>() == std::is_integral<long>()) ? 0 : res = 0;
+         ^
+../utilities_tests/../system/../../config.hpp:24:24: note: expanded from macro '_is_integral'
+#define _is_integral            ft::is_integral
+                                ^
+../utilities_tests/is_integral.cpp:20:3: error: use of undeclared identifier 'ft'
+        (_is_integral<unsigned long>() == std::is_integral<unsigned long>()) ? 0 : res = 0;
+         ^
+../utilities_tests/../system/../../config.hpp:24:24: note: expanded from macro '_is_integral'
+#define _is_integral            ft::is_integral
+                                ^
+../utilities_tests/is_integral.cpp:21:3: error: use of undeclared identifier 'ft'
+        (_is_integral<long long>() == std::is_integral<long long>()) ? 0 : res = 0;
+         ^
+../utilities_tests/../system/../../config.hpp:24:24: note: expanded from macro '_is_integral'
+#define _is_integral            ft::is_integral
+                                ^
+../utilities_tests/is_integral.cpp:22:3: error: use of undeclared identifier 'ft'
+        (_is_integral<unsigned long long>() == std::is_integral<unsigned long long>()) ? 0 : res = 0;
+         ^
+../utilities_tests/../system/../../config.hpp:24:24: note: expanded from macro '_is_integral'
+#define _is_integral            ft::is_integral
+                                ^
+16 errors generated.
