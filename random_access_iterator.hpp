@@ -107,9 +107,9 @@ namespace   ft
                     return (*(this->_ptr));
                 }
 
-                pointer   operator->( void ) const
+                pointer   operator->( void )
                 {
-                    return (&operator*());
+                    return (this->_ptr);
                 }
 
                 difference_type   operator-(Iterator const & src)
@@ -182,6 +182,16 @@ namespace   ft
         private:
             value_type    *_ptr;
     };
+
+    template< typename Type>
+    Iterator<Type>   operator+(size_t value, const Iterator<Type> & src)
+    {
+        Iterator<Type>   ret(src);
+
+        // ret._ptr = src._ptr + value;
+        ret += value;
+        return (ret);
+    }
 };
 
 #endif

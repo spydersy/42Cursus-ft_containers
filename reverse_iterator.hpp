@@ -4,6 +4,7 @@
 
 #include "random_access_iterator.hpp"
 #include "enable_if.hpp"
+#include "vector.hpp"
 
 namespace ft
 {
@@ -18,7 +19,7 @@ namespace ft
             typedef     std::ptrdiff_t                   difference_type;
             typedef     std::random_access_iterator_tag  iterator_category;
             typedef     size_t                           size_type;
-
+            typedef typename ft::Iterator<Type> iterator;
             /*
             ** Constructors:
             */
@@ -137,10 +138,9 @@ namespace ft
                 }
                 //  operator->() {}
 
-                pointer   operator->( void ) const
+                pointer   operator->( void )
                 {
-                    return (&this->_iterator.operator*());
-                    // return (&operator*());
+                    return (_iterator.operator->());
                 }
 
                 difference_type   operator-(reverse_iterator const & src)
@@ -207,7 +207,8 @@ namespace ft
 
                 reference   operator[]( size_type index )
                 {
-                    return (this->_iterator[index]);
+                    return (this->base()[-index-1]);
+                    // return (this->_iterator[index]);
                 }
 
                 Iterator<Type> base() const
@@ -219,9 +220,20 @@ namespace ft
                     return (reverse_iterator< const Type>(_iterator));
                 }
     private:
-        ft::Iterator<Type> _iterator;
+        iterator _iterator;
+
+
     };  // class reverse_iterator
 
+    template< typename Type>
+    reverse_iterator<Type>   operator+(size_t value, const reverse_iterator<Type> & src)
+    {
+        reverse_iterator<Type>   ret(src);
+
+        // ret._ptr = src._ptr + value;
+        ret += value;
+        return (ret);
+    }
 }; // namespace ft
 
 #endif

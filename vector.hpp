@@ -6,10 +6,10 @@
 #include <memory>
 #include <exception>
 #include <vector>
-#include "../../utils/reverse_iterator.hpp"
-#include "../../utils/random_access_iterator.hpp"
-#include "../../utils/enable_if.hpp"
-#include "../../utils/is_integral.hpp"
+#include "reverse_iterator.hpp"
+#include "random_access_iterator.hpp"
+#include "enable_if.hpp"
+#include "is_integral.hpp"
 
 namespace ft
 {
@@ -75,19 +75,7 @@ namespace ft
                 {
                     this->_vector_allocator = alloc;
                     this->assign(first, last);
-                    // this->_size = last - first;
-                    // this->_capacity = this->_size;
-                    // this->_vector_allocator = alloc;
 
-                    // this->_array = this->_vector_allocator.allocate(this->_capacity);
-
-                    // size_type   c = 0;
-                    // while (first != last)
-                    // {
-                        // this->_array[c] = *first;
-                        // c++;
-                        // first++;
-                    // }
                 }
                 /*
                 ** Copy Constructor:
