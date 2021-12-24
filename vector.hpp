@@ -6,10 +6,10 @@
 #include <memory>
 #include <exception>
 #include <vector>
-#include "reverse_iterator.hpp"
-#include "random_access_iterator.hpp"
-#include "enable_if.hpp"
-#include "is_integral.hpp"
+#include "utils/reverse_iterator.hpp"
+#include "utils/random_access_iterator.hpp"
+#include "utils/enable_if.hpp"
+#include "utils/is_integral.hpp"
 
 namespace ft
 {
@@ -28,10 +28,9 @@ namespace ft
                 typedef     const value_type*                       const_pointer;
                 typedef     size_t                                  size_type;
                 typedef     ft::Iterator<value_type>                iterator;
-                typedef     ft::Iterator<value_type const>                const_iterator;
-                // typedef     const iterator                          const_iterator;
-                typedef     ft::reverse_iterator<value_type>        reverse_iterator;
-                typedef     ft::reverse_iterator< const value_type> const_reverse_iterator;
+                typedef     ft::Iterator<value_type const>          const_iterator;
+                typedef     ft::reverse_iterator<iterator>          reverse_iterator;
+                typedef     ft::reverse_iterator< const_iterator>   const_reverse_iterator;
         public:
 /* Constructors: *****************************************************************************************************/
             /*
@@ -141,6 +140,7 @@ namespace ft
                 */
                 const_iterator begin() const
                 {
+                    std::cout << "begni dbg: " << _array[0] << std::endl;
                     iterator    it(this->_array[0]);
 
                     // *it = this->_array[0];
@@ -190,13 +190,13 @@ namespace ft
 
                 reverse_iterator rend()
                 {
-                    reverse_iterator    rit(this->begin() - 2);
+                    reverse_iterator    rit(this->begin());
                     return (rit);
                 }
 
                 const_reverse_iterator rend() const
                 {
-                    reverse_iterator    rit(this->begin() - 2);
+                    reverse_iterator    rit(this->begin());
                     return (rit);
                 }
 /* Capacity: ****************************************************************************************************/

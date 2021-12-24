@@ -4,22 +4,40 @@
 
 #include "random_access_iterator.hpp"
 #include "enable_if.hpp"
-#include "vector.hpp"
+// #include "vector.hpp"
 
 namespace ft
 {
     template <typename Type>
-    class reverse_iterator
+    class reverse_iterator : public ft::iterator_traits<Type>
     {
     public:
 
-            typedef     Type                             value_type;
-            typedef     Type*                            pointer;
-            typedef     Type&                            reference;
-            typedef     std::ptrdiff_t                   difference_type;
-            typedef     std::random_access_iterator_tag  iterator_category;
-            typedef     size_t                           size_type;
-            typedef typename ft::Iterator<Type> iterator;
+            // typedef     Type                             value_type;
+            // typedef     Type*                            pointer;
+            // typedef     typename ft::Iterator<Type>::reference                            reference;
+            // typedef     std::ptrdiff_t                   difference_type;
+            // typedef     std::random_access_iterator_tag  iterator_category;
+            // typedef     size_t                           size_type;
+
+            typedef     typename Type::iterator_category  iterator_category;
+            typedef     typename Type::value_type         value_type;
+            typedef     typename Type::pointer            pointer;
+            typedef     typename Type::reference          reference;
+            typedef     typename Type::difference_type    difference_type;
+            typedef     typename Type::size_type          size_type;
+
+            // typedef typename ft::Iterator<Type> iterator;
+
+            // typedef     Type                             value_type;
+            // typedef     const Type                             const_value_type;
+            // typedef     Type*                            pointer;
+            // typedef     Type&                            reference;
+            // typedef     std::ptrdiff_t                   difference_type;
+            // typedef     std::random_access_iterator_tag  iterator_category;
+            // typedef     size_t                           size_type;
+
+
             /*
             ** Constructors:
             */
@@ -133,7 +151,7 @@ namespace ft
             */
                 reference   operator*( void )
                 {
-                    return (this->_iterator.operator*());
+                    return (*_iterator);
                     // return (*(this->_iterator));
                 }
                 //  operator->() {}
@@ -220,7 +238,7 @@ namespace ft
                     return (reverse_iterator< const Type>(_iterator));
                 }
     private:
-        iterator _iterator;
+        Type _iterator;
 
 
     };  // class reverse_iterator
