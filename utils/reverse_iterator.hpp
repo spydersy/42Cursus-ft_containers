@@ -50,7 +50,7 @@ namespace ft
         {
             std::cout << KYEL << "DBG_REVITERATOR: operator= " << std::endl << KNRM;
             this->_iterator = other.base();
-            return (this);
+            return (*this);
         }
         /*
         **  Base:
@@ -133,7 +133,7 @@ namespace ft
         {
             reverse_iterator    ret;
 
-            ret._iterator = this->_iterator + n;
+            ret._iterator = (this->base() + n);
             return (ret);
         }
         /*
@@ -162,6 +162,25 @@ namespace ft
                     const ft::reverse_iterator<Iterator2>& rhs )
     {
         return (lhs.base() == rhs.base());
+    }
+
+    template< class Iter >
+    reverse_iterator<Iter>
+        operator+( typename reverse_iterator<Iter>::difference_type n,
+                    const reverse_iterator<Iter>& it )
+    {
+        reverse_iterator<Iter>  ret(it);
+
+        ret += n;
+        return (ret);
+    }
+
+    template< class Iterator >
+    typename reverse_iterator<Iterator>::difference_type
+        operator-( const reverse_iterator<Iterator>& lhs,
+                    const reverse_iterator<Iterator>& rhs )
+    {
+        return (lhs.base() - rhs.base());
     }
 
     template< class Iterator1, class Iterator2 >

@@ -1,251 +1,40 @@
-Vector_tests.cpp:255:56: error: comparison of distinct pointer types ('int *' and '__gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > > *')
-    EQUAL((&(*rit) == &(*rit_1.base())) && (&(*my_rit) == &(*my_rit1.base())));
-                                            ~~~~~~~~~~ ^  ~~~~~~~~~~~~~~~~~~
-Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
-#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
-                   ^
-Vector_tests.cpp:374:56: error: comparison of distinct pointer types ('int *' and 'ft::Iterator<int> *')
-    EQUAL((&(*rit) == &(*rit_1.base())) && (&(*my_rit) == &(*my_rit1.base())));
-                                            ~~~~~~~~~~ ^  ~~~~~~~~~~~~~~~~~~
-Vector_tests.cpp:18:20: note: expanded from macro 'EQUAL'
-#define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
-                   ^
 In file included from Vector_tests.cpp:10:
-In file included from ./../vector.hpp:9:
-./../utils/reverse_iterator.hpp:55:64: error: no matching constructor for initialization of 'ft::Iterator<const int>'
-                reverse_iterator( InputIterator const & src) : _iterator(src)
-                                                               ^         ~~~
-Vector_tests.cpp:249:55: note: in instantiation of function template specialization 'ft::reverse_iterator<ft::Iterator<const int> >::reverse_iterator<ft::Iterator<int> >' requested here
-        ft::vector<int>::const_reverse_iterator c_it, c_ob(v.end());
-                                                      ^
-./../utils/random_access_iterator.hpp:65:17: note: candidate constructor not viable: no known conversion from 'const Iterator<int>' to 'const Iterator<const int>' for 1st argument
-                Iterator( Iterator const & src )
-                ^
-./../utils/random_access_iterator.hpp:70:17: note: candidate constructor not viable: no known conversion from 'const ft::Iterator<int>' to 'ft::Iterator<const int>::value_type' (aka 'const int') for 1st argument
-                Iterator( value_type &src )
-                ^
-./../utils/random_access_iterator.hpp:60:17: note: candidate constructor not viable: requires 0 arguments, but 1 was provided
-                Iterator( void )
-                ^
-In file included from Vector_tests.cpp:10:
-In file included from ./../vector.hpp:9:
-./../utils/reverse_iterator.hpp:55:64: error: no matching constructor for initialization of 'ft::Iterator<const int>'
-                reverse_iterator( InputIterator const & src) : _iterator(src)
-                                                               ^         ~~~
-Vector_tests.cpp:250:16: note: in instantiation of function template specialization 'ft::reverse_iterator<ft::Iterator<const int> >::reverse_iterator<ft::reverse_iterator<ft::Iterator<int> > >' requested here
-        c_it = my_rit2;
-               ^
-./../utils/random_access_iterator.hpp:65:17: note: candidate constructor not viable: no known conversion from 'const ft::reverse_iterator<ft::Iterator<int> >' to 'const ft::Iterator<const int>' for 1st argument
-                Iterator( Iterator const & src )
-                ^
-./../utils/random_access_iterator.hpp:70:17: note: candidate constructor not viable: no known conversion from 'const ft::reverse_iterator<ft::Iterator<int> >' to 'ft::Iterator<const int>::value_type' (aka 'const int') for 1st argument
-                Iterator( value_type &src )
-                ^
-./../utils/random_access_iterator.hpp:60:17: note: candidate constructor not viable: requires 0 arguments, but 1 was provided
-                Iterator( void )
-                ^
-In file included from Vector_tests.cpp:10:
-In file included from ./../vector.hpp:9:
-./../utils/reverse_iterator.hpp:234:28: error: no viable conversion from returned value of type 'const __gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > >' to function return type 'Iterator<__gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > > >'
-                    return (this->_iterator);
-                           ^~~~~~~~~~~~~~~~~
-Vector_tests.cpp:255:70: note: in instantiation of member function 'ft::reverse_iterator<__gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > > >::base' requested here
-    EQUAL((&(*rit) == &(*rit_1.base())) && (&(*my_rit) == &(*my_rit1.base())));
-                                                                     ^
-./../utils/random_access_iterator.hpp:65:17: note: candidate constructor not viable: no known conversion from 'const __gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > >' to 'const ft::Iterator<__gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > > > &' for 1st argument
-                Iterator( Iterator const & src )
-                ^
-./../utils/random_access_iterator.hpp:70:17: note: candidate constructor not viable: 1st argument ('const __gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > >') would lose const qualifier
-                Iterator( value_type &src )
-                ^
-In file included from Vector_tests.cpp:10:
-In file included from ./../vector.hpp:9:
-./../utils/reverse_iterator.hpp:217:28: error: non-const lvalue reference to type 'int' cannot bind to a value of unrelated type 'ft::reverse_iterator<__gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > > >'
-                    return (*this);
-                           ^~~~~~~
-Vector_tests.cpp:295:12: note: in instantiation of member function 'ft::reverse_iterator<__gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > > >::operator+=' requested here
-    my_rit += 1;
-           ^
-In file included from Vector_tests.cpp:10:
-In file included from ./../vector.hpp:9:
-./../utils/reverse_iterator.hpp:223:28: error: non-const lvalue reference to type 'int' cannot bind to a value of unrelated type 'ft::reverse_iterator<__gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > > >'
-                    return (*this);
-                           ^~~~~~~
-Vector_tests.cpp:300:12: note: in instantiation of member function 'ft::reverse_iterator<__gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > > >::operator-=' requested here
-    my_rit -= 1;
-           ^
-In file included from Vector_tests.cpp:10:
-In file included from ./../vector.hpp:9:
-./../utils/reverse_iterator.hpp:134:36: error: cannot increment value of type 'const __gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > >'
-                    this->_iterator++;
-                    ~~~~~~~~~~~~~~~^
-Vector_tests.cpp:313:5: note: in instantiation of member function 'ft::reverse_iterator<__gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > > >::operator--' requested here
-    --my_rit; // I incremented here to make sure that the object changes
-    ^
-In file included from Vector_tests.cpp:10:
-In file included from ./../vector.hpp:9:
-./../utils/reverse_iterator.hpp:135:28: error: binding value of type 'const reverse_iterator<...>' to reference to type 'reverse_iterator<...>' drops 'const' qualifier
-                    return (*this);
-                           ^~~~~~~
-./../utils/reverse_iterator.hpp:145:25: error: type '__gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > >' does not provide a call operator
-                        this->_iterator++(1);
-                        ^~~~~~~~~~~~~~~~~
-Vector_tests.cpp:333:71: note: in instantiation of member function 'ft::reverse_iterator<__gnu_cxx::__normal_iterator<int *, std::vector<int, std::allocator<int> > > >::operator--' requested here
-        ft::reverse_iterator<std::vector<int>::iterator> my_tmp(my_rit--);
-                                                                      ^
-In file included from Vector_tests.cpp:10:
-In file included from ./../vector.hpp:9:
-./../utils/reverse_iterator.hpp:234:28: error: no viable conversion from returned value of type 'const Iterator<int>' to function return type 'Iterator<ft::Iterator<int>>'
-                    return (this->_iterator);
-                           ^~~~~~~~~~~~~~~~~
-Vector_tests.cpp:374:70: note: in instantiation of member function 'ft::reverse_iterator<ft::Iterator<int> >::base' requested here
-    EQUAL((&(*rit) == &(*rit_1.base())) && (&(*my_rit) == &(*my_rit1.base())));
-                                                                     ^
-./../utils/random_access_iterator.hpp:65:17: note: candidate constructor not viable: no known conversion from 'const ft::Iterator<int>' to 'const ft::Iterator<ft::Iterator<int> > &' for 1st argument
-                Iterator( Iterator const & src )
-                ^
-./../utils/random_access_iterator.hpp:70:17: note: candidate constructor not viable: 1st argument ('const ft::Iterator<int>') would lose const qualifier
-                Iterator( value_type &src )
-                ^
-./../utils/random_access_iterator.hpp:212:17: note: candidate function not viable: 'this' argument has type 'const ft::Iterator<int>', but method is not marked const
-                operator Iterator<const Type>()
-                ^
-In file included from Vector_tests.cpp:10:
-In file included from ./../vector.hpp:9:
-./../utils/reverse_iterator.hpp:217:28: error: non-const lvalue reference to type 'int' cannot bind to a value of unrelated type 'ft::reverse_iterator<ft::Iterator<int> >'
-                    return (*this);
-                           ^~~~~~~
-Vector_tests.cpp:413:12: note: in instantiation of member function 'ft::reverse_iterator<ft::Iterator<int> >::operator+=' requested here
-    my_rit += 1;
-           ^
-In file included from Vector_tests.cpp:10:
-In file included from ./../vector.hpp:9:
-./../utils/reverse_iterator.hpp:223:28: error: non-const lvalue reference to type 'int' cannot bind to a value of unrelated type 'ft::reverse_iterator<ft::Iterator<int> >'
-                    return (*this);
-                           ^~~~~~~
-Vector_tests.cpp:418:12: note: in instantiation of member function 'ft::reverse_iterator<ft::Iterator<int> >::operator-=' requested here
-    my_rit -= 1;
-           ^
-In file included from Vector_tests.cpp:10:
-In file included from ./../vector.hpp:9:
-./../utils/reverse_iterator.hpp:134:36: error: cannot increment value of type 'const ft::Iterator<int>'
-                    this->_iterator++;
-                    ~~~~~~~~~~~~~~~^
-Vector_tests.cpp:431:5: note: in instantiation of member function 'ft::reverse_iterator<ft::Iterator<int> >::operator--' requested here
-    --my_rit; // I incremented here to make sure that the object changes
-    ^
-In file included from Vector_tests.cpp:10:
-In file included from ./../vector.hpp:9:
-./../utils/reverse_iterator.hpp:135:28: error: binding value of type 'const reverse_iterator<...>' to reference to type 'reverse_iterator<...>' drops 'const' qualifier
-                    return (*this);
-                           ^~~~~~~
-./../utils/reverse_iterator.hpp:145:25: error: type 'ft::Iterator<int>' does not provide a call operator
-                        this->_iterator++(1);
-                        ^~~~~~~~~~~~~~~~~
-Vector_tests.cpp:451:56: note: in instantiation of member function 'ft::reverse_iterator<ft::Iterator<int> >::operator--' requested here
-        ft::vector<int>::reverse_iterator my_tmp(my_rit--);
-                                                       ^
-In file included from Vector_tests.cpp:10:
-./../vector.hpp:110:29: error: no viable conversion from 'Iterator<const basic_string<...>>' to 'Iterator<basic_string<...>>'
-                iterator    end = x.end();
-                            ^     ~~~~~~~
-Vector_tests.cpp:602:19: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::operator=' requested here
-            ft_v1 = ft_v2;
-                  ^
-./../utils/random_access_iterator.hpp:65:17: note: candidate constructor not viable: no known conversion from 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::const_iterator' (aka 'Iterator<const std::__cxx11::basic_string<char> >') to 'const ft::Iterator<std::__cxx11::basic_string<char> > &' for 1st argument
-                Iterator( Iterator const & src )
-                ^
-./../utils/random_access_iterator.hpp:70:17: note: candidate constructor not viable: no known conversion from 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::const_iterator' (aka 'Iterator<const std::__cxx11::basic_string<char> >') to 'ft::Iterator<std::__cxx11::basic_string<char> >::value_type &' (aka 'std::__cxx11::basic_string<char> &') for 1st argument
-                Iterator( value_type &src )
-                ^
-./../utils/random_access_iterator.hpp:212:17: note: candidate function
-                operator Iterator<const Type>()
-                ^
-In file included from Vector_tests.cpp:10:
-./../vector.hpp:111:29: error: no viable conversion from 'Iterator<const basic_string<...>>' to 'Iterator<basic_string<...>>'
-                iterator    begin = x.begin();
-                            ^       ~~~~~~~~~
-./../utils/random_access_iterator.hpp:65:17: note: candidate constructor not viable: no known conversion from 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::const_iterator' (aka 'Iterator<const std::__cxx11::basic_string<char> >') to 'const ft::Iterator<std::__cxx11::basic_string<char> > &' for 1st argument
-                Iterator( Iterator const & src )
-                ^
-./../utils/random_access_iterator.hpp:70:17: note: candidate constructor not viable: no known conversion from 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::const_iterator' (aka 'Iterator<const std::__cxx11::basic_string<char> >') to 'ft::Iterator<std::__cxx11::basic_string<char> >::value_type &' (aka 'std::__cxx11::basic_string<char> &') for 1st argument
-                Iterator( value_type &src )
-                ^
-./../utils/random_access_iterator.hpp:212:17: note: candidate function
-                operator Iterator<const Type>()
-                ^
-In file included from Vector_tests.cpp:10:
-In file included from ./../vector.hpp:9:
-./../utils/reverse_iterator.hpp:55:64: error: no matching constructor for initialization of 'ft::Iterator<std::__cxx11::basic_string<char> >'
-                reverse_iterator( InputIterator const & src) : _iterator(src)
-                                                               ^         ~~~
-./../vector.hpp:187:41: note: in instantiation of function template specialization 'ft::reverse_iterator<ft::Iterator<std::__cxx11::basic_string<char> > >::reverse_iterator<ft::Iterator<const std::__cxx11::basic_string<char> > >' requested here
-                    reverse_iterator    rit(this->end() - 1);
-                                        ^
+./../vector.hpp:192:29: error: no matching conversion for functional-style cast from 'ft::Iterator<const std::__cxx11::basic_string<char> >' to 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::reverse_iterator' (aka 'reverse_iterator<Iterator<std::__cxx11::basic_string<char> > >')
+                    return (reverse_iterator(this->end() - 1));
+                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Vector_tests.cpp:907:74: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::rbegin' requested here
         for (ft::vector<std::string>::const_reverse_iterator rit = ft_v2.rbegin(); rit != ft_v2.rend(); ++rit) // fill c_ft_res from const ft_v1
                                                                          ^
-./../utils/random_access_iterator.hpp:65:17: note: candidate constructor not viable: no known conversion from 'const Iterator<const basic_string<...>>' to 'const Iterator<basic_string<...>>' for 1st argument
-                Iterator( Iterator const & src )
-                ^
-./../utils/random_access_iterator.hpp:70:17: note: candidate constructor not viable: no known conversion from 'const ft::Iterator<const std::__cxx11::basic_string<char> >' to 'ft::Iterator<std::__cxx11::basic_string<char> >::value_type &' (aka 'std::__cxx11::basic_string<char> &') for 1st argument
-                Iterator( value_type &src )
-                ^
-./../utils/random_access_iterator.hpp:60:17: note: candidate constructor not viable: requires 0 arguments, but 1 was provided
-                Iterator( void )
-                ^
+./../utils/reverse_iterator.hpp:11:11: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'ft::Iterator<const std::__cxx11::basic_string<char> >' to 'const ft::reverse_iterator<ft::Iterator<std::__cxx11::basic_string<char> > >' for 1st argument
+    class reverse_iterator
+          ^
+./../utils/reverse_iterator.hpp:34:18: note: candidate constructor not viable: no known conversion from 'Iterator<const basic_string<...>>' to 'Iterator<basic_string<...>>' for 1st argument
+        explicit reverse_iterator( iterator_type x ) : _iterator(x)
+                 ^
+./../utils/reverse_iterator.hpp:40:9: note: candidate template ignored: could not match 'reverse_iterator' against 'Iterator'
+        reverse_iterator( const reverse_iterator<U>& other )
+        ^
+./../utils/reverse_iterator.hpp:29:9: note: candidate constructor not viable: requires 0 arguments, but 1 was provided
+        reverse_iterator()
+        ^
 In file included from Vector_tests.cpp:10:
-In file included from ./../vector.hpp:9:
-./../utils/reverse_iterator.hpp:55:64: error: no matching constructor for initialization of 'ft::Iterator<const std::__cxx11::basic_string<char> >'
-                reverse_iterator( InputIterator const & src) : _iterator(src)
-                                                               ^         ~~~
-./../vector.hpp:188:28: note: in instantiation of function template specialization 'ft::reverse_iterator<ft::Iterator<const std::__cxx11::basic_string<char> > >::reverse_iterator<ft::reverse_iterator<ft::Iterator<std::__cxx11::basic_string<char> > > >' requested here
-                    return (rit);
-                           ^
-Vector_tests.cpp:907:74: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::rbegin' requested here
-        for (ft::vector<std::string>::const_reverse_iterator rit = ft_v2.rbegin(); rit != ft_v2.rend(); ++rit) // fill c_ft_res from const ft_v1
-                                                                         ^
-./../utils/random_access_iterator.hpp:65:17: note: candidate constructor not viable: no known conversion from 'const ft::reverse_iterator<ft::Iterator<std::__cxx11::basic_string<char> > >' to 'const ft::Iterator<const std::__cxx11::basic_string<char> >' for 1st argument
-                Iterator( Iterator const & src )
-                ^
-./../utils/random_access_iterator.hpp:70:17: note: candidate constructor not viable: no known conversion from 'const ft::reverse_iterator<ft::Iterator<std::__cxx11::basic_string<char> > >' to 'ft::Iterator<const std::__cxx11::basic_string<char> >::value_type' (aka 'const std::__cxx11::basic_string<char>') for 1st argument
-                Iterator( value_type &src )
-                ^
-./../utils/random_access_iterator.hpp:60:17: note: candidate constructor not viable: requires 0 arguments, but 1 was provided
-                Iterator( void )
-                ^
-In file included from Vector_tests.cpp:10:
-./../vector.hpp:199:41: error: no matching constructor for initialization of 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::reverse_iterator' (aka 'reverse_iterator<Iterator<std::__cxx11::basic_string<char> > >')
+./../vector.hpp:203:41: error: no matching constructor for initialization of 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::reverse_iterator' (aka 'reverse_iterator<Iterator<std::__cxx11::basic_string<char> > >')
                     reverse_iterator    rit(this->begin());
                                         ^   ~~~~~~~~~~~~~
 Vector_tests.cpp:907:97: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::rend' requested here
         for (ft::vector<std::string>::const_reverse_iterator rit = ft_v2.rbegin(); rit != ft_v2.rend(); ++rit) // fill c_ft_res from const ft_v1
                                                                                                 ^
-./../utils/reverse_iterator.hpp:12:11: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::const_iterator' (aka 'Iterator<const std::__cxx11::basic_string<char> >') to 'const ft::reverse_iterator<ft::Iterator<std::__cxx11::basic_string<char> > >' for 1st argument
-    class reverse_iterator : public ft::iterator_traits<Type>
+./../utils/reverse_iterator.hpp:11:11: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::const_iterator' (aka 'Iterator<const std::__cxx11::basic_string<char> >') to 'const ft::reverse_iterator<ft::Iterator<std::__cxx11::basic_string<char> > >' for 1st argument
+    class reverse_iterator
           ^
-./../utils/reverse_iterator.hpp:60:17: note: candidate constructor not viable: no known conversion from 'Iterator<const basic_string<...>>' to 'Iterator<basic_string<...>>' for 1st argument
-                reverse_iterator( typename ft::Iterator<value_type> src ) : _iterator(src)
-                ^
-./../utils/reverse_iterator.hpp:55:17: note: candidate template ignored: substitution failure [with InputIterator = ft::Iterator<const std::__cxx11::basic_string<char> >]
-                reverse_iterator( InputIterator const & src) : _iterator(src)
-                ^
-./../utils/reverse_iterator.hpp:47:17: note: candidate constructor not viable: requires 0 arguments, but 1 was provided
-                reverse_iterator( void )
-                ^
-In file included from Vector_tests.cpp:10:
-./../vector.hpp:740:20: error: relational comparison result unused [-Werror,-Wunused-comparison]
-        for (; lit < lhs.end(), rit < rhs.end(); lit++, rit++)
-               ~~~~^~~~~~~~~~~
-Vector_tests.cpp:2843:29: note: in instantiation of function template specialization 'ft::operator<<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >' requested here
-                (void)(ft_v < ft_v1);
-                            ^
-In file included from Vector_tests.cpp:10:
-./../vector.hpp:740:20: error: relational comparison result unused [-Werror,-Wunused-comparison]
-        for (; lit < lhs.end(), rit < rhs.end(); lit++, rit++)
-               ~~~~^~~~~~~~~~~
-Vector_tests.cpp:2874:39: note: in instantiation of function template specialization 'ft::operator<<int, std::allocator<int> >' requested here
-            cond = ((v < v1) == (ft_v < ft_v1));
-                                      ^
-23 errors generated.
+./../utils/reverse_iterator.hpp:34:18: note: candidate constructor not viable: no known conversion from 'Iterator<const basic_string<...>>' to 'Iterator<basic_string<...>>' for 1st argument
+        explicit reverse_iterator( iterator_type x ) : _iterator(x)
+                 ^
+./../utils/reverse_iterator.hpp:40:9: note: candidate template ignored: could not match 'reverse_iterator' against 'Iterator'
+        reverse_iterator( const reverse_iterator<U>& other )
+        ^
+./../utils/reverse_iterator.hpp:29:9: note: candidate constructor not viable: requires 0 arguments, but 1 was provided
+        reverse_iterator()
+        ^
+2 errors generated.
 make: *** [Makefile:17: vector] Error 1

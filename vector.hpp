@@ -106,17 +106,20 @@ namespace ft
             */
             vector& operator=(const vector& x)
             {
-                size_type   index = 0;
-                iterator    end = x.end();
-                iterator    begin = x.begin();
-
-                this->_capacity = x._capacity;
-                this->_size = x._size;
-                this->_vector_allocator.deallocate(this->_array, this->_capacity);
-                this->_array = this->_vector_allocator.allocate(x._capacity);
-                for (; begin < end; begin++)
+                if (*this != x)
                 {
-                    this->_array[index++] = *begin;
+                    size_type   index = 0;
+                    size_type   xsize = x.size();
+
+                    this->_capacity = x._capacity;
+                    this->_size = x._size;
+                    this->_vector_allocator.deallocate(this->_array, this->_capacity);
+                    this->_array = this->_vector_allocator.allocate(x._capacity);
+                    while (index < xsize)
+                    {
+                        this->_vector_allocator.construct(_array + index, x[index]);
+                        index++;
+                    }
                 }
                 return (*this);
             }
@@ -184,8 +187,9 @@ namespace ft
 
                 const_reverse_iterator rbegin() const
                 {
-                    reverse_iterator    rit(this->end() - 1);
-                    return (rit);
+                    // reverse_iterator(this->end() - 1)
+                    // reverse_iterator    rit(this->end() - 1);
+                    return (reverse_iterator(this->end() - 1));
                 }
 
                 reverse_iterator rend()
@@ -738,7 +742,7 @@ namespace ft
         const_iterator lit = lhs.begin();
         const_iterator rit = rhs.begin();
 
-        for (; lit < lhs.end(), rit < rhs.end(); lit++, rit++)
+        for (; lit < lhs.end() && rit < rhs.end(); lit++, rit++)
         {
             if (*lit < *rit)
             {
