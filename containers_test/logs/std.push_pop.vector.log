@@ -1,6 +1,6 @@
 size: 8
 capacity: OK
-max_size: 768614336404564650
+max_size: 288230376151711743
 
 Content is:
 - AAAAAAAA
@@ -16,7 +16,7 @@ push_back():
 
 size: 9
 capacity: OK
-max_size: 768614336404564650
+max_size: 288230376151711743
 
 Content is:
 - AAAAAAAA
@@ -31,14 +31,14 @@ Content is:
 ###############################################
 size: 1
 capacity: OK
-max_size: 768614336404564650
+max_size: 288230376151711743
 
 Content is:
 - Another long string
 ###############################################
 size: 8
 capacity: OK
-max_size: 768614336404564650
+max_size: 288230376151711743
 
 Content is:
 - AAAAAAAA
@@ -52,7 +52,7 @@ Content is:
 ###############################################
 size: 0
 capacity: OK
-max_size: 768614336404564650
+max_size: 288230376151711743
 
 Content is:
 ###############################################

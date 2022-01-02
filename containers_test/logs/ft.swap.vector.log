@@ -1,64 +1,53 @@
-len: 5
-	-- PART ONE --
+BEFORE SWAP
+foo contains:
+size: 3
+capacity: OK
+max_size: 2305843009213693951
+begni dbg: 15
+
+Content is:
+- 15
+- 15
+- 15
+###############################################
+bar contains:
 size: 5
 capacity: OK
 max_size: 2305843009213693951
+begni dbg: 42
 
 Content is:
-- 7
-- 14
-- 21
-- 2
-- 1
+- 42
+- 42
+- 42
+- 42
+- 42
 ###############################################
+AFTER SWAP
+foo contains:
+size: 5
+capacity: OK
+max_size: 2305843009213693951
+begni dbg: 42
+
+Content is:
+- 42
+- 42
+- 42
+- 42
+- 42
+###############################################
+bar contains:
 size: 3
 capacity: OK
 max_size: 2305843009213693951
+begni dbg: 15
 
 Content is:
-- 5
-- 4
-- 3
-###############################################
-size: 7
-capacity: OK
-max_size: 2305843009213693951
-
-Content is:
-- 5
-- 10
 - 15
-- 2
-- 1
-- 42
-- 21
-###############################################
-	-- PART TWO --
-size: 7
-capacity: OK
-max_size: 2305843009213693951
-
-Content is:
-- 5
-- 10
 - 15
-- 2
-- 1
-- 42
-- 21
+- 15
 ###############################################
-size: 0
-capacity: OK
-max_size: 2305843009213693951
-
-Content is:
-###############################################
-size: 3
-capacity: OK
-max_size: 2305843009213693951
-
-Content is:
-- 5
-- 4
-- 3
-###############################################
+Iterator validity:
+1
+1

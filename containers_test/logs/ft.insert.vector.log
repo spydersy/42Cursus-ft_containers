@@ -1,6 +1,7 @@
 size: 10
 capacity: OK
-max_size: 4611686018427387903
+max_size: 2305843009213693951
+begni dbg: 30
 
 Content is:
 - 30
@@ -16,7 +17,8 @@ Content is:
 ###############################################
 size: 3
 capacity: OK
-max_size: 4611686018427387903
+max_size: 2305843009213693951
+begni dbg: 21
 
 Content is:
 - 21
@@ -25,7 +27,8 @@ Content is:
 ###############################################
 size: 4
 capacity: OK
-max_size: 4611686018427387903
+max_size: 2305843009213693951
+begni dbg: 21
 
 Content is:
 - 21
@@ -35,7 +38,8 @@ Content is:
 ###############################################
 size: 6
 capacity: OK
-max_size: 4611686018427387903
+max_size: 2305843009213693951
+begni dbg: 21
 
 Content is:
 - 21
@@ -43,11 +47,12 @@ Content is:
 - 21
 - 84
 - 84
-- 32670
+- 0
 ###############################################
 size: 4
 capacity: OK
-max_size: 4611686018427387903
+max_size: 2305843009213693951
+begni dbg: 21
 
 Content is:
 - 21
@@ -57,7 +62,8 @@ Content is:
 ###############################################
 size: 14
 capacity: OK
-max_size: 4611686018427387903
+max_size: 2305843009213693951
+begni dbg: 21
 
 Content is:
 - 21
@@ -77,7 +83,8 @@ Content is:
 ###############################################
 size: 0
 capacity: OK
-max_size: 4611686018427387903
+max_size: 2305843009213693951
+begni dbg: 30
 
 Content is:
 ###############################################

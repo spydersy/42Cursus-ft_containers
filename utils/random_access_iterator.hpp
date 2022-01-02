@@ -8,44 +8,77 @@
 
 namespace   ft
 {
+	//?https://www.cplusplus.com/reference/iterator/InputIterator/
+	struct input_iterator_tag {};
+
+	//?https://www.cplusplus.com/reference/iterator/OutputIterator/
+  	struct output_iterator_tag {};
+
+	//?https://www.cplusplus.com/reference/iterator/ForwardIterator/
+  	struct forward_iterator_tag : public input_iterator_tag {};
+
+	//?https://www.cplusplus.com/reference/iterator/BidirectionalIterator/
+  	struct bidirectional_iterator_tag : public forward_iterator_tag {};
+
+	//?https://www.cplusplus.com/reference/iterator/RandomAccessIterator/
+ 	struct random_access_iterator_tag : public bidirectional_iterator_tag {};
+
+	//?https://www.cplusplus.com/reference/iterator/iterator/
+	template <class Category, class T, class Distance = std::ptrdiff_t,
+			class Pointer = T*, class Reference = T&>
+	struct base_iterator
+	{
+		public:
+		typedef T			value_type;
+		typedef Distance	difference_type;
+		typedef Pointer		pointer;
+		typedef Reference	reference;
+		typedef Category 	iterator_category;
+	};
+
     template <typename Type>
-    class   Iterator : public ft::iterator_traits<Type>
+    class   Iterator : public ft::base_iterator<std::random_access_iterator_tag, Type>
     {
         public:
 
             /*
             ** Member Types:
             */
-            typedef     typename ft::iterator_traits<Type>::iterator_category  iterator_category;
-            typedef     typename ft::iterator_traits<Type>::value_type         value_type;
-            typedef     typename ft::iterator_traits<Type>::pointer            pointer;
-            typedef     typename ft::iterator_traits<Type>::reference          reference;
-            typedef     typename ft::iterator_traits<Type>::difference_type    difference_type;
-            typedef     typename ft::iterator_traits<Type>::size_type          size_type;
-            // typedef     const Type                             const_value_type;
-            // typedef     Type*                            pointer;
-            // typedef     Type&                            reference;
-            // typedef     std::ptrdiff_t                   difference_type;
-            // typedef     size_t                           size_type;
+            // typedef     typename ft::iterator_traits<Type>::iterator_category  iterator_category;
+            // typedef     typename ft::iterator_traits<Type>::value_type         value_type;
+            // typedef     typename ft::iterator_traits<Type>::pointer            pointer;
+            // typedef     typename ft::iterator_traits<Type>::reference          reference;
+            // typedef     typename ft::iterator_traits<Type>::difference_type    difference_type;
+            // typedef     typename ft::iterator_traits<Type>::size_type          size_type;
+            typedef     Type                             value_type;
+            typedef     const Type                             const_value_type;
+            typedef     Type*                            pointer;
+            typedef     Type&                            reference;
+            typedef     std::ptrdiff_t                   difference_type;
+            typedef     size_t                           size_type;
 
                 Iterator( void )
                 {
                     this->_ptr = NULL;
+                    std::cout << KYEL << "DBG_ITERATOR: (default constructor) | _ptr = " << _ptr << std::endl << KNRM;
                 }
 
                 Iterator( Iterator const & src )
                 {
                     this->_ptr = src._ptr;
+                    std::cout << KYEL << "DBG_ITERATOR: (copy constructor) | _ptr = " << _ptr << std::endl << KNRM;
                 }
 
                 Iterator( value_type &src )
                 {
                     this->_ptr = &src;
+                    std::cout << KYEL << "DBG_ITERATOR: (ptr constructor) | _ptr = " << _ptr << std::endl << KNRM;
                 }
 
                 Iterator    &operator=( Iterator const & src)
                 {
                     this->_ptr = src._ptr;
+                    std::cout << KYEL << "DBG_ITERATOR: (operator=) | _ptr = " << _ptr << std::endl << KNRM;
                     return ( *this );
                 }
 
@@ -127,7 +160,7 @@ namespace   ft
                     return (this->_ptr - src._ptr);
                 }
 
-                Iterator   operator-(size_type value)
+                Iterator   operator-(difference_type value)
                 {
                     Iterator   ret;
 
@@ -169,7 +202,7 @@ namespace   ft
                     return (*this);
                 }
 
-                Iterator   operator-=( size_type value)
+                Iterator   operator-=( difference_type value)
                 {
                     this->_ptr -= value;
                     return (*this);

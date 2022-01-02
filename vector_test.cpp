@@ -15,161 +15,43 @@
 # define KCYN  "\x1B[36m"
 # define KWHT  "\x1B[37m"
 
-// int		main()
-// {
-// 	{
-// 		std::vector<int>	vect;
-// 		for (int i = 1; i < 11; i++) vect.push_back(i);
-
-// 		std::vector<int>::iterator	it = vect.begin();
-// 		std::cout << "it + 1: " << *(it + 1) << std::endl;
-// 		std::cout << "1 + it: " << *(1 + it) << std::endl;
-// 	}
-// 	std::cout << "***********************************************" << std::endl;
-// 	{
-// 		ft::vector<int>	vect;
-// 		for (int i = 1; i < 11; i++) vect.push_back(i);
-
-// 		ft::vector<int>::iterator	it = vect.begin();
-// 		std::cout << "it + 1: " << *(it + 1) << std::endl;
-// 		std::cout << "1 + it: " << *(1 + it) << std::endl;
-// 	}
-// }
-
-// int		main()
-// {
-// 	{
-// 		std::vector<std::string>	vect;
-
-// 		vect.push_back("1");
-// 		vect.push_back("22");
-// 		vect.push_back("333");
-// 		vect.push_back("4444");
-// 		vect.push_back("55555");
-// 		vect.push_back("666666");
-// 		vect.push_back("7777777");
-// 		vect.push_back("88888888");
-// 		vect.push_back("999999999");
-// 		vect.push_back("1000000000");
-
-// 		std::vector<std::string>::reverse_iterator	it = vect.rbegin() + 4;
-
-// 		std::cout << it->length() << std::endl;
-// 	}
-// 	std::cout << "**************************" << std::endl;
-// 	{
-// 		ft::vector<std::string>	vect;
-
-// 		vect.push_back("1");
-// 		vect.push_back("22");
-// 		vect.push_back("333");
-// 		vect.push_back("4444");
-// 		vect.push_back("55555");
-// 		vect.push_back("666666");
-// 		vect.push_back("7777777");
-// 		vect.push_back("88888888");
-// 		vect.push_back("999999999");
-// 		vect.push_back("1000000000");
-
-// 		ft::vector<std::string>::reverse_iterator	it = vect.rbegin() + 4;
-
-// 		std::cout << it->length() << std::endl;
-
-// 	}
-// 	return (0);
-// }
-
-// int		main()
-// {
-// 	{
-// 		ft::vector<std::string>		vect;
-
-// 		vect.push_back("1");
-// 		vect.push_back("22");
-// 		vect.push_back("333");
-// 		vect.push_back("4444");
-// 		vect.push_back("55555");
-// 		vect.push_back("666666");
-// 		vect.push_back("7777777");
-// 		vect.push_back("88888888");
-// 		vect.push_back("999999999");
-// 		vect.push_back("1000000000");
-
-// 		ft::vector<std::string>::reverse_iterator	rit = vect.rbegin() + 4;
-
-// 		std::cout << rit->length() << std::endl;
-// 	}
-// 	std::cout << "***************************" << std::endl;
-// 	{
-// 		ft::vector<std::string>		vect;
-
-// 		vect.push_back("1");
-// 		vect.push_back("22");
-// 		vect.push_back("333");
-// 		vect.push_back("4444");
-// 		vect.push_back("55555");
-// 		vect.push_back("666666");
-// 		vect.push_back("7777777");
-// 		vect.push_back("88888888");
-// 		vect.push_back("999999999");
-// 		vect.push_back("1000000000");
-
-// 		ft::vector<std::string>::reverse_iterator	rit = vect.rbegin() + 4;
-
-// 		std::cout << rit->length() << std::endl;
-
-// 	}
-// 	return (0);
-// }
-
-// int		main()
-// {
-	// std::vector<std::string> v(3, "hello");
-
-    // std::reverse_iterator<std::vector<std::string>::iterator> rit(v.end());
-    // ft::reverse_iterator<std::vector<std::string>::iterator> my_rit(v.end());
-
-	// return (0);
-// }
-
-// int		main()
-// {
-	// ft::vector<int>	vect;
-	// for (int i = 1; i <= 10; i++) vect.push_back(i);
-
-	// for(ft::vector<int>::reverse_iterator	rit = vect.rbegin(); rit < vect.rend(); rit++)
-	// {
-		// std::cout << "Rit: " << *rit << std::endl;
-	// }
-
-	// return (0);
-// }
-
-int		main()
+int	main()
 {
 	{
-		ft::vector<int>	vect;
-		for(int i = 1; i <= 11; i++)	vect.push_back(i);
+		std::vector<std::string>	vect;
 
-		std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+		vect.push_back("01");
+		vect.push_back("02");
+		vect.push_back("03");
+		vect.push_back("04");
+		vect.push_back("05");
+		vect.push_back("06");
+		vect.push_back("07");
+		vect.push_back("08");
+		vect.push_back("09");
+		vect.push_back("10");
 
-		for (ft::vector<int>::reverse_iterator it = vect.rbegin(); it < vect.rend(); it++)
-		{
-			std::cout << "It: " << *it << std::endl;
-		}
+		std::vector<std::string>::reverse_iterator	rit = vect.rbegin();
+		std::cout << (rit <= rit+1) << std::endl;
 	}
-	std::cout << "******************" << std::endl;
+	std::cout << "***************" << std::endl;
 	{
-		std::vector<int>	vect;
-		for(int i = 1; i <= 11; i++)	vect.push_back(i);
+		ft::vector<std::string>	vect1;
 
-		std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+		vect1.push_back("01");
+		vect1.push_back("02");
+		vect1.push_back("03");
+		vect1.push_back("04");
+		vect1.push_back("05");
+		vect1.push_back("06");
+		vect1.push_back("07");
+		vect1.push_back("08");
+		vect1.push_back("09");
+		vect1.push_back("10");
 
-		for (std::vector<int>::reverse_iterator it = vect.rbegin(); it < vect.rend(); it++)
-		{
-			std::cout << "It: " << *it << std::endl;
-		}
+		ft::vector<std::string>::reverse_iterator	rit = vect1.rbegin();
 
+		std::cout << (rit <= rit + 1) << std::endl;
 	}
 	return (0);
 }

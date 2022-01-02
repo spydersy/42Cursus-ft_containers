@@ -1,6 +1,6 @@
 size: 5
 capacity: OK
-max_size: 4611686018427387903
+max_size: 2305843009213693951
 
 Content is:
 - 35
@@ -11,7 +11,7 @@ Content is:
 ###############################################
 size: 3
 capacity: OK
-max_size: 4611686018427387903
+max_size: 2305843009213693951
 
 Content is:
 - 35
@@ -20,7 +20,7 @@ Content is:
 ###############################################
 size: 5
 capacity: OK
-max_size: 4611686018427387903
+max_size: 2305843009213693951
 
 Content is:
 - 14
@@ -31,7 +31,7 @@ Content is:
 ###############################################
 size: 8
 capacity: OK
-max_size: 4611686018427387903
+max_size: 2305843009213693951
 
 Content is:
 - 14
@@ -49,7 +49,7 @@ insert return:
 ----------------------------------------
 size: 10
 capacity: OK
-max_size: 4611686018427387903
+max_size: 2305843009213693951
 
 Content is:
 - 14

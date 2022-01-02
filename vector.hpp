@@ -415,10 +415,11 @@ namespace ft
                         this->_capacity *= 2;
                         while (index < this->_size)
                         {
-                            new_array[index] = this->_array[index];
+                            this->_vector_allocator.construct(new_array + index, this->_array[index]);
                             index++;
                         }
-                        new_array[index] = val;
+                        // new_array[index] = val;
+                        this->_vector_allocator.construct(new_array + index, val);
                         this->_vector_allocator.deallocate(this->_array, this->_capacity);
                         this->_array = new_array;
                     }
