@@ -113,9 +113,8 @@ void iterator_tests(void)
     --my_it; // I decremented here to make sure that the object changes
     EQUAL(&(*my_it) == &(*(my_it1 - 1)));
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " + operator (n + it) "
-            << "] -----------------DBG]\t\t\033[0m";
+            << "] --------------------]\t\t\033[0m";
     EQUAL(&(*(1 + my_it)) == &(*(my_it1)) && (&(*my_it) == &(*(my_v.begin()))));
-    // EQUAL(&(*(my_it + 1)) == &(*(my_it1)) && (&(*my_it) == &(*(my_v.begin()))));
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " - operator (it1 - it) "
             << "] --------------------]\t\t\033[0m";
     EQUAL(((my_it1 - my_it == 1)) && ((my_it - my_it1) == -1));
@@ -208,9 +207,8 @@ void const_iterator_tests(void)
     --my_it; // I decremented here to make sure that the object changes
     EQUAL(&(*my_it) == &(*(my_it1 - 1)));
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " + operator (n + it) "
-            << "] -----------------DBG]\t\t\033[0m";
+            << "] --------------------]\t\t\033[0m";
     EQUAL(&(*(1 + my_it)) == &(*(my_it1)) && (&(*my_it) == &(*(my_v.begin()))));
-    // EQUAL(&(*(my_it)) == &(*(my_it1)) && (&(*my_it) == &(*(my_v.begin()))));
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " - operator (it1 - it) "
             << "] --------------------]\t\t\033[0m";
     EQUAL(((my_it1 - my_it == 1)) && ((my_it - my_it1) == -1));
@@ -272,9 +270,8 @@ void reverse_iterator_tests(void)
             << "] --------------------]\t\t\033[0m";
     EQUAL((rit <= rit_1) == (my_rit <= my_rit1));
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " * operator "
-            << "] -----------------DBG]\t\t\033[0m";
-    // EQUAL(((*my_rit == *(v.end() - 1)) && (&(*my_rit) == &(*(v.end() - 1)))) && ((*rit == *(v.end() - 1)) && (&(*rit) == &(*(v.end() - 1)))));
-    EQUAL(((1) && (&(*my_rit) == &(*(v.end() - 1)))) && ((*rit == *(v.end() - 1)) && (&(*rit) == &(*(v.end() - 1)))));
+            << "] --------------------]\t\t\033[0m";
+    EQUAL(((*my_rit == *(v.end() - 1)) && (&(*my_rit) == &(*(v.end() - 1)))) && ((*rit == *(v.end() - 1)) && (&(*rit) == &(*(v.end() - 1)))));
     // EQUAL(((*my_rit == *(v.end() - 1)) && (&(*my_rit) == &(*(v.end() - 1)))) && ((*rit == *(v.end() - 1)) && (&(*rit) == &(*(v.end() - 1)))));
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " -> operator "
             << "] --------------------]\t\t\033[0m";
@@ -3327,10 +3324,10 @@ int main(void)
     std::cout << RED << "**** The test is taking so much time to test the all cases and the time complexity of each method ****" << std::endl;
     std::cout << RED << "--------------------------------------------------------------------------------------------------------" << RESET << std::endl;
     signal(SIGALRM, alarm_handler);
-    iterator_tests();
-    const_iterator_tests();
+    // iterator_tests(); // DONE
+    // const_iterator_tests(); //  DONE
     reverse_iterator_tests();
-    reverse_iterator_with_ft_vector();
-    vector_tests();
+    // reverse_iterator_with_ft_vector();
+    // vector_tests();
     return 0;
 }

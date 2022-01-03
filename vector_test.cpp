@@ -54,3 +54,26 @@ int	main()
 	}
 	return (0);
 }
+
+int		main()
+{
+	std::vector<std::string>	vect;
+
+	vect.push_back("01");
+	vect.push_back("02");
+	vect.push_back("03");
+	vect.push_back("04");
+	vect.push_back("05");
+	vect.push_back("06");
+	vect.push_back("07");
+	vect.push_back("08");
+	vect.push_back("09");
+	vect.push_back("10");
+
+	std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+
+	vect.resize(4);
+	for (int i = 0; i < 10; i++)
+
+	return (0);
+}

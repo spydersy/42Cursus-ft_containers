@@ -28,19 +28,19 @@ namespace ft
         */
         reverse_iterator()
         {
-            std::cout << KYEL << "DBG_REVITERATOR: (default constructor)" << std::endl << KNRM;
+            // std::cout << KYEL << "DBG_REVITERATOR: (default constructor)" << std::endl << KNRM;
         }
 
         explicit reverse_iterator( iterator_type x ) : _iterator(x)
         {
-            std::cout << KYEL << "DBG_REVITERATOR: (iterator constructor)" << std::endl << KNRM;
+            // std::cout << KYEL << "DBG_REVITERATOR: (iterator constructor)" << std::endl << KNRM;
         }
 
         template< class U >
         reverse_iterator( const reverse_iterator<U>& other )
         {
             this->_iterator = other.base();
-            std::cout << KYEL << "DBG_REVITERATOR: (copy constructor)" << std::endl << KNRM;
+            // std::cout << KYEL << "DBG_REVITERATOR: (copy constructor)" << std::endl << KNRM;
         }
         /*
         **  Operator= :
@@ -48,7 +48,7 @@ namespace ft
         template< class U >
         reverse_iterator& operator=( const reverse_iterator<U>& other )
         {
-            std::cout << KYEL << "DBG_REVITERATOR: operator= " << std::endl << KNRM;
+            // std::cout << KYEL << "DBG_REVITERATOR: operator= " << std::endl << KNRM;
             this->_iterator = other.base();
             return (*this);
         }

@@ -143,8 +143,8 @@ namespace ft
                 */
                 const_iterator begin() const
                 {
-                    std::cout << "begni dbg: " << _array[0] << std::endl;
-                    iterator    it(this->_array[0]);
+                    // std::cout << "begni dbg: " << _array[0] << std::endl;
+                    const_iterator    it(this->_array[0]);
 
                     // *it = this->_array[0];
                     // it.setPtr(this->_array[0]);
@@ -169,7 +169,7 @@ namespace ft
                 */
                 const_iterator end() const
                 {
-                    iterator    it(this->_array[this->_size]);
+                    const_iterator    it(this->_array[this->_size]);
 
                     // *it = this->_array[this->_size];
 
@@ -189,7 +189,7 @@ namespace ft
                 {
                     // reverse_iterator(this->end() - 1)
                     // reverse_iterator    rit(this->end() - 1);
-                    return (reverse_iterator(this->end() - 1));
+                    return (const_reverse_iterator(this->end() - 1));
                 }
 
                 reverse_iterator rend()
@@ -200,7 +200,7 @@ namespace ft
 
                 const_reverse_iterator rend() const
                 {
-                    reverse_iterator    rit(this->begin());
+                    const_reverse_iterator    rit(this->begin());
                     return (rit);
                 }
 /* Capacity: ****************************************************************************************************/
@@ -250,7 +250,9 @@ namespace ft
 
                         for (iterator it = this->begin(); it < this->end(); it++)
                         {
-                            new_array[index++] = *it;
+                            this->_vector_allocator.construct(new_array + index, *it);
+                            // new_array[index++] = *it;
+                            index++;
                         }
                         while (index < n)
                         {
@@ -755,13 +757,13 @@ namespace ft
     template <class T, class Alloc>
     bool operator>  (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
     {
-        return (operator<(rhs, lhs));
+        return (!operator<(rhs, lhs));
     }
 
     template <class T, class Alloc>
     bool operator<= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
     {
-        return (!(operator<(rhs, lhs)));
+        return (!(operator>(rhs, lhs)));
     }
 
     template <class T, class Alloc>

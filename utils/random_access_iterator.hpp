@@ -60,25 +60,25 @@ namespace   ft
                 Iterator( void )
                 {
                     this->_ptr = NULL;
-                    std::cout << KYEL << "DBG_ITERATOR: (default constructor) | _ptr = " << _ptr << std::endl << KNRM;
+                    // std::cout << KYEL << "DBG_ITERATOR: (default constructor) | _ptr = " << _ptr << std::endl << KNRM;
                 }
 
                 Iterator( Iterator const & src )
                 {
                     this->_ptr = src._ptr;
-                    std::cout << KYEL << "DBG_ITERATOR: (copy constructor) | _ptr = " << _ptr << std::endl << KNRM;
+                    // std::cout << KYEL << "DBG_ITERATOR: (copy constructor) | _ptr = " << _ptr << std::endl << KNRM;
                 }
 
                 Iterator( value_type &src )
                 {
                     this->_ptr = &src;
-                    std::cout << KYEL << "DBG_ITERATOR: (ptr constructor) | _ptr = " << _ptr << std::endl << KNRM;
+                    // std::cout << KYEL << "DBG_ITERATOR: (ptr constructor) | _ptr = " << _ptr << std::endl << KNRM;
                 }
 
                 Iterator    &operator=( Iterator const & src)
                 {
                     this->_ptr = src._ptr;
-                    std::cout << KYEL << "DBG_ITERATOR: (operator=) | _ptr = " << _ptr << std::endl << KNRM;
+                    // std::cout << KYEL << "DBG_ITERATOR: (operator=) | _ptr = " << _ptr << std::endl << KNRM;
                     return ( *this );
                 }
 
