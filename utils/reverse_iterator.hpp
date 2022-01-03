@@ -64,21 +64,22 @@ namespace ft
         */
         reference operator*() const
         {
-            return (*(this->base()));
+            iterator_type it2(_iterator);
+            return *--it2;
         }
         /*
         **  Operator-> :
         */
         pointer operator->() const
         {
-            return (this->base().operator->());
+            return ((this->base() - 1).operator->());
         }
         /*
         **  Operator[] :
         */
         reference operator[]( difference_type n ) const
         {
-            return (this->base()[-n]);
+            return (this->base()[-n - 1]);
         }
 
         /*
@@ -123,8 +124,9 @@ namespace ft
         reverse_iterator operator+( difference_type n ) const
         {
             // reverse_iterator    ret(this->_iterator.operator-(n));
-            return (reverse_iterator(this->base() - n));
-            // return (ret);
+            (this->base() - 1) -= n;
+            // return (reverse_iterator(this->base() - n));
+            return (*this);
         }
         /*
         **  Operator-( difference_type n ) :
@@ -180,7 +182,7 @@ namespace ft
         operator-( const reverse_iterator<Iterator>& lhs,
                     const reverse_iterator<Iterator>& rhs )
     {
-        return (lhs.base() - rhs.base());
+        return (rhs.base() - lhs.base());
     }
 
     template< class Iterator1, class Iterator2 >

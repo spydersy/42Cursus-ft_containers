@@ -153,8 +153,6 @@ namespace   ft
 
                 difference_type   operator-(Iterator const & src)
                 {
-                    Iterator   ret;
-
                     // ret._ptr = this->_ptr - src._ptr;
                     // return (ret);
                     return (this->_ptr - src._ptr);
@@ -204,7 +202,9 @@ namespace   ft
 
                 Iterator   operator-=( difference_type value)
                 {
+                    std::cout << "imheeere : " << *_ptr << std::endl;
                     this->_ptr -= value;
+                    std::cout << "imheeere : " << *_ptr << std::endl;
                     return (*this);
                 }
 

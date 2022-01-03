@@ -1,40 +1,5 @@
-In file included from Vector_tests.cpp:10:
-./../vector.hpp:192:29: error: no matching conversion for functional-style cast from 'ft::Iterator<const std::__cxx11::basic_string<char> >' to 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::reverse_iterator' (aka 'reverse_iterator<Iterator<std::__cxx11::basic_string<char> > >')
-                    return (reverse_iterator(this->end() - 1));
-                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Vector_tests.cpp:907:74: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::rbegin' requested here
-        for (ft::vector<std::string>::const_reverse_iterator rit = ft_v2.rbegin(); rit != ft_v2.rend(); ++rit) // fill c_ft_res from const ft_v1
-                                                                         ^
-./../utils/reverse_iterator.hpp:11:11: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'ft::Iterator<const std::__cxx11::basic_string<char> >' to 'const ft::reverse_iterator<ft::Iterator<std::__cxx11::basic_string<char> > >' for 1st argument
-    class reverse_iterator
-          ^
-./../utils/reverse_iterator.hpp:34:18: note: candidate constructor not viable: no known conversion from 'Iterator<const basic_string<...>>' to 'Iterator<basic_string<...>>' for 1st argument
-        explicit reverse_iterator( iterator_type x ) : _iterator(x)
-                 ^
-./../utils/reverse_iterator.hpp:40:9: note: candidate template ignored: could not match 'reverse_iterator' against 'Iterator'
-        reverse_iterator( const reverse_iterator<U>& other )
-        ^
-./../utils/reverse_iterator.hpp:29:9: note: candidate constructor not viable: requires 0 arguments, but 1 was provided
-        reverse_iterator()
-        ^
-In file included from Vector_tests.cpp:10:
-./../vector.hpp:203:41: error: no matching constructor for initialization of 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::reverse_iterator' (aka 'reverse_iterator<Iterator<std::__cxx11::basic_string<char> > >')
-                    reverse_iterator    rit(this->begin());
-                                        ^   ~~~~~~~~~~~~~
-Vector_tests.cpp:907:97: note: in instantiation of member function 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::rend' requested here
-        for (ft::vector<std::string>::const_reverse_iterator rit = ft_v2.rbegin(); rit != ft_v2.rend(); ++rit) // fill c_ft_res from const ft_v1
-                                                                                                ^
-./../utils/reverse_iterator.hpp:11:11: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'ft::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::const_iterator' (aka 'Iterator<const std::__cxx11::basic_string<char> >') to 'const ft::reverse_iterator<ft::Iterator<std::__cxx11::basic_string<char> > >' for 1st argument
-    class reverse_iterator
-          ^
-./../utils/reverse_iterator.hpp:34:18: note: candidate constructor not viable: no known conversion from 'Iterator<const basic_string<...>>' to 'Iterator<basic_string<...>>' for 1st argument
-        explicit reverse_iterator( iterator_type x ) : _iterator(x)
-                 ^
-./../utils/reverse_iterator.hpp:40:9: note: candidate template ignored: could not match 'reverse_iterator' against 'Iterator'
-        reverse_iterator( const reverse_iterator<U>& other )
-        ^
-./../utils/reverse_iterator.hpp:29:9: note: candidate constructor not viable: requires 0 arguments, but 1 was provided
-        reverse_iterator()
-        ^
-2 errors generated.
-make: *** [Makefile:17: vector] Error 1
+10
+9
+**************
+10
+9

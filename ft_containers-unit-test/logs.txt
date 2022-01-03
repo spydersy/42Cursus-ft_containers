@@ -1,15 +1,15 @@
-../utilities_tests/iterator_traits.cpp:2:10: error: expected "FILENAME" or <FILENAME>
+../utilities_tests/equal.cpp:2:10: error: expected "FILENAME" or <FILENAME>
 #include UTILITIES
          ^
-../utilities_tests/iterator_traits.cpp:25:48: error: no member named 'iterator_type' in 'ft::Iterator<int>'
-        res2.push_back(typeid(_vector<int>::iterator::iterator_type).name());
-                              ~~~~~~~~~~~~~~~~~~~~~~~~^
+../utilities_tests/equal.cpp:7:6: error: use of undeclared identifier 'ft'
+        if (_equal(s.begin(), s.begin() + s.size()/2, s.rbegin()) == 1)
+            ^
+../utilities_tests/../system/../../config.hpp:29:19: note: expanded from macro '_equal'
+#define _equal                          ft::equal
+                                        ^
 2 errors generated.
- expanded from macro '_lexicographical'
-#define _lexicographical        ft::lexicographical_compare
-                                ^
-2 errors generated.
-ected a qualified name after 'typename'
+              ^
+../utilities_tests/enable_if.cpp:4:71: error: expected a qualified name after 'typename'
 template <class T> typename _enable_if< std::is_unsigned<T>::value >::type
                                                                       ^
 ../utilities_tests/enable_if.cpp:4:71: warning: variable templates are a C++14 extension [-Wc++14-extensions]

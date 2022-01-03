@@ -6,15 +6,15 @@
 #    By: mamoussa <mamoussa@student.1337.ma>           +#+      +#++:      +#++:        +#+          #
 #                                                     +#+         +#+        +#+      +#+            #
 #    Created: Invalid date        by                 #+#  #+#    #+# #+#    #+#     #+#              #
-#    Updated: 2022/01/03 12:51:28 by abelarif         ###   ########.fr        #
+#    Updated: 2022/01/03 14:40:12 by abelarif         ###   ########.fr        #
 #                                                                                                    #
 # ************************************************************************************************** #
 
 COMPILER = clang++
-FLAGS = --std=c++98 -Wall -Wextra -Werror -fsanitize=address -g3 -ferror-limit=0
+FLAGS = --std=c++98 -Wall -Wextra -Werror 
 
 vector:
-	@$(COMPILER) $(FLAGS)	Vector_tests.cpp -o vector.out 
+	@$(COMPILER) $(FLAGS)	vector_tests.cpp -o vector.out 
 
 map:
 	@$(COMPILER) $(FLAGS)	Map_tests.cpp -o map.out 

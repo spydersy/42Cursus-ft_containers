@@ -609,7 +609,8 @@ namespace ft
                         if (it != position)
                         {
                             this->_size--;
-                            new_array[index] = *it;
+                            this->_vector_allocator.construct(new_array + index, *it);
+                            // new_array[index] = *it;
                             index++;
                             ret = position;
                         }
@@ -636,7 +637,8 @@ namespace ft
                             {
                                 if (it == first - 1)
                                     ret = it;
-                                new_array[index] = *it;
+                                // new_array[index] = *it;
+                                this->_vector_allocator.construct(new_array + index, *it);
                                 index++;
                             }
                         }
