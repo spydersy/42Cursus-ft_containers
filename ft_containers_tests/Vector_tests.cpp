@@ -27,7 +27,7 @@
 #define RESET "\e[0m"
 
 #define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
-#define TIME_FAC 1000000 // the ft::vector methods can be slower up to std::vector methods * TIME_FAC (MAX 20)
+#define TIME_FAC 20 // the ft::vector methods can be slower up to std::vector methods * TIME_FAC (MAX 20)
 
 time_t get_time(void)
 {
@@ -923,7 +923,6 @@ void vector_tests(void)
             ft_res += *rit;
         for (ft::vector<std::string>::const_reverse_iterator rit = ft_v2.rbegin(); rit != ft_v2.rend(); ++rit) // fill c_ft_res from const ft_v1
             c_ft_res += *rit;
-
         EQUAL(res == ft_res && c_ft_res == c_res);
     }
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " size method "
@@ -3344,10 +3343,10 @@ int main(void)
     std::cout << RED << "**** The test is taking so much time to test the all cases and the time complexity of each method ****" << std::endl;
     std::cout << RED << "--------------------------------------------------------------------------------------------------------" << RESET << std::endl;
     signal(SIGALRM, alarm_handler);
-    iterator_tests();                        //  DONE
-    const_iterator_tests();                  //  DONE
-    reverse_iterator_tests();                //  DONE
-    reverse_iterator_with_ft_vector();       //  DONE
+    // iterator_tests();                        //  DONE
+    // const_iterator_tests();                  //  DONE
+    // reverse_iterator_tests();                //  DONE
+    // reverse_iterator_with_ft_vector();       //  DONE
     vector_tests();
     return 0;
 }

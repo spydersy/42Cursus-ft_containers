@@ -1,1 +1,101 @@
-
+In file included from ../stack_tests/operator <.cpp:2:
+../stack_tests/__service.ipp:3:10: error: expected "FILENAME" or <FILENAME>
+#include STACK
+         ^
+../stack_tests/__service.ipp:9:2: error: use of undeclared identifier 'ft'
+        _stack<int> st1, st2, st3, st4;
+        ^
+../stack_tests/../system/../../config.hpp:21:20: note: expanded from macro '_stack'
+#define _stack                          ft::Stack
+                                        ^
+In file included from ../stack_tests/operator <.cpp:2:
+../stack_tests/__service.ipp:10:2: error: use of undeclared identifier 'ft'
+        _stack<string> st5, st6, st7, st8, st9;
+        ^
+../stack_tests/../system/../../config.hpp:21:20: note: expanded from macro '_stack'
+#define _stack                          ft::Stack
+                                        ^
+In file included from ../stack_tests/operator <.cpp:2:
+../stack_tests/__service.ipp:27:114: error: use of undeclared identifier 'ft'
+int run_stack_unit_test(std::string test_name, std::vector<int> (func1)(std::stack<T>), std::vector<int> (func2)(_stack<T>)) {
+                                                                                                                 ^
+../stack_tests/../system/../../config.hpp:21:20: note: expanded from macro '_stack'
+#define _stack                          ft::Stack
+                                        ^
+In file included from ../stack_tests/operator <.cpp:2:
+../stack_tests/__service.ipp:35:2: error: use of undeclared identifier 'ft'
+        _stack<int> my_stack;
+        ^
+../stack_tests/../system/../../config.hpp:21:20: note: expanded from macro '_stack'
+#define _stack                          ft::Stack
+                                        ^
+In file included from ../stack_tests/operator <.cpp:2:
+../stack_tests/__service.ipp:35:12: error: expected '(' for function-style cast or type construction
+        _stack<int> my_stack;
+               ~~~^
+../stack_tests/__service.ipp:35:14: error: use of undeclared identifier 'my_stack'
+        _stack<int> my_stack;
+                    ^
+../stack_tests/__service.ipp:39:15: error: use of undeclared identifier 'my_stack'
+        res2 = func2(my_stack);
+                     ^
+8 errors generated.
+ted.
+ use of undeclared identifier 'ft'
+std::vector<int> empty_test(_stack<T> stk) {
+                            ^
+../stack_tests/../system/../../config.hpp:21:20: note: expanded from macro '_stack'
+#define _stack                          ft::Stack
+                                        ^
+../stack_tests/empty().cpp:19:18: warning: variable templates are a C++14 extension [-Wc++14-extensions]
+std::vector<int> empty_test(_stack<T> stk) {
+                 ^
+../stack_tests/empty().cpp:19:18: error: redefinition of 'empty_test' as different kind of symbol
+../stack_tests/empty().cpp:5:18: note: previous definition is here
+std::vector<int> empty_test(std::stack<T> stk) {
+                 ^
+../stack_tests/empty().cpp:19:36: error: 'T' does not refer to a value
+std::vector<int> empty_test(_stack<T> stk) {
+                                   ^
+../stack_tests/empty().cpp:18:17: note: declared here
+template <class T>
+                ^
+../stack_tests/empty().cpp:19:39: error: use of undeclared identifier 'stk'
+std::vector<int> empty_test(_stack<T> stk) {
+                                      ^
+../stack_tests/empty().cpp:19:43: error: expected ';' at end of declaration
+std::vector<int> empty_test(_stack<T> stk) {
+                                          ^
+                                          ;
+../stack_tests/empty().cpp:19:44: error: expected unqualified-id
+std::vector<int> empty_test(_stack<T> stk) {
+                                           ^
+../stack_tests/empty().cpp:34:7: error: no matching function for call to 'run_stack_unit_test'
+        exit(run_stack_unit_test<int>("empty()", empty_test, empty_test));
+             ^~~~~~~~~~~~~~~~~~~~~~~~
+../stack_tests/__service.ipp:27:5: note: candidate function template not viable: no overload of 'empty_test' matching 'std::vector<int> (*)(int)' for 3rd argument
+int run_stack_unit_test(std::string test_name, std::vector<int> (func1)(std::stack<T>), std::vector<int> (func2)(_stack<T>)) {
+    ^
+1 warning and 15 errors generated.
+t run_stack_unit_test(std::string test_name, std::vector<int> (func1)(std::stack<T>), std::vector<int> (func2)(_stack<T>)) {
+    ^
+1 warning and 15 errors generated.
+'ft'
+        (_is_integral<unsigned long>() == std::is_integral<unsigned long>()) ? 0 : res = 0;
+         ^
+../utilities_tests/../system/../../config.hpp:24:24: note: expanded from macro '_is_integral'
+#define _is_integral            ft::is_integral
+                                ^
+../utilities_tests/is_integral.cpp:21:3: error: use of undeclared identifier 'ft'
+        (_is_integral<long long>() == std::is_integral<long long>()) ? 0 : res = 0;
+         ^
+../utilities_tests/../system/../../config.hpp:24:24: note: expanded from macro '_is_integral'
+#define _is_integral            ft::is_integral
+                                ^
+../utilities_tests/is_integral.cpp:22:3: error: use of undeclared identifier 'ft'
+        (_is_integral<unsigned long long>() == std::is_integral<unsigned long long>()) ? 0 : res = 0;
+         ^
+../utilities_tests/../system/../../config.hpp:24:24: note: expanded from macro '_is_integral'
+#define _is_integral            ft::is_integral
+                                ^
+16 errors generated.

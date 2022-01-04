@@ -98,31 +98,21 @@ namespace ft
             */
             vector& operator=(const vector& x)
             {
-                std::cout << "DBG_0" << std::endl;
                 if (*this != x)
                 {
-                std::cout << "DBG_1" << std::endl;
                     size_type   index = 0;
-                std::cout << "DBG_2" << std::endl;
                     size_type   xsize = x.size();
-                std::cout << "DBG_3" << std::endl;
 
                     this->_capacity = x._capacity;
-                std::cout << "DBG_4" << std::endl;
                     this->_size = x._size;
-                std::cout << "DBG_5" << std::endl;
                     this->_vector_allocator.deallocate(this->_array, this->_capacity);
-                std::cout << "DBG_6" << std::endl;
                     this->_array = this->_vector_allocator.allocate(x._capacity);
-                std::cout << "DBG_7" << std::endl;
                     while (index < xsize)
                     {
                         this->_vector_allocator.construct(_array + index, x[index]);
                         index++;
                     }
-                std::cout << "DBG_10" << std::endl;
                 }
-                std::cout << "DBG_11" << std::endl;
                 return (*this);
             }
 /* Iterators: ****************************************************************************************************/
@@ -181,7 +171,7 @@ namespace ft
 
                 reverse_iterator rbegin()
                 {
-                    reverse_iterator    rit(this->end() - 1);
+                    reverse_iterator    rit(this->end());
 
                     // rit._iterator = this->end() - 1;
                     return (rit);
@@ -191,7 +181,7 @@ namespace ft
                 {
                     // reverse_iterator(this->end() - 1)
                     // reverse_iterator    rit(this->end() - 1);
-                    return (const_reverse_iterator(this->end() - 1));
+                    return (const_reverse_iterator(this->end()));
                 }
 
                 reverse_iterator rend()
@@ -232,10 +222,12 @@ namespace ft
                 {
                     if (n <= this->_size)
                     {
+                        std::cout << "OOOOOOOOO" << std::endl;
                         this->_size = n;
                     }
                     if (n > this->_size && n <= this->_capacity)
                     {
+                        std::cout << "AAAAAAAAA" << std::endl;
                         iterator    it = this->end();
                         for (size_type i = this->_size; i < n; i++)
                         {
@@ -256,9 +248,11 @@ namespace ft
                             // new_array[index++] = *it;
                             index++;
                         }
+                        std::cout << "BBBBBBBBB" << std::endl;
                         while (index < n)
                         {
-                            new_array[index++] = val;
+                            this->_vector_allocator.construct(new_array + index, val);
+                            index++;
                         }
                         _vector_allocator.deallocate(this->_array, this->_capacity);
                         this->_size = n;
@@ -399,7 +393,7 @@ namespace ft
                     this->_array = this->_vector_allocator.allocate(n);
                     for (size_type i = 0; i < n; i++)
                     {
-                        this->_array[i] = val;
+                        this->_vector_allocator.construct(this->_array + i, val);
                     }
                     this->_size = n;
                     this->_capacity = n;
