@@ -202,9 +202,7 @@ namespace   ft
 
                 Iterator   operator-=( difference_type value)
                 {
-                    std::cout << "imheeere : " << *_ptr << std::endl;
                     this->_ptr -= value;
-                    std::cout << "imheeere : " << *_ptr << std::endl;
                     return (*this);
                 }
 

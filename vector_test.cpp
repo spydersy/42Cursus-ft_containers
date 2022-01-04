@@ -113,8 +113,11 @@ int		main()
 		std::vector<int>::const_reverse_iterator	crit0(vect.end());
 		std::vector<int>::const_reverse_iterator	crit1(vect.end() - 1);
 
+		std::cout << "checke	r: " << *crit0 << " | " << *crit1 << std::endl;
+
 		std::cout << *(crit0 + 1) << std::endl;
 		std::cout << *(crit1) << std::endl;
+		std::cout << *(crit1 + 1) << std::endl;
 
 	}
 	std::cout << "**************" << std::endl;
@@ -124,8 +127,11 @@ int		main()
 		ft::vector<int>::const_reverse_iterator	crit0(vect.end());
 		ft::vector<int>::const_reverse_iterator	crit1(vect.end() - 1);
 
+		std::cout << "checker: " << *crit0 << " | " << *crit1 << std::endl;
+
 		std::cout << *(crit0 + 1) << std::endl;
 		std::cout << *(crit1) << std::endl;
+		std::cout << *(crit1 + 1) << std::endl;
 
 	}
 	return (0);

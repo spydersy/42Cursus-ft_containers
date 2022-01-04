@@ -53,15 +53,6 @@ namespace ft
                 {
                     this->_vector_allocator = alloc;
                     this->assign(n, val);
-                    // this->_vector_allocator = alloc;
-
-                    // this->_array = this->_vector_allocator.allocate(n);
-                    // for (size_type i = 0; i < n; i++)
-                    // {
-                        // this->_array[i] = val;
-                    // }
-                    // this->_size = n;
-                    // this->_capacity = n;
                 }
                 /*
                 ** Range Constructor:
@@ -88,7 +79,7 @@ namespace ft
                     this->_array = this->_vector_allocator.allocate(this->_size);
                     for (size_type i = 0; i < x._size; i++)
                     {
-                        this->_array[i] = x._array[i];
+                        this->_vector_allocator.construct(this->_array + i, x._array[i]);
                     }
                 }
 /* Destructor: *****************************************************************************************************/
@@ -97,6 +88,7 @@ namespace ft
             */
             ~vector()
             {
+                //allocator.destruct( ... );
                 this->_vector_allocator.deallocate(this->_array, this->_capacity);
                 return ;
             }
@@ -106,21 +98,31 @@ namespace ft
             */
             vector& operator=(const vector& x)
             {
+                std::cout << "DBG_0" << std::endl;
                 if (*this != x)
                 {
+                std::cout << "DBG_1" << std::endl;
                     size_type   index = 0;
+                std::cout << "DBG_2" << std::endl;
                     size_type   xsize = x.size();
+                std::cout << "DBG_3" << std::endl;
 
                     this->_capacity = x._capacity;
+                std::cout << "DBG_4" << std::endl;
                     this->_size = x._size;
+                std::cout << "DBG_5" << std::endl;
                     this->_vector_allocator.deallocate(this->_array, this->_capacity);
+                std::cout << "DBG_6" << std::endl;
                     this->_array = this->_vector_allocator.allocate(x._capacity);
+                std::cout << "DBG_7" << std::endl;
                     while (index < xsize)
                     {
                         this->_vector_allocator.construct(_array + index, x[index]);
                         index++;
                     }
+                std::cout << "DBG_10" << std::endl;
                 }
+                std::cout << "DBG_11" << std::endl;
                 return (*this);
             }
 /* Iterators: ****************************************************************************************************/
@@ -382,7 +384,7 @@ namespace ft
                     size_type   c = 0;
                     while (first != last)
                     {
-                        this->_array[c] = *first;
+                        this->_vector_allocator.construct(this->_array + c, *first);
                         c++;
                         first++;
                     }
@@ -693,7 +695,7 @@ namespace ft
             allocator_type              _vector_allocator;
             size_type                   _size;
             size_type                   _capacity;
-            iterator                    _iterator;
+            // iterator                    _iterator;
 
             size_type        capacity_calculator(size_type const current_size)
             {

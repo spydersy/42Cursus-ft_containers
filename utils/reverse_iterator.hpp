@@ -123,11 +123,17 @@ namespace ft
         */
         reverse_iterator operator+( difference_type n ) const
         {
-            // reverse_iterator    ret(this->_iterator.operator-(n));
-            (this->base() - 1) -= n;
-            // return (reverse_iterator(this->base() - n));
-            return (*this);
-        }
+            // // reverse_iterator    ret(this->_iterator.operator-(n));
+            // std::cout << "DBGXX00: " << *(this->base()) << std::endl;
+            // this->base()--;
+            // if (n) {}
+            // std::cout << "DBGXX01: " << *(this->base()) << std::endl;
+            // // return (reverse_iterator(this->base() - n));
+            // return (*this);
+            reverse_iterator    ret;
+
+            ret._iterator = (this->base() - n);
+            return (ret);        }
         /*
         **  Operator-( difference_type n ) :
         */
