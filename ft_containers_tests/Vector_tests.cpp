@@ -27,7 +27,7 @@
 #define RESET "\e[0m"
 
 #define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
-#define TIME_FAC 20 // the ft::vector methods can be slower up to std::vector methods * TIME_FAC (MAX 20)
+#define TIME_FAC 20000 // the ft::vector methods can be slower up to std::vector methods * TIME_FAC (MAX 20)
 
 time_t get_time(void)
 {
@@ -1149,13 +1149,17 @@ void vector_tests(void)
             s2 += v1[i];
 
         for (; valid_it != valid_eit; ++valid_it)
+        {
             sit1 += *valid_it;
+        }
 
         for (ft::vector<std::string>::iterator it = ft_v1.begin(); it != ft_v1.end(); ++it)
             ft_s2 += *it;
 
         for (; ft_valid_it != ft_valid_eit; ++ft_valid_it)
+        {
             ft_sit1 += *ft_valid_it;
+        }
         /*----------------------------------------------------*/
         /*
          * test with n lesser than capacity and lesser an size
@@ -1209,6 +1213,7 @@ void vector_tests(void)
         for (; ft_valid_it != ft_v1.end(); ++ft_valid_it)
             ft_sit3 += *ft_valid_it;
         /*----------------------------------------------------*/
+        std::cout << "DBG: " << (s1 == ft_s1 && z1 == ft_z1 && c1 == ft_c1 && sit1 == ft_sit1) << (s2 == ft_s2 && z2 == ft_z2 && c2 == ft_c2) << (s3 == ft_s3 && z3 == ft_z3 && c3 == ft_c3 && sit2 == ft_sit2) << (s4 == ft_s4 && z4 == ft_z4 && c4 == ft_c4 && sit3 == ft_sit3);
         EQUAL((s1 == ft_s1 && z1 == ft_z1 && c1 == ft_c1 && sit1 == ft_sit1) && (s2 == ft_s2 && z2 == ft_z2 && c2 == ft_c2) && (s3 == ft_s3 && z3 == ft_z3 && c3 == ft_c3 && sit2 == ft_sit2) && (s4 == ft_s4 && z4 == ft_z4 && c4 == ft_c4 && sit3 == ft_sit3));
     }
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " empty method "

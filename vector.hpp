@@ -220,43 +220,20 @@ namespace ft
                 */
                 void resize (size_type n, value_type val = value_type())
                 {
-                    if (n <= this->_size)
+                    if (n == this->_size)
+                        return ;
+                    else if (n < this->_size)
                     {
-                        std::cout << "OOOOOOOOO" << std::endl;
+                        for (size_type i = n; i < n; i++)
+                        {
+                            this->_vector_allocator.destroy(this->_array + i);
+                        }
                         this->_size = n;
                     }
-                    if (n > this->_size && n <= this->_capacity)
+                    else
                     {
-                        std::cout << "AAAAAAAAA" << std::endl;
-                        iterator    it = this->end();
-                        for (size_type i = this->_size; i < n; i++)
-                        {
-                            *it = val;
-                            it++;
-                        }
+                        this->insert(this->end(), n - this->_size, val);
                         this->_size = n;
-
-                    }
-                    if (n > this->_size && n > this->_capacity)
-                    {
-                        size_type   index = 0;
-                        value_type  *new_array = _vector_allocator.allocate(n);
-
-                        for (iterator it = this->begin(); it < this->end(); it++)
-                        {
-                            this->_vector_allocator.construct(new_array + index, *it);
-                            // new_array[index++] = *it;
-                            index++;
-                        }
-                        std::cout << "BBBBBBBBB" << std::endl;
-                        while (index < n)
-                        {
-                            this->_vector_allocator.construct(new_array + index, val);
-                            index++;
-                        }
-                        _vector_allocator.deallocate(this->_array, this->_capacity);
-                        this->_size = n;
-                        this->_array = new_array;
                     }
                 }
 
@@ -519,14 +496,17 @@ namespace ft
                             {
                                 while (tmp)
                                 {
-                                    new_array[index++] = val;
+                                    // new_array[index++] = val;
+                                    this->_vector_allocator.construct(new_array + index, val);
                                     tmp--;
+                                    index++;
                                 }
                                 it++;
                             }
                             else
                             {
-                                new_array[index] = *it;
+                                // new_array[index] = *it;
+                                this->_vector_allocator.construct(new_array + index, *it);
                                 it++;
                             }
                         }

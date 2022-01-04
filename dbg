@@ -1,5 +1,18 @@
-10
-9
-**************
-10
-9
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==9445==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x000000432cf2 bp 0x7ffe16beb2e0 sp 0x7ffe16beaa78 T0)
+==9445==The signal is caused by a READ memory access.
+==9445==Hint: address points to the zero page.
+    #0 0x432cf1 in __asan::QuickCheckForUnpoisonedRegion(unsigned long, unsigned long) (/home/kali/Desktop/42Cursus-ft_containers/ft_containers_tests/vector.out+0x432cf1)
+    #1 0x439cc6 in memcpy (/home/kali/Desktop/42Cursus-ft_containers/ft_containers_tests/vector.out+0x439cc6)
+    #2 0x7f4e7d8e5c21 in std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/lib/x86_64-linux-gnu/libstdc++.so.6+0x138c21)
+    #3 0x7f4e7d8e5f79 in std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::operator=(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/lib/x86_64-linux-gnu/libstdc++.so.6+0x138f79)
+    #4 0x584d99 in ft::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::reserve(unsigned long) /home/kali/Desktop/42Cursus-ft_containers/ft_containers_tests/./../vector.hpp:267:44
+    #5 0x535b44 in vector_tests() /home/kali/Desktop/42Cursus-ft_containers/ft_containers_tests/Vector_tests.cpp:1263:19
+    #6 0x5720d0 in main /home/kali/Desktop/42Cursus-ft_containers/ft_containers_tests/Vector_tests.cpp:3355:5
+    #7 0x7f4e7d481bba in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x26bba)
+    #8 0x41f659 in _start (/home/kali/Desktop/42Cursus-ft_containers/ft_containers_tests/vector.out+0x41f659)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/home/kali/Desktop/42Cursus-ft_containers/ft_containers_tests/vector.out+0x432cf1) in __asan::QuickCheckForUnpoisonedRegion(unsigned long, unsigned long)
+==9445==ABORTING
