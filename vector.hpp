@@ -383,7 +383,8 @@ namespace ft
                 {
                     if (this->_size + 1 <= this->_capacity)
                     {
-                        this->_array[this->_size] = val;
+                        this->_vector_allocator.construct(this->_array + this->_size, val);
+                        // this->_array[this->_size] = val;
                     }
                     else
                     {
@@ -470,7 +471,7 @@ namespace ft
                         return ;
                     if (this->_size + n <= this->_capacity)
                     {
-                        iterator    it = this->end() - 1;
+                        iterator    it = this->end();
                         size_type   tmp = n;
 
                         for (; it > position; it--)
@@ -516,6 +517,7 @@ namespace ft
                         this->_capacity = this->_size;
                     }
                 }
+
                 /*
                 **  Range - Insert:
                 */
