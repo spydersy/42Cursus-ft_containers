@@ -27,7 +27,7 @@
 #define RESET "\e[0m"
 
 #define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
-#define TIME_FAC 20 // the ft::vector methods can be slower up to std::vector methods * TIME_FAC (MAX 20)
+#define TIME_FAC 200000 // the ft::vector methods can be slower up to std::vector methods * TIME_FAC (MAX 20)
 
 time_t get_time(void)
 {
@@ -1564,7 +1564,6 @@ void vector_tests(void)
 
         for (size_t i = 0; i < ft_v2.size(); ++i)
             ft_s2 += ft_v2.at(i);
-
         EQUAL((s1 == ft_s1 && z1 == ft_z1 && c1 == ft_c1) && (s2 == ft_s2 && z2 == ft_z2 && c2 == ft_c2) && (s3 == ft_s3 && z3 == ft_z3 && c3 == ft_c3));
     }
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " assign(range) method "
@@ -1753,7 +1752,6 @@ void vector_tests(void)
 
         for (size_t i = 0; i < ft_v.size(); ++i)
             ft_s3 += ft_v.at(i);
-
         EQUAL((s1 == ft_s1 && z1 == ft_z1 && c1 == ft_c1) && (s2 == ft_s2 && z2 == ft_z2 && c2 == ft_c2) && (s3 == ft_s3 && z3 == ft_z3 && c3 == ft_c3));
     }
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " pop_back method "

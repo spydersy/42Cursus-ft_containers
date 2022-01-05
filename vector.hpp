@@ -51,7 +51,10 @@ namespace ft
                 */
                 explicit vector (size_type n, const_reference val = value_type(), const allocator_type& alloc = allocator_type())
                 {
+                    this->_size = 0;
+                    this->_capacity = 0;
                     this->_vector_allocator = alloc;
+                    this->_array = this->_vector_allocator.allocate(0);
                     this->assign(n, val);
                 }
                 /*
@@ -89,7 +92,7 @@ namespace ft
             ~vector()
             {
                 //allocator.destruct( ... );
-                this->_vector_allocator.deallocate(this->_array, this->_capacity);
+                // this->_vector_allocator.deallocate(this->_array, this->_capacity);
                 return ;
             }
 /* Operator=: ****************************************************************************************************/
@@ -347,10 +350,14 @@ namespace ft
                 typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type = InputIterator())
                 {
                     this->_size = last - first;
-                    this->_capacity = this->_size;
                     // this->_vector_allocator = alloc;
+                    if (this->_capacity < this->_size)
+                    {
+                        this->_capacity = this->_size;
+                        this->_array = this->_vector_allocator.allocate(this->_capacity);
+                    }
 
-                    this->_array = this->_vector_allocator.allocate(this->_capacity);
+                    // this->_array = this->_vector_allocator.allocate(this->_capacity);
 
                     size_type   c = 0;
                     while (first != last)
@@ -366,14 +373,16 @@ namespace ft
                 */
                 void assign (size_type n, const value_type& val)
                 {
-
-                    this->_array = this->_vector_allocator.allocate(n);
+                    if (this->_capacity < n)
+                    {
+                        this->_array = this->_vector_allocator.allocate(n);
+                        this->_capacity = n;
+                    }
                     for (size_type i = 0; i < n; i++)
                     {
                         this->_vector_allocator.construct(this->_array + i, val);
                     }
                     this->_size = n;
-                    this->_capacity = n;
                 }
 
                 /*
@@ -388,11 +397,18 @@ namespace ft
                     }
                     else
                     {
+                        pointer new_array;
                         size_type   index = 0;
                         if (this->_capacity == 0)
+                        {
                             this->_capacity++;
-                        pointer new_array = this->_vector_allocator.allocate(this->_capacity * 2);
-                        this->_capacity *= 2;
+                            new_array = this->_vector_allocator.allocate(this->_capacity * 2);
+                        }
+                        else
+                        {
+                            new_array = this->_vector_allocator.allocate(this->_capacity * 2);
+                            this->_capacity *= 2;
+                        }
                         while (index < this->_size)
                         {
                             this->_vector_allocator.construct(new_array + index, this->_array[index]);

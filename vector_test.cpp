@@ -171,26 +171,54 @@
 // 	return (0);
 // }
 
+// int     main()
+// {
+//     {
+//         std::vector<int>    vect;
+//         for(int i = 1; i < 11; i++) vect.push_back(i);
+//         std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+
+//         vect.insert(vect.end(), 12, 22);
+//         std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+//         for(std::vector<int>::iterator it = vect.begin(); it != vect.end(); it++) std::cout << "*it: " << *it << std::endl;
+//     }
+//     std::cout << "-----------------------------------" << std::endl;
+//     {
+//         ft::vector<int>    vect;
+//         for(int i = 1; i < 11; i++) vect.push_back(i);
+//         std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+
+//         vect.insert(vect.end(), 12, 22);
+//         std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+//         for(ft::vector<int>::iterator it = vect.begin(); it != vect.end(); it++) std::cout << "*it: " << *it << std::endl;
+//     }
+//     return (0);
+// }
+
 int     main()
 {
     {
         std::vector<int>    vect;
-        for(int i = 1; i < 11; i++) vect.push_back(i);
-        std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+        std::vector<int>    vect0(20, 50);
 
-        vect.insert(vect.end(), 12, 22);
+        for (int i = 1; i < 11; i++)    vect.push_back(i);
         std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
-        for(std::vector<int>::iterator it = vect.begin(); it != vect.end(); it++) std::cout << "*it: " << *it << std::endl;
+        vect.assign(vect0.begin(), vect0.begin() + 2);
+        std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+        for (std::vector<int>::iterator it = vect.begin(); it != vect.end(); it++)  std::cout << "*it: " << *it << std::endl;
     }
-    std::cout << "-----------------------------------" << std::endl;
+
+    std::cout << "---------------------" << std::endl;
     {
         ft::vector<int>    vect;
-        for(int i = 1; i < 11; i++) vect.push_back(i);
-        std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+        ft::vector<int>    vect0(20, 50);
 
-        vect.insert(vect.end(), 12, 22);
+        for (int i = 1; i < 11; i++)    vect.push_back(i);
         std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
-        for(ft::vector<int>::iterator it = vect.begin(); it != vect.end(); it++) std::cout << "*it: " << *it << std::endl;
+        vect.assign(vect0.begin(), vect0.begin() + 2);
+        std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+        for (ft::vector<int>::iterator it = vect.begin(); it != vect.end(); it++)  std::cout << "*it: " << *it << std::endl;
     }
+
     return (0);
 }
