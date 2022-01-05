@@ -42,7 +42,6 @@ namespace ft
                 explicit vector (const allocator_type& alloc = allocator_type())
                 {
                     this->_vector_allocator = alloc;
-                    this->_array = _vector_allocator.allocate(0);
                     this->_capacity = 0;
                     this->_size = 0;
                 }
@@ -136,15 +135,7 @@ namespace ft
                 /*
                 ** Const Begin:
                 */
-                const_iterator begin() const
-                {
-                    // std::cout << "begni dbg: " << _array[0] << std::endl;
-                    const_iterator    it(this->_array[0]);
-
-                    // *it = this->_array[0];
-                    // it.setPtr(this->_array[0]);
-                    return (it);
-                }
+                const_iterator begin() const {  return const_iterator(this->_array[0]); }
 
                 /*
                 ** End:
@@ -462,14 +453,17 @@ namespace ft
                         {
                             if (it == position)
                             {
-                                new_array[index++] = val;
-                                new_array[index++] = *it;
+                                this->_vector_allocator.construct(new_array + index, val);
+                                // new_array[index++] = val;
+                                // new_array[index++] = *it;
                                 ret = it;
                             }
                             else
                             {
-                                new_array[index++] = *it;
+                                this->_vector_allocator.construct(new_array + index, *it);
+                                // new_array[index++] = *it;
                             }
+                            index++;
                         }
                         this->_vector_allocator.deallocate(this->_array, this->_capacity);
                         this->_array = new_array;

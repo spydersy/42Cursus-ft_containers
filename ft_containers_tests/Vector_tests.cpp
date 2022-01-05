@@ -1862,7 +1862,9 @@ void vector_tests(void)
             ft::vector<std::string> ft_v;
             it = v.insert(v.begin(), "hello");
             ft_it = ft_v.insert(ft_v.begin(), "hello");
+            std::cout << "DBG:vvvvv0" << std::endl;
             ft_it->length();
+            std::cout << "DBG:vvvvv1" << std::endl;
 
             s = v.size();
             ft_s = ft_v.size();
@@ -3345,10 +3347,10 @@ int main(void)
     std::cout << RED << "**** The test is taking so much time to test the all cases and the time complexity of each method ****" << std::endl;
     std::cout << RED << "--------------------------------------------------------------------------------------------------------" << RESET << std::endl;
     signal(SIGALRM, alarm_handler);
-    // iterator_tests();                        //  DONE
-    // const_iterator_tests();                  //  DONE
-    // reverse_iterator_tests();                //  DONE
-    // reverse_iterator_with_ft_vector();       //  DONE
+    iterator_tests();                        //  DONE
+    const_iterator_tests();                  //  DONE
+    reverse_iterator_tests();                //  DONE
+    reverse_iterator_with_ft_vector();       //  DONE
     vector_tests();
     return 0;
 }
