@@ -516,7 +516,6 @@ namespace ft
                             {
                                 while (tmp)
                                 {
-                                    // new_array[index++] = val;
                                     this->_vector_allocator.construct(new_array + index, val);
                                     tmp--;
                                     index++;
@@ -525,7 +524,6 @@ namespace ft
                             }
                             else
                             {
-                                // new_array[index] = *it;
                                 this->_vector_allocator.construct(new_array + index, *it);
                                 it++;
                             }

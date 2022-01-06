@@ -2020,6 +2020,7 @@ void vector_tests(void)
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
             cond = ((str == ft_str) && (s == ft_s) && (c == ft_c));
+            std::cout << "BOOLDBG00: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << std::endl;
         }
         // insert at the end
         {
@@ -2041,6 +2042,7 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
+            std::cout << "BOOLDBG01: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << std::endl;
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
         }
         // /*---------------------------------------------------------------------------------------------------*/
@@ -2066,6 +2068,9 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
+                std::cout << "SYS: " << str << std::endl;
+                std::cout << "USR: " << ft_str << std::endl;
+            std::cout << "BOOLDBG02: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << (&(*valid_it) == &(*ft_v.begin())) << std::endl;
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c) && (&(*valid_it) == &(*ft_v.begin())));
         }
         // /*---------------------------------------------------------------------------------------------------*/
@@ -2087,6 +2092,7 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
+            std::cout << "BOOLDBG03: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << std::endl;
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
         }
         // /*---------------------------------------------------------------------------------------------------*/
@@ -2108,6 +2114,8 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
+            std::cout << "BOOLDBG04: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << std::endl;
+            exit(0);
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
         }
         // /*---------------------------------------------------------------------------------------------------*/
