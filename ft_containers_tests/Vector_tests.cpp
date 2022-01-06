@@ -27,7 +27,7 @@
 #define RESET "\e[0m"
 
 #define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
-#define TIME_FAC 200000 // the ft::vector methods can be slower up to std::vector methods * TIME_FAC (MAX 20)
+#define TIME_FAC 20 // the ft::vector methods can be slower up to std::vector methods * TIME_FAC (MAX 20)
 
 time_t get_time(void)
 {
@@ -1862,9 +1862,7 @@ void vector_tests(void)
             ft::vector<std::string> ft_v;
             it = v.insert(v.begin(), "hello");
             ft_it = ft_v.insert(ft_v.begin(), "hello");
-            std::cout << "DBG:vvvvv0" << std::endl;
             ft_it->length();
-            std::cout << "DBG:vvvvv1" << std::endl;
 
             s = v.size();
             ft_s = ft_v.size();
@@ -1874,6 +1872,7 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
+            std::cout << "DBG_BOOL01: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << (*ft_it == *it) << std::endl;
             cond = ((str == ft_str) && (s == ft_s) && (c == ft_c) && (*ft_it == *it));
         }
         // insert at the end
@@ -1896,6 +1895,7 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
+            std::cout << "DBG_BOOL02: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << (*it == *ft_it) << std::endl;
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c) && (*it == *ft_it));
         }
         /*---------------------------------------------------------------------------------------------------*/
@@ -1922,6 +1922,7 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
+            std::cout << "DBG_BOOL03: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << (*it == *ft_it) << (&(*valid_it) == &(*ft_v.begin())) << std::endl;
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c) && (*it == *ft_it) && (&(*valid_it) == &(*ft_v.begin())));
         }
         /*---------------------------------------------------------------------------------------------------*/
@@ -1940,14 +1941,20 @@ void vector_tests(void)
             ft_s = ft_v.size();
             c = v.capacity();
             ft_c = ft_v.capacity();
+            std::cout << "sys_size: " << v.size() << "sys_capacity: " << v.capacity() << std::endl;
             for (size_t i = 0; i < v.size(); ++i)
                 str += v[i];
+            std::cout << "sys_size: " << ft_v.size() << "sys_capacity: " << ft_v.capacity() << std::endl;
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c) && (*it == *ft_it));
+            std::cout << "DBG_BOOL04: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << (*it == *ft_it) << std::endl;
+            std::cout << "ERR00: " << str << std::endl << "ERR00: " << ft_str << std::endl;
+            std::cout << "ERR01: " << *it << std::endl << "ERR01: " << *ft_it << std::endl;
         }
         /*---------------------------------------------------------------------------------------------------*/
         EQUAL(cond);
+            exit(0);
     }
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " insert method (fill) "
               << "] --------------------]\t\t\033[0m";

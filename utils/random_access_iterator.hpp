@@ -8,22 +8,11 @@
 
 namespace   ft
 {
-	//?https://www.cplusplus.com/reference/iterator/InputIterator/
 	struct input_iterator_tag {};
-
-	//?https://www.cplusplus.com/reference/iterator/OutputIterator/
   	struct output_iterator_tag {};
-
-	//?https://www.cplusplus.com/reference/iterator/ForwardIterator/
   	struct forward_iterator_tag : public input_iterator_tag {};
-
-	//?https://www.cplusplus.com/reference/iterator/BidirectionalIterator/
   	struct bidirectional_iterator_tag : public forward_iterator_tag {};
-
-	//?https://www.cplusplus.com/reference/iterator/RandomAccessIterator/
  	struct random_access_iterator_tag : public bidirectional_iterator_tag {};
-
-	//?https://www.cplusplus.com/reference/iterator/iterator/
 	template <class Category, class T, class Distance = std::ptrdiff_t,
 			class Pointer = T*, class Reference = T&>
 	struct base_iterator

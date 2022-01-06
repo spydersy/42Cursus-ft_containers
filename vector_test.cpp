@@ -195,30 +195,108 @@
 //     return (0);
 // }
 
+// int     main()
+// {
+//     {
+//         std::vector<int>    vect;
+//         std::vector<int>    vect0(20, 50);
+
+//         for (int i = 1; i < 11; i++)    vect.push_back(i);
+//         std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+//         vect.assign(vect0.begin(), vect0.begin() + 2);
+//         std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+//         for (std::vector<int>::iterator it = vect.begin(); it != vect.end(); it++)  std::cout << "*it: " << *it << std::endl;
+//     }
+
+//     std::cout << "---------------------" << std::endl;
+//     {
+//         ft::vector<int>    vect;
+//         ft::vector<int>    vect0(20, 50);
+
+//         for (int i = 1; i < 11; i++)    vect.push_back(i);
+//         std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+//         vect.assign(vect0.begin(), vect0.begin() + 2);
+//         std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
+//         for (ft::vector<int>::iterator it = vect.begin(); it != vect.end(); it++)  std::cout << "*it: " << *it << std::endl;
+//     }
+
+//     return (0);
+// }
+
+// int     main()
+// {
+//     {
+//         std::vector<std::string>    vect;
+
+//         std::vector<std::string>::iterator it =  vect.insert(vect.begin(), "22");
+//         std::cout << *vect.begin() << std::endl;
+//         std::cout << *it << std::endl;
+//     }
+//     std::cout << "----------------------" << std::endl;
+//     {
+//         ft::vector<std::string>    vect;
+
+//         ft::vector<std::string>::iterator it =  vect.insert(vect.begin(), "22");
+//         std::cout << *vect.begin() << std::endl;
+//         std::cout << *it << std::endl;
+//     }
+//     return (0);
+// }
+
 int     main()
 {
     {
-        std::vector<int>    vect;
-        std::vector<int>    vect0(20, 50);
-
-        for (int i = 1; i < 11; i++)    vect.push_back(i);
-        std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
-        vect.assign(vect0.begin(), vect0.begin() + 2);
-        std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
-        for (std::vector<int>::iterator it = vect.begin(); it != vect.end(); it++)  std::cout << "*it: " << *it << std::endl;
+        std::vector<int> a;
+        a.push_back(5);
+       // std::cout << " my BEFOR size org ==>  " << a.size() << "    " << " BEFOR capasity ==> " << a.capacity() << std::endl;
+       a.push_back(9);
+       //std::cout << " my BEFOR size org ==>  " << a.size() << "    " << " BEFOR capasity ==> " << a.capacity() << std::endl;
+       a.push_back(8);
+        a.push_back(1);
+       //std::cout << " my BEFOR size org ==>  " << a.size() << "    " << " BEFOR capasity ==> " << a.capacity() << std::endl;
+        a.push_back(7);
+        // a.push_back(10);
+        // a.push_back(90);
+        // a.reserve(a.size() + 1);
+        // a.reserve(5);
+        std::cout << " my v BEFOR size  ==>  " << a.size() << "    " << " BEFOR capasity ==> " << a.capacity() << std::endl;
+        //std::cout << " BEFOR size my v ==>  " << a.size() << "    " << " BEFOR capasity my v ==> " << a.capacity() << std::endl;
+        std::vector<int>::iterator it =   a.begin();
+        std::vector<int>::iterator  rt =   a.erase(it  + 1, a.end() - 2);
+        std::cout << "test return ==> " <<  *rt  << std::endl;
+        std::cout << " AFTER size my v  ==>  " << a.size() << "    " << " AFTER capasity my v==> " << a.capacity() << std::endl;
+        for (it = a.begin(); it != a.end(); it++)
+        {
+          std::cout << "element my v ==> " << *it << std::endl;
+        }
+         std::cout << "test return ==> " <<  *rt  << std::endl;
     }
-
-    std::cout << "---------------------" << std::endl;
+    std::cout << "**********************************" << std::endl;
     {
-        ft::vector<int>    vect;
-        ft::vector<int>    vect0(20, 50);
-
-        for (int i = 1; i < 11; i++)    vect.push_back(i);
-        std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
-        vect.assign(vect0.begin(), vect0.begin() + 2);
-        std::cout << "Size: " << vect.size() << " Capacity: " << vect.capacity() << std::endl;
-        for (ft::vector<int>::iterator it = vect.begin(); it != vect.end(); it++)  std::cout << "*it: " << *it << std::endl;
+        ft::vector<int> a;
+        a.push_back(5);
+       // std::cout << " my BEFOR size org ==>  " << a.size() << "    " << " BEFOR capasity ==> " << a.capacity() << std::endl;
+       a.push_back(9);
+       //std::cout << " my BEFOR size org ==>  " << a.size() << "    " << " BEFOR capasity ==> " << a.capacity() << std::endl;
+       a.push_back(8);
+        a.push_back(1);
+       //std::cout << " my BEFOR size org ==>  " << a.size() << "    " << " BEFOR capasity ==> " << a.capacity() << std::endl;
+        a.push_back(7);
+        // a.push_back(10);
+        // a.push_back(90);
+        // a.reserve(a.size() + 1);
+        // a.reserve(5);
+        std::cout << " my v BEFOR size  ==>  " << a.size() << "    " << " BEFOR capasity ==> " << a.capacity() << std::endl;
+        //std::cout << " BEFOR size my v ==>  " << a.size() << "    " << " BEFOR capasity my v ==> " << a.capacity() << std::endl;
+        ft::vector<int>::iterator it =   a.begin();
+        ft::vector<int>::iterator  rt =   a.erase(it  + 1, a.end() - 2);
+        std::cout << "test return ==> " <<  *rt  << std::endl;
+        std::cout << " AFTER size my v  ==>  " << a.size() << "    " << " AFTER capasity my v==> " << a.capacity() << std::endl;
+        for (it = a.begin(); it != a.end(); it++)
+        {
+          std::cout << "element my v ==> " << *it << std::endl;
+        }
+         std::cout << "test return ==> " <<  *rt  << std::endl;
     }
-
     return (0);
 }

@@ -44,6 +44,7 @@ namespace ft
                     this->_vector_allocator = alloc;
                     this->_capacity = 0;
                     this->_size = 0;
+                    this->_array = this->_vector_allocator.allocate(0);
                 }
                 /*
                 ** Fill Constructor:
@@ -417,12 +418,7 @@ namespace ft
                 */
                 void pop_back()
                 {
-                    if (this->_size == 0)
-                        return;
-                    for (size_type i = 0; i + 1 < this->_size; i++)
-                    {
-                        this->_array[i] = this->_array[i + 1];
-                    }
+                    this->_vector_allocator.destroy(&this->back());
                     this->_size--;
                 }
                 /*
@@ -430,8 +426,25 @@ namespace ft
                 */
                 iterator insert (iterator position, const value_type& val)
                 {
-
-                    if (this->_size + 1 <= this->_capacity)
+                    if (this->_size == 0)
+                    {
+                        iterator    ret;
+                        // if (this->_capacity < 1)
+                        // {
+                            // // this->_array = this->_vector_allocator.allocate(1);
+                            // this->_capacity = 1;
+                        // }
+                        if (this->begin() == position)
+                        {
+                            this->_array = this->_vector_allocator.allocate(1);
+                            this->_vector_allocator.construct(this->_array , val);
+                            this->_size++;
+                            this->_capacity = this->_size;
+                            ret = this->begin();
+                        }
+                        return (ret);
+                    }
+                    else if (this->_size + 1 <= this->_capacity)
                     {
                         iterator    it = this->end() - 1;
                         for (; it >= position + 1; it--)
@@ -465,7 +478,7 @@ namespace ft
                             }
                             index++;
                         }
-                        this->_vector_allocator.deallocate(this->_array, this->_capacity);
+                        // this->_vector_allocator.deallocate(this->_array, this->_capacity);
                         this->_array = new_array;
                         this->_capacity = this->_size * 2;
                         this->_size++;
