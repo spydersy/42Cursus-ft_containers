@@ -1872,7 +1872,6 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
-            std::cout << "DBG_BOOL01: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << (*ft_it == *it) << std::endl;
             cond = ((str == ft_str) && (s == ft_s) && (c == ft_c) && (*ft_it == *it));
         }
         // insert at the end
@@ -1895,7 +1894,6 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
-            std::cout << "DBG_BOOL02: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << (*it == *ft_it) << std::endl;
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c) && (*it == *ft_it));
         }
         /*---------------------------------------------------------------------------------------------------*/
@@ -1922,7 +1920,6 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
-            std::cout << "DBG_BOOL03: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << (*it == *ft_it) << (&(*valid_it) == &(*ft_v.begin())) << std::endl;
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c) && (*it == *ft_it) && (&(*valid_it) == &(*ft_v.begin())));
         }
         /*---------------------------------------------------------------------------------------------------*/
@@ -1941,20 +1938,14 @@ void vector_tests(void)
             ft_s = ft_v.size();
             c = v.capacity();
             ft_c = ft_v.capacity();
-            std::cout << "sys_size: " << v.size() << "sys_capacity: " << v.capacity() << std::endl;
             for (size_t i = 0; i < v.size(); ++i)
                 str += v[i];
-            std::cout << "sys_size: " << ft_v.size() << "sys_capacity: " << ft_v.capacity() << std::endl;
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c) && (*it == *ft_it));
-            std::cout << "DBG_BOOL04: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << (*it == *ft_it) << std::endl;
-            std::cout << "ERR00: " << str << std::endl << "ERR00: " << ft_str << std::endl;
-            std::cout << "ERR01: " << *it << std::endl << "ERR01: " << *ft_it << std::endl;
         }
         /*---------------------------------------------------------------------------------------------------*/
         EQUAL(cond);
-            exit(0);
     }
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " insert method (fill) "
               << "] --------------------]\t\t\033[0m";
@@ -2161,6 +2152,7 @@ void vector_tests(void)
                 /*------------------ ft::vectors ---------------------*/
                 ft::vector<std::string> ft_v1(1e6, "string2");
                 ualarm(diff * 1e3, 0);
+                // std::cout << "DBG: " << *(v.end() -) << std::endl;
                 ft_v1.insert(ft_v1.begin() + 1e5, v.begin(), v.end());
                 ualarm(0, 0);
             }
@@ -2267,8 +2259,8 @@ void vector_tests(void)
             ft_c = ft_v.capacity();
             for (size_t i = 0; i < v.size(); ++i)
                 str += v[i];
-            for (size_t i = 0; i < ft_v.size(); ++i)
-                ft_str += ft_v[i];
+            // for (size_t i = 0; i < ft_v.size(); ++i)
+            //     ft_str += ft_v[i];
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
         }
         /*---------------------------------------------------------------------------------------------------*/
@@ -2287,8 +2279,10 @@ void vector_tests(void)
             ft_s = ft_v.size();
             c = v.capacity();
             ft_c = ft_v.capacity();
+            std::cout << "DBGsize: " << v.size() << " Capacity:" << v.capacity() << std::endl;
             for (size_t i = 0; i < v.size(); ++i)
                 str += v[i];
+            std::cout << "DBGsize: " << ft_v.size() << " Capacity:" << ft_v.capacity() << std::endl;
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
@@ -3354,10 +3348,10 @@ int main(void)
     std::cout << RED << "**** The test is taking so much time to test the all cases and the time complexity of each method ****" << std::endl;
     std::cout << RED << "--------------------------------------------------------------------------------------------------------" << RESET << std::endl;
     signal(SIGALRM, alarm_handler);
-    iterator_tests();                        //  DONE
-    const_iterator_tests();                  //  DONE
-    reverse_iterator_tests();                //  DONE
-    reverse_iterator_with_ft_vector();       //  DONE
+    // iterator_tests();                        //  DONE
+    // const_iterator_tests();                  //  DONE
+    // reverse_iterator_tests();                //  DONE
+    // reverse_iterator_with_ft_vector();       //  DONE
     vector_tests();
     return 0;
 }

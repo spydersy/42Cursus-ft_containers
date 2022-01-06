@@ -429,11 +429,7 @@ namespace ft
                     if (this->_size == 0)
                     {
                         iterator    ret;
-                        // if (this->_capacity < 1)
-                        // {
-                            // // this->_array = this->_vector_allocator.allocate(1);
-                            // this->_capacity = 1;
-                        // }
+
                         if (this->begin() == position)
                         {
                             this->_array = this->_vector_allocator.allocate(1);
@@ -451,7 +447,7 @@ namespace ft
                         {
                             *(it + 1) = *it;
                         }
-                        *(it + 1) = *it;
+                        *( it + 1) = *it;
                         *it = val;
                         this->_size++;
                         return (it);
@@ -459,29 +455,29 @@ namespace ft
                     else
                     {
                         iterator    ret;
+                        int         ret_index = 0;
                         pointer     new_array = this->_vector_allocator.allocate(this->_size * 2);
                         size_type   index = 0;
 
-                        for (iterator it = this->begin(); it <= this->end(); it++)
+                        for (iterator it = this->begin(); it <= this->end() ; it++)
                         {
                             if (it == position)
                             {
                                 this->_vector_allocator.construct(new_array + index, val);
-                                // new_array[index++] = val;
-                                // new_array[index++] = *it;
-                                ret = it;
+                                this->_vector_allocator.construct(new_array + index + 1, *it);
+                                ret_index = index;
+                                index++;
                             }
                             else
                             {
                                 this->_vector_allocator.construct(new_array + index, *it);
-                                // new_array[index++] = *it;
                             }
                             index++;
                         }
-                        // this->_vector_allocator.deallocate(this->_array, this->_capacity);
                         this->_array = new_array;
                         this->_capacity = this->_size * 2;
                         this->_size++;
+                        ret = this->begin() + ret_index;
                         return (ret);
                     }
                 }
@@ -548,7 +544,7 @@ namespace ft
                 void insert (iterator position, InputIterator first, InputIterator last,
                 typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type = InputIterator())
                 {
-                    size_type   n = last - first;
+                    const size_type   n = last - first;
                     if (n == 0)
                         return ;
                     if (this->_size + n <= this->_capacity)
@@ -569,24 +565,43 @@ namespace ft
                     }
                     else
                     {
-                        pointer     new_array = this->_vector_allocator.allocate(this->_size + n);
+                        std::cout << "Size: " << this->_size << " Capacity: " << this->_capacity  <<std::endl;
+                        std::cout << "DBGFIRST: " << *first << std::endl;
+                        // std::cout << "DBGLAST: " << (last == NULL) << std::endl;
+                        /*
+                            vect.insert(vect.begin(), v0.begin(), v0.end());
+                        */
+                        std::cout << "DBG_NEW_CAPACITY00: " << this->_size << " + " << n  << " = " << this->_size + n << std::endl;
+                        pointer     new_array = this->_vector_allocator.allocate((this->_size * 2) + n);
+                        std::cout << "DBG_NEW_CAPACITY01: " << this->_size << " + " << n  << " = " << this->_size + n << std::endl;
+
                         iterator    it = this->begin();
-                        for (size_type index = 0; index <= this->_size + n; index++)
+                        size_type   index = 0;
+
+
+                        for (; it != this->end(); it++)
                         {
                             if (it == position)
-                            {
-                                while (first < last)
-                                {
-                                    new_array[index++] = *first;
-                                    first++;
-                                }
-                            }
+                                break;
                             else
                             {
-                                new_array[index] = *it;
-                                it++;
+                                this->_vector_allocator.construct(new_array + index, *it);
+                                index++;
                             }
                         }
+                        size_type insert_index = index;
+                        std::cout << "DBG_FIRST_LAST: " << *first << " | " << *(last - 1) << std::endl;
+                        while (first < last)
+                        {
+                            this->_vector_allocator.construct(new_array + insert_index, *first);
+                            first++;
+                            insert_index++;
+                        }
+                        // for (; it != this->end(); it++)
+                        // {
+                        //     this->_vector_allocator.construct(new_array + insert_index, *it);
+                        // }
+
                         this->_vector_allocator.deallocate(this->_array, this->_capacity);
                         this->_array = new_array;
                         this->_size += n;
