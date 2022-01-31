@@ -1,23 +1,7 @@
-*it: 1
-*it: 2
-*it: 3
-*it: 4
-*it: 5
-*it: 6
-*it: 7
-*it: 8
-*it: 9
-*it: 10
-*it: 22
-*it: 22
-*it: 22
-*it: 22
-*it: 22
-*it: 22
-*it: 22
-*it: 22
-*it: 22
-*it: 22
-*it: 22
-*it: 22
-
+Size: 20 Capacity: 20
+Size: 35 Capacity: 40
+SYS(35|40|195): stringstringstringstringstringstringstringstringstringstringhellohellohellohellohellohellohellohellohellohellohellohellohellohellohellostringstringstringstringstringstringstringstringstringstring
+Size: 20 Capacity: 20
+************************************** DBG ALLOCATED SIZE: 35
+Size: 35 Capacity: 35
+SYS(35|35|195): stringstringstringstringstringstringstringstringstringstringhellohellohellohellohellohellohellohellohellohellohellohellohellohellohellostringstringstringstringstringstringstringstringstringstring

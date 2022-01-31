@@ -2020,7 +2020,6 @@ void vector_tests(void)
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
             cond = ((str == ft_str) && (s == ft_s) && (c == ft_c));
-            std::cout << "BOOLDBG00: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << std::endl;
         }
         // insert at the end
         {
@@ -2042,7 +2041,6 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
-            std::cout << "BOOLDBG01: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << std::endl;
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
         }
         // /*---------------------------------------------------------------------------------------------------*/
@@ -2068,9 +2066,9 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
-                std::cout << "SYS: " << str << std::endl;
-                std::cout << "USR: " << ft_str << std::endl;
-            std::cout << "BOOLDBG02: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << (&(*valid_it) == &(*ft_v.begin())) << std::endl;
+                // std::cout << "SYS(" << v.size() << "|" << v.capacity() <<       "|" << str.length() << "): " << str << std::endl;
+                // std::cout << "USR(" << ft_v.size() << "|" << ft_v.capacity() << "|" << ft_str.length() << "): " << ft_str << std::endl;
+                // std::cout << "*************************" << std::endl;
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c) && (&(*valid_it) == &(*ft_v.begin())));
         }
         // /*---------------------------------------------------------------------------------------------------*/
@@ -2092,7 +2090,7 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
-            std::cout << "BOOLDBG03: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << std::endl;
+
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
         }
         // /*---------------------------------------------------------------------------------------------------*/
@@ -2114,8 +2112,6 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
-            std::cout << "BOOLDBG04: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << std::endl;
-            exit(0);
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
         }
         // /*---------------------------------------------------------------------------------------------------*/
@@ -2198,6 +2194,7 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
+                std::cout << "DBG CONDITION00: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << std::endl;
             cond = ((str == ft_str) && (s == ft_s) && (c == ft_c));
         }
         // insert at the end
@@ -2221,6 +2218,7 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
+                std::cout << "DBG CONDITION01: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << std::endl;
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
         }
         /*---------------------------------------------------------------------------------------------------*/
@@ -2247,6 +2245,9 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
+                // std::cout << "Sys: " << str.length() << std::endl;
+                // std::cout << "Usr: " << ft_str.length() << std::endl;
+                std::cout << "DBG CONDITION02: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << (&(*valid_it) == &(*ft_v.begin())) << std::endl;
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c) && (&(*valid_it) == &(*ft_v.begin())));
         }
         /*---------------------------------------------------------------------------------------------------*/
@@ -2267,8 +2268,9 @@ void vector_tests(void)
             ft_c = ft_v.capacity();
             for (size_t i = 0; i < v.size(); ++i)
                 str += v[i];
-            // for (size_t i = 0; i < ft_v.size(); ++i)
-            //     ft_str += ft_v[i];
+            for (size_t i = 0; i < ft_v.size(); ++i)
+                ft_str += ft_v[i];
+                std::cout << "DBG CONDITION03: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << std::endl;
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
         }
         /*---------------------------------------------------------------------------------------------------*/
@@ -2293,10 +2295,13 @@ void vector_tests(void)
             std::cout << "DBGsize: " << ft_v.size() << " Capacity:" << ft_v.capacity() << std::endl;
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
+                std::cout << "DBG CONDITION04: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << std::endl;
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
         }
         /*---------------------------------------------------------------------------------------------------*/
         EQUAL(cond);
+            exit(0);
+
     }
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " erase method (single element) "
               << "] --------------------]\t\t\033[0m";
