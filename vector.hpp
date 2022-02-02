@@ -565,6 +565,7 @@ namespace ft
                         {
                             *(it + n) = *it;
                         }
+                        *(it + n) = *it;
                         while (first < last)
                         {
                             *it = *first;
@@ -575,17 +576,23 @@ namespace ft
                     }
                     else
                     {
-                        // std::cout << "DBGLAST: " << (last == NULL) << std::endl;
-                        /*
-                            vect.insert(vect.begin(), v0.begin(), v0.end());
-                        */
-                        pointer     new_array = this->_vector_allocator.allocate((this->_size * 2) + n);
-
                         iterator    it = this->begin();
+                        iterator    end = this->end();
+                        pointer     new_array;
+                        if (this->_size + n <= this->_size * 2)
+                        {
+                            new_array = this->_vector_allocator.allocate(this->_size * 2);
+                            this->_capacity = this->_size * 2;
+                        }
+                        else
+                        {
+                            new_array = this->_vector_allocator.allocate(this->_size + n);
+                            this->_capacity = this->_size + n;
+                        }
+
                         size_type   index = 0;
 
-
-                        for (; it != this->end(); it++)
+                        for (; it != end; it++)
                         {
                             if (it == position)
                                 break;
@@ -602,15 +609,16 @@ namespace ft
                             first++;
                             insert_index++;
                         }
-                        // for (; it != this->end(); it++)
-                        // {
-                        //     this->_vector_allocator.construct(new_array + insert_index, *it);
-                        // }
+                        for (; it != end; it++)
+                        {
+                            this->_vector_allocator.construct(new_array + insert_index, *it);
+                            insert_index++;
+                        }
 
                         this->_vector_allocator.deallocate(this->_array, this->_capacity);
                         this->_array = new_array;
+                        // this->_capacity = (this->_size * 2) + n;
                         this->_size += n;
-                        this->_capacity = this->_size;
                     }
                 }
             /*
@@ -621,23 +629,24 @@ namespace ft
                 */
                 iterator erase (iterator position)
                 {
-                    pointer     new_array = this->_vector_allocator.allocate(this->_capacity);
-                    size_type   index = 0;
                     iterator    ret;
-
-                    for (iterator it = this->begin(); it < this->end(); it++)
+                    iterator    end = this->end();
+                    iterator it = this->begin();
+                    for (; it < end ; it++)
                     {
-                        if (it != position)
+                        if (it == position)
                         {
+                            ret = it;
                             this->_size--;
-                            this->_vector_allocator.construct(new_array + index, *it);
-                            // new_array[index] = *it;
-                            index++;
-                            ret = position;
+                            break ;
                         }
                     }
-                    this->_vector_allocator.deallocate(this->_array, this->_capacity);
-                    this->_array = new_array;
+                    it++;
+                    while (it != end)
+                    {
+                        *(it - 1) = *it;
+                        it++;
+                    }
                     return (ret);
                 }
                 /*

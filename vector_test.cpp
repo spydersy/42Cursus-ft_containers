@@ -327,38 +327,92 @@
 //   return (0);
 // }
 
+// int     main()
+// {
+//     {
+//         std::vector<std::string> v1(70, "hello");
+//         std::vector<std::string> v(20, "string");
+//         // ft::vector<std::string> ft_v(20, "string");
+//         ft::vector<std::string>::iterator valid_it;
+
+//         v.reserve(100);
+//         // ft_v.reserve(100);
+//         valid_it = ft_v.begin();
+//         v.insert(v.begin() + 15, v1.begin(), v1.end());
+//         ft_v.insert(ft_v.begin() + 15, v1.begin(), v1.end());
+
+//         str.clear();
+//         ft_str.clear();
+//         s = v.size();
+//         ft_s = ft_v.size();
+//         c = v.capacity();
+//         ft_c = ft_v.capacity();
+//         for (size_t i = 0; i < v.size(); ++i)
+//             str += v[i];
+//         for (size_t i = 0; i < ft_v.size(); ++i)
+//             ft_str += ft_v[i];
+//             // std::cout << "Sys: " << str.length() << std::endl;
+//             // std::cout << "Usr: " << ft_str.length() << std::endl;
+//             std::cout << "DBG CONDITION02: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << (&(*valid_it) == &(*ft_v.begin())) << std::endl;
+//         cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c) && (&(*valid_it) == &(*ft_v.begin())));
+//     }
+//     std::cout << "****************************************" << std::endl;
+//     {
+
+//     }
+//     return (0);
+// }
+
+// int         main()
+// {
+
+//     int         c;
+//     int         ft_c;
+//     int         s;
+//     int         ft_s;
+
+//     // std::vector<int> v1; for (int i = 1; i < 71; i++) v1.push_back(i);
+//     std::vector<int> v1(20, 1337);
+//     ft::vector<int> v; for (int i = 1; i < 71; i++) v.push_back(i);
+//     ft::vector<int> ft_v; for (int i = 1; i < 71; i++) ft_v.push_back(i);
+//     ft::vector<int>::iterator valid_it;
+
+//     v.reserve(100);
+//     ft_v.reserve(100);
+//     valid_it = ft_v.begin();
+//     v.insert(v.begin() + 15, v1.begin(), v1.end());
+//     ft_v.insert(ft_v.begin() + 15, v1.begin(), v1.end());
+
+
+//     s = v.size();
+//     ft_s = ft_v.size();
+//     c = v.capacity();
+//     ft_c = ft_v.capacity();
+//     for (size_t i = 0; i < v.size(); ++i)
+//         std::cout << "index " << i << ": " << v[i]<< std::endl;// str += v[i];
+//     std::cout << "************************************" << std::endl;
+//     for (size_t i = 0; i < ft_v.size(); ++i)
+//         std::cout << "index " << i << ": " << ft_v[i]<< std::endl;// str += v[i];
+//     return (0);
+// }
+
 int     main()
 {
-    {
-        std::vector<std::string> v1(70, "hello");
-        std::vector<std::string> v(20, "string");
-        // ft::vector<std::string> ft_v(20, "string");
-        ft::vector<std::string>::iterator valid_it;
+    std::vector<std::string> v1(70, "hello");
+    std::vector<std::string> v(20, "string");
+    ft::vector<std::string> ft_v(20, "string");
+    ft::vector<std::string>::iterator valid_it;
 
-        v.reserve(100);
-        // ft_v.reserve(100);
-        valid_it = ft_v.begin();
-        v.insert(v.begin() + 15, v1.begin(), v1.end());
-        ft_v.insert(ft_v.begin() + 15, v1.begin(), v1.end());
+    v.reserve(100);
+    ft_v.reserve(100);
+    valid_it = ft_v.begin();
+    v.insert(v.begin() + 15, v1.begin(), v1.end());
+    ft_v.insert(ft_v.begin() + 15, v1.begin(), v1.end());
 
-        str.clear();
-        ft_str.clear();
-        s = v.size();
-        ft_s = ft_v.size();
-        c = v.capacity();
-        ft_c = ft_v.capacity();
-        for (size_t i = 0; i < v.size(); ++i)
-            str += v[i];
-        for (size_t i = 0; i < ft_v.size(); ++i)
-            ft_str += ft_v[i];
-            // std::cout << "Sys: " << str.length() << std::endl;
-            // std::cout << "Usr: " << ft_str.length() << std::endl;
-            std::cout << "DBG CONDITION02: " << (str == ft_str) << (s == ft_s) << (c == ft_c) << (&(*valid_it) == &(*ft_v.begin())) << std::endl;
-        cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c) && (&(*valid_it) == &(*ft_v.begin())));
-    }
-    std::cout << "****************************************" << std::endl;
-    {
-
-    }
+    for (size_t i = 0; i < v.size(); ++i)
+        std::cout << "index " << i << " :" << v[i] << std::endl;
+    std::cout << "**********************************" << std::endl;
+    for (size_t i = 0; i < ft_v.size(); ++i)
+        std::cout << "index " << i << " :" << ft_v[i] << std::endl;
     return (0);
 }
