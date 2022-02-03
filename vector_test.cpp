@@ -396,23 +396,41 @@
 //     return (0);
 // }
 
-int     main()
+// int     main()
+// {
+//     std::vector<std::string> v1(70, "hello");
+//     std::vector<std::string> v(20, "string");
+//     ft::vector<std::string> ft_v(20, "string");
+//     ft::vector<std::string>::iterator valid_it;
+
+//     v.reserve(100);
+//     ft_v.reserve(100);
+//     valid_it = ft_v.begin();
+//     v.insert(v.begin() + 15, v1.begin(), v1.end());
+//     ft_v.insert(ft_v.begin() + 15, v1.begin(), v1.end());
+
+//     for (size_t i = 0; i < v.size(); ++i)
+//         std::cout << "index " << i << " :" << v[i] << std::endl;
+//     std::cout << "**********************************" << std::endl;
+//     for (size_t i = 0; i < ft_v.size(); ++i)
+//         std::cout << "index " << i << " :" << ft_v[i] << std::endl;
+//     return (0);
+// }
+
+int		main()
 {
-    std::vector<std::string> v1(70, "hello");
-    std::vector<std::string> v(20, "string");
-    ft::vector<std::string> ft_v(20, "string");
-    ft::vector<std::string>::iterator valid_it;
+	{
+		std::vector<int>	vect0; for (int i =1; i <=70; i++)	vect0.push_back(i);
+		std::vector<int>	vect1; for (int i =1; i <=75; i++)	vect1.push_back(i);
 
-    v.reserve(100);
-    ft_v.reserve(100);
-    valid_it = ft_v.begin();
-    v.insert(v.begin() + 15, v1.begin(), v1.end());
-    ft_v.insert(ft_v.begin() + 15, v1.begin(), v1.end());
+		std::cout << (vect0 < vect1) << std::endl;
+	}
+	std::cout << "******************************" << std::endl;
+	{
+		 ft::vector<int>	vect0; for (int i =1; i <=70; i++)	vect0.push_back(i);
+		 ft::vector<int>	vect1; for (int i =1; i <=75; i++)	vect1.push_back(i);
 
-    for (size_t i = 0; i < v.size(); ++i)
-        std::cout << "index " << i << " :" << v[i] << std::endl;
-    std::cout << "**********************************" << std::endl;
-    for (size_t i = 0; i < ft_v.size(); ++i)
-        std::cout << "index " << i << " :" << ft_v[i] << std::endl;
-    return (0);
+		std::cout << (vect0 < vect1) << std::endl;
+	}
+	return (0);
 }

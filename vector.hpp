@@ -54,7 +54,7 @@ namespace ft
                     this->_size = 0;
                     this->_capacity = 0;
                     this->_vector_allocator = alloc;
-                    this->_array = this->_vector_allocator.allocate(0);
+                    // this->_array = this->_vector_allocator.allocate(0);
                     this->assign(n, val);
                 }
                 /*
@@ -66,9 +66,11 @@ namespace ft
                         const allocator_type& alloc = allocator_type(),
                         typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type = InputIterator())
                 {
+                    // std::cout << "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS" << std::endl;
+                    // this->_array = this->_vector_allocator.allocate(0);
                     this->_vector_allocator = alloc;
                     this->assign(first, last);
-
+                    // std::cout << "000000SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS" << std::endl;
                 }
                 /*
                 ** Copy Constructor:
@@ -78,12 +80,9 @@ namespace ft
                     this->_size = x._size;
                     this->_capacity = x._size;
                     this->_vector_allocator = x._vector_allocator;
-
                     this->_array = this->_vector_allocator.allocate(this->_size);
                     for (size_type i = 0; i < x._size; i++)
-                    {
                         this->_vector_allocator.construct(this->_array + i, x._array[i]);
-                    }
                 }
 /* Destructor: *****************************************************************************************************/
             /*
@@ -105,7 +104,6 @@ namespace ft
                 {
                     size_type   index = 0;
                     size_type   xsize = x.size();
-
                     this->_capacity = x._capacity;
                     this->_size = x._size;
                     this->_vector_allocator.deallocate(this->_array, this->_capacity);
@@ -122,74 +120,21 @@ namespace ft
             /*
             ** Iterators:
             */
-                /*
-                ** Begin:
-                */
-                iterator begin( void )
-                {
-                    iterator    it(this->_array[0]);
+                iterator begin( void ) { return (iterator(this->_array[0])); }
 
-                    // it.setPtr(this->_array[0]);
-                    return (it);
-                }
+                const_iterator begin() const {  return (const_iterator(this->_array[0])); }
 
-                /*
-                ** Const Begin:
-                */
-                const_iterator begin() const {  return const_iterator(this->_array[0]); }
+                iterator end() { return (iterator(this->_array[this->_size])); }
 
-                /*
-                ** End:
-                */
-                iterator end()
-                {
-                    iterator    it(_array[this->_size]);
+                const_iterator end() const { return (const_iterator(this->_array[this->_size])); }
 
-                    // *it = this->_array[this->_size];
+                reverse_iterator rbegin() { return (reverse_iterator(this->end())); }
 
-                    // it.setPtr(this->_array[this->_size]);
-                    return (it);
-                }
+                const_reverse_iterator rbegin() const { return (const_reverse_iterator(this->end())); }
 
-                /*
-                ** Const End:
-                */
-                const_iterator end() const
-                {
-                    const_iterator    it(this->_array[this->_size]);
+                reverse_iterator rend() { return (reverse_iterator(this->begin())); }
 
-                    // *it = this->_array[this->_size];
-
-                    // it.setPtr(this->_array[this->_size]);
-                    return (it);
-                }
-
-                reverse_iterator rbegin()
-                {
-                    reverse_iterator    rit(this->end());
-
-                    // rit._iterator = this->end() - 1;
-                    return (rit);
-                }
-
-                const_reverse_iterator rbegin() const
-                {
-                    // reverse_iterator(this->end() - 1)
-                    // reverse_iterator    rit(this->end() - 1);
-                    return (const_reverse_iterator(this->end()));
-                }
-
-                reverse_iterator rend()
-                {
-                    reverse_iterator    rit(this->begin());
-                    return (rit);
-                }
-
-                const_reverse_iterator rend() const
-                {
-                    const_reverse_iterator    rit(this->begin());
-                    return (rit);
-                }
+                const_reverse_iterator rend() const { return (const_reverse_iterator(this->begin())); }
 /* Capacity: ****************************************************************************************************/
             /*
             ** Capacity:
@@ -197,18 +142,12 @@ namespace ft
                 /*
                 ** Size:
                 */
-                size_type size() const
-                {
-                    return (this->_size);
-                }
+                size_type size() const { return (this->_size); }
 
                 /*
                 ** Max Size:
                 */
-                size_type max_size() const
-                {
-                    return (this->_vector_allocator.max_size());
-                }
+                size_type max_size() const { return (this->_vector_allocator.max_size()); }
 
                 /*
                 ** Resize:
@@ -235,18 +174,12 @@ namespace ft
                 /*
                 ** Capacity:
                 */
-                size_type capacity() const
-                {
-                    return (this->_capacity);
-                }
+                size_type capacity() const { return (this->_capacity); }
 
                 /*
                 ** Empty:
                 */
-                bool empty() const
-                {
-                    return (this->_size == 0);
-                }
+                bool empty() const { return (this->_size == 0); }
 
                 /*
                 ** Reserve:
@@ -258,10 +191,7 @@ namespace ft
                         size_type   index = 0;
                         value_type  *new_arr = this->_vector_allocator.allocate(n);
                         for (iterator it = this->begin(); it < this->end(); it++)
-                        {
-                            new_arr[index] = *it;
-                            index++;
-                        }
+                            new_arr[index++] = *it;
                         _vector_allocator.deallocate(this->_array, this->_capacity);
                         this->_array = new_arr;
                         this->_capacity = n;
@@ -287,9 +217,7 @@ namespace ft
                 reference at (size_type n)
                 {
                     if (n >= this->_size)
-                    {
                         throw std::out_of_range("Out Of Range.");
-                    }
                     return (this->_array[n]);
                 }
 
@@ -299,27 +227,19 @@ namespace ft
                 const_reference at (size_type n) const
                 {
                     if (n >= this->_size)
-                    {
                         throw std::out_of_range("Out Of Range.");
-                    }
                     return (this->_array[n]);
                 }
 
                 /*
                 **  Front:
                 */
-                reference front()
-                {
-                    return (this->_array[0]);
-                }
+                reference front() { return (this->_array[0]); }
 
                 /*
                 **  Const Front:
                 */
-                const_reference front() const
-                {
-                    return (this->_array[0]);
-                }
+                const_reference front() const { return (this->_array[0]); }
 
                 /*
                 **  Back:
@@ -341,23 +261,24 @@ namespace ft
                 void assign (InputIterator first, InputIterator last,
                 typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type = InputIterator())
                 {
+                    // std::cout << "0EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" << std::endl;
                     this->_size = last - first;
-                    // this->_vector_allocator = alloc;
+                        // std::cout << "Allocated size : " << _size << std::endl;
                     if (this->_capacity < this->_size)
                     {
                         this->_capacity = this->_size;
                         this->_array = this->_vector_allocator.allocate(this->_capacity);
                     }
-
-                    // this->_array = this->_vector_allocator.allocate(this->_capacity);
-
                     size_type   c = 0;
+                    // std::cout << "1EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" << std::endl;
                     while (first != last)
                     {
+                        // this->_vector_allocator.destroy(this->_array + c);
                         this->_vector_allocator.construct(this->_array + c, *first);
                         c++;
                         first++;
                     }
+                    // std::cout << "2EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" << std::endl;
                 }
 
                 /*
@@ -371,9 +292,7 @@ namespace ft
                         this->_capacity = n;
                     }
                     for (size_type i = 0; i < n; i++)
-                    {
                         this->_vector_allocator.construct(this->_array + i, val);
-                    }
                     this->_size = n;
                 }
 
@@ -383,10 +302,7 @@ namespace ft
                 void push_back (const value_type& val)
                 {
                     if (this->_size + 1 <= this->_capacity)
-                    {
                         this->_vector_allocator.construct(this->_array + this->_size, val);
-                        // this->_array[this->_size] = val;
-                    }
                     else
                     {
                         pointer new_array;
@@ -406,7 +322,6 @@ namespace ft
                             this->_vector_allocator.construct(new_array + index, this->_array[index]);
                             index++;
                         }
-                        // new_array[index] = val;
                         this->_vector_allocator.construct(new_array + index, val);
                         this->_vector_allocator.deallocate(this->_array, this->_capacity);
                         this->_array = new_array;
@@ -429,7 +344,6 @@ namespace ft
                     if (this->_size == 0)
                     {
                         iterator    ret;
-
                         if (this->begin() == position)
                         {
                             this->_array = this->_vector_allocator.allocate(1);
@@ -444,9 +358,7 @@ namespace ft
                     {
                         iterator    it = this->end() - 1;
                         for (; it >= position + 1; it--)
-                        {
                             *(it + 1) = *it;
-                        }
                         *( it + 1) = *it;
                         *it = val;
                         this->_size++;
@@ -458,7 +370,6 @@ namespace ft
                         int         ret_index = 0;
                         pointer     new_array = this->_vector_allocator.allocate(this->_size * 2);
                         size_type   index = 0;
-
                         for (iterator it = this->begin(); it <= this->end() ; it++)
                         {
                             if (it == position)
@@ -469,9 +380,7 @@ namespace ft
                                 index++;
                             }
                             else
-                            {
                                 this->_vector_allocator.construct(new_array + index, *it);
-                            }
                             index++;
                         }
                         this->_array = new_array;
@@ -492,11 +401,8 @@ namespace ft
                     {
                         iterator    it = this->end();
                         size_type   tmp = n;
-
                         for (; it > position; it--)
-                        {
                             *(it + n) = *it;
-                        }
                         *(it + n) = *it;
                         while (n)
                         {
@@ -543,7 +449,6 @@ namespace ft
                         this->_size += n;
                         this->_vector_allocator.deallocate(this->_array, this->_capacity);
                         this->_array = new_array;
-                        // this->_capacity = this->_size;
                     }
                 }
 
@@ -562,9 +467,7 @@ namespace ft
                         iterator    it = this->end() - 1;
 
                         for (; it > position; it--)
-                        {
                             *(it + n) = *it;
-                        }
                         *(it + n) = *it;
                         while (first < last)
                         {
@@ -589,9 +492,7 @@ namespace ft
                             new_array = this->_vector_allocator.allocate(this->_size + n);
                             this->_capacity = this->_size + n;
                         }
-
                         size_type   index = 0;
-
                         for (; it != end; it++)
                         {
                             if (it == position)
@@ -614,10 +515,8 @@ namespace ft
                             this->_vector_allocator.construct(new_array + insert_index, *it);
                             insert_index++;
                         }
-
                         this->_vector_allocator.deallocate(this->_array, this->_capacity);
                         this->_array = new_array;
-                        // this->_capacity = (this->_size * 2) + n;
                         this->_size += n;
                     }
                 }
@@ -641,12 +540,9 @@ namespace ft
                             break ;
                         }
                     }
-                    it++;
-                    while (it != end)
-                    {
+                    it--;
+                    while (++it != end)
                         *(it - 1) = *it;
-                        it++;
-                    }
                     return (ret);
                 }
                 /*
@@ -654,29 +550,31 @@ namespace ft
                 */
                 iterator erase (iterator first, iterator last)
                 {
-                    pointer     new_array = this->_vector_allocator.allocate(this->_capacity);
-                    size_type   index = 0;
                     size_type   n = last - first;
-                    iterator    ret = first;
-
+                    iterator    ret;
+                    this->_size -= n;
                     if (n)
                     {
-                        for(iterator it = this->begin(); it < this->end(); it++)
+                        iterator    begin = this->begin();
+                        iterator    end = this->end();
+                        while (begin != end)
                         {
-                            if (!(first <= it && it < last))
-                            {
-                                if (it == first - 1)
-                                    ret = it;
-                                // new_array[index] = *it;
-                                this->_vector_allocator.construct(new_array + index, *it);
-                                index++;
-                            }
+                            if (begin == first)
+                                break;
+                            begin++;
                         }
-                        this->_vector_allocator.deallocate(this->_array, this->_capacity);
-                        this->_array = new_array;
-                        this->_size -= n;
+                        ret = begin;
+                        size_type index = 0;
+                        while (begin != end && (last + index) != end)
+                        {
+                            *begin = *(last + index);
+                            index++;
+                            begin++;
+                        }
                     }
-                    return (ret);
+                    else
+                        return (this->erase(first));
+                    return ret;
                 }
             /*
             ** Swap: *************************************************************************
@@ -723,29 +621,21 @@ namespace ft
             allocator_type              _vector_allocator;
             size_type                   _size;
             size_type                   _capacity;
-            // iterator                    _iterator;
 
             size_type        capacity_calculator(size_type const current_size)
             {
                 if (current_size == 0)
-                {
                     return (0);
-                }
                 for (size_type capacity = 1;; capacity *= 2)
-                {
                     if (capacity >= current_size)
-                    {
                         return (capacity);
-                    }
-                }
             }
     };
 
     template <class T, class Alloc>
     bool operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
     {
-        typedef     ft::Iterator<T const>                const_iterator;
-
+        typedef ft::Iterator<T const>   const_iterator;
 
         if (lhs.size() != rhs.size())
             return (false);
@@ -753,12 +643,8 @@ namespace ft
         const_iterator     rit = rhs.begin();
 
         for (; lit < lhs.end(); lit++, rit++)
-        {
             if (*lit != *rit)
-            {
                 return (false);
-            }
-        }
         return (true);
     }
 
@@ -771,31 +657,35 @@ namespace ft
     template <class T, class Alloc>
     bool operator<  (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
     {
-        typedef     ft::Iterator<T const>                const_iterator;
+        size_t  minSize = lhs.size() < rhs.size() ? lhs.size() : rhs.size();
+        size_t  i = 0;
 
-        const_iterator lit = lhs.begin();
-        const_iterator rit = rhs.begin();
-
-        for (; lit < lhs.end() && rit < rhs.end(); lit++, rit++)
-        {
-            if (*lit < *rit)
-            {
+        for (; i < minSize; i++)
+            if (lhs[i] < rhs[i])
                 return (true);
-            }
-        }
+        if (lhs.end() == lhs.begin() + i && rhs.begin() + i != rhs.end())
+            return (true);
         return (false);
     }
 
     template <class T, class Alloc>
     bool operator>  (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
     {
-        return (!operator<(rhs, lhs));
+        size_t  minSize = lhs.size() < rhs.size() ? lhs.size() : rhs.size();
+        size_t  i = 0;
+
+        for (; i < minSize; i++)
+            if (lhs[i] > rhs[i])
+                return (true);
+        if (rhs.end() == rhs.begin() + i && lhs.begin() + i != lhs.end())
+            return (true);
+        return (false);
     }
 
     template <class T, class Alloc>
     bool operator<= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
     {
-        return (!(operator>(rhs, lhs)));
+        return (!(operator>(lhs, rhs)));
     }
 
     template <class T, class Alloc>

@@ -524,6 +524,7 @@ void vector_tests(void)
 
         for (ft::vector<std::string>::iterator it = my_v.begin(); it != my_v.end(); ++it) // fill my_res from ft::vector
             my_res += *it;
+
         EQUAL(res == my_res);
     }
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " range constructor "
@@ -980,7 +981,9 @@ void vector_tests(void)
             /*------------------ ft::vectors ---------------------*/
             ft::vector<std::string> ft_v1(1e6, "string2");
             ualarm(diff * 1e3, 0);
+            std::cout << "1DBBBBBBBBBBBBBBBBBBBBBBBBBBBBG" << std::endl;
             ft_v1.capacity();
+            std::cout << "2DBBBBBBBBBBBBBBBBBBBBBBBBBBBBG" << std::endl;
             ualarm(0, 0);
             /*----------------------------------------------------*/
         }
@@ -993,11 +996,17 @@ void vector_tests(void)
         std::vector<std::string> v5(v1.rbegin(), v1.rend()); // range constructor with reverse iterators
         /*-----------------------------------------------------*/
         /*------------------ ft::vectors ---------------------*/
+            std::cout << "3DBBBBBBBBBBBBBBBBBBBBBBBBBBBBG" << std::endl;
         ft::vector<std::string> ft_v1(10, "string2");
+            std::cout << "4DBBBBBBBBBBBBBBBBBBBBBBBBBBBBG" << std::endl;
         ft::vector<std::string> ft_v2;
+            std::cout << "5DBBBBBBBBBBBBBBBBBBBBBBBBBBBBG" << std::endl;
         ft::vector<std::string> ft_v3(ft_v1.begin(), ft_v1.end());
+            std::cout << "6DBBBBBBBBBBBBBBBBBBBBBBBBBBBBG" << std::endl;
         ft::vector<std::string> ft_v4(ft_v1);
+            std::cout << "7DBBBBBBBBBBBBBBBBBBBBBBBBBBBBG" << std::endl;
         ft::vector<std::string> ft_v5(ft_v1.rbegin(), ft_v1.rend());
+            std::cout << "8DBBBBBBBBBBBBBBBBBBBBBBBBBBBBG" << std::endl;
         /*----------------------------------------------------*/
         EQUAL(v1.capacity() == ft_v1.capacity() && v2.capacity() == ft_v2.capacity() && v3.capacity() == ft_v3.capacity() && v4.capacity() == ft_v4.capacity() && v5.capacity() == ft_v5.capacity());
     }
@@ -2423,6 +2432,7 @@ void vector_tests(void)
                 ft_str += ft_v[i];
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
             cond = (cond && (std::distance(v.begin(), it) == std::distance(ft_v.begin(), ft_it)));
+            // std::cout << "DBGCOND01: " << (str == ft_str) << (s == ft_s) << (c == ft_c) 
         }
         /*--------------------------------------------------------------------------*/
         /*------------------ test 3: erase from the begin + 60 to end -------------------*/
