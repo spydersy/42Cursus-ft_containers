@@ -29,6 +29,9 @@
 #define EQUAL(x) ((x) ? (std::cout << "\033[1;32mAC\033[0m\n") : (std::cout << "\033[1;31mWA\033[0m\n"))
 #define TIME_FAC 20 // the ft::vector methods can be slower up to std::vector methods * TIME_FAC (MAX 20)
 
+int global;
+
+
 time_t get_time(void)
 {
     struct timeval time_now;
@@ -530,38 +533,57 @@ void vector_tests(void)
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " range constructor "
               << "] --------------------]\t\t\033[0m";
     {
-        /*---------------------------------- time limit test --------------------------------------------*/
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
+/*---------------------------------- time limit test --------------------------------------------*/
         {
             time_t start, end, diff;
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
             std::vector<std::string> v(1e5, "range constructor test");
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
             start = get_time();
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
             std::vector<std::string> v1(v.begin(), v.end());
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
             end = get_time();
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
             diff = end - start;
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
             diff = (diff) ? (diff * TIME_FAC) : TIME_FAC;
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
 
             ualarm(diff * 1e3, 0);
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
             ft::vector<std::string> my_v(v.begin(), v.end());
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
             ualarm(0, 0);
         }
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
         /*-----------------------------------------------------------------------------------------------*/
         /*--------------- fill std::vector with 10 strings and ft::vector with range of iterators ------*/
         std::vector<std::string> v(10, "range constructor test");
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
         ft::vector<std::string> my_v(10, "range constructor test");
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
         ft::vector<std::string> my_v1(my_v.begin(), my_v.end()); // this one is to check if the range works with ft::vector
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
         /*----------------------------------------------------------------------------------------------*/
         /*--------------- declare tow strings to store the results ------*/
         std::string res, my_res, my_res1;
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
         /*--------------------------------------------------------*/
         for (std::vector<std::string>::iterator it = v.begin(); it != v.end(); ++it) // fill res from std::vector
             res += *it;
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
 
         for (ft::vector<std::string>::iterator it = my_v.begin(); it != my_v.end(); ++it) // fill my_res from ft::vector
             my_res += *it;
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
 
         for (ft::vector<std::string>::iterator it = my_v1.begin(); it != my_v1.end(); ++it) // fill my_res1 from ft::vector
             my_res1 += *it;
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
         EQUAL(res == my_res && my_res == my_res1);
+                std::cerr << ++global << ": here00 WEWEWEWEWEE" << std::endl;
     }
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " copy constructor "
               << "] --------------------]\t\t\033[0m";
@@ -648,6 +670,7 @@ void vector_tests(void)
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " = operator (lhs.size < rhs.size) "
               << "] --------------------]\t\t\033[0m";
     {
+        std::cerr << ++global << ": WEWEWEWEWEE" << std::endl;
         /*-------------------------------------- time limit test -----------------------------------*/
         {
             time_t start, end, diff;
@@ -929,6 +952,7 @@ void vector_tests(void)
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " size method "
               << "] --------------------]\t\t\033[0m";
     {
+        // std::cerr << "WEWEWEWEWEWEWEWEW" << std::endl;
         /*-------------------------------------- time limit test -----------------------------------*/
         {
             time_t start, end, diff;
@@ -1013,6 +1037,7 @@ void vector_tests(void)
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " max_size method "
               << "] --------------------]\t\t\033[0m";
     {
+        std::cerr << ++global << ": A WEWEWEWEWEE" << std::endl;
         /*-------------------------------------- time limit test -----------------------------------*/
         {
             time_t start, end, diff;
@@ -1255,20 +1280,29 @@ void vector_tests(void)
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " reserve method "
               << "] --------------------]\t\t\033[0m";
     {
+        int xyz = 0;
         /*-------------------------------------- time limit test -----------------------------------*/
         {
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
             time_t start, end, diff;
             /*------------------ std::vectors ---------------------*/
             std::vector<std::string> v1(10, "string2");
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
             start = get_time();
             v1.reserve(1e6);
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
             end = get_time();
             diff = end - start;
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
             diff = (diff) ? (diff * TIME_FAC) : TIME_FAC;
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
             /*------------------ ft::vectors ---------------------*/
             ft::vector<std::string> ft_v1(10, "string2");
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
             ualarm(diff * 1e3, 0);
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
             ft_v1.reserve(1e6);
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
             ualarm(0, 0);
         }
         /*
@@ -1285,27 +1319,41 @@ void vector_tests(void)
          * iterators to check the iterator validity
          *  it : iterator, eit : iterator to the end
          */
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         std::vector<std::string>::iterator valid_it, valid_eit;
         ft::vector<std::string>::iterator ft_valid_it, ft_valid_eit;
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         // bool to check if the function throw or not
         bool exec_throwed = false;
         /*------------------ std::vectors ---------------------*/
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         std::vector<std::string> v1(10, "string2");
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         std::vector<char> v2;
         /*------------------ std::vectors ---------------------*/
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         ft::vector<std::string> ft_v1(10, "string2");
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         ft::vector<char> ft_v2;
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         try
         {
+            std::cerr << "RESERVE TRY " << ++xyz << " **********************" << std::endl;
             ft_v1.reserve(ft_v1.max_size() + 1);
+            std::cerr << "RESERVE TRY " << ++xyz << " **********************" << std::endl;
         }
         catch (std::length_error const &e)
         {
+            std::cerr << "RESERVE CATCH " << ++xyz << " **********************" << std::endl;
             (void)e;
+            std::cerr << "RESERVE CATCH " << ++xyz << " **********************" << std::endl;
             exec_throwed = true;
         }
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         v1.reserve(100);
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         ft_v1.reserve(100);
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
 
         z1 = v1.size();
         ft_z1 = ft_v1.size();
@@ -1314,17 +1362,22 @@ void vector_tests(void)
 
         for (size_t i = 0; i < v1.size(); ++i)
             s1 += v1[i];
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
 
         ft_valid_it = ft_v1.begin();
         for (; ft_valid_it != ft_v1.end(); ++ft_valid_it)
             ft_s1 += *ft_valid_it;
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
 
         valid_it = v1.begin();
         valid_eit = v1.end();
         ft_valid_it = ft_v1.begin();
         ft_valid_eit = ft_v1.end();
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         v1.reserve(50);
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         ft_v1.reserve(50);
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
 
         z2 = v1.size();
         ft_z2 = ft_v1.size();
@@ -1337,14 +1390,19 @@ void vector_tests(void)
         for (; valid_it != valid_eit; ++valid_it)
             sit1 += *valid_it;
 
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         for (ft::vector<std::string>::iterator it = ft_v1.begin(); it != ft_v1.end(); ++it)
             ft_s2 += *it;
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
 
         for (; ft_valid_it != ft_valid_eit; ++ft_valid_it)
             ft_sit1 += *ft_valid_it;
 
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         v2.reserve(200);
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         ft_v2.reserve(200);
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         z3 = v2.size();
         ft_z3 = ft_v2.size();
         c3 = v2.capacity();
@@ -1353,10 +1411,13 @@ void vector_tests(void)
         for (size_t i = 0; i < v2.size(); ++i)
             s3 += v2[i];
 
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
         for (ft::vector<char>::iterator it = ft_v2.begin(); it != ft_v2.end(); ++it)
             ft_s3 += *it;
+            std::cerr << "RESERVE " << ++xyz << " **********************" << std::endl;
 
         EQUAL((s1 == ft_s1 && z1 == ft_z1 && c1 == ft_c1 && sit1 == ft_sit1) && (s2 == ft_s2 && z2 == ft_z2 && c2 == ft_c2) && (s3 == ft_s3 && z3 == ft_z3 && c3 == ft_c3) && exec_throwed);
+            std::cerr << "RESERVE FINAL " << ++xyz << " **********************" << std::endl;
     }
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " operator[] method "
               << "] --------------------]\t\t\033[0m";
@@ -1965,34 +2026,55 @@ void vector_tests(void)
             // test 1: test with capacity greater than or equal the size + n (reallocation must'nt happen)
             /*------------------ std::vectors ---------------------*/
             {
+                std::cerr << " DBG_LINE00 : " << "************************" << std::endl;
                 std::vector<std::string> v1(1e6, "string2");
+                std::cerr << " DBG_LINE01 : " << "************************" << std::endl;
                 v1.reserve(1e6 + 200);
+                std::cerr << " DBG_LINE02 : " << "************************" << std::endl;
                 start = get_time();
+                std::cerr << " DBG_LINE03 : " << "************************" << std::endl;
                 v1.insert(v1.begin() + 1e5, 100, "string1");
+                std::cerr << " DBG_LINE01 : " << "************************" << std::endl;
                 end = get_time();
                 diff = end - start;
+                std::cerr << " DBG_LINE04 : " << "************************" << std::endl;
                 diff = (diff) ? (diff * TIME_FAC) : TIME_FAC;
+                std::cerr << " DBG_LINE05 : " << "************************" << std::endl;
                 /*------------------ ft::vectors ---------------------*/
                 ft::vector<std::string> ft_v1(1e6, "string2");
+                std::cerr << " DBG_LINE06 : " << "************************" << std::endl;
                 ft_v1.reserve(1e6 + 200);
+                std::cerr << " DBG_LINE07 : " << "************************" << std::endl;
                 ualarm(diff * 1e3, 0);
+                std::cerr << " DBG_LINE08 : " << "************************" << std::endl;
                 ft_v1.insert(ft_v1.begin() + 1e5, 100, "string1");
+                std::cerr << " DBG_LINE09 : " << "************************" << std::endl;
                 ualarm(0, 0);
             }
             /*--------------------------------------------------------------------------------------*/
             // test 2: test with capacity lesser than the size + n (reallocation must happen)
             /*------------------ std::vectors ---------------------*/
             {
+                std::cerr << " DBG_LINE010 : " << "************************" << std::endl;
                 std::vector<std::string> v1(1e6, "string2");
+                std::cerr << " DBG_LINE011 : " << "************************" << std::endl;
                 start = get_time();
+                std::cerr << " DBG_LINE012 : " << "************************" << std::endl;
                 v1.insert(v1.begin() + 1e5, 200, "string1");
+                std::cerr << " DBG_LINE013 : " << "************************" << std::endl;
                 end = get_time();
+                std::cerr << " DBG_LINE014 : " << "************************" << std::endl;
                 diff = end - start;
+                std::cerr << " DBG_LINE015 : " << "************************" << std::endl;
                 diff = (diff) ? (diff * TIME_FAC) : TIME_FAC;
+                std::cerr << " DBG_LINE016 : " << "************************" << std::endl;
                 /*------------------ ft::vectors ---------------------*/
                 ft::vector<std::string> ft_v1(1e6, "string2");
+                std::cerr << " DBG_LINE017 : " << "************************" << std::endl;
                 ualarm(diff * 1e3, 0);
+                std::cerr << " DBG_LINE018 : " << "************************" << std::endl;
                 ft_v1.insert(ft_v1.begin() + 1e5, 200, "string1");
+                std::cerr << " DBG_LINE019 : " << "************************" << std::endl;
                 ualarm(0, 0);
             }
             /*--------------------------------------------------------------------------------------*/
@@ -2016,19 +2098,30 @@ void vector_tests(void)
         {
             std::vector<std::string> v;
             ft::vector<std::string> ft_v;
+                std::cerr << " DBG_LINE01bdbfgd : " << "************************" << std::endl;
             v.insert(v.begin(), 100, "hello");
+                std::cerr << " DBG_LINE01bdfbddb : " << "************************" << std::endl;
             ft_v.insert(ft_v.begin(), 100, "hello");
+                std::cerr << " DBG_LINE01 cdscads: " << "************************" << std::endl;
             ft_v.begin()->length();
+                std::cerr << " DBG_LINE01 vsdfv: " << "************************" << std::endl;
 
             s = v.size();
+                std::cerr << " DBG_LINE01bsdds : " << "************************" << std::endl;
             ft_s = ft_v.size();
+                std::cerr << " DBG_LINE01 vasdv: " << "************************" << std::endl;
             c = v.capacity();
+                std::cerr << " DBG_LINE01 aCBGRB: " << "************************" << std::endl;
             ft_c = ft_v.capacity();
+                std::cerr << " DBG_LINE01 VDFVDSFV: " << "************************" << std::endl;
             for (size_t i = 0; i < v.size(); ++i)
                 str += v[i];
+                std::cerr << " DBG_LINE01 CASCASD: " << "************************" << std::endl;
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
+                std::cerr << " DBG_LINE01 : ACSDCADS" << "************************" << std::endl;
             cond = ((str == ft_str) && (s == ft_s) && (c == ft_c));
+                std::cerr << " DBG_LINE01 : sdbbgsdb | check_condition : " << cond << "************************" << std::endl;
         }
         // insert at the end
         {
@@ -2051,6 +2144,7 @@ void vector_tests(void)
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
+                std::cerr << " DBG_LINE01 : svsdfdbbgsdb | check_condition : " << cond << "************************" << std::endl;
         }
         // /*---------------------------------------------------------------------------------------------------*/
         // /*------------------------------- test 2: the vector capacity >= size + n ----------------------------------------*/
@@ -2075,10 +2169,11 @@ void vector_tests(void)
                 str += v[i];
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
-                // std::cout << "SYS(" << v.size() << "|" << v.capacity() <<       "|" << str.length() << "): " << str << std::endl;
-                // std::cout << "USR(" << ft_v.size() << "|" << ft_v.capacity() << "|" << ft_str.length() << "): " << ft_str << std::endl;
-                // std::cout << "*************************" << std::endl;
+                std::cerr << "SYS(" << v.size() << "|" << v.capacity() <<       "|" << str.length() << "): " << str << std::endl;
+                std::cerr << "USR(" << ft_v.size() << "|" << ft_v.capacity() << "|" << ft_str.length() << "): " << ft_str << std::endl;
+                std::cerr << "*************************" << std::endl;
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c) && (&(*valid_it) == &(*ft_v.begin())));
+                std::cerr << " DBG_LINE01 : sdbbgnfnsdb | check_condition : " << cond << "************************" << std::endl;
         }
         // /*---------------------------------------------------------------------------------------------------*/
         // /*------------------------------- test 3: the vector capacity < size + n && n > size ----------------------------------------*/
@@ -2101,6 +2196,7 @@ void vector_tests(void)
                 ft_str += ft_v[i];
 
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
+                std::cerr << " DBG_LINE01 : saDadbbgsdb | check_condition : " << cond << "************************" << std::endl;
         }
         // /*---------------------------------------------------------------------------------------------------*/
         // /*------------------------------- test 4: the vector capacity < size + n && n <= size ----------------------------------------*/
@@ -2122,6 +2218,7 @@ void vector_tests(void)
             for (size_t i = 0; i < ft_v.size(); ++i)
                 ft_str += ft_v[i];
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
+                std::cerr << " DBG_LINE01 : sdbbgsvdsvdb | check_condition : " << cond << "************************" << std::endl;
         }
         // /*---------------------------------------------------------------------------------------------------*/
         EQUAL(cond);
@@ -2432,7 +2529,7 @@ void vector_tests(void)
                 ft_str += ft_v[i];
             cond = (cond && (str == ft_str) && (s == ft_s) && (c == ft_c));
             cond = (cond && (std::distance(v.begin(), it) == std::distance(ft_v.begin(), ft_it)));
-            // std::cout << "DBGCOND01: " << (str == ft_str) << (s == ft_s) << (c == ft_c) 
+            // std::cout << "DBGCOND01: " << (str == ft_str) << (s == ft_s) << (c == ft_c)
         }
         /*--------------------------------------------------------------------------*/
         /*------------------ test 3: erase from the begin + 60 to end -------------------*/
@@ -3355,14 +3452,15 @@ void alarm_handler(int seg)
 
 int main(void)
 {
+    global = 0;
     std::cout << RED << "________________________________________________________________________________________________________" << std::endl;
     std::cout << RED << "**** The test is taking so much time to test the all cases and the time complexity of each method ****" << std::endl;
     std::cout << RED << "--------------------------------------------------------------------------------------------------------" << RESET << std::endl;
     signal(SIGALRM, alarm_handler);
-    // iterator_tests();                        //  DONE
-    // const_iterator_tests();                  //  DONE
-    // reverse_iterator_tests();                //  DONE
-    // reverse_iterator_with_ft_vector();       //  DONE
+    iterator_tests();                        //  DONE
+    const_iterator_tests();                  //  DONE
+    reverse_iterator_tests();                //  DONE
+    reverse_iterator_with_ft_vector();       //  DONE
     vector_tests();
     return 0;
 }

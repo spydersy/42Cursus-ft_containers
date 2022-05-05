@@ -6,12 +6,12 @@
 #    By: mamoussa <mamoussa@student.1337.ma>           +#+      +#++:      +#++:        +#+          #
 #                                                     +#+         +#+        +#+      +#+            #
 #    Created: Invalid date        by                 #+#  #+#    #+# #+#    #+#     #+#              #
-#    Updated: 2022/01/05 17:06:01 by abelarif         ###   ########.fr        #
+#    Updated: 2022/05/05 01:28:22 by abelarif         ###   ########.fr        #
 #                                                                                                    #
 # ************************************************************************************************** #
 
 COMPILER = clang++
-FLAGS = --std=c++98 -Wall -Wextra -Werror -g3 -fsanitize=address  
+FLAGS = --std=c++98 -Wall -Wextra -Werror #-g3 -fsanitize=address  
 
 vector:
 	@$(COMPILER) $(FLAGS)	Vector_tests.cpp -o vector.out 
