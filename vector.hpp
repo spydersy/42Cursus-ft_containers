@@ -93,8 +93,12 @@ namespace ft
             */
             ~vector()
             {
-                //allocator.destruct( ... );
-                // this->_vector_allocator.deallocate(this->_array, this->_capacity);
+                // for (size_type i = 0; i != this->_size; i++)
+                // {
+                //     this->_vector_allocator.destroy(this->_array + i);
+                // }
+                // if (this->_capacity)
+                    // this->_vector_allocator.deallocate(this->_array, this->_capacity);
                 return ;
             }
 /* Operator=: ****************************************************************************************************/
@@ -107,9 +111,15 @@ namespace ft
                 {
                     size_type   index = 0;
                     size_type   xsize = src.size();
-                    this->_size = src._size;
+
+                    if (this->_size)
+                    {
+                        for (size_type i = 0; i != this->_size; i++)
+                            this->_vector_allocator.destroy(this->_array + i);
+                    }
                     if (this->_capacity)
                         this->_vector_allocator.deallocate(this->_array, this->_capacity);
+                    this->_size = src._size;
                     this->_capacity = src._capacity;
                     this->_array = this->_vector_allocator.allocate(src._capacity);
                     while (index < xsize)
@@ -159,9 +169,7 @@ namespace ft
                 void resize (size_type n, value_type val = value_type())
                 {
                     if (n == this->_size)
-                    {
                         return ;
-                    }
                     else if (n < this->_size)
                     {
                         for (size_type i = n; i < n; i++)
@@ -193,13 +201,14 @@ namespace ft
                 void reserve (size_type n)
                 {
                     std::cerr << "DBG_RESERVER : *************** this->_capacity : " << this->capacity() << " | n : " << n << std::endl;
-                    if (n > 0 && this->capacity() < n)
+                    if (n > 0 && this->_capacity < n)
                     {
                         size_type   index = 0;
                         value_type  *new_arr = this->_vector_allocator.allocate(n);
                         for (iterator it = this->begin(); it < this->end(); it++)
                         {
                             this->_vector_allocator.construct(new_arr + index, *it);
+                            this->_vector_allocator.destroy(this->_array + index);
                             index++;
                         }
                         _vector_allocator.deallocate(this->_array, this->_capacity);
@@ -312,12 +321,27 @@ namespace ft
                 {
                     if (this->_capacity < n)
                     {
-                        this->_array = this->_vector_allocator.allocate(n);
+                        for (size_type i = 0; i != this->_size; i++)
+                            this->_vector_allocator.destroy(this->_array + i);
+                        if (this->_capacity)
+                            this->_vector_allocator.deallocate(this->_array, this->_capacity);
+                        if (n)    
+                            this->_array = this->_vector_allocator.allocate(n);
+                        else
+                            this->_array = NULL;
                         this->_capacity = n;
+                        for (size_type i = 0; i < n; i++)
+                            this->_vector_allocator.construct(this->_array + i, val);
+                        this->_size = n;
+                        return ;
                     }
                     for (size_type i = 0; i < n; i++)
+                    {
+                        this->_vector_allocator.destroy(this->_array + i);
                         this->_vector_allocator.construct(this->_array + i, val);
+                    }
                     this->_size = n;
+                    return ;
                 }
 
                 /*
@@ -325,16 +349,19 @@ namespace ft
                 */
                 void push_back (const value_type& val)
                 {
+                    size_type   old_size = this->_size;
+                    size_type   old_capacity = this->_capacity;
+
                     if (this->_size + 1 <= this->_capacity)
                         this->_vector_allocator.construct(this->_array + this->_size, val);
                     else
                     {
-                        pointer new_array;
+                        pointer     new_array;
                         size_type   index = 0;
                         if (this->_capacity == 0)
                         {
                             this->_capacity++;
-                            new_array = this->_vector_allocator.allocate(this->_capacity * 2);
+                            new_array = this->_vector_allocator.allocate(this->_capacity);
                         }
                         else
                         {
@@ -347,7 +374,10 @@ namespace ft
                             index++;
                         }
                         this->_vector_allocator.construct(new_array + index, val);
-                        this->_vector_allocator.deallocate(this->_array, this->_capacity);
+                        for (size_type i = 0; i != old_size; i++)
+                            this->_vector_allocator.destroy(this->_array + i);
+                        if (old_capacity)
+                            this->_vector_allocator.deallocate(this->_array, old_capacity);
                         this->_array = new_array;
                     }
                     this->_size++;
@@ -426,24 +456,27 @@ namespace ft
                     {
                         std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                         iterator    it = this->end();
-                        std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
+                        std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << " | it : " << it - this->begin() << " | position : " << position - this->begin() << std::endl;
                         size_type   tmp = n;
-                        std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
+                        std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << " | it : " << it - this->begin() << " | position : " << position - this->begin() << std::endl;
                         for (; it > position; it--)
                         {
-                            *(it + n) = *it;
+                            this->_vector_allocator.construct(this->_array + (it - this->begin() + n), *it);
+                            this->_vector_allocator.destroy(this->_array + (it - this->begin()));
                         }
-                        std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
-                        // *(it + n) = *it;
+                        std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << " | it : " << it - this->begin() << " | position : " << position - this->begin() << std::endl;
+                        *(it + n) = *it;
+                        std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << " | it : " << it - this->begin() << " | position : " << position - this->begin() << std::endl;
                         while (n)
                         {
-                            *it = val;
+                            // this->_vector_allocator.destroy(this->_array + (it - this->begin()));
+                            this->_vector_allocator.construct(this->_array + (it - this->begin()), val);
                             it++;
                             n--;
                         }
-                        std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
+                        std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << " | it : " << it - this->begin() << " | position : " << position - this->begin() << std::endl;
                         this->_size += tmp;
-                        std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
+                        std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << " | it : " << it - this->begin() << " | position : " << position - this->begin() << std::endl;
                     }
                     else
                     {
@@ -521,11 +554,16 @@ namespace ft
                         iterator    it = this->end() - 1;
 
                         for (; it > position; it--)
-                            *(it + n) = *it;
-                        *(it + n) = *it;
+                        {
+                            // *(it + n) = *it;
+                            this->_vector_allocator.construct(this->_array + (it - this->begin() + n), *it);
+                        }
+                        this->_vector_allocator.construct(this->_array + (it - this->begin() + n), *it);
+                        // *(it + n) = *it;
                         while (first < last)
                         {
-                            *it = *first;
+                            this->_vector_allocator.construct(this->_array + (it - this->begin()), *first);
+                            // *it = *first;
                             it++;
                             first++;
                         }

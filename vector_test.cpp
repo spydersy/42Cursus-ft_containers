@@ -417,20 +417,42 @@
 //     return (0);
 // }
 
-int		main()
+// int		main()
+// {
+	// {
+		// std::vector<int>	vect0; for (int i =1; i <=70; i++)	vect0.push_back(i);
+		// std::vector<int>	vect1; for (int i =1; i <=75; i++)	vect1.push_back(i);
+
+		// std::cout << (vect0 < vect1) << std::endl;
+	// }
+	// std::cout << "******************************" << std::endl;
+	// {
+		//  ft::vector<int>	vect0; for (int i =1; i <=70; i++)	vect0.push_back(i);
+		//  ft::vector<int>	vect1; for (int i =1; i <=75; i++)	vect1.push_back(i);
+
+		// std::cout << (vect0 < vect1) << std::endl;
+	// }
+	// return (0);
+// }
+
+int	main()
 {
 	{
-		std::vector<int>	vect0; for (int i =1; i <=70; i++)	vect0.push_back(i);
-		std::vector<int>	vect1; for (int i =1; i <=75; i++)	vect1.push_back(i);
-
-		std::cout << (vect0 < vect1) << std::endl;
+		std::vector<std::string> v(20, "string");
+        v.reserve(100);
+        v.insert(v.begin() + 15, 70, "hello");
+		std::cout << "Size : " << v.size() << " | Capacity : " << v.capacity() << std::endl;
+		for (std::vector<std::string>::iterator it = v.begin(); it != v.end(); it++)
+			std::cout << "it[" << it - v.begin() << "] : [" << *it << "]" << std::endl;
 	}
-	std::cout << "******************************" << std::endl;
+	std::cout << "**************************************" << std::endl;
 	{
-		 ft::vector<int>	vect0; for (int i =1; i <=70; i++)	vect0.push_back(i);
-		 ft::vector<int>	vect1; for (int i =1; i <=75; i++)	vect1.push_back(i);
-
-		std::cout << (vect0 < vect1) << std::endl;
+		ft::vector<std::string> v(20, "string");
+        v.reserve(100);
+        v.insert(v.begin() + 15, 70, "hello");
+		std::cerr << "Size : " << v.size() << " | Capacity : " << v.capacity() << std::endl;
+		for (ft::vector<std::string>::iterator it = v.begin(); it != v.end(); it++)
+			std::cerr << "it[" << it - v.begin() << "] : [" << *it << "]" << std::endl;
 	}
-	return (0);
+	return 0;
 }
