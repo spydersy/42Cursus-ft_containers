@@ -727,20 +727,21 @@ void vector_tests(void)
               << "] --------------------]\t\t\033[0m";
     {
         /*------------------ std::vectors ---------------------*/
-        std::vector<std::string> v1(10, "string2");          // fill constructor
+        std::vector<std::string> v1(11, "wewe");          // fill constructor
         std::vector<std::string> v2;                         // empty constructor
         std::vector<std::string> v3(v1.begin(), v1.end());   // range constructor with normal iterators
         std::vector<std::string> v4(v3);                     // copy constructor
         std::vector<std::string> v5(v1.rbegin(), v1.rend()); // range constructor with reverse iterators
         /*-----------------------------------------------------*/
         /*------------------ ft::vectors ---------------------*/
-        ft::vector<std::string> ft_v1(10, "string2");
+        ft::vector<std::string> ft_v1(11, "wewe");
         ft::vector<std::string> ft_v2;
         ft::vector<std::string> ft_v3(ft_v1.begin(), ft_v1.end());
         ft::vector<std::string> ft_v4(ft_v1);
         ft::vector<std::string> ft_v5(ft_v1.rbegin(), ft_v1.rend());
         /*----------------------------------------------------*/
         EQUAL(v1.size() == ft_v1.size() && v2.size() == ft_v2.size() && v3.size() == ft_v3.size() && v4.size() == ft_v4.size() && v5.size() == ft_v5.size());
+        // EQUAL(1);
     }
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " capacity method "
               << "] --------------------]\t\t\033[0m";
@@ -760,6 +761,7 @@ void vector_tests(void)
         ft::vector<std::string> ft_v5(ft_v1.rbegin(), ft_v1.rend());
         /*----------------------------------------------------*/
         EQUAL(v1.capacity() == ft_v1.capacity() && v2.capacity() == ft_v2.capacity() && v3.capacity() == ft_v3.capacity() && v4.capacity() == ft_v4.capacity() && v5.capacity() == ft_v5.capacity());
+        // EQUAL(1);
     }
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " max_size method "
               << "] --------------------]\t\t\033[0m";
@@ -2433,16 +2435,29 @@ void alarm_handler(int seg)
     kill(getpid(), SIGINT);
 }
 
-int main(void)
+int ft_main(void)
 {
     std::cout << RED << "________________________________________________________________________________________________________" << std::endl;
     std::cout << RED << "**** The test is taking so much time to test the all cases and the time complexity of each method ****" << std::endl;
     std::cout << RED << "--------------------------------------------------------------------------------------------------------" << RESET << std::endl;
     signal(SIGALRM, alarm_handler);
+
+    system("leaks vector.out >> leaks.out");
     iterator_tests();
+    system("leaks vector.out >> leaks.out");
     const_iterator_tests();
+    system("leaks vector.out >> leaks.out");
     reverse_iterator_tests();
+    system("leaks vector.out >> leaks.out");
     reverse_iterator_with_ft_vector();
+    system("leaks vector.out >> leaks.out");
     vector_tests();
+    system("leaks vector.out >> leaks.out");
+    return 0;
+}
+
+int main()
+{
+    ft_main();
     return 0;
 }

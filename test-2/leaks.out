@@ -1,0 +1,124 @@
+Process:         vector.out [9271]
+Path:            /Volumes/VOLUME/*/vector.out
+Load Address:    0x10552e000
+Identifier:      vector.out
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [3400]
+
+Date/Time:       2022-05-13 22:54:31.533 +0100
+Launch Time:     2022-05-13 22:54:31.195 +0100
+OS Version:      Mac OS X 10.14.6 (18G103)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.3.1 (11C505)
+----
+
+leaks Report Version: 4.0
+Process 9271: 162 nodes malloced for 18 KB
+Process 9271: 0 leaks for 0 total leaked bytes.
+
+Process:         vector.out [9271]
+Path:            /Volumes/VOLUME/*/vector.out
+Load Address:    0x10552e000
+Identifier:      vector.out
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [3400]
+
+Date/Time:       2022-05-13 22:54:31.834 +0100
+Launch Time:     2022-05-13 22:54:31.195 +0100
+OS Version:      Mac OS X 10.14.6 (18G103)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.3.1 (11C505)
+----
+
+leaks Report Version: 4.0
+Process 9271: 162 nodes malloced for 18 KB
+Process 9271: 0 leaks for 0 total leaked bytes.
+
+Process:         vector.out [9271]
+Path:            /Volumes/VOLUME/*/vector.out
+Load Address:    0x10552e000
+Identifier:      vector.out
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [3400]
+
+Date/Time:       2022-05-13 22:54:32.132 +0100
+Launch Time:     2022-05-13 22:54:31.195 +0100
+OS Version:      Mac OS X 10.14.6 (18G103)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.3.1 (11C505)
+----
+
+leaks Report Version: 4.0
+Process 9271: 162 nodes malloced for 18 KB
+Process 9271: 0 leaks for 0 total leaked bytes.
+
+Process:         vector.out [9271]
+Path:            /Volumes/VOLUME/*/vector.out
+Load Address:    0x10552e000
+Identifier:      vector.out
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [3400]
+
+Date/Time:       2022-05-13 22:54:32.434 +0100
+Launch Time:     2022-05-13 22:54:31.195 +0100
+OS Version:      Mac OS X 10.14.6 (18G103)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.3.1 (11C505)
+----
+
+leaks Report Version: 4.0
+Process 9271: 162 nodes malloced for 18 KB
+Process 9271: 0 leaks for 0 total leaked bytes.
+
+Process:         vector.out [9271]
+Path:            /Volumes/VOLUME/*/vector.out
+Load Address:    0x10552e000
+Identifier:      vector.out
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [3400]
+
+Date/Time:       2022-05-13 22:54:32.743 +0100
+Launch Time:     2022-05-13 22:54:31.195 +0100
+OS Version:      Mac OS X 10.14.6 (18G103)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.3.1 (11C505)
+----
+
+leaks Report Version: 4.0
+Process 9271: 162 nodes malloced for 18 KB
+Process 9271: 0 leaks for 0 total leaked bytes.
+
+Process:         vector.out [9271]
+Path:            /Volumes/VOLUME/*/vector.out
+Load Address:    0x10552e000
+Identifier:      vector.out
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [3400]
+
+Date/Time:       2022-05-13 22:54:33.269 +0100
+Launch Time:     2022-05-13 22:54:31.195 +0100
+OS Version:      Mac OS X 10.14.6 (18G103)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.3.1 (11C505)
+----
+
+leaks Report Version: 4.0
+Process 9271: 166 nodes malloced for 18 KB
+Process 9271: 2 leaks for 496 total leaked bytes.
+
+    2 (496 bytes) << TOTAL >>
+      1 (480 bytes) ROOT LEAK: 0x7f7f7c500580 [480]
+      1 (16 bytes) ROOT LEAK: 0x7f7f7c6001e0 [16]
+

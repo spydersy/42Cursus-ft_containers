@@ -69,28 +69,33 @@ namespace ft
                 {
                     this->_description = "Range";
                     this->_size = 0;
-                    this->_capacity = 0;
-                    this->_array = NULL;
-                    this->assign(first, last);
+                    this->_capacity = last - first;
+                    this->_array = _vector_allocator.allocate(this->_capacity);
+                    while (first != last) {
+                        this->_vector_allocator.construct(this->_array + _size, *first);
+                        _size++;
+                        first++;
+                    }
+                    // this->assign(first, last);
                     // std::cerr << "Allocated Capacity RANGE : " << this->_capacity << " | Address BEF : " << (void*)this->_array << std::endl;
                 }
                 /*
                 ** Copy Constructor:
                 */
-                vector (const vector& x) : _vector_allocator(x.get_allocator())
+                vector (const vector& x)
                 {
                     if (this != &x)
                     {
                         this->_description = "Copy";
                         this->_size = x._size;
                         this->_capacity = x._capacity;
-                        this->_array = NULL;
+                        this->_vector_allocator = x._vector_allocator;
 
                         // std::cerr << "Allocated Capacity COPY : " << this->_capacity << " | Address BEF : " << (void*)this->_array << std::endl;
                         this->_array = this->_vector_allocator.allocate(this->_capacity);
                         // std::cerr << "Allocated Capacity COPY : " << this->_capacity << " | Address AFT : " << _array << std::endl;
-                        this->assign(x.begin(), x.end());
-                        for (size_type i = 0; i != x.size(); i++)
+                        // this->assign(x.begin(), x.end());
+                        for (size_type i = 0; i != this->_size; i++)
                         {
                             this->_vector_allocator.construct(this->_array + i, x[i]);
                         }
@@ -108,6 +113,7 @@ namespace ft
                 this->_size = 0;
                 if (this->_capacity)
                 {
+
                     // std::cerr << "Destroyed Capacity : " << this->_capacity << " | Address : " << (void*)_array << std::endl;
                     _vector_allocator.deallocate(this->_array, this->_capacity);
                 }
@@ -303,9 +309,7 @@ namespace ft
                             this->_array = NULL;
                         }
                         this->_capacity = this->_size;
-                        // std::cerr << "Allocated Capacity : " << this->_capacity << " | Address BEF : " << _array << std::endl;
                         this->_array = this->_vector_allocator.allocate(this->_capacity);
-                        // std::cerr << "Allocated Capacity : " << this->_capacity << " | Address AFT : " << _array << std::endl;
                     }
                     size_type   c = 0;
                     while (first < last)
