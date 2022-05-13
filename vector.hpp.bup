@@ -13,24 +13,24 @@
 
 namespace ft
 {
-    template < class T, class Alloc = std::allocator<T> >
+    template < class T, class Alloc = std::allocator<T> > // generic template
     class vector
     {
         public:
             /*
             ** Member types:
             */
-                typedef     T                                           value_type;
-                typedef     Alloc                                       allocator_type;
-                typedef     typename allocator_type::reference	        reference;
-                typedef     typename allocator_type::const_reference    const_reference;
-                typedef     typename allocator_type::pointer            pointer;
-                typedef     typename allocator_type::const_pointer	    const_pointer;
-                typedef     size_t                                      size_type;
-                typedef     ft::Iterator<value_type>                    iterator;
-                typedef     ft::Iterator<value_type const>              const_iterator;
-                typedef     ft::reverse_iterator<iterator>              reverse_iterator;
-                typedef     ft::reverse_iterator< const_iterator>       const_reverse_iterator;
+                typedef     T                                       value_type;
+                typedef     Alloc                                   allocator_type;
+                typedef     typename allocator_type::reference	                             reference;
+                typedef     typename allocator_type::const_reference	                       const_reference;
+                typedef     typename allocator_type::pointer                             pointer;
+                typedef     typename allocator_type::const_pointer	                       const_pointer;
+                typedef     size_t                                  size_type;
+                typedef     ft::Iterator<value_type>                iterator;
+                typedef     ft::Iterator<value_type const>          const_iterator;
+                typedef     ft::reverse_iterator<iterator>          reverse_iterator;
+                typedef     ft::reverse_iterator< const_iterator>   const_reverse_iterator;
         public:
 /* Constructors: *****************************************************************************************************/
             /*
@@ -39,22 +39,26 @@ namespace ft
                 /*
                 ** Default Constructor:
                 */
-                explicit vector (const allocator_type& alloc = allocator_type()) : _vector_allocator(alloc)
+                explicit vector (const allocator_type& alloc = allocator_type())
                 {
                     this->_description = "Default";
+                    this->_vector_allocator = alloc;
                     this->_capacity = 0;
+                    //std::cerr << KBLU << "Capacity Modified00 : " << this->_capacity << KNRM << std::endl;
                     this->_size = 0;
                     this->_array = NULL;
                 }
                 /*
                 ** Fill Constructor:
                 */
-                explicit vector (size_type n, const_reference val = value_type(), const allocator_type& alloc = allocator_type()) : _vector_allocator(alloc)
+                explicit vector (size_type n, const_reference val = value_type(), const allocator_type& alloc = allocator_type())
                 {
                     this->_description = "Fill";
                     this->_size = 0;
                     this->_capacity = 0;
+                    //std::cerr << KBLU << "Capacity Modified01 : " << this->_capacity << KNRM << std::endl;
                     this->_array = NULL;
+                    this->_vector_allocator = alloc;
                     this->assign(n, val);
                 }
                 /*
@@ -65,34 +69,35 @@ namespace ft
                         InputIterator last,
                         const allocator_type& alloc = allocator_type(),
                         typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type = InputIterator())
-                : _vector_allocator(alloc)
                 {
+                    // std::cout << "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS" << std::endl;
                     this->_description = "Range";
                     this->_size = 0;
                     this->_capacity = 0;
+                    //std::cerr << KBLU << "Capacity Modified02 : " << this->_capacity << KNRM << std::endl;
                     this->_array = NULL;
+                    this->_vector_allocator = alloc;
                     this->assign(first, last);
-                    // std::cerr << "Allocated Capacity RANGE : " << this->_capacity << " | Address BEF : " << (void*)this->_array << std::endl;
+                    // std::cout << "000000SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS" << std::endl;
                 }
                 /*
                 ** Copy Constructor:
                 */
-                vector (const vector& x) : _vector_allocator(x.get_allocator())
+                vector (const vector& x)
                 {
                     if (this != &x)
                     {
                         this->_description = "Copy";
                         this->_size = x._size;
                         this->_capacity = x._capacity;
-                        this->_array = NULL;
-
-                        // std::cerr << "Allocated Capacity COPY : " << this->_capacity << " | Address BEF : " << (void*)this->_array << std::endl;
+                    //std::cerr << KBLU << "Capacity Modified03 : " << this->_capacity << KNRM << std::endl;
+                        this->_vector_allocator = x._vector_allocator;
+                        std::cerr << "Copy Constructor DBG : ( Size : " << _size << " | Capacity : " << _capacity << " )" << std::endl;
                         this->_array = this->_vector_allocator.allocate(this->_capacity);
-                        // std::cerr << "Allocated Capacity COPY : " << this->_capacity << " | Address AFT : " << _array << std::endl;
-                        this->assign(x.begin(), x.end());
-                        for (size_type i = 0; i != x.size(); i++)
+                        for (size_type i = 0; i < x._size; i++)
                         {
-                            this->_vector_allocator.construct(this->_array + i, x[i]);
+                            // this->_array[i] = ;
+                            this->_vector_allocator.construct(&this->_array[i], x[i]);
                         }
                     }
                 }
@@ -102,16 +107,32 @@ namespace ft
             */
             ~vector()
             {
-                // std::cerr << std::endl << "vector TYPE : **************************************** " << _description << " | Size : " << _size << " | Capacity : " << _capacity << std::endl;
-                for (size_type i = 0; i != this->size(); i++)
-                    this->_vector_allocator.destroy(this->_array + i);
-                this->_size = 0;
-                if (this->_capacity)
+                std::cerr << std::endl << "vector TYPE : **************************************** " << _description << " | Size : " << _size << " | Capacity : " << _capacity << std::endl;
+                for (size_type i = 0; i != this->_size; i++)
                 {
-                    // std::cerr << "Destroyed Capacity : " << this->_capacity << " | Address : " << (void*)_array << std::endl;
-                    _vector_allocator.deallocate(this->_array, this->_capacity);
+                    // if (i < 199)
+                        // std::cerr << "Destroy : " << i << std::endl;
+                    this->_vector_allocator.destroy(&(this->_array[i]));
                 }
+                if (this->_capacity && this->_array != NULL)
+                {
+                    // std::cerr << "vector Destructor ( Size : " << this->_size << " | Capacity : " << this->_capacity << " )" << std::endl;
+                    // if (_size == 10)
+                    // {
+                    //     for (size_t i = 0; i != _size; i++)
+                    //     {
+                    //         std::cerr << "check_content_bef_destroying : [" << this->operator[](i) << "]" << std::endl;
+                    //     }
+                    //     std::cerr << "CHECKED ..." << std::endl;
+                    // }
+                    // std::cerr << "vector Destructor ( Size2: " << this->_size << " | Capacity : " << this->_capacity << " )" << std::endl;
+                    _vector_allocator.deallocate(this->_array, this->_capacity);
+                    // std::cerr << "vector Destructor ( Size3: " << this->_size << " | Capacity : " << this->_capacity << " )" << std::endl;
+                    this->_array = NULL;
+                }
+                this->_size = 0;
                 this->_capacity = 0;
+                    //std::cerr << KBLU << "Capacity Modified04 : " << this->_capacity << KNRM << std::endl;
                 return ;
             }
 /* Operator=: ****************************************************************************************************/
@@ -134,6 +155,7 @@ namespace ft
                         this->_vector_allocator.deallocate(this->_array, this->_capacity);
                     this->_size = src._size;
                     this->_capacity = src._capacity;
+                    //std::cerr << KBLU << "Capacity Modified05 : " << this->_capacity << KNRM << std::endl;
                     this->_array = this->_vector_allocator.allocate(src._capacity);
                     while (index < src.capacity())
                     {
@@ -169,7 +191,7 @@ namespace ft
                 /*
                 ** Size:
                 */
-                size_type size() const { return this->_size; }
+                size_type size() const { return (this->_size); }
 
                 /*
                 ** Max Size:
@@ -213,18 +235,21 @@ namespace ft
                 */
                 void reserve (size_type n)
                 {
+                    // std::cerr << "DBG_RESERVER : *************** this->_capacity : " << this->capacity() << " | n : " << n << std::endl;
                     if (n > 0 && this->_capacity < n)
                     {
                         size_type   index = 0;
                         value_type  *new_arr = this->_vector_allocator.allocate(n);
                         for (iterator it = this->begin(); it < this->end(); it++)
                         {
-                            this->_vector_allocator.construct(new_arr + index, *it);
+                            this->_vector_allocator.construct(new_arr + index, *it); /// checked
+                            // this->_vector_allocator.destroy(this->_array + index);
                             index++;
                         }
                         _vector_allocator.deallocate(this->_array, this->_capacity);
                         this->_array = new_arr;
                         this->_capacity = n;
+                    //std::cerr << KBLU << "Capacity Modified06 : " << this->_capacity << KNRM << std::endl;
                     }
                 }
 
@@ -291,29 +316,27 @@ namespace ft
                 void assign (InputIterator first, InputIterator last,
                 typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type = InputIterator())
                 {
-                    InputIterator   tmp_first = first;
-                    InputIterator   tmp_last = last;
-
-                    this->_size = tmp_last - tmp_first;
+                    this->_size = last - first;
+                        // std::cout << "new_size : " << _size << " | old_capacity : " << _capacity << std::endl;
                     if (this->_capacity < this->_size)
                     {
                         if (this->_capacity)
-                        {
                             this->_vector_allocator.deallocate(this->_array, this->_capacity);
-                            this->_array = NULL;
-                        }
                         this->_capacity = this->_size;
-                        // std::cerr << "Allocated Capacity : " << this->_capacity << " | Address BEF : " << _array << std::endl;
+                    //std::cerr << KBLU << "Capacity Modified07 : " << this->_capacity << KNRM << std::endl;
                         this->_array = this->_vector_allocator.allocate(this->_capacity);
-                        // std::cerr << "Allocated Capacity : " << this->_capacity << " | Address AFT : " << _array << std::endl;
                     }
                     size_type   c = 0;
+                    // std::cerr << "1EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" << std::endl;
+                    // std::cerr << ++x << " HIHIHIHI" << std::endl;
                     while (first < last)
                     {
+                        // this->_vector_allocator.destroy(this->_array + c);
                         this->_vector_allocator.construct(&(this->_array[c]), *first);
                         c++;
                         first++;
                     }
+                    // std::cerr << "2EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" << std::endl;
                 }
 
                 /*
@@ -331,11 +354,13 @@ namespace ft
                         {
                             this->_array = this->_vector_allocator.allocate(n);
                             this->_capacity = n;
+                    //std::cerr << KBLU << "Capacity Modified08 : " << this->_capacity << KNRM << std::endl;
                         }
                         else
                         {
                             this->_array = NULL;
                             this->_capacity = 0;
+                    //std::cerr << KBLU << "Capacity Modified09 : " << this->_capacity << KNRM << std::endl;
                         }
                         for (size_type i = 0; i < n; i++)
                             this->_vector_allocator.construct(this->_array + i, val);
@@ -368,12 +393,14 @@ namespace ft
                         if (this->_capacity == 0)
                         {
                             this->_capacity++;
+                    //std::cerr << KBLU << "Capacity Modified10 : " << this->_capacity << KNRM << std::endl;
                             new_array = this->_vector_allocator.allocate(this->_capacity);
                         }
                         else
                         {
                             new_array = this->_vector_allocator.allocate(this->_capacity * 2);
                             this->_capacity *= 2;
+                    //std::cerr << KBLU << "Capacity Modified11 : " << this->_capacity << KNRM << std::endl;
                         }
                         while (index < this->_size)
                         {
@@ -411,6 +438,7 @@ namespace ft
                             this->_vector_allocator.construct(this->_array , val);
                             this->_size++;
                             this->_capacity = this->_size;
+                    //std::cerr << KBLU << "Capacity Modified12 : " << this->_capacity << KNRM << std::endl;
                             ret = this->begin();
                         }
                         return (ret);
@@ -420,7 +448,10 @@ namespace ft
                         iterator    it = this->end() - 1;
                         for (; it >= position + 1; it--)
                             this->_vector_allocator.construct(this->_array + (it - this->begin() + 1), *it);
+                            // *(it + 1) = *it;
                         this->_vector_allocator.construct(this->_array + (it - this->begin() + 1), *it);
+                        // *( it + 1) = *it;
+                        // *it = val;
                         this->_vector_allocator.construct(this->_array + (it - this->begin()), val);
                         this->_size++;
                         return (it);
@@ -446,6 +477,7 @@ namespace ft
                         }
                         this->_array = new_array;
                         this->_capacity = this->_size * 2;
+                    //std::cerr << KBLU << "Capacity Modified13 : " << this->_capacity << KNRM << std::endl;
                         this->_size++;
                         ret = this->begin() + ret_index;
                         return (ret);
@@ -458,54 +490,79 @@ namespace ft
                 {
                     if (n == 0)
                         return ;
+                        // std::cerr << "DBG________0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                     if (this->_size + n <= this->_capacity)
                     {
+                        // std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                         iterator    it = this->end();
+                        // std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << " | it : " << it - this->begin() << " | position : " << position - this->begin() << std::endl;
                         size_type   tmp = n;
-
+                        // std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << " | it : " << it - this->begin() << " | position : " << position - this->begin() << std::endl;
                         for (; it > position; it--)
                         {
                             this->_vector_allocator.construct(this->_array + (it - this->begin() + n), *it);
                             this->_vector_allocator.destroy(this->_array + (it - this->begin()));
                         }
+                        // std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << " | it : " << it - this->begin() << " | position : " << position - this->begin() << std::endl;
                         this->_vector_allocator.construct(this->_array + (it - this->begin() + n), *it);
+                        // *(it + n) = *it;
+                        // std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << " | it : " << it - this->begin() << " | position : " << position - this->begin() << std::endl;
                         while (n)
                         {
+                            // this->_vector_allocator.destroy(this->_array + (it - this->begin()));
                             this->_vector_allocator.construct(this->_array + (it - this->begin()), val);
                             it++;
                             n--;
                         }
+                        // std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << " | it : " << it - this->begin() << " | position : " << position - this->begin() << std::endl;
                         this->_size += tmp;
+                        // std::cerr << "DBG____err____0 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << " | it : " << it - this->begin() << " | position : " << position - this->begin() << std::endl;
                     }
                     else
                     {
+                        // std::cerr << "DBG________1 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                         size_t      new_capacity = 0;
+                    //std::cerr << KBLU << "Capacity Modified14 : " << this->_capacity << KNRM << std::endl;
                         pointer     new_array = NULL;
                         if (this->_size + n <= this->_size * 2)
                         {
+                        // std::cerr << "DBG________2 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                             new_array = this->_vector_allocator.allocate(this->_size * 2);
+                        // std::cerr << "DBG________3 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                             new_capacity = this->_size * 2;
+                    //std::cerr << KBLU << "Capacity Modified15 : " << this->_capacity << KNRM << std::endl;
+                        // std::cerr << "DBG________4 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                         }
                         else
                         {
+                        // std::cerr << "DBG________5 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                             new_array = this->_vector_allocator.allocate(this->_size + n);
+                        // std::cerr << "DBG________6 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                             new_capacity = this->_size + n;
+                    //std::cerr << KBLU << "Capacity Modified16 : " << this->_capacity << KNRM << std::endl;
+                        // std::cerr << "DBG________7 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                         }
+                        // std::cerr << "DBG________8 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                         iterator    it = this->begin();
+                        // std::cerr << "DBG________9 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                         size_type   tmp = n;
-                        for (size_type index = 0; index < this->_size + n; index++)
+                        for (size_type index = 0; index <= this->_size + n; index++)
                         {
                             if (it == position && tmp)
                             {
+                                // std::cerr << "DBG________10 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                                 while (tmp)
                                 {
                                     this->_vector_allocator.construct(new_array + index, val);
                                     tmp--;
                                     index++;
                                 }
+                                // std::cerr << "DBG________11 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << " | index : " << index << std::endl;
                                 if (index < new_capacity)
                                     this->_vector_allocator.construct(new_array + index, *it);
+                                // std::cerr << "DBG________12 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                                 it++;
+                                // std::cerr << "DBG________13 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                             }
                             else
                             {
@@ -513,11 +570,18 @@ namespace ft
                                 it++;
                             }
                         }
+                        // std::cerr << "DBG________17 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                         this->_size += n;
+                        // std::cerr << "DBG________18 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                         this->_vector_allocator.deallocate(this->_array, this->_capacity);
+                        // std::cerr << "DBG________19 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                         this->_capacity = new_capacity;
+                    //std::cerr << KBLU << "Capacity Modified17 : " << this->_capacity << KNRM << std::endl;
+                        // std::cerr << "DBG________20 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                         this->_array = new_array;
+                        // std::cerr << "DBG________21 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                     }
+                        // std::cerr << "DBG________22 >> n : " << n << " | _size : " << _size << " | _capacity : " << _capacity << std::endl;
                 }
 
                 /*
@@ -535,11 +599,16 @@ namespace ft
                         iterator    it = this->end() - 1;
 
                         for (; it > position; it--)
+                        {
+                            // *(it + n) = *it;
                             this->_vector_allocator.construct(this->_array + (it - this->begin() + n), *it);
+                        }
                         this->_vector_allocator.construct(this->_array + (it - this->begin() + n), *it);
+                        // *(it + n) = *it;
                         while (first < last)
                         {
                             this->_vector_allocator.construct(this->_array + (it - this->begin()), *first);
+                            // *it = *first;
                             it++;
                             first++;
                         }
@@ -554,11 +623,13 @@ namespace ft
                         {
                             new_array = this->_vector_allocator.allocate(this->_size * 2);
                             this->_capacity = this->_size * 2;
+                    //std::cerr << KBLU << "Capacity Modified18 : " << this->_capacity << KNRM << std::endl;
                         }
                         else
                         {
                             new_array = this->_vector_allocator.allocate(this->_size + n);
                             this->_capacity = this->_size + n;
+                    //std::cerr << KBLU << "Capacity Modified19 : " << this->_capacity << KNRM << std::endl;
                         }
                         size_type   index = 0;
                         for (; it != end; it++)
@@ -685,7 +756,7 @@ namespace ft
 
 /*****************************************************************************************************/
         private:
-            pointer                     _array;
+            value_type                  *_array;
             allocator_type              _vector_allocator;
             size_type                   _size;
             size_type                   _capacity;

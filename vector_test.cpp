@@ -435,24 +435,79 @@
 	// return (0);
 // }
 
+// int	main()
+// {
+// 	{
+// 		std::vector<std::string> v(20, "string");
+//         v.reserve(100);
+//         v.insert(v.begin() + 15, 70, "hello");
+// 		std::cout << "Size : " << v.size() << " | Capacity : " << v.capacity() << std::endl;
+// 		for (std::vector<std::string>::iterator it = v.begin(); it != v.end(); it++)
+// 			std::cout << "it[" << it - v.begin() << "] : [" << *it << "]" << std::endl;
+// 	}
+// 	std::cout << "**************************************" << std::endl;
+// 	{
+// 		ft::vector<std::string> v(20, "string");
+//         v.reserve(100);
+//         v.insert(v.begin() + 15, 70, "hello");
+// 		std::cerr << "Size : " << v.size() << " | Capacity : " << v.capacity() << std::endl;
+// 		for (ft::vector<std::string>::iterator it = v.begin(); it != v.end(); it++)
+// 			std::cerr << "it[" << it - v.begin() << "] : [" << *it << "]" << std::endl;
+// 	}
+// 	return 0;
+// }
+
+// int	main(void)
+// {
+// 	ft::vector<std::string> vect(1000000, "hello");
+// 	ft::vector<std::string>	copy(vect);
+// 	system("leaks ft_containers");
+// 	// try
+// 	// {
+// 	// 	ft::vector<std::string> vect1(5, "hello");
+// 	// 	vect1.reserve(20);
+// 	// 	vect1.~vector();
+// 	// 	vect1.~vector();
+// 	// }
+// 	// catch (std::exception &e)
+// 	// {
+// 	// 	std::cerr << "ERROR : " << e.what() << std::endl;
+// 	// }
+// 	// std::cout << "***********************" << std::endl;
+// 	// try
+// 	// {
+// 	// 	ft::vector<std::string> vect2(5, "wewe");		
+// 	// 	vect2.~vector();
+// 	// }
+// 	// catch(const std::exception& e)
+// 	// {
+// 	// 	std::cerr << e.what() << '\n';
+// 	// }
+// 	// return 0;
+// }
+
 int	main()
 {
-	{
-		std::vector<std::string> v(20, "string");
-        v.reserve(100);
-        v.insert(v.begin() + 15, 70, "hello");
-		std::cout << "Size : " << v.size() << " | Capacity : " << v.capacity() << std::endl;
-		for (std::vector<std::string>::iterator it = v.begin(); it != v.end(); it++)
-			std::cout << "it[" << it - v.begin() << "] : [" << *it << "]" << std::endl;
-	}
-	std::cout << "**************************************" << std::endl;
-	{
-		ft::vector<std::string> v(20, "string");
-        v.reserve(100);
-        v.insert(v.begin() + 15, 70, "hello");
-		std::cerr << "Size : " << v.size() << " | Capacity : " << v.capacity() << std::endl;
-		for (ft::vector<std::string>::iterator it = v.begin(); it != v.end(); it++)
-			std::cerr << "it[" << it - v.begin() << "] : [" << *it << "]" << std::endl;
-	}
-	return 0;
+        /*------------------ std::vectors ---------------------*/
+       { std::vector<std::string> v1(10, "string2");          // fill constructor
+        std::vector<std::string> v2;                         // empty constructor
+        std::vector<std::string> v3(v1.begin(), v1.end());   // range constructor with normal iterators
+        std::vector<std::string> v4(v3);                     // copy constructor
+        std::vector<std::string> v5(v1.rbegin(), v1.rend()); // range constructor with reverse iterators
+        /*-----------------------------------------------------*/
+        /*------------------ ft::vectors ---------------------*/
+        ft::vector<std::string> ft_v1(10, "string2");
+        ft::vector<std::string> ft_v2;
+        ft::vector<std::string> ft_v3(ft_v1.begin(), ft_v1.end());
+        ft::vector<std::string> ft_v4(ft_v1);
+        ft::vector<std::string> ft_v5(ft_v1.rbegin(), ft_v1.rend());
+        /*----------------------------------------------------*/
+        // EQUAL(v1.size() == ft_v1.size() && v2.size() == ft_v2.size() && v3.size() == ft_v3.size() && v4.size() == ft_v4.size() && v5.size() == ft_v5.size());
+        ft_v1.~vector();
+        ft_v2.~vector();
+        ft_v3.~vector();
+        ft_v4.~vector();
+        ft_v5.~vector();}
+		            const size_t s = sizeof(std::string);
+
 }

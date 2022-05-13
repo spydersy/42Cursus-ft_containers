@@ -1,88 +1,90 @@
-In file included from ../stack_tests/push().cpp:2:
-../stack_tests/__service.ipp:3:10: error: expected "FILENAME" or <FILENAME>
-#include STACK
+In file included from ../map_tests/erase(key).cpp:2:
+../map_tests/__service.ipp:3:10: error: expected "FILENAME" or <FILENAME>
+#include MAP
          ^
-../stack_tests/__service.ipp:9:2: error: use of undeclared identifier 'ft'
-        _stack<int> st1, st2, st3, st4;
-        ^
-../stack_tests/../system/../../config.hpp:21:20: note: expanded from macro '_stack'
-#define _stack                          ft::Stack
+../map_tests/__service.ipp:19:14: error: use of undeclared identifier 'ft'
+void fillMap(_map<T, V, C> &mp) {
+             ^
+../map_tests/../system/../../config.hpp:22:18: note: expanded from macro '_map'
+#define _map                            ft::Map
                                         ^
-In file included from ../stack_tests/push().cpp:2:
-../stack_tests/__service.ipp:10:2: error: use of undeclared identifier 'ft'
-        _stack<string> st5, st6, st7, st8, st9;
-        ^
-../stack_tests/../system/../../config.hpp:21:20: note: expanded from macro '_stack'
-#define _stack                          ft::Stack
-                                        ^
-In file included from ../stack_tests/push().cpp:2:
-../stack_tests/__service.ipp:27:114: error: use of undeclared identifier 'ft'
-int run_stack_unit_test(std::string test_name, std::vector<int> (func1)(std::stack<T>), std::vector<int> (func2)(_stack<T>)) {
-                                                                                                                 ^
-../stack_tests/../system/../../config.hpp:21:20: note: expanded from macro '_stack'
-#define _stack                          ft::Stack
-                                        ^
-In file included from ../stack_tests/push().cpp:2:
-../stack_tests/__service.ipp:35:2: error: use of undeclared identifier 'ft'
-        _stack<int> my_stack;
-        ^
-../stack_tests/../system/../../config.hpp:21:20: note: expanded from macro '_stack'
-#define _stack                          ft::Stack
-                                        ^
-In file included from ../stack_tests/push().cpp:2:
-../stack_tests/__service.ipp:35:12: error: expected '(' for function-style cast or type construction
-        _stack<int> my_stack;
-               ~~~^
-../stack_tests/__service.ipp:35:14: error: use of undeclared identifier 'my_stack'
-        _stack<int> my_stack;
-                    ^
-../stack_tests/__service.ipp:39:15: error: use of undeclared identifier 'my_stack'
-        res2 = func2(my_stack);
-                     ^
-../stack_tests/push().cpp:16:28: error: use of undeclared identifier 'ft'
-std::vector<int> size_test(_stack<T> stk) {
-                           ^
-../stack_tests/../system/../../config.hpp:21:20: note: expanded from macro '_stack'
-#define _stack                          ft::Stack
-                                        ^
-../stack_tests/push().cpp:16:18: warning: variable templates are a C++14 extension [-Wc++14-extensions]
-std::vector<int> size_test(_stack<T> stk) {
-                 ^
-../stack_tests/push().cpp:16:18: error: redefinition of 'size_test' as different kind of symbol
-../stack_tests/push().cpp:5:18: note: previous definition is here
-std::vector<int> size_test(std::stack<T> stk) {
-                 ^
-../stack_tests/push().cpp:16:35: error: 'T' does not refer to a value
-std::vector<int> size_test(_stack<T> stk) {
-                                  ^
-../stack_tests/push().cpp:15:17: note: declared here
-template <class T>
+In file included from ../map_tests/erase(key).cpp:2:
+../map_tests/__service.ipp:19:6: warning: variable templates are a C++14 extension [-Wc++14-extensions]
+void fillMap(_map<T, V, C> &mp) {
+     ^
+../map_tests/__service.ipp:19:6: error: variable has incomplete type 'void'
+../map_tests/__service.ipp:19:19: error: 'T' does not refer to a value
+void fillMap(_map<T, V, C> &mp) {
+                  ^
+../map_tests/__service.ipp:18:17: note: declared here
+template <class T, class V, class C>
                 ^
-../stack_tests/push().cpp:16:38: error: use of undeclared identifier 'stk'
-std::vector<int> size_test(_stack<T> stk) {
-                                     ^
-../stack_tests/push().cpp:16:42: error: expected ';' at end of declaration
-std::vector<int> size_test(_stack<T> stk) {
-                                         ^
-                                         ;
-../stack_tests/push().cpp:16:43: error: expected unqualified-id
-std::vector<int> size_test(_stack<T> stk) {
-                                          ^
-../stack_tests/push().cpp:28:7: error: no matching function for call to 'run_stack_unit_test'
-        exit(run_stack_unit_test<int>("push()", size_test, size_test));
-             ^~~~~~~~~~~~~~~~~~~~~~~~
-../stack_tests/__service.ipp:27:5: note: candidate function template not viable: no overload of 'size_test' matching 'std::vector<int> (*)(int)' for 3rd argument
-int run_stack_unit_test(std::string test_name, std::vector<int> (func1)(std::stack<T>), std::vector<int> (func2)(_stack<T>)) {
-    ^
-1 warning and 15 errors generated.
-nt> (*)(int)' for 3rd argument
-int run_stack_unit_test(std::string test_name, std::vector<int> (func1)(std::stack<T>), std::vector<int> (func2)(_stack<T>)) {
-    ^
-1 warning and 15 errors generated.
-'ft'
-        (_is_integral<unsigned long>() == std::is_integral<unsigned long>()) ? 0 : res = 0;
-         ^
-../utilities_tests/../system/../../config.hpp:24:24: note: expanded from macro '_is_integral'
+../map_tests/__service.ipp:19:22: error: 'V' does not refer to a value
+void fillMap(_map<T, V, C> &mp) {
+                     ^
+../map_tests/__service.ipp:18:26: note: declared here
+template <class T, class V, class C>
+                         ^
+../map_tests/__service.ipp:19:25: error: 'C' does not refer to a value
+void fillMap(_map<T, V, C> &mp) {
+                        ^
+../map_tests/__service.ipp:18:35: note: declared here
+template <class T, class V, class C>
+                                  ^
+../map_tests/__service.ipp:19:29: error: use of undeclared identifier 'mp'
+void fillMap(_map<T, V, C> &mp) {
+                            ^
+../map_tests/__service.ipp:19:32: error: expected ';' at end of declaration
+void fillMap(_map<T, V, C> &mp) {
+                               ^
+                               ;
+../map_tests/__service.ipp:19:33: error: expected unqualified-id
+void fillMap(_map<T, V, C> &mp) {
+                                ^
+../map_tests/__service.ipp:35:2: error: use of undeclared identifier 'ft'
+        _map<int, int> mp1, mp2, mp3, mp4;
+        ^
+../map_tests/../system/../../config.hpp:22:18: note: expanded from macro '_map'
+#define _map                            ft::Map
+                                        ^
+In file included from ../map_tests/erase(key).cpp:2:
+../map_tests/__service.ipp:36:2: error: use of undeclared identifier 'ft'
+        _map<string, string> mp5, mp6, mp7, mp8, mp9;
+        ^
+../map_tests/../system/../../config.hpp:22:18: note: expanded from macro '_map'
+#define _map                            ft::Map
+                                        ^
+In file included from ../map_tests/erase(key).cpp:2:
+../map_tests/__service.ipp:39:47: error: use of undeclared identifier 'ft'
+                m1.insert(std::make_pair(2, 3)); mp1.insert(ft::make_pair(2, 3));
+                                                            ^
+../map_tests/__service.ipp:40:47: error: use of undeclared identifier 'ft'
+                m2.insert(std::make_pair(3, 3)); mp2.insert(ft::make_pair(3, 3));
+                                                            ^
+../map_tests/__service.ipp:41:47: error: use of undeclared identifier 'ft'
+                m3.insert(std::make_pair(3, 4)); mp3.insert(ft::make_pair(3, 4));
+                                                            ^
+../map_tests/__service.ipp:42:47: error: use of undeclared identifier 'ft'
+                m4.insert(std::make_pair(4, 4)); mp4.insert(ft::make_pair(4, 4));
+                                                            ^
+../map_tests/__service.ipp:43:47: error: use of undeclared identifier 'ft'
+                m4.insert(std::make_pair(4, 5)); mp4.insert(ft::make_pair(4, 5));
+                                                            ^
+../map_tests/__service.ipp:44:55: error: use of undeclared identifier 'ft'
+                m5.insert(std::make_pair("123", "123")); mp5.insert(ft::make_pair("123", "123"));
+                                                                    ^
+../map_tests/__service.ipp:45:55: error: use of undeclared identifier 'ft'
+                m6.insert(std::make_pair("123", "124")); mp6.insert(ft::make_pair("123", "124"));
+                                                                    ^
+../map_tests/__service.ipp:46:55: error: use of undeclared identifier 'ft'
+                m7.insert(std::make_pair("124", "123")); mp7.insert(ft::make_pair("124", "123"));
+                                                                    ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+1 warning and 20 errors generated.
+erated.
+ generated.
+erated.
+ro '_is_integral'
 #define _is_integral            ft::is_integral
                                 ^
 ../utilities_tests/is_integral.cpp:21:3: error: use of undeclared identifier 'ft'
@@ -98,3 +100,91 @@ int run_stack_unit_test(std::string test_name, std::vector<int> (func1)(std::sta
 #define _is_integral            ft::is_integral
                                 ^
 16 errors generated.
+ no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'unsigned int' for 1st argument
+    basic_ostream& operator<<(unsigned int __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:212:20: note: candidate function not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'long' for 1st argument
+    basic_ostream& operator<<(long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:213:20: note: candidate function not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'unsigned long' for 1st argument
+    basic_ostream& operator<<(unsigned long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:214:20: note: candidate function not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'long long' for 1st argument
+    basic_ostream& operator<<(long long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:215:20: note: candidate function not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'unsigned long long' for 1st argument
+    basic_ostream& operator<<(unsigned long long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:216:20: note: candidate function not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'float' for 1st argument
+    basic_ostream& operator<<(float __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:217:20: note: candidate function not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'double' for 1st argument
+    basic_ostream& operator<<(double __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:218:20: note: candidate function not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'long double' for 1st argument
+    basic_ostream& operator<<(long double __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:220:20: note: candidate function not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'basic_streambuf<std::__1::basic_ostream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_ostream<char, std::__1::char_traits<char> >::traits_type> *' (aka 'basic_streambuf<char, std::__1::char_traits<char> > *') for 1st argument
+    basic_ostream& operator<<(basic_streambuf<char_type, traits_type>* __sb);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:756:1: note: candidate function template not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'char' for 2nd argument
+operator<<(basic_ostream<_CharT, _Traits>& __os, char __cn)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:789:1: note: candidate function template not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'char' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, char __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:796:1: note: candidate function template not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'signed char' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, signed char __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:803:1: note: candidate function template not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'unsigned char' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, unsigned char __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:817:1: note: candidate function template not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'const char *' for 2nd argument
+operator<<(basic_ostream<_CharT, _Traits>& __os, const char* __strn)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:863:1: note: candidate function template not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'const char *' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, const char* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:870:1: note: candidate function template not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'const signed char *' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, const signed char* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:878:1: note: candidate function template not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'const unsigned char *' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, const unsigned char* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1062:1: note: candidate function template not viable: no known conversion from 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A') to 'const std::__1::error_code' for 2nd argument
+operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __ec)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:749:1: note: candidate template ignored: deduced conflicting types for parameter '_CharT' ('char' vs. 'A')
+operator<<(basic_ostream<_CharT, _Traits>& __os, _CharT __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:810:1: note: candidate template ignored: could not match 'const _CharT *' against 'ft::vector<A, std::__1::allocator<A> >::value_type' (aka 'A')
+operator<<(basic_ostream<_CharT, _Traits>& __os, const _CharT* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1045:1: note: candidate template ignored: could not match 'basic_string<type-parameter-0-0, type-parameter-0-1, type-parameter-0-2>' against 'A'
+operator<<(basic_ostream<_CharT, _Traits>& __os,
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1053:1: note: candidate template ignored: could not match 'basic_string_view<type-parameter-0-0, type-parameter-0-1>' against 'A'
+operator<<(basic_ostream<_CharT, _Traits>& __os,
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1070:1: note: candidate template ignored: could not match 'shared_ptr<type-parameter-0-2>' against 'A'
+operator<<(basic_ostream<_CharT, _Traits>& __os, shared_ptr<_Yp> const& __p)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1082:1: note: candidate template ignored: could not match 'unique_ptr<type-parameter-0-2, type-parameter-0-3>' against 'A'
+operator<<(basic_ostream<_CharT, _Traits>& __os, unique_ptr<_Yp, _Dp> const& __p)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1089:1: note: candidate template ignored: could not match 'bitset<_Size>' against 'A'
+operator<<(basic_ostream<_CharT, _Traits>& __os, const bitset<_Size>& __x)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iomanip:363:1: note: candidate template ignored: could not match '__iom_t8<type-parameter-0-2>' against 'A'
+operator<<(basic_ostream<_CharT, _Traits>& __os, const __iom_t8<_MoneyT>& __x)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iomanip:478:5: note: candidate template ignored: could not match '__iom_t10<type-parameter-0-0>' against 'A'
+    operator<<(basic_ostream<_Cp, _Traits>& __os, const __iom_t10<_Cp>& __x);
+    ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iomanip:573:33: note: candidate template ignored: could not match '__quoted_output_proxy<type-parameter-0-0, type-parameter-0-2, type-parameter-0-1>' against 'A'
+basic_ostream<_CharT, _Traits>& operator<<(
+                                ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iomanip:593:33: note: candidate template ignored: could not match '__quoted_proxy<type-parameter-0-0, type-parameter-0-1, type-parameter-0-2>' against 'A'
+basic_ostream<_CharT, _Traits>& operator<<(
+                                ^
+1 warning and 1 error generated.
