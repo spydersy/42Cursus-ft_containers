@@ -99,6 +99,7 @@ namespace ft
             */
             ~vector()
             {
+                std::cout << "Vector Destructor Called : ) . . ." << std::endl;
                 for (size_type i = 0; i != this->size(); i++)
                     this->_vector_allocator.destroy(this->_array + i);
                 this->_size = 0;

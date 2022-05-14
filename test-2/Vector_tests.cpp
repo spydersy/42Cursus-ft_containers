@@ -2426,6 +2426,7 @@ void vector_tests(void)
         EQUAL(cond);
     }
     std::cout << "\033[1;36m\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m\n\n";
+    system("leaks vector.out");
 } // vec_end
 
 void alarm_handler(int seg)

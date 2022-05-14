@@ -3319,6 +3319,7 @@ void vector_tests(void)
         EQUAL(cond);
     }
     std::cout << "\033[1;36m\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m\n\n";
+    system("leaks vector.out");
 } // vec_end
 
 void alarm_handler(int seg)
@@ -3339,5 +3340,6 @@ int main(void)
     reverse_iterator_tests();
     reverse_iterator_with_ft_vector();
     vector_tests();
+    system("leaks vector.out");
     return 0;
 }
