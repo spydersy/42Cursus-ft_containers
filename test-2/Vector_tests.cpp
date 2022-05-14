@@ -2442,17 +2442,12 @@ int ft_main(void)
     std::cout << RED << "--------------------------------------------------------------------------------------------------------" << RESET << std::endl;
     signal(SIGALRM, alarm_handler);
 
-    system("leaks vector.out >> leaks.out");
     iterator_tests();
-    system("leaks vector.out >> leaks.out");
     const_iterator_tests();
-    system("leaks vector.out >> leaks.out");
     reverse_iterator_tests();
-    system("leaks vector.out >> leaks.out");
     reverse_iterator_with_ft_vector();
-    system("leaks vector.out >> leaks.out");
     vector_tests();
-    system("leaks vector.out >> leaks.out");
+    system("leaks vector.out");
     return 0;
 }
 
