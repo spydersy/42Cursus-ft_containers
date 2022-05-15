@@ -85,8 +85,10 @@ namespace ft
                         this->_size = x._size;
                         this->_capacity = x._capacity;
                         this->_vector_allocator = x._vector_allocator;
-
-                        this->_array = this->_vector_allocator.allocate(this->_capacity);
+                        if (this->_capacity)
+                            this->_array = this->_vector_allocator.allocate(this->_capacity);
+                        else
+                            this->_array = nullptr;
                         for (size_type i = 0; i != this->_size; i++)
                         {
                             this->_vector_allocator.construct(this->_array + i, x[i]);
@@ -99,7 +101,6 @@ namespace ft
             */
             ~vector()
             {
-                std::cout << "Vector Destructor Called : ) . . ." << std::endl;
                 for (size_type i = 0; i != this->size(); i++)
                     this->_vector_allocator.destroy(this->_array + i);
                 this->_size = 0;
@@ -121,16 +122,20 @@ namespace ft
                 {
                     size_type   index = 0;
 
-                    if (this->_size)
-                    {
-                        for (size_type i = 0; i != this->_size; i++)
-                            this->_vector_allocator.destroy(this->_array + i);
-                    }
+                    for (size_type i = 0; i != this->_size; i++)
+                        this->_vector_allocator.destroy(this->_array + i);
                     if (this->_capacity)
                         this->_vector_allocator.deallocate(this->_array, this->_capacity);
                     this->_size = src._size;
                     this->_capacity = src._capacity;
-                    this->_array = this->_vector_allocator.allocate(src._capacity);
+                    if (this->_capacity)
+                    {
+                        this->_array = this->_vector_allocator.allocate(src._capacity);
+                    }
+                    else
+                    {
+                        this->_array = nullptr;
+                    }
                     while (index < src.size())
                     {
                         this->_vector_allocator.construct(_array + index, src[index]);
@@ -189,6 +194,8 @@ namespace ft
                     }
                     else
                     {
+                        if (this->_capacity * 2 >= n && n > this->_capacity)
+                            this->reserve(this->_capacity * 2);
                         this->insert(this->end(), n - this->_size, val);
                         this->_size = n;
                     }
@@ -327,7 +334,11 @@ namespace ft
                         for (size_type i = 0; i != this->_size; i++)
                             this->_vector_allocator.destroy(this->_array + i);
                         if (this->_capacity)
+                        {
                             this->_vector_allocator.deallocate(this->_array, this->_capacity);
+                            this->_array = nullptr;
+                            this->_capacity = 0;
+                        }
                         if (n)    
                         {
                             this->_array = this->_vector_allocator.allocate(n);

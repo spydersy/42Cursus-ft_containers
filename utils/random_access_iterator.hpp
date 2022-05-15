@@ -39,11 +39,11 @@ namespace   ft
             // typedef     typename ft::iterator_traits<Type>::reference          reference;
             // typedef     typename ft::iterator_traits<Type>::difference_type    difference_type;
             // typedef     typename ft::iterator_traits<Type>::size_type          size_type;
-            typedef     Type                             value_type;
+            typedef     Type                             value_type; //done
             typedef     const Type                       const_value_type;
-            typedef     Type*                            pointer;
-            typedef     Type&                            reference;
-            typedef     std::ptrdiff_t                   difference_type;
+            typedef     Type*                            pointer; //done
+            typedef     Type&                            reference; //done
+            typedef     std::ptrdiff_t                   difference_type; //done
             typedef     size_t                           size_type;
 
                 Iterator( void )

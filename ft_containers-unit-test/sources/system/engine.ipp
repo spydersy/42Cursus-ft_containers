@@ -61,7 +61,8 @@ void testCompile(int *status, const char* func_filename, char **env) {
     waitpid(pid, status, WUNTRACED | WCONTINUED);
 }
 
-void testExecution(int *status, std::string output, char** argv, char **env) {
+void testExecution(int *status, std::string output, char** argv, char **env)
+{
 
     pid_t   pid;
 

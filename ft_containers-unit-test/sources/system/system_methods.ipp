@@ -44,7 +44,8 @@ int leaks_test(pid_t pid) {
 	}
 	else {
 	    printElement(REDD + "LEAKS" + RESET);
-	    return (1);
+	    std::cout << std::endl << "LEAAAAAAKS : [[[" << std::endl << s << "]]]" << std::endl;
+		return (1);
 	}
 }
 

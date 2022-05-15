@@ -1,5 +1,12 @@
 #include "../system/system_methods.ipp"
-#include UTILITIES
+
+#include "../utils/backup_reverse_iterator.hpp" 
+#include "../utils/is_integral.hpp"             
+#include "../utils/random_access_iterator.hpp"
+#include "../utils/enable_if.hpp"               
+#include "../utils/iterators_traits.hpp"        
+#include "../utils/reverse_iterator.hpp"
+
 #include VECTOR
 
 bool iterator_traits_test() {
@@ -20,11 +27,11 @@ bool iterator_traits_test() {
 	res.push_back(typeid(std::vector<int>::reverse_iterator::reference).name());
 
 	res2.push_back(typeid(_vector<int>::iterator::iterator_category).name());
-	res2.push_back(typeid(_vector<int>::iterator::value_type).name());
-	res2.push_back(typeid(_vector<int>::iterator::difference_type).name());
+	res2.push_back(typeid(_vector<int>::iterator::value_type).name()); //done
+	res2.push_back(typeid(_vector<int>::iterator::difference_type).name()); //done
 	res2.push_back(typeid(_vector<int>::iterator::iterator_type).name());
-	res2.push_back(typeid(_vector<int>::iterator::pointer).name());
-	res2.push_back(typeid(_vector<int>::iterator::reference).name());
+	res2.push_back(typeid(_vector<int>::iterator::pointer).name()); //done
+	res2.push_back(typeid(_vector<int>::iterator::reference).name()); //done
 	res2.push_back(typeid(_vector<int>::reverse_iterator::iterator_category).name());
 	res2.push_back(typeid(_vector<int>::reverse_iterator::value_type).name());
 	res2.push_back(typeid(_vector<int>::reverse_iterator::difference_type).name());

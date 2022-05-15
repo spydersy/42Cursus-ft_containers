@@ -741,7 +741,6 @@ void vector_tests(void)
         ft::vector<std::string> ft_v5(ft_v1.rbegin(), ft_v1.rend());
         /*----------------------------------------------------*/
         EQUAL(v1.size() == ft_v1.size() && v2.size() == ft_v2.size() && v3.size() == ft_v3.size() && v4.size() == ft_v4.size() && v5.size() == ft_v5.size());
-        // EQUAL(1);
     }
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " capacity method "
               << "] --------------------]\t\t\033[0m";
@@ -761,7 +760,6 @@ void vector_tests(void)
         ft::vector<std::string> ft_v5(ft_v1.rbegin(), ft_v1.rend());
         /*----------------------------------------------------*/
         EQUAL(v1.capacity() == ft_v1.capacity() && v2.capacity() == ft_v2.capacity() && v3.capacity() == ft_v3.capacity() && v4.capacity() == ft_v4.capacity() && v5.capacity() == ft_v5.capacity());
-        // EQUAL(1);
     }
     std::cout << "\033[1;37m[-------------------- [" << std::setw(40) << std::left << " max_size method "
               << "] --------------------]\t\t\033[0m";
@@ -2426,7 +2424,6 @@ void vector_tests(void)
         EQUAL(cond);
     }
     std::cout << "\033[1;36m\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[0m\n\n";
-    system("leaks vector.out");
 } // vec_end
 
 void alarm_handler(int seg)
@@ -2448,12 +2445,12 @@ int ft_main(void)
     reverse_iterator_tests();
     reverse_iterator_with_ft_vector();
     vector_tests();
-    system("leaks vector.out");
     return 0;
 }
 
 int main()
 {
     ft_main();
+    system("leaks vector.out");
     return 0;
 }
