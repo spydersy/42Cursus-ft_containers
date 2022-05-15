@@ -1,7 +1,7 @@
-1,34d0
+1,34c1
 < size: 4
 < capacity: OK
-< max_size: 2305843009213693951
+< max_size: 4611686018427387903
 < 
 < Content is:
 < - 3
@@ -11,7 +11,7 @@
 < ###############################################
 < size: 4
 < capacity: OK
-< max_size: 2305843009213693951
+< max_size: 4611686018427387903
 < 
 < Content is:
 < - 5
@@ -21,7 +21,7 @@
 < ###############################################
 < size: 8
 < capacity: OK
-< max_size: 2305843009213693951
+< max_size: 4611686018427387903
 < 
 < Content is:
 < - 5
@@ -33,3 +33,5 @@
 < - 10
 < - 5
 < ###############################################
+---
+> libc++abi.dylib: terminating with uncaught exception of type std::length_error: allocator<T>::allocate(size_t n) 'n' exceeds maximum supported size

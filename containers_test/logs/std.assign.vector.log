@@ -1,6 +1,6 @@
 size: 7
 capacity: OK
-max_size: 2305843009213693951
+max_size: 4611686018427387903
 
 Content is:
 - 21
@@ -13,7 +13,7 @@ Content is:
 ###############################################
 size: 4
 capacity: OK
-max_size: 2305843009213693951
+max_size: 4611686018427387903
 
 Content is:
 - 20
@@ -24,7 +24,7 @@ Content is:
 	### After assign(): ###
 size: 4
 capacity: OK
-max_size: 2305843009213693951
+max_size: 4611686018427387903
 
 Content is:
 - 20
@@ -34,7 +34,7 @@ Content is:
 ###############################################
 size: 2
 capacity: OK
-max_size: 2305843009213693951
+max_size: 4611686018427387903
 
 Content is:
 - 42
@@ -42,7 +42,7 @@ Content is:
 ###############################################
 size: 7
 capacity: OK
-max_size: 2305843009213693951
+max_size: 4611686018427387903
 
 Content is:
 - 21
@@ -55,7 +55,7 @@ Content is:
 ###############################################
 size: 4
 capacity: OK
-max_size: 2305843009213693951
+max_size: 4611686018427387903
 
 Content is:
 - 21
@@ -65,7 +65,7 @@ Content is:
 ###############################################
 size: 6
 capacity: OK
-max_size: 2305843009213693951
+max_size: 4611686018427387903
 
 Content is:
 - 84
@@ -78,7 +78,7 @@ Content is:
 	### assign() on enough capacity and low size: ###
 size: 5
 capacity: OK
-max_size: 2305843009213693951
+max_size: 4611686018427387903
 
 Content is:
 - 53
@@ -89,7 +89,7 @@ Content is:
 ###############################################
 size: 3
 capacity: OK
-max_size: 2305843009213693951
+max_size: 4611686018427387903
 
 Content is:
 - 21

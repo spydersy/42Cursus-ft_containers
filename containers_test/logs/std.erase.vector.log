@@ -1,6 +1,6 @@
 size: 10
 capacity: OK
-max_size: 288230376151711743
+max_size: 768614336404564650
 
 Content is:
 - AAAAAAAAAA
@@ -17,7 +17,7 @@ Content is:
 [0] erase: 2
 size: 9
 capacity: OK
-max_size: 288230376151711743
+max_size: 768614336404564650
 
 Content is:
 - AAAAAAAAAA
@@ -33,7 +33,7 @@ Content is:
 [1] erase: 0
 size: 8
 capacity: OK
-max_size: 288230376151711743
+max_size: 768614336404564650
 
 Content is:
 - BBBBBBBBB
@@ -48,7 +48,7 @@ Content is:
 [2] erase: 7
 size: 7
 capacity: OK
-max_size: 288230376151711743
+max_size: 768614336404564650
 
 Content is:
 - BBBBBBBBB
@@ -62,7 +62,7 @@ Content is:
 [3] erase: 0
 size: 4
 capacity: OK
-max_size: 288230376151711743
+max_size: 768614336404564650
 
 Content is:
 - FFFFF
@@ -73,7 +73,7 @@ Content is:
 [4] erase: 1
 size: 2
 capacity: OK
-max_size: 288230376151711743
+max_size: 768614336404564650
 
 Content is:
 - FFFFF
@@ -81,7 +81,7 @@ Content is:
 ###############################################
 size: 4
 capacity: OK
-max_size: 288230376151711743
+max_size: 768614336404564650
 
 Content is:
 - FFFFF
@@ -92,14 +92,14 @@ Content is:
 [5] erase: 1
 size: 1
 capacity: OK
-max_size: 288230376151711743
+max_size: 768614336404564650
 
 Content is:
 - FFFFF
 ###############################################
 size: 5
 capacity: OK
-max_size: 288230376151711743
+max_size: 768614336404564650
 
 Content is:
 - FFFFF
@@ -111,7 +111,7 @@ Content is:
 [6] erase: 0
 size: 0
 capacity: OK
-max_size: 288230376151711743
+max_size: 768614336404564650
 
 Content is:
 ###############################################

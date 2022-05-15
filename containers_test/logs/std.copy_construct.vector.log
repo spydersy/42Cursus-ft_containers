@@ -2,7 +2,7 @@ len: 5
 	-- PART ONE --
 size: 5
 capacity: OK
-max_size: 2305843009213693951
+max_size: 4611686018427387903
 
 Content is:
 - 7
@@ -13,7 +13,7 @@ Content is:
 ###############################################
 size: 3
 capacity: OK
-max_size: 2305843009213693951
+max_size: 4611686018427387903
 
 Content is:
 - 5
@@ -22,7 +22,7 @@ Content is:
 ###############################################
 size: 7
 capacity: OK
-max_size: 2305843009213693951
+max_size: 4611686018427387903
 
 Content is:
 - 5
@@ -36,7 +36,7 @@ Content is:
 	-- PART TWO --
 size: 7
 capacity: OK
-max_size: 2305843009213693951
+max_size: 4611686018427387903
 
 Content is:
 - 5
@@ -49,13 +49,13 @@ Content is:
 ###############################################
 size: 0
 capacity: OK
-max_size: 2305843009213693951
+max_size: 4611686018427387903
 
 Content is:
 ###############################################
 size: 3
 capacity: OK
-max_size: 2305843009213693951
+max_size: 4611686018427387903
 
 Content is:
 - 5

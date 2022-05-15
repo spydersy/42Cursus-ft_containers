@@ -1,38 +1,57 @@
-3a4
-> begni dbg: 35
-14a16
-> begni dbg: 35
-23a26
-> begni dbg: 14
-28,30c31,33
+12,65c12
+< size: 3
+< capacity: OK
+< max_size: 4611686018427387903
+< 
+< Content is:
 < - 35
 < - 28
 < - 21
----
-> - 0
-> - 0
-> - 0
-34a38
-> begni dbg: 14
-39,41c43,45
+< ###############################################
+< size: 5
+< capacity: OK
+< max_size: 4611686018427387903
+< 
+< Content is:
+< - 14
+< - 7
 < - 35
 < - 28
 < - 21
----
-> - 0
-> - 0
-> - 0
-47c51
+< ###############################################
+< size: 8
+< capacity: OK
+< max_size: 4611686018427387903
+< 
+< Content is:
+< - 14
+< - 7
+< - 35
+< - 28
+< - 21
+< - 35
+< - 28
+< - 21
+< ###############################################
+< insert return:
 < 42
----
-> 0
-52a57
-> begni dbg: 14
-57,59c62,64
+< 84
+< ----------------------------------------
+< size: 10
+< capacity: OK
+< max_size: 4611686018427387903
+< 
+< Content is:
+< - 14
+< - 7
 < - 35
 < - 28
 < - 21
+< - 84
+< - 35
+< - 28
+< - 21
+< - 42
+< ###############################################
 ---
-> - 0
-> - 0
-> - 0
+> libc++abi.dylib: terminating with uncaught exception of type std::length_error: allocator<T>::allocate(size_t n) 'n' exceeds maximum supported size
