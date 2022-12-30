@@ -1,137 +1,103 @@
 
-#ifndef RANDOM_ACCESS_ITERATOR_HPP
-#define RANDOM_ACCESS_ITERATOR_HPP
+#ifndef __RANDOM_ACCESS_ITERATOR_HPP__
+# define __RANDOM_ACCESS_ITERATOR_HPP__
 
-#include <iostream>
-#include <iterator>
-#include "iterators_traits.hpp"
+# include <iostream>
+# include <iterator>
 
-namespace   ft
+# include "iterators_traits.hpp"
+# include "iterator.hpp"
+
+namespace ft
 {
-	struct input_iterator_tag {};
-  	struct output_iterator_tag {};
-  	struct forward_iterator_tag : public input_iterator_tag {};
-  	struct bidirectional_iterator_tag : public forward_iterator_tag {};
- 	struct random_access_iterator_tag : public bidirectional_iterator_tag {};
-	template <class Category, class T, class Distance = std::ptrdiff_t,
-			class Pointer = T*, class Reference = T&>
-	struct base_iterator
-	{
-		public:
-		typedef T			value_type;
-		typedef Distance	difference_type;
-		typedef Pointer		pointer;
-		typedef Reference	reference;
-		typedef Category 	iterator_category;
-	};
-
     template <typename Type>
-    class   Iterator : public ft::base_iterator<std::random_access_iterator_tag, Type>
+    class   random_access_iterator  : public ft::iterator_traits<ft::iterator<ft::random_access_iterator_tag, Type> >
     {
         public:
 
             /*
             ** Member Types:
             */
-            // typedef     typename ft::iterator_traits<Type>::iterator_category  iterator_category;
-            // typedef     typename ft::iterator_traits<Type>::value_type         value_type;
-            // typedef     typename ft::iterator_traits<Type>::pointer            pointer;
-            // typedef     typename ft::iterator_traits<Type>::reference          reference;
-            // typedef     typename ft::iterator_traits<Type>::difference_type    difference_type;
-            // typedef     typename ft::iterator_traits<Type>::size_type          size_type;
-            typedef     Type                             value_type; //done
-            typedef     const Type                       const_value_type;
-            typedef     Type*                            pointer; //done
-            typedef     Type&                            reference; //done
-            typedef     std::ptrdiff_t                   difference_type; //done
-            typedef     size_t                           size_type;
+            typedef typename ft::iterator_traits<ft::iterator<ft::random_access_iterator_tag, Type> >::value_type        value_type;
+            typedef typename ft::iterator_traits<ft::iterator<ft::random_access_iterator_tag, Type> >::difference_type   difference_type;
+            typedef typename ft::iterator_traits<ft::iterator<ft::random_access_iterator_tag, Type> >::pointer           pointer;
+            typedef typename ft::iterator_traits<ft::iterator<ft::random_access_iterator_tag, Type> >::reference         reference;
+            typedef typename ft::iterator_traits<ft::iterator<ft::random_access_iterator_tag, Type> >::iterator_category iterator_category;
+            typedef          size_t                                                                                      size_type;
 
-                Iterator( void )
+
+                random_access_iterator( void )
                 {
                     this->_ptr = NULL;
-                    // std::cout << KYEL << "DBG_ITERATOR: (default constructor) | _ptr = " << _ptr << std::endl << KNRM;
                 }
 
-                Iterator( Iterator const & src )
+                random_access_iterator( random_access_iterator const & src )
                 {
                     this->_ptr = src._ptr;
-                    // std::cout << KYEL << "DBG_ITERATOR: (copy constructor) | _ptr = " << _ptr << std::endl << KNRM;
                 }
 
-                Iterator( value_type &src )
+                random_access_iterator ( pointer x ) : _ptr(x) {}
+
+                random_access_iterator( value_type &src )
                 {
                     this->_ptr = &src;
-                    // std::cout << KYEL << "DBG_ITERATOR: (ptr constructor) | _ptr = " << _ptr << std::endl << KNRM;
                 }
 
-                Iterator    &operator=( Iterator const & src)
+                random_access_iterator    &operator=( random_access_iterator const & src)
                 {
                     this->_ptr = src._ptr;
-                    // std::cout << KYEL << "DBG_ITERATOR: (operator=) | _ptr = " << _ptr << std::endl << KNRM;
                     return ( *this );
                 }
 
-                ~Iterator() { return ; }
-
-                bool    operator==( Iterator const & src ) const
+                value_type *base() const
                 {
-                    return (this->_ptr == src._ptr);
+                    return this->_ptr;
                 }
 
-                bool    operator!=( Iterator const & src ) const
+                ~random_access_iterator() { return ; }
+
+                template <typename U>
+                bool    operator==( random_access_iterator<U> const & src ) const
                 {
-                    return (this->_ptr != src._ptr);
+                    return (this->base() == src.base());
                 }
 
-            /*
-            ** Incrementation / Decrementaion Operators:
-            */
-                /*
-                ** Pre-increment opearator:
-                */
-                Iterator    &operator++()
+                template <typename U>
+                bool    operator!=( random_access_iterator<U> const & src )
+                {
+                    return (this->base() != src.base());
+                }
+
+                random_access_iterator    &operator++()
                 {
                     this->_ptr++;
                     return (*this);
                 }
 
-                /*
-                ** Post-increment opearator:
-                */
-                Iterator    operator++( int )
+                random_access_iterator    operator++( int )
                 {
-                        Iterator   prev = *this;
+                        random_access_iterator   prev = *this;
 
                         this->_ptr++;
                         return (prev);
                 }
 
-                /*
-                ** Pre-decrement opearator:
-                */
-                Iterator    &operator--()
+                random_access_iterator    &operator--()
                 {
                     this->_ptr--;
                     return (*this);
                 }
 
-                /*
-                ** Post-decrement opearator:
-                */
-                Iterator    operator--( int )
+                random_access_iterator    operator--( int )
                 {
-                        Iterator   prev = *this;
+                        random_access_iterator   prev = *this;
 
                         this->_ptr--;
                         return (prev);
                 }
 
-            /*
-            ** Dereference Operators:
-            */
                 reference   operator*( void )
                 {
-                    // std::cout << "*******DBG" << &this->_ptr << "END" << std::endl;
                     return (*(this->_ptr));
                 }
 
@@ -140,56 +106,59 @@ namespace   ft
                     return (this->_ptr);
                 }
 
-                difference_type   operator-(Iterator const & src)
+                template <typename U>
+                difference_type    operator-( random_access_iterator<U> const & src ) const
                 {
-                    // ret._ptr = this->_ptr - src._ptr;
-                    // return (ret);
-                    return (this->_ptr - src._ptr);
+                    return this->base() - src.base();
                 }
 
-                Iterator   operator-(difference_type value)
+                random_access_iterator   operator-(size_type value)
                 {
-                    Iterator   ret;
+                    random_access_iterator   ret;
 
                     ret._ptr = this->_ptr - value;
                     return (ret);
                 }
 
-                Iterator   operator+(size_type value)
+                random_access_iterator   operator+(size_type value)
                 {
-                    Iterator   ret;
+                    random_access_iterator   ret;
 
                     ret._ptr = this->_ptr + value;
                     return (ret);
                 }
 
-                bool    operator<( Iterator const & src ) const
+                template <typename U>
+                bool    operator<( random_access_iterator<U> const & src ) const
                 {
-                    return (this->_ptr < src._ptr);
+                    return (this->base() < src.base());
                 }
 
-                bool    operator<=( Iterator const & src ) const
+                template <typename U>
+                bool    operator<=( random_access_iterator<U> const & src ) const
                 {
-                    return (this->_ptr <= src._ptr);
+                    return this->base() <= src.base();
                 }
 
-                bool    operator>( Iterator const & src ) const
+                template <typename U>
+                bool    operator>( random_access_iterator<U> const & src ) const
                 {
-                    return (this->_ptr > src._ptr);
+                    return this->base() > src.base();
                 }
 
-                bool    operator>=( Iterator const & src ) const
+                template <typename U>
+                bool    operator>=( random_access_iterator<U> const & src ) const
                 {
-                    return (this->_ptr >= src._ptr);
+                    return this->base() >= src.base();
                 }
 
-                Iterator operator+=( size_type const value)
+                random_access_iterator operator+=( size_type const value)
                 {
                     this->_ptr += value;
                     return (*this);
                 }
 
-                Iterator   operator-=( difference_type value)
+                random_access_iterator   operator-=( size_type value)
                 {
                     this->_ptr -= value;
                     return (*this);
@@ -199,25 +168,30 @@ namespace   ft
                 {
                     return (this->_ptr[index]);
                 }
-                // operator    value_type() { return _ptr; }
-                operator Iterator<const Type>()
-                {
-                    return (Iterator< const Type>(*_ptr));
-                }
 
+                // User Defined Conversion Function
+                operator random_access_iterator<const Type>()
+                {
+                    return (random_access_iterator< const Type>(*_ptr));
+                }
         private:
-            pointer    _ptr;
+            value_type*    _ptr;
     };
 
     template< typename Type>
-    Iterator<Type>   operator+(size_t value, const Iterator<Type> & src)
+    random_access_iterator<Type>   operator+(size_t value, const random_access_iterator<Type> & src)
     {
-        Iterator<Type>   ret(src);
+        random_access_iterator<Type>   ret(src);
 
-        // ret._ptr = src._ptr + value;
         ret += value;
         return (ret);
     }
-};
+
+    template< typename Iterator1, typename Iterator2 >
+    typename random_access_iterator<Iterator1>::difference_type
+        operator-( const random_access_iterator<Iterator1>& lhs,
+                    const random_access_iterator<Iterator2>& rhs )
+    { return rhs.base() - lhs.base(); }
+}
 
 #endif
