@@ -1,3 +1,8 @@
-# containers
+# Vector unit test:
+![vector GIF](https://github.com/spydersy/42Cursus-ft_containers/blob/master/gif/vector_tests.gif)
 
-![TEST00_GIF](https://github.com/spydersy/42Cursus-ft_containers/blob/master/gif/ft_containers_test00.gif)
+# Stack unit test:
+![stack GIF](https://github.com/spydersy/42Cursus-ft_containers/blob/master/gif/stack_tests.gif)
+
+# Map unit test:
+![map GIF](https://github.com/spydersy/42Cursus-ft_containers/blob/master/gif/map_tests.gif)
