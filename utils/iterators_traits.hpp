@@ -52,3 +52,12 @@ namespace ft
 };
 
 #endif
+
+
+
+
+Iterator traits are templates that allow you to customize the behavior of iterators based on their characteristics. They provide a way to determine the properties of an iterator, such as its category and the type of elements it can access.
+Reverse iterators are a type of iterator that allow you to iterate through a container in reverse order. They are typically implemented as a wrapper around another iterator that provides the opposite traversal order.
+
+
+
